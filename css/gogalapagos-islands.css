@@ -1,0 +1,171 @@
+/* CSS para las vistas de isla */
+/* INNER NAVIGATION */
+.island-inner-navigation{
+    display: none;
+    position: absolute;
+    top: 180px;
+    right: 0px;
+}
+.island-inner-navigation ul{
+    list-style: none;
+    padding: 0px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.island-inner-navigation .inner-navigation-icon{
+    background: rgba(19, 19, 19, 0.6);
+    color: white;
+    text-align: center;
+    font-weight: 900;
+    width: 36px;
+    height: 36px;
+    display: flex;
+}
+.island-inner-navigation .inner-navigation-icon:hover{
+    text-decoration: none;
+}
+.inner-navigation-icon *{
+    margin: auto;
+}
+/*-----------*/
+.single-hero{
+    overflow: hidden;
+    width: 100vw;
+    position: relative;
+    height: 100vh;
+}
+.visitors-site-list a:hover{
+    color: #feab00;
+}
+.single-hero-content{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    margin-top: 15vh;
+    transition: all ease-out .3s;
+}
+.single-hero-convertion-area{
+    margin: 36px 0;
+    font-size: 18px;
+    max-width: 400px;
+}
+.single-carousel{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    z-index: -1;
+    overflow: hidden;
+}
+.single-carousel img{
+    transform: translateY(-20%);
+}
+.single-carousel .separator{
+    margin: 18px 0;
+}
+.rear-slider-controllers{
+    position: absolute;
+    left: 60px;
+    bottom: 20px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+.rear-slider-controllers a{
+    color: white;
+    font-weight: 100;
+}
+.single-more-about-content,.single-sidebar-title{
+    margin-top: 80px;
+}
+.single-ggisland .single-more-content .separator{
+    box-shadow: none;
+    border-bottom: 2px solid #272727;
+    margin-bottom: 18px;
+}
+.single-sidebar-product-list{
+    list-style: none;
+    padding: 0px;
+}
+.single-sidebar-product-item{
+    margin-bottom: 18px;
+}
+.single-sidebar-product-title{
+    display: inline-block;
+}
+/* ACTIVITIES SECTION*/
+.single-island-activities-section{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+.single-island-activities-title{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+.single-island-activity-title{
+    margin-top: 0px;
+    font-size: 48px;
+}
+.single-island-activity-text-container{
+    position: absolute;
+    left: 100px;
+    top: 200px;
+    z-index: 9999;
+    background: rgba(19, 19, 19, 0.6);
+    padding: 60px 50px;
+    color: white;
+    max-width: 650px;
+}
+.more-about-this-activity-link,.more-about-this-activity-link:hover{
+    text-decoration: underline;
+    color: #ffa800;
+}
+.more-items-slider{
+    background: #161616;
+}
+.single-more-island-section-title{
+    font-size: 60px;
+    margin: 36px;
+    color: white;
+}
+.single-carousel-islands{
+    max-height: 75vh;
+    overflow: hidden;
+}
+.more-items-slider .rear-slider-controllers{
+    position: relative;
+    margin-top: 36px;
+    left: 0;
+    bottom: 0;
+}
+.more-islands{
+    position: relative;
+}
+.more-islands img{
+    transform: translateY(-20%);
+}
+.more-island-caption{
+    position: absolute;
+    bottom: 50vh;
+    left: 60px;
+    max-width: 300px;
+    z-index: 999;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+.more-island-title{
+    color: white;
+}
+.view-more-about-this-island-link{
+    color: #ffcc00;
+    text-decoration: underline;
+}
+@media screen and (max-width: 480px){
+    .single-more-island-section-title{
+        font-size: 36px;
+    }
+}

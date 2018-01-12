@@ -1,0 +1,320 @@
+/* CSS para las vistas de Archive */
+/* alter navigation */
+.ship-alter-navbar{
+    display: block;
+    transition: all ease-in .2s;
+    background: #42403c;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    transform: translateY(-150px);
+    transition: transform ease-in .2s;
+}
+.ship-alter-navbar.active{
+    transform: translateY(0px);
+    transition: transform ease-in .8s;
+}
+.ship-navbar-items{
+    display: flex;
+    align-content: space-between;
+    margin: 0;
+}
+.ship-navbar-items li{
+    height: 60px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+    background: white;
+}
+.ship-navbar-items li:first-child{
+    max-width: 90px;
+    background: #42403C;
+}
+.ship-navbar-items li:last-child{
+    border-right: none;
+    max-width: 150px;
+    background: #42403C;
+}
+.navTrigger-ship{
+    margin: auto;
+    padding: 0px 18px;
+    cursor: pointer;
+}
+.ship-navbar-items li a{
+    color: #42403c;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+.ship-navbar-items li:last-child a{
+    text-align: center;
+    display: inline-block;
+}
+.ship-alter-navbar a:hover,.ship-alter-navbar a:focus{
+    text-decoration: none;
+    color: #ed9016;
+    cursor: pointer;
+}
+.regular-link{
+    background: red;
+    background-color: white;
+}
+.ship-alter-navbar .plan-your-trip-btn{
+    color: #ed9016;
+}
+/*-------*/
+.hero-video {
+    position: relative;
+}
+
+.fold-mobile {
+    background-image: url(../images/gogalapagos-mobile-hero-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-mobile-content {
+    transform: translateZ(1px);
+}
+
+.hero-mobile-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(36, 36, 36, 0.3);
+    z-index: 99;
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.top-ship-name {
+    display: block;
+    margin: 0 auto;
+}
+
+.home-hero-title {
+    text-align: center;
+    margin: auto;
+    color: white;
+    width: 100%;
+    margin-bottom: 28px;
+    font-size: 80px;
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .home-hero-title {
+        font-size: 60px;
+    }
+}
+
+.home-hero-slogan {
+    text-align: center;
+    font-size: 28px;
+    color: white;
+}
+
+.home-hero-title,
+.home-hero-slogan {
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.video-placeholer {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+div section h1 {
+    margin: 0;
+    font-size: 80px;
+}
+
+.slide h2 {
+    margin: auto;
+    font-size: 40px;
+}
+
+.section1 {
+    background: gray;
+    color: white;
+}
+
+.section2 {
+    background: #4b3d30;
+    color: white;
+}
+
+.section3 {
+    background: #465538;
+    color: white;
+}
+
+.section4 {
+    background: #44304a;
+    color: white;
+}
+
+.section5 {
+    background: #3d6464;
+    color: white;
+}
+
+.video-placeholer {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.hero-video {
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    transform: translateX(50%) translateX(-50%);
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .hero-video {
+        height: auto;
+        width: auto;
+    }
+}
+.archive-item-placeholder{
+    overflow: hidden;
+}
+.archive-item-placeholder:hover img{
+    transform: scale(1.1);
+    transition: transform ease-in .2s;
+}
+.archive-item-title{
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    color: white;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 18px;
+    z-index: 1;
+    transition: color ease .2s;
+    text-transform: uppercase;
+}
+.archive-item-title:hover{
+    color: darkorange;
+}
+.archive-loop-list-item {
+    height: 50vh;
+    background-color: gray;
+    display: flex;
+}
+.archive-item-mask{
+    background: rgba(0,0,0,0);
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(50%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.7)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.archive-loop-list-item * {
+    margin: auto;
+}
+
+.archive-loop-list-item h2 a {
+    color: white;
+}
+@media screen and (max-width: 768px){
+    .archive-item-title{
+        bottom: 30px;
+        left: 40px;
+    }
+}
+.land-tours{
+    height: 100vh;
+    flex-direction: column;
+    background-position: center;
+}
+/*---- tours pages ---*/
+.tour-item{
+    border: 1px solid #353535;
+    padding: 15px;
+    margin-bottom: 36px;
+    font-size:14px;
+}
+.tour-img-placeholder{
+    overflow: hidden;
+}
+.tour-img-placeholder img{
+    transition: all ease-in .2s;
+}
+.tour-item:hover .tour-img-placeholder img{
+    transform: scale(1.1);
+}
+.tour-name{
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+.tour-item .separator{
+    border-color: #2f2f2f;
+    margin: 0;
+    border-bottom-width: 1px;
+}
+.tour-price{
+    font-size: 36px;
+    font-weight: bold;
+    display: block;
+}
+.total-estimated{
+    font-size: 14px;
+}
+.tour-rates-link{
+    color: #ff8a00;
+}
+.price-link{
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.quote-link a{
+    background: #ff8a00;
+    padding: 14px 17px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+.tour-item-tools{
+    margin: 16px auto;
+}
+.tour-people-counter{
+    padding: 5px;
+}

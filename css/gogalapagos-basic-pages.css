@@ -1,0 +1,21 @@
+.home-get-in-love-separator{
+    border-bottom: 2px solid white;
+    display: block;
+    width: 180px;
+    margin: 18px auto;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.page-hero-text{
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    font-size: 16px;
+}
+.inner-page-content,.page-main-content{
+    font-size: 16px;
+}
+.about-aside-dark-background{
+    padding: 60px;
+    background-color: #efefef;
+}

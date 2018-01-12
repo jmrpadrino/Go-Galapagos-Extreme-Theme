@@ -1,0 +1,57 @@
+.top-side-form-container {
+    background: black;
+    min-height: 60vh;
+    padding-top: 200px;
+    color: white;
+}
+
+.filter-tags {
+    margin-top: 48px;
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.results-container {
+    margin-top: 48px;
+}
+
+.pagination-container {
+    height: 120px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.page-numbers {
+    list-style: none;
+    margin: auto;
+}
+
+.page-numbers li {
+    display: inline-block;
+    text-align: center;
+}
+
+.page-numbers li a,
+.page-numbers li span {
+    width: 40px;
+    display: block;
+    font-size: 16px;
+    transition: font-size ease-in .2s;
+}
+
+.page-numbers li a.page-numbers:hover,
+.page-numbers li span.page-numbers.current {
+    text-decoration: none;
+    font-size: 20px;
+    color: #FF9600;
+    border-bottom: 1px solid #FF9600;
+}
+@media screen and (max-width: 480px){
+    .top-side-form-container{
+            padding-top: 80px;
+    }
+    .search-results-title{
+        font-size: 26px;
+    }
+}

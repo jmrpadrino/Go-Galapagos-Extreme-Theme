@@ -1,0 +1,55 @@
+/* CSS PARA VISTA GENERAL DE ISLAS */
+.island-top-fold{
+    min-height: 60vh;
+    overflow: hidden;
+    position: relative;
+    color: white;
+}
+.archive-island-background-img{
+    position: absolute;
+    width: 100%;
+    top: -50%;
+    transform: translateY(-25%);
+}
+
+.archive-title{
+    margin-top: 230px;
+    font-size: 50px;
+}
+.hero-and-title .separator{
+    display: block;
+    margin: 36px auto;
+    width: 10%;
+}
+.island-archive-container{
+    padding: 36px 0;
+    min-height: 40vh;
+}
+.archive-description{
+    margin-bottom: 48px;
+}
+.island-link:hover{
+    color: #ff9d02;
+    font-weight: bold;
+}
+@media screen and (max-width: 768px){
+    .island-top-fold{
+        padding-bottom: 60px;
+    }
+    .archive-island-background-img{
+        width: auto;
+        top: -50%;
+        transform: translateY(-30%);
+        left: -50%;
+    }
+    .archive-title{
+        margin-top: 130px;
+    }
+    .hero-and-title .separator{
+        width: 30%;
+    }
+    .island-archive-container{
+        padding: 15px;
+        margin-top: 36px;
+    }
+}

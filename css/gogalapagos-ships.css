@@ -1,0 +1,261 @@
+/* CSS PARA BARCOS */
+/* alter navigation */
+.ship-alter-navbar{
+    display: block;
+    transition: all ease-in .2s;
+    background: #42403c;
+    *height: 85px;
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+    transform: translateY(-150px);
+    transition: transform ease-in .2s;
+}
+.ship-alter-navbar.active{
+    transform: translateY(0px);
+    transition: transform ease-in .8s;
+}
+.ship-navbar-items{
+    display: flex;
+    align-content: space-between;
+    margin: 0;
+}
+.ship-navbar-items li{
+    height: 60px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+    background: white;
+}
+.ship-navbar-items li:first-child{
+    max-width: 90px;
+    background: #42403C;
+}
+.ship-navbar-items li:last-child{
+    border-right: none;
+    max-width: 150px;
+    background: #42403C;
+}
+.ship-navbar-items li.active{
+    background: #ed9016;
+}
+.ship-navbar-items li.active a{
+    color: white;
+    font-weight: bold;
+}
+.navTrigger-ship{
+    margin: auto;
+    padding: 0px 18px;
+    cursor: pointer;
+}
+.ship-navbar-items li a{
+    color: #42403c;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+.ship-navbar-items li:last-child a{
+    text-align: center;
+    display: inline-block;
+}
+.ship-alter-navbar a:hover,.ship-alter-navbar a:focus{
+    text-decoration: none;
+    color: #ed9016;
+    cursor: pointer;
+}
+.ship-alter-navbar .plan-your-trip-btn{
+    color: #ed9016;
+}
+
+/*----- SOCIAL AREAS -----*/
+.socialareas,.cabins{
+    position: relative;
+}
+.pagination{
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    z-index: 999;
+    font-size: 16px;
+}
+.prevSlide,.nextSlide{
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+}
+.socialarea .separator{
+    margin: 24px auto;
+    border-color: black;
+    box-shadow: none;
+}
+.social-area-description{
+    line-height: 18px;
+    margin-bottom: 36px;
+}
+.socialarea-thumbnmails{
+    padding-bottom: 80px;
+}
+.first-template-social-area-image{
+    height: 58vh;
+    background: red;
+    overflow: hidden;
+    margin-bottom: 80px;
+}
+.first-template-social-area-image.left img{
+    transform: scale(1.2);
+}
+.first-template-social-area-image.right img{
+    width: 100%;
+}
+/*------------------------*/
+.element-title{
+    margin-top: 100px;
+}
+.cabin-profile-container{
+    position: relative;
+}
+.cabin-profile-container .separator{
+    margin: 24px auto;
+    border-color: black;
+    box-shadow: none;
+}
+.cabin-description-placeholder{
+    border: 2px solid #9f9f9f;
+    padding: 45px 30px;
+    margin-bottom: 72px;
+    position: relative;
+}
+.cabin-thumbnail-placeholder{
+    overflow: hidden;
+    position: relative;
+}
+.cabin-thumbnail-placeholder, .cabin-description-placeholder{
+    height: 65vh;
+}
+.cabin-thumbnail{
+    position: absolute;
+    width: 100%;
+    bottom: calc(-65vh / 6);
+}
+.btn-cabin-modal,.btn-cabin-modal:hover{
+    padding: 14px 17px;
+    background: #43403b;
+    color: white;
+    border-radius: 0;
+    margin-right: 26px;
+    display: inline-block;
+}
+.btn-cabin-request,.btn-cabin-request:hover{
+    padding: 14px 17px;
+    background: #f58903;
+    color: white;
+    position: absolute;
+    bottom: 30px;
+    border-radius: 0;
+}
+.cabin-floor-location-placeholder{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateX(0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all ease-in .2s;
+}
+.cabin-floor-location-placeholder.hidden{
+    transform: translateX(-2000px);
+}
+.cabin-floor-location-placeholder img{
+    margin: auto;
+    max-width: 50vw;
+    height: auto;
+}
+.close-cabin-placeholder{
+    position: absolute;
+    top: 72px;
+    right: 70px;
+    display: block;
+    padding: 10px;
+    color: black;
+    border: 2px solid #b2b2b2;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#virtualtour{
+    display: none;
+}
+.moreinfo .separator{
+    margin: 18px auto;
+    margin-bottom: 72px;
+    border-bottom-color: #242424;
+    box-shadow: none;
+}
+.deck-plan-title{
+    margin-top: 72px;
+}
+.tabpanel{
+    padding-bottom: 120px;
+}
+.nav-tabs{
+    border: none;
+    margin-bottom: 12px;
+}
+.nav-tabs>li>a{
+    background-color: #FAFAFA;  
+    margin: 0px;
+}
+.nav-tabs>li.active a{
+    background-color: #636363;
+    color: white;
+}
+.nav-tabs>li>a{
+    border-radius: 0px;
+    border: none;
+}
+dl {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0
+}
+dt {
+    float: left;
+    width: 50%;
+    /* adjust the width; make sure the total of both is 100% */
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    padding-right: 36px;
+}
+dd {
+    float: left;
+    width: 50%;
+    /* adjust the width; make sure the total of both is 100% */
+    padding: 0;
+    margin: 0
+}
+.deckplan-img{
+    margin: 0 auto;
+}
+@media screen and (min-width: 1400px){
+    .cabin-thumbnail-placeholder, .cabin-description-placeholder{
+        height: 70vh;
+    }
+    .cabin-description-placeholder{
+        padding: 90px 60px;
+        margin-bottom: 100px;
+    }
+    .btn-cabin-modal,.btn-cabin-modal:hover{
+        margin: 36px 0;
+        margin-right: 26px;
+    }
+}

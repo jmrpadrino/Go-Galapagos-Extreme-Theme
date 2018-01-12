@@ -1,0 +1,171 @@
+.single-thumbnail-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.single-thumbnail-container img{
+    height: auto;
+    width: 100%;
+}
+.itinerary-hero{
+    color: white;
+    overflow: hidden;
+}
+.itinerary-title{
+    margin: 0px;
+}
+.itinerary-hero .separator{
+    margin: 18px auto;
+}
+.itinerary-ship-owner{
+    display: block;
+}
+.itinerary-hero .scroll-indicator{
+    margin: 0 auto;
+}
+.ship-itinerary .separator{
+    border-bottom: 2px solid #191919;
+    width: 5%;
+    box-shadow: none;
+    margin-bottom: 18px;
+    float: left;
+}
+.itinerary-ship-description{
+    font-size: 24px;
+}
+.explore-the-ship-link{
+    color: #ffac00;
+    display: block;
+}
+.explore-the-ship-link, .itinerary-check-departure-dates{
+    font-size: 36px;
+}
+.itinerary-route-title{
+    margin-top: 36px;
+}
+/* Itineraries carousel */
+.carousel-container{
+    padding: 18px;
+    background: #3b4a5c;
+}
+.control-container{
+    display: flex;
+    min-height: 150px;
+}
+.carousel-control{
+    position: relative;
+    margin: auto;
+}
+
+
+/*----------------------*/
+
+.hero-items-controls{
+    margin-top: 20vh;
+}
+.itinerary-duration{
+    line-height: 14px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.itineraries-day-by-day{
+    padding-left: 36px;
+}
+.itinerary-a{
+    color: #dd2e89;
+}
+.itinerary-b{
+    color: #e67424;
+}
+.itinerary-c{
+    color: #6960a8;
+}
+.itinerary-d{
+    color: #52bbb0;
+}
+.itineraries-day-by-day-list{
+    list-style: none;
+    padding: 0px;
+}
+.day-name{
+    margin: 0px;
+    font-weight: bold;
+    margin-top: 36px;
+}
+.itinerary-plan-your-trip-btn{
+    padding: 14px 17px;
+    background: #ff9626;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    display: table;
+    margin-top: 80px;
+    margin-bottom: 36px;
+}
+.itinerary-plan-your-trip-btn:hover{
+    text-decoration: none;
+}
+.view-itinerary-btn{
+    color: black;
+}
+.gmap-itineary{
+    height: 60vh;
+}
+/*---- MEDIA QUERIES ----*/
+/* PARA MONITORES BAJOS */
+@media screen and (max-height: 768px){
+    .itinerary-ship-owner{
+        margin-top: 120px;
+    }
+    .itinerary-ship-description{
+        font-size: 16px;
+    }
+    .explore-the-ship-link, .itinerary-check-departure-dates{
+        font-size: 28px;
+    }
+    .hero-items-controls{
+        margin-top: 10vh;
+    }
+    .gmap-itineary{
+        height: 48vh;
+    }
+    .itinerary-duration{
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+    .day-name{
+        margin-top: 0px;
+    }
+    .itinerary-plan-your-trip-btn{
+        margin-top: 20px;
+        margin-bottom: 18px;
+    }
+}
+@media screen and (max-width: 480px){
+    .explore-the-ship-link, .itinerary-check-departure-dates{
+        font-size: 22px;
+    }
+    .itinerary-route-title{
+        font-size: 22px;
+    }
+    .itineraries-day-by-day{
+        padding: 15px;
+    }
+    .view-itinerary-btn{
+        display: block;
+        text-align: center;
+    }
+    .itinerary-plan-your-trip-btn, .view-itinerary-btn{
+        margin: 18px auto;
+    }
+    .single-thumbnail-container img{
+        height: inherit;
+        width: auto;
+    }
+}
