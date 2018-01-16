@@ -79,14 +79,17 @@
             <div class="col-xs-12 text-center">
                 <h2><?php _e('Proud member of:','gogalapagos'); ?></h2>
                 <ul class="list-inline">
-                    <li><img src="http://placehold.it/180x64?text=Logo" alt="" class="img-responsive"></li>
-                    <li><img src="http://placehold.it/180x64?text=Logo" alt="" class="img-responsive"></li>
-                    <li><img src="http://placehold.it/180x64?text=Logo" alt="" class="img-responsive"></li>
-                    <li><img src="http://placehold.it/180x64?text=Logo" alt="" class="img-responsive"></li>
-                    <li><img src="http://placehold.it/180x64?text=Logo" alt="" class="img-responsive"></li>
-                    <li><img src="http://placehold.it/180x64?text=Logo" alt="" class="img-responsive"></li>
-                    <li><img src="http://placehold.it/180x64?text=Logo" alt="" class="img-responsive"></li>
-                    <li><img src="http://placehold.it/180x64?text=Logo" alt="" class="img-responsive"></li>
+                    <?php 
+                        $args = array(
+                            'post_type' => 'ggmembership',
+                            'posts_per_page' => -1
+                        );
+                        $memberships = get_posts($args);
+                
+                        foreach($memberships as $membership){
+                            echo '<li><img src="'.get_the_post_thumbnail_url( $membership->ID, 'thumbnail' ).'" alt="Go Galapagos is member of '.$membership->post_title.'" class="img-responsive"></li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -109,7 +112,7 @@
             <?php
                 $args = array(
                     'post_type' => 'ggtestimonial',
-                    'posts_poer_page' => 5,
+                    'posts_per_page' => 5,
                 );
                 $comments = get_posts($args);
                 //var_dump($comments);
@@ -131,7 +134,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+                                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center comment-placeholder">
                                         <p class="customer-section-comment"><?= esc_html(get_the_excerpt($comment->ID)); ?></p>
                                     </div>
                                 </div>
@@ -151,8 +154,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
-                                        <p class="customer-section-title"><?= esc_html(get_the_excerpt($comment->ID)); ?></p>
+                                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center comment-placeholder">
+                                        <p class="customer-section-comment"><?= esc_html(get_the_excerpt($comment->ID)); ?></p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -297,7 +300,11 @@
                         $memberships = get_posts($args);
                 
                         foreach($memberships as $membership){
-                            echo '<li><img src="'.get_the_post_thumbnail_url( $membership->ID, 'thumbnail' ).'" alt="" class="img-responsive"></li>';
+                            $logoBlanco = get_post_meta($membership->ID, $prefix . 'membership_white_logo', false);
+//                            var_dump($logoBlanco);
+                            if($logoBlanco){
+                                echo '<li><img width="150" src="'.$logoBlanco[0].'" alt="Go Galapagos is member of '.$membership->post_title.'" class="img-responsive"></li>';
+                            }
                         }
                     ?>
                 </ul>
@@ -663,7 +670,6 @@ if ( is_page_template() ){
             afterLoad: function(anchorLink, index){
                 var location = window.location.hash;
                 paintHash(location);
-                console.log(index);
                 <?php if (is_front_page()){ ?>
                 if (index == 5){
                     $('.progress-left .progress-bar').addClass('now');

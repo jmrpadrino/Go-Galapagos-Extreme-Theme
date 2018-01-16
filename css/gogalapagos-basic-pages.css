@@ -11,6 +11,7 @@
     font-weight: bold;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
     font-size: 16px;
+    z-index: 999;
 }
 .inner-page-content,.page-main-content{
     font-size: 16px;
@@ -18,4 +19,81 @@
 .about-aside-dark-background{
     padding: 60px;
     background-color: #efefef;
+}
+.hero-content{
+    z-index: 9999;
+}
+.cruises-page-title{
+    font-size: 24px;
+}
+.cruise-page-content{
+    font-size: 14px;
+}
+.ggcruises-thumbnail-placeholder{
+    padding-top: 72px;
+    padding-left: 36px;
+}
+.ggcruises-thumbnail-placeholder .separator{
+    float: left;
+    margin-top: 18px;
+}
+.ggcruises-thumbnail-placeholder *{
+    z-index: 999;
+    display: block;
+}
+.ggcruises-thumbnail-placeholder .hero-mask{
+    z-index: -10;
+    background: rgba(0,0,0,1);
+    background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+}
+.ggcruises-thumbnail-placeholder img{
+    z-index: -99;
+}
+.cruise-excerpt{
+    margin: 36px;
+    font-size: 14px;
+}
+.cruise-link,.cruise-link:hover{
+    margin-left: 36px;
+    display: table;
+    padding: 8px 20px;
+    background: darkorange;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 48px;
+    text-transform: uppercase;
+}
+section.activities{
+    overflow: hidden;
+}
+.activities .item{
+    height: 100vh;
+    position: relative;
+}
+.cruise-link.activities{
+    margin: 36px auto;
+}
+.item .slide-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -99;
+}
+.item h2{
+    margin-top: 30vh;
+}
+.crew .item h2{
+    margin-top: 15vh;
+}
+.carousel-control{
+    
+}
+.carousel-control.left, .carousel-control.right{
+    background: none;
 }

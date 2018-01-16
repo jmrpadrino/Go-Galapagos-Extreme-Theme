@@ -19,6 +19,7 @@ $barco__logo = get_post_meta( $barcoID, $prefix . 'ship_logo', true); // Imagen 
 $barco__slogan = get_post_meta( $barcoID, $prefix . 'ship_slogan', true); // Texto -> slogan del barco
 $barco__foldpicture = get_post_meta( $barcoID, $prefix . 'ship_fold_picture', true); // URL   -> slogan del barco
 $barco__foldbkg = get_post_meta( $barcoID, $prefix . 'ship_fold_bkg', true); // URL   -> slogan del barco
+$barco__foldbkg_lower = get_post_meta( $barcoID, $prefix . 'ship_fold_lower_bkg', true); // URL   -> slogan del barco
 $barco__dispoID = get_post_meta($barcoID, $prefix . 'ship_dispo_ID', true); // Texto -> ID del sistema DISPO Kleintours
 $barco__bookNowURL = get_post_meta($barcoID, $prefix . 'ship_bookurl', true); // URL -> URL para el cotizador
 $barco__virtualURL = get_post_meta($barcoID, $prefix . 'ship_section_360_link', true); // URL -> URL para la herramienta virtual
@@ -35,6 +36,7 @@ $barco__securityINFO = get_post_meta($barcoID, $prefix . 'ship_section_security_
 // areas sociales
 $args = array(
     'post_type' => 'ggsocialarea',
+    'posts_per_page' => -1,
     'meta_query' => array(
         array(
             'key'     => $prefix . 'social_ship_id',
@@ -84,7 +86,7 @@ die();*/
 
 ?>
 <section data-anchor="top" class="sections section single-ship ship-hero">
-    <div class="middle-fold" style="background-image: url(<?= $barco__foldbkg ?>); background-position: center top; background-size: cover; min-height: 65vh; margin-bottom: 36px; color: white; position: relative;">
+    <div class="middle-fold" style="background-image: url(<?= $barco__foldbkg ?>);">
         <div class="ship-fold-mask" style="position: absolute; height: 100%; width:100%; background: #00000070; top: 0: left: 0;"></div>
         <div class="container-fluid nopadding">
             <div class="row">
@@ -96,30 +98,28 @@ die();*/
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <div class="the-excerpt text-justify">
-                    <p style="margin-bottom: 36px;"><?php echo !empty($barco__resumen) ? $barco__resumen : ''; ?></p>
+    <div class="lower-fold" style="background-image: url(<?= $barco__foldbkg_lower ?> ); ">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="the-excerpt text-justify">
+                        <p class="fold-text"><?php echo !empty($barco__resumen) ? $barco__resumen : ''; ?></p>
+                    </div>
+                    <?php if($barco__foldpicture){ ?>
+                    <div class="deckplan-placeholder">
+                        <img src="<?= $barco__foldpicture ?>" class="img-responsive center-block">
+                    </div>
+                    <?php } ?>
                 </div>
-                <?php if($barco__foldpicture){ ?>
-                <div class="deckplan-placeholder">
-                    <img src="<?= $barco__foldpicture ?>" class="img-responsive center-block">
-                </div>
-                <?php } ?>
             </div>
         </div>
     </div>
 </section>
 <section data-anchor="experience" data-index="2" class="sections section">
-    <div class="pagination">
-        <span class="fa fa-chevron-left prevSlide"></span>
-        <span><?= _e('Enjoy the experience'); ?></span>
-        <span class="fa fa-chevron-right nextSlide"></span>
+    <div class="experience-video-placeholder" style="overflow: hidden;">
+        <img src="http://placehold.it/2000x1200?text=VideoExperience" class="mientras">
     </div>
-    <div class="fullpage-slide" style="overflow: hidden;">
-        <img src="http://placehold.it/2000x1200?text=VideoExperience" class="img-responsive">
-    </div>
+    <?php /*
     <div class="fullpage-slide">
         <div class="container">
             <div class="row">
@@ -199,96 +199,37 @@ die();*/
             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
+    */ ?>
 </section>
 <section data-anchor="socialareas" data-index="3" class="sections section socialarea">
-    <div class="pagination">
-        <span class="fa fa-chevron-left prevSlide"></span>
-        <span><?= _e('Move through the Social Areas'); ?></span>
-        <span class="fa fa-chevron-right nextSlide"></span>
+    <div class="nextSlide">
+        <span class="fa fa-chevron-right"></span>        
+    </div>
+    <div class="prevSlide">
+        <span class="fa fa-chevron-left"></span>
     </div>
     <?php   
-    /*echo '<pre>';
-        print_r($areassociales);
-        echo '</pre>';*/
-
+    $socialAreaCounter = 0;
     foreach ($areassociales as $areasocial){
         $gallery = get_post_meta($areasocial->ID, $prefix . 'social_gallery', false);
         set_query_var( 'areasocialInfo', $areasocial );
-        set_query_var( 'areasocialGalery', $gallery );
-
-        $template = get_post_meta($areasocial->ID, $prefix . 'social_template', true);
-        $template == 1 ? get_template_part('templates/social-area-left-small') : get_template_part('templates/social-area-left-big');
+        set_query_var( 'areasocialGalery', $gallery );        
+        if ($socialAreaCounter < 5){
+            $template = get_post_meta($areasocial->ID, $prefix . 'social_template', true);
+            $template == 1 ? get_template_part('templates/social-area-left-small') : get_template_part('templates/social-area-left-big');
+        }else{
+             get_template_part('templates/social-area-fullscreen');
+        }
+        $socialAreaCounter++;
     }
-
     ?>
-    <!--
-
-<div class="fullpage-slide">
-<div class="container">
-<div class="row">
-<div class="col-sm-8 col-sm-offset-2">
-<h2 class="text-center">Open spaces are our Specialty</h2>
-<span class="separator"></span>
-<p class="social-area-description">The Galapagos are meant to be experienced outdoors.</p>
-<ul class="two-columns">
-<li>Area 1</li>
-<li>Area 2</li>
-<li>Area 3</li>
-<li>Area 4</li>
-<li>Area 5</li>
-</ul>
-<p class="text-right">7,244 ft2 ( 673 m2) of Outdoor Space.</p>
-</div>
-</div>
-</div>
-<div class="container-fluid">
-<div class="row">
-<div class="col-sm-7">
-<div class="first-template-social-area-image right">
-<img src="http://placehold.it/1024x768?text=Right-Image" class="img-responsive">
-</div>
-</div>
-<div class="col-sm-5">
-<div class="first-template-social-area-image left">
-<img src="http://placehold.it/800x600?text=Left-Image" class="img-responsive">
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fullpage-slide">
-<div class="container-fluid">
-<div class="row">
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-<ol class="carousel-indicators">
-<li data-target="#carousel-example-generic" data-slide-to="0" class="active"> </li>
-<li data-target="#carousel-example-generic" data-slide-to="1"> </li>
-<li data-target="#carousel-example-generic" data-slide-to="2"> </li>
-</ol>
-<div class="carousel-inner">
-<div class="item active" style="max-height: 100vh;">
-<img src="http://placehold.it/2000x1333?text=More+Social+Areas" class="img-responsive" alt="First slide"/>
-</div>
-<div class="item" style="max-height: 100vh;">
-<img src="http://placehold.it/2000x1333?text=More+Social+Areas" class="img-responsive" alt="Second slide"/>
-</div>
-<div class="item" style="max-height: 100vh;">
-<img src="http://placehold.it/2000x1333?text=More+Social+Areas" class="img-responsive" alt="Third slide"/>
-</div>
-</div>
-<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-</div>
-</div>
-</div>
-</div>
--->
 </section>
 <section data-anchor="cabins" data-index="3" class="sections section cabins">
-    <div class="pagination">
-        <span class="fa fa-chevron-left prevSlide"></span>
-        <span><?= _e('Move through the Cabins'); ?></span>
-        <span class="fa fa-chevron-right nextSlide"></span>
+    <div class="nextSlide">
+        <span class="fa fa-chevron-right"></span>        
+    </div>
+    <div class="prevSlide">
+        <span class="fa fa-chevron-left"></span>
     </div>
     <?php 
     foreach ($cabinas as $cabina){
@@ -299,116 +240,177 @@ die();*/
     ?>
 </section>
 <section data-anchor="moreinfo" class="sections section moreinfo">
+    <div class="nextSlide">
+        <span class="fa fa-chevron-right"></span>        
+    </div>
+    <div class="prevSlide">
+        <span class="fa fa-chevron-left"></span>
+    </div>
     <div class="fullpage-slide">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <h2 class="element-title"><?php echo the_title(); ?> <?php _e('Technical Information');?></h2>
-                <span class="separator"></span>
+        <div class="container">
+            <?php
+            $segundaLista = get_post_meta($barcoID, $prefix . 'ship_section_tech_info_second', true);
+            if(!($segundaLista)){
+            ?>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="element-title"><?php echo the_title(); ?> <?php _e('Technical Information');?></h2>
+                    <span class="separator"></span>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-6 col-md-offset-3">
-                <dl class="two-columns1">
-                    <?php
-                        $technicals = geT_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-md-offset-3">
+                    <dl class="two-columns1">
+                        <?php
+                $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
+                $item = '';
+                foreach($technicals as $technical){
+                    $item = explode(':', $technical);
+                    echo '<dt>'.$item[0].':</dt>';
+                    echo '<dd>'.$item[1].'</dd>';
+                }
+                        ?>
+                    </dl>
+                </div>
+            </div>
+            <?php }else{ ?>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="element-title"><?= get_post_meta($barcoID, $prefix . 'ship_section_tech_info_title', true) ?> <?php _e('Technical Information');?></h2>
+                            <span class="separator"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <dl class="two-columns1">
+                                <?php
+                        $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
                         $item = '';
                         foreach($technicals as $technical){
                             $item = explode(':', $technical);
                             echo '<dt>'.$item[0].':</dt>';
                             echo '<dd>'.$item[1].'</dd>';
                         }
-                    ?>
-                </dl>
+                                ?>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="element-title"><?= get_post_meta($barcoID, $prefix . 'ship_section_tech_info_title_second', true) ?> <?php _e('Technical Information');?></h2>
+                            <span class="separator"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <dl class="two-columns1">
+                                <?php
+                        $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info_second', true);
+                        $item = '';
+                        foreach($technicals as $technical){
+                            $item = explode(':', $technical);
+                            echo '<dt>'.$item[0].':</dt>';
+                            echo '<dd>'.$item[1].'</dd>';
+                        }
+                                ?>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <?php } ?>
         </div>
-    </div>
     </div>
     <div class="fullpage-slide">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <h2 class="deck-plan-title element-title"><?php echo the_title(); ?> <?php _e('Deck Plan');?></h2>
-                <span class="separator"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="deck-plan-title element-title"><?php echo the_title(); ?> <?php _e('Deck Plan');?></h2>
+                    <span class="separator"></span>
+                </div>
             </div>
-        </div>
-        <?php
-        // Seleccionar los decks y areas sociales de este barco
-        //Obtener los decks del barco
-        $args = array(
-            'post_type' => 'ggdecks',
-            'meta_query' => array(
-                array(
-                    'key'     => 'gg_deck_ship_id',
-                    'value'   => $barcoID,
-                    'compare' => 'LIKE',
+            <?php
+            // Seleccionar los decks y areas sociales de este barco
+            //Obtener los decks del barco
+            $args = array(
+                'post_type' => 'ggdecks',
+                'meta_query' => array(
+                    array(
+                        'key'     => 'gg_deck_ship_id',
+                        'value'   => $barcoID,
+                        'compare' => 'LIKE',
+                    ),
                 ),
-            ),
-            'posts_per_page' => -1
-        );
-        // Query
-        $decks = get_posts($args);
-/*        echo '<pre>';
+                'posts_per_page' => -1
+            );
+            // Query
+            $decks = get_posts($args);
+            /*        echo '<pre>';
         print_r($decks);
         echo '</pre>';*/
-        $deckCounter = 0;
-        ?>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="tabpanel" role="tabpanel">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-4 text-center">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <?php 
+            $deckCounter = 0;
+            ?>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="tabpanel" role="tabpanel">
+                        <div class="row">
+
+                            <div class="col-sm-6 col-sm-offset-4 text-center">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <?php 
                                     foreach($decks as $deck){
                                         if ($deckCounter == 0){
-                                ?>
-                                <li role="presentation" class="active">
-                                    <a href="#<?= $deck->post_name ?>" aria-controls="home" role="tab" data-toggle="tab"><?= $deck->post_title ?></a>
-                                </li>
-                                <?php
+                                    ?>
+                                    <li role="presentation" class="active">
+                                        <a href="#<?= $deck->post_name ?>" aria-controls="home" role="tab" data-toggle="tab"><?= $deck->post_title ?></a>
+                                    </li>
+                                    <?php
                                         }else{
-                                ?>
-                                <li role="presentation">
-                                    <a href="#<?= $deck->post_name ?>" aria-controls="tab" role="tab" data-toggle="tab"><?= $deck->post_title ?></a>
-                                </li>
-                                <?php
+                                    ?>
+                                    <li role="presentation">
+                                        <a href="#<?= $deck->post_name ?>" aria-controls="tab" role="tab" data-toggle="tab"><?= $deck->post_title ?></a>
+                                    </li>
+                                    <?php
                                         }
                                         $deckCounter++;
                                     }
                                     $deckCounter = 0;
-                                ?>
-                            </ul>
+                                    ?>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Nav tabs -->
+                        <!-- Nav tabs -->
 
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <?php 
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <?php 
                             foreach($decks as $deck){
                                 $deckPlanimage = get_post_meta($deck->ID, $prefix . 'deck_plan_image', true);
                                 if ($deckCounter == 0){
-                        ?>
-                        <div role="tabpanel" class="tab-pane active" id="<?= $deck->post_name ?>">
-                            <img src="<?= $deckPlanimage ?>" class="img-responsive deckplan-img" alt="<?= $barcoNombre . ' - ' . $deck->post_title ?>">
-                        </div>
-                        <?php
+                            ?>
+                            <div role="tabpanel" class="tab-pane active" id="<?= $deck->post_name ?>">
+                                <img src="<?= $deckPlanimage ?>" class="img-responsive deckplan-img" alt="<?= $barcoNombre . ' - ' . $deck->post_title ?>">
+                            </div>
+                            <?php
                                 }else{
-                        ?>
-                        <div role="tabpanel" class="tab-pane fade" id="<?= $deck->post_name ?>">
-                            <img src="<?= $deckPlanimage ?>" class="img-responsive deckplan-img" alt="<?= $barcoNombre . ' - ' . $deck->post_title ?>">
-                        </div>
-                        <?php
+                            ?>
+                            <div role="tabpanel" class="tab-content tab-pane fade" id="<?= $deck->post_name ?>">
+                                <img src="<?= $deckPlanimage ?>" class="img-responsive deckplan-img" alt="<?= $barcoNombre . ' - ' . $deck->post_title ?>">
+                            </div>
+                            <?php
                                 }
                                 $deckCounter++;
                             }
-                        ?>
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 <?php get_footer(); ?>

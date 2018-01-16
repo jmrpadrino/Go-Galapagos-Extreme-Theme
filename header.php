@@ -31,7 +31,7 @@
                             $main_menu_args = array(
                                 'theme_location'  => 'desktop-top-main-menu',	
                                 'menu' => 'desktop-top-main-menu',
-                                'container_class' => 'top-side-navigation col-sm-5 text-right',
+                                'container_class' => 'top-side-navigation col-sm-5 text-right hidden-xs hidden-sm',
                                 'container_id' => 'top-side-navigation',
                                 'menu_class' => 'list-inline'
                             );

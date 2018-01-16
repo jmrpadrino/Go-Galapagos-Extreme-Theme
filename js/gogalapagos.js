@@ -248,7 +248,6 @@ $(document).ready( function (){
         autohidemode: false,
         smoothscroll: true,
     })
-
     // FIXES DE BUSCADOR
     $('#search-form input').val('');
     $('#search-form input').focusin( function(){            
@@ -385,10 +384,10 @@ $('#land-tours-fold').mousemove(function(e){
 });
 */
 $(document).on('click', '.prevSlide', function(){
-  $.fn.fullpage.moveSlideRight();
+  $.fn.fullpage.moveSlideLeft();
 });
 $(document).on('click', '.nextSlide', function(){
-  $.fn.fullpage.moveSlideLeft();
+  $.fn.fullpage.moveSlideRight();
 });
 
 

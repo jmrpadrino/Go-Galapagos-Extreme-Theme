@@ -505,7 +505,7 @@ label.field.focused .psuedo_select ul {
     width: 100%;
     color: white;
     padding: 80px;
-    padding-top: 65vh;
+    padding-top: 25vh;
     transform: translateX(100vw);
     transition: transform ease-in .2s;  
     background-color: rgba(38, 63, 96, 0.55);

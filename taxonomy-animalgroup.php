@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+
 <section class="sections section">
     <?php 
         if (have_posts()){ $cont = 0;
@@ -21,6 +22,7 @@
             _e('There is not animals in this group yet.','gogalapagos');
             echo'</p>';
         }
-    ?>
+?>
 </section>
+
 <?php get_footer(); ?>

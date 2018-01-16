@@ -55,7 +55,6 @@
 .ship-navbar-items li a{
     color: #42403c;
     font-size: 16px;
-    display: block;
     text-align: center;
     margin: auto;
 }
@@ -71,22 +70,52 @@
 .ship-alter-navbar .plan-your-trip-btn{
     color: #ed9016;
 }
-
+.experience-video-placeholder{
+    height: 100vh;
+    width: 100%;
+    background: red;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+.experience-video-placeholder *{
+    height: auto;
+    width: 100%;
+}
 /*----- SOCIAL AREAS -----*/
+.container-social-area{
+    max-width: 80%;
+    margin: 0 auto;
+}
 .socialareas,.cabins{
     position: relative;
 }
-.pagination{
-    position: absolute;
-    top: 90px;
-    right: 20px;
-    z-index: 999;
-    font-size: 16px;
-}
 .prevSlide,.nextSlide{
+    position: absolute;
+    color: white;
     cursor: pointer;
     display: inline-block;
-    margin: 10px;
+    width: 40px;
+    height: 60px;
+    background: rgba(51, 51, 51, 0.7);
+    top: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    z-index: 9;
+}
+.prevSlide{
+    left: 18px;
+}
+.nextSlide{
+    right: 18px;
+}
+.prevSlide span, .nextSlide span{
+    display: block;
+    margin: auto;
 }
 .socialarea .separator{
     margin: 24px auto;
@@ -102,17 +131,35 @@
 }
 .first-template-social-area-image{
     height: 58vh;
-    background: red;
     overflow: hidden;
     margin-bottom: 80px;
+    position: relative;
 }
-.first-template-social-area-image.left img{
-    transform: scale(1.2);
-}
-.first-template-social-area-image.right img{
-    width: 100%;
+.first-template-social-area-image >img{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    max-width: fit-content;
+    height: 100%;
+    transform: translateX(-50%);
 }
 /*------------------------*/
+/*--- CABINS ---*/
+/*.cabins .prevSlide, .cabins .nextSlide{
+    position: absolute;
+    color: #8a8a8a;
+    cursor: pointer;
+    display: inline-block;
+    width: 40px;
+    height: 60px;
+    background: transparent;
+    top: 10%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    z-index: 9;
+    font-size: 48px;
+}*/
 .element-title{
     margin-top: 100px;
 }
@@ -140,7 +187,6 @@
 .cabin-thumbnail{
     position: absolute;
     width: 100%;
-    bottom: calc(-65vh / 6);
 }
 .btn-cabin-modal,.btn-cabin-modal:hover{
     padding: 14px 17px;
@@ -157,6 +203,10 @@
     position: absolute;
     bottom: 30px;
     border-radius: 0;
+}
+.info-container{
+    position: relative;
+    max-width: 90%;
 }
 .cabin-floor-location-placeholder{
     width: 100vw;
@@ -181,12 +231,12 @@
 }
 .close-cabin-placeholder{
     position: absolute;
-    top: 72px;
-    right: 70px;
+    top: 20%;
+    right: 180px;
     display: block;
-    padding: 10px;
-    color: black;
-    border: 2px solid #b2b2b2;
+    padding: 10px 12px;
+    color: #565656;
+    border: 2px solid #e6e6e6;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -213,13 +263,18 @@
     background-color: #FAFAFA;  
     margin: 0px;
 }
-.nav-tabs>li.active a{
+.nav-tabs>li.activa a{
     background-color: #636363;
     color: white;
 }
 .nav-tabs>li>a{
     border-radius: 0px;
     border: none;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+        color: #d8d8d8;
+    cursor: pointer;
+    background-color: #2b2b2b;
 }
 dl {
     width: 100%;
@@ -246,6 +301,25 @@ dd {
 .deckplan-img{
     margin: 0 auto;
 }
+.middle-fold{
+    background-position: center top; 
+    background-size: cover; 
+    min-height: 55vh; 
+    margin-bottom: 0; 
+    color: white; 
+    position: relative;
+}
+.lower-fold{
+    padding-top: 18px;
+    *background: red;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 45vh;
+}
+.fold-text{
+    font-size: 18px;
+}
 @media screen and (min-width: 1400px){
     .cabin-thumbnail-placeholder, .cabin-description-placeholder{
         height: 70vh;
@@ -257,5 +331,82 @@ dd {
     .btn-cabin-modal,.btn-cabin-modal:hover{
         margin: 36px 0;
         margin-right: 26px;
+    }
+}
+@media screen and (max-height: 768px){
+    .middle-fold{    
+        min-height: 48vh; 
+    }
+    .lower-fold{
+        min-height: 52vh;
+    }
+    .fold-text{
+        font-size: 14px;
+    }
+    .footer-background{
+        height: auto;
+        background: none;
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
+    .orgs-logos h2{
+        margin-top: 36px;
+        margin-bottom: 36px;
+        font-size: 28px;
+    }
+    .orgs-logos img{
+        margin-bottom: 26px;
+        max-width: 120px;
+    }
+    .first-template-social-area-image{
+        margin-bottom: 0px;
+    }
+    .social-area-description{
+        margin-bottom: 18px;
+        font-size: 14px;
+    }
+    .element-title{
+        margin-top: 80px;
+    }
+    .cabin-description-placeholder{
+        margin-bottom: 0px;
+    }
+    .cabin-description-placeholder ul{
+        max-height: 220px;
+        overflow: auto;
+    }
+    .cabins .prevSlide, .cabins .nextSlide{
+        top: 15%;
+    }
+    .moreinfo .separator{
+        margin-bottom: 18px;
+    }
+    .tabpanel{
+        padding-bottom: 0px;
+    }
+    .tab-content img{
+        max-width: 90%;
+    }
+    .cabin-thumbnail1{
+        bottom: calc(-65vh / 6);
+    }
+}
+@media screen and (max-width: 800px) and (orientation: portrait){
+    .experience-video-placeholder *{
+        height: auto;
+        width: auto;
+    }
+}
+/* responsive para movibles hasta 480 px Retrato */
+@media screen and (max-width: 500px) and (orientation: portrait){
+    .element-title{
+        font-size: 24px;
+    }
+    .first-template-social-area-image{
+        height: 40vh;
+    }
+    .social-area-description{
+        font-size: 16px;
+        line-height: 1.5;
     }
 }

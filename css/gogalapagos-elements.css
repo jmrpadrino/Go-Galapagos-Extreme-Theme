@@ -680,7 +680,7 @@ a,a:hover{
     transition: all ease-in .2s;
 }
 .fp-viewing-0 .gogalapagos-logo img, .fp-viewing-0-0 .gogalapagos-logo img, .fp-viewing-top .gogalapagos-logo img{
-    width: 200px;
+    width: 120px;
 }
 @media screen and (max-width: 1024px) and (orientation: landscape){
     .gogalapagos-logo img, .fp-viewing-0 .gogalapagos-logo img, .fp-viewing-top .gogalapagos-logo img{
@@ -1343,7 +1343,7 @@ li.load a:hover:after{
 .ship-itinerary-link{
     position: absolute!important;
     top: 0;
-    left: 140px;
+    left: 160px;
 }
 .ship-itinerary-link a{
     color: darkorange;
@@ -1417,13 +1417,16 @@ li.load a:hover:after{
 }
 .footer-background{
     background-image: url(../images/galapagos-sea-view.jpg);
-    background-position: bottom;
+    background-position: 0% 120%;
     background-repeat: no-repeat;
     height: calc(100vh - 315px);
     padding-top: 120px;
 }
+.comment-placeholder{
+    min-height: 100px;
+}
 .orgs-logos{
-    background-color: black;
+    background-color: #232323;
 }
 .orgs-logos h2{
     margin-top: 45px;
@@ -1444,6 +1447,14 @@ li.load a:hover:after{
 }
 .cc_safesubscribe{
     display: none;
+}
+.regular-link {   
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 }
 /* ALTER NAVIGATION CONTENT */
 .alter-nav-content{
@@ -1920,6 +1931,9 @@ li.load a:hover:after{
     .orgs-logos img{
         margin-bottom: 26px;
         max-width: 120px;
+    }
+    .ship-itinerary-link{
+        left: 140px;
     }
 }
 @media screen and (max-width: 480px){
