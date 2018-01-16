@@ -33,6 +33,22 @@ $barco__securityINFO = get_post_meta($barcoID, $prefix . 'ship_section_security_
 * 3. DECKS              -> @post_type = ggdecks         -> $decks (array)
 */
 
+// actividades
+$args = array(
+    'post_type' => 'ggactivity',
+    'posts_per_page' => -1,
+    'meta_query' => array(
+        array(
+            'key'     => $prefix . 'social_ship_id',
+            'value'   => $barcoID,
+            'compare' => 'LIKE',
+        ),
+    ),
+    'orderby' => 'menu_order',
+    'order' => 'ASC'
+);
+$actividades = get_posts($args);
+
 // areas sociales
 $args = array(
     'post_type' => 'ggsocialarea',
@@ -201,6 +217,29 @@ die();*/
     </div>
     */ ?>
 </section>
+<section data-anchor="activities" data-index="3" class="sections section activities">
+    <div class="nextSlide">
+        <span class="fa fa-chevron-right"></span>        
+    </div>
+    <div class="prevSlide">
+        <span class="fa fa-chevron-left"></span>
+    </div>
+    <?php   
+    //$socialAreaCounter = 0;
+    foreach ($actividades as $actividad){
+        $gallery = get_post_meta($actividad->ID, $prefix . 'social_gallery', false);
+        set_query_var( 'areasocialInfo', $actividad );
+        set_query_var( 'areasocialGalery', $gallery );        
+        //if ($socialAreaCounter < 5){
+            $template = get_post_meta($actividad->ID, $prefix . 'social_template', true);
+            $template == 1 ? get_template_part('templates/social-area-left-small') : get_template_part('templates/social-area-left-big');
+        /*}else{
+             get_template_part('templates/social-area-fullscreen');
+        }
+        $socialAreaCounter++;*/
+    }
+    ?>
+</section>
 <section data-anchor="socialareas" data-index="3" class="sections section socialarea">
     <div class="nextSlide">
         <span class="fa fa-chevron-right"></span>        
@@ -209,18 +248,18 @@ die();*/
         <span class="fa fa-chevron-left"></span>
     </div>
     <?php   
-    $socialAreaCounter = 0;
+    //$socialAreaCounter = 0;
     foreach ($areassociales as $areasocial){
         $gallery = get_post_meta($areasocial->ID, $prefix . 'social_gallery', false);
         set_query_var( 'areasocialInfo', $areasocial );
         set_query_var( 'areasocialGalery', $gallery );        
-        if ($socialAreaCounter < 5){
+        //if ($socialAreaCounter < 5){
             $template = get_post_meta($areasocial->ID, $prefix . 'social_template', true);
             $template == 1 ? get_template_part('templates/social-area-left-small') : get_template_part('templates/social-area-left-big');
-        }else{
+        /*}else{
              get_template_part('templates/social-area-fullscreen');
         }
-        $socialAreaCounter++;
+        $socialAreaCounter++;*/
     }
     ?>
 </section>

@@ -14,6 +14,7 @@
                     </a>
                 </li>
                 <li><a class="regular-link" href="#experience"><span><?php _e('Experience','gogalapagos'); ?></span></a></li>
+                <li><a class="regular-link" href="#activities"><span><?php _e('Activities','gogalapagos'); ?></span></a></li>
                 <li><a class="regular-link" href="#socialareas"><span><?php _e('Social Areas','gogalapagos'); ?></span></a></li>
                 <li><a class="regular-link" href="#cabins"><span><?php _e('Cabins','gogalapagos'); ?></span></a></li>
                 <li><a class="regular-link" href="#moreinfo"><span><?php _e('Technical Information & Deck Plan','gogalapagos'); ?></span></a></li>

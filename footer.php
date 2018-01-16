@@ -655,7 +655,7 @@ if ( is_page_template() ){
             navigation: false,
             slideSelector: '.fullpage-slide',
             <?php if (is_singular('ggships')){?>
-            anchors: ['top','experience','socialareas','cabins','moreinfo'],
+            anchors: ['top','experience','activities','socialareas','cabins','moreinfo'],
             <?php } ?>
             <?php if (is_page('about-us')){?>
             anchors: ['top','our-history','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
