@@ -745,7 +745,7 @@ filter: brightness(1) sepia(0);
     }
     .gg-post-type .more-content{
         padding: 60px;
-        padding-top: 62vh;
+        padding-top: 20vh;
         font-size: 12px;
     }
     .gg-post-type .more-content h2{

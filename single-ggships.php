@@ -37,13 +37,6 @@ $barco__securityINFO = get_post_meta($barcoID, $prefix . 'ship_section_security_
 $args = array(
     'post_type' => 'ggactivity',
     'posts_per_page' => -1,
-    'meta_query' => array(
-        array(
-            'key'     => $prefix . 'social_ship_id',
-            'value'   => $barcoID,
-            'compare' => 'LIKE',
-        ),
-    ),
     'orderby' => 'menu_order',
     'order' => 'ASC'
 );
@@ -227,12 +220,13 @@ die();*/
     <?php   
     //$socialAreaCounter = 0;
     foreach ($actividades as $actividad){
-        $gallery = get_post_meta($actividad->ID, $prefix . 'social_gallery', false);
-        set_query_var( 'areasocialInfo', $actividad );
-        set_query_var( 'areasocialGalery', $gallery );        
+        $gallery = get_post_meta($actividad->ID, $prefix . 'activity_gallery', false);
+        set_query_var( 'activityInfo', $actividad );
+        set_query_var( 'activityGalery', $gallery );        
         //if ($socialAreaCounter < 5){
+
             $template = get_post_meta($actividad->ID, $prefix . 'social_template', true);
-            $template == 1 ? get_template_part('templates/social-area-left-small') : get_template_part('templates/social-area-left-big');
+            $template == 1 ? get_template_part('templates/activity-left-small') : get_template_part('templates/activity-left-big');
         /*}else{
              get_template_part('templates/social-area-fullscreen');
         }
@@ -284,85 +278,6 @@ die();*/
     </div>
     <div class="prevSlide">
         <span class="fa fa-chevron-left"></span>
-    </div>
-    <div class="fullpage-slide">
-        <div class="container">
-            <?php
-            $segundaLista = get_post_meta($barcoID, $prefix . 'ship_section_tech_info_second', true);
-            if(!($segundaLista)){
-            ?>
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <h2 class="element-title"><?php echo the_title(); ?> <?php _e('Technical Information');?></h2>
-                    <span class="separator"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-md-6 col-md-offset-3">
-                    <dl class="two-columns1">
-                        <?php
-                $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
-                $item = '';
-                foreach($technicals as $technical){
-                    $item = explode(':', $technical);
-                    echo '<dt>'.$item[0].':</dt>';
-                    echo '<dd>'.$item[1].'</dd>';
-                }
-                        ?>
-                    </dl>
-                </div>
-            </div>
-            <?php }else{ ?>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-xs-12 text-center">
-                            <h2 class="element-title"><?= get_post_meta($barcoID, $prefix . 'ship_section_tech_info_title', true) ?> <?php _e('Technical Information');?></h2>
-                            <span class="separator"></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <dl class="two-columns1">
-                                <?php
-                        $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
-                        $item = '';
-                        foreach($technicals as $technical){
-                            $item = explode(':', $technical);
-                            echo '<dt>'.$item[0].':</dt>';
-                            echo '<dd>'.$item[1].'</dd>';
-                        }
-                                ?>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-xs-12 text-center">
-                            <h2 class="element-title"><?= get_post_meta($barcoID, $prefix . 'ship_section_tech_info_title_second', true) ?> <?php _e('Technical Information');?></h2>
-                            <span class="separator"></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <dl class="two-columns1">
-                                <?php
-                        $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info_second', true);
-                        $item = '';
-                        foreach($technicals as $technical){
-                            $item = explode(':', $technical);
-                            echo '<dt>'.$item[0].':</dt>';
-                            echo '<dd>'.$item[1].'</dd>';
-                        }
-                                ?>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
     </div>
     <div class="fullpage-slide">
         <div class="container">
@@ -449,6 +364,85 @@ die();*/
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="fullpage-slide">
+        <div class="container">
+            <?php
+            $segundaLista = get_post_meta($barcoID, $prefix . 'ship_section_tech_info_second', true);
+            if(!($segundaLista)){
+            ?>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="element-title"><?php echo the_title(); ?> <?php _e('Technical Information');?></h2>
+                    <span class="separator"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-md-offset-3">
+                    <dl class="two-columns1">
+                        <?php
+                $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
+                $item = '';
+                foreach($technicals as $technical){
+                    $item = explode(':', $technical);
+                    echo '<dt>'.$item[0].':</dt>';
+                    echo '<dd>'.$item[1].'</dd>';
+                }
+                        ?>
+                    </dl>
+                </div>
+            </div>
+            <?php }else{ ?>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="element-title"><?= get_post_meta($barcoID, $prefix . 'ship_section_tech_info_title', true) ?> <?php _e('Technical Information');?></h2>
+                            <span class="separator"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <dl class="two-columns1">
+                                <?php
+                        $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
+                        $item = '';
+                        foreach($technicals as $technical){
+                            $item = explode(':', $technical);
+                            echo '<dt>'.$item[0].':</dt>';
+                            echo '<dd>'.$item[1].'</dd>';
+                        }
+                                ?>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2 class="element-title"><?= get_post_meta($barcoID, $prefix . 'ship_section_tech_info_title_second', true) ?> <?php _e('Technical Information');?></h2>
+                            <span class="separator"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <dl class="two-columns1">
+                                <?php
+                        $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info_second', true);
+                        $item = '';
+                        foreach($technicals as $technical){
+                            $item = explode(':', $technical);
+                            echo '<dt>'.$item[0].':</dt>';
+                            echo '<dd>'.$item[1].'</dd>';
+                        }
+                                ?>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
         </div>
     </div>
 </section>
