@@ -93,6 +93,9 @@ function gg_add_styles_and_scripts() {
         wp_enqueue_style( 'gogalapagos-animals',  get_template_directory_uri() .'/css/gogalapagos-animals.css', array(), $ver, 'screen' );
         wp_enqueue_script( 'nicescroll', get_template_directory_uri() .'/js/jquery.nicescroll.min.js', array ( 'jquery' ), $ver, true);
     }
+    if ( is_singular('ggitineraries') ){
+        wp_enqueue_style( 'gogalapagos-itineraries',  get_template_directory_uri() .'/css/gogalapagos-itineraries.css', array(), $ver, 'screen' );
+    }
 
 }
 add_action('wp_enqueue_scripts', 'gg_add_styles_and_scripts');

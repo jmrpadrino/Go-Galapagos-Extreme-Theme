@@ -117,6 +117,18 @@
 .gmap-itineary{
     height: 60vh;
 }
+/*---- SINGLE ITINERARIES ----*/
+.darker{
+    background-color: #F6F4F5;
+}
+.day-placeholder{
+    width: 100%;
+    padding: 60px 36px;
+    height: 100vh;
+    overflow: auto;
+}
+
+
 /*---- MEDIA QUERIES ----*/
 /* PARA MONITORES BAJOS */
 @media screen and (max-height: 768px){

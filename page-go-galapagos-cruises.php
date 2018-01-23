@@ -58,16 +58,16 @@ $barcos = get_posts($args);
         </div>
     </div>    
 </section>
-<section class="section sections activities">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<section class="section sections activities" style="overflow: hidden; height: 100vh;">
+    <div id="carousel-example-generic-3" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"> </li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"> </li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"> </li>
+            <li data-target="#carousel-example-generic-3" data-slide-to="0" class="active"> </li>
+            <li data-target="#carousel-example-generic-3" data-slide-to="1"> </li>
+            <li data-target="#carousel-example-generic-3" data-slide-to="2"> </li>
         </ol>
         <div class="carousel-inner">
             <div class="item active">
-                <img class="img-responsive slide-background" src="http://placehold.it/2000x1333" alt="First slide"/>
+                <!--img class="img-responsive slide-background" src="http://placehold.it/2000x1333" alt="First slide"/-->
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text-center">
@@ -79,7 +79,6 @@ $barcos = get_posts($args);
                 </div>
             </div>
             <div class="item">
-                <img class="img-responsive slide-background" src="http://placehold.it/2000x1333" alt="First slide"/>
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text-center">
@@ -91,7 +90,6 @@ $barcos = get_posts($args);
                 </div>
             </div>
             <div class="item">
-                <img class="img-responsive slide-background" src="http://placehold.it/2000x1333" alt="First slide"/>
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text-center">
@@ -103,23 +101,22 @@ $barcos = get_posts($args);
                 </div>
             </div>
         </div>
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        <a class="left carousel-control" href="#carousel-example-generic-3" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#carousel-example-generic-3" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
 </section>
-<section class="section sections crew">
-    <div id="carousel-example-generic-2" class="carousel slide" data-ride="carousel">
+<section class="section sections crew" style="overflow: hidden; height: 100vh;">
+    <div id="carousel-example-generic-4" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic-2" data-slide-to="0" class="active"> </li>
-            <li data-target="#carousel-example-generic-2" data-slide-to="1"> </li>
-            <li data-target="#carousel-example-generic-2" data-slide-to="2"> </li>
+            <li data-target="#carousel-example-generic-4" data-slide-to="0" class="active"> </li>
+            <li data-target="#carousel-example-generic-4" data-slide-to="1"> </li>
+            <li data-target="#carousel-example-generic-4" data-slide-to="2"> </li>
         </ol>
         <div class="carousel-inner">
             <div class="item active">
-                <img class="img-responsive slide-background" src="http://placehold.it/2000x1333" alt="First slide"/>
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2">
+                        <div class="col-sm-10 col-sm-offset-1">
                             <h2 class="text-center"><?= _e('Crew & Guides','gogalapagos'); ?></h2>
                             <span class="separator"></span>
                             <h3 class="body-font"><?= _e('ON BOARD STAFF', 'gogalapagos')?></h3>
@@ -132,16 +129,145 @@ $barcos = get_posts($args);
                 </div>
             </div>
             <div class="item">
-                <img class="img-responsive slide-background" src="http://placehold.it/2000x1333" alt="First slide"/>
+                <p>Item 2</p>
             </div>
             <div class="item">
-                <img class="img-responsive slide-background" src="http://placehold.it/2000x1333" alt="First slide"/>
+                <p>Item 3</p>
             </div>
         </div>
-        <a class="left carousel-control" href="#carousel-example-generic-2" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#carousel-example-generic-2" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        <a class="left carousel-control" href="#carousel-example-generic-4" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#carousel-example-generic-4" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
 </section>
+<section class="section sections">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h2><?= _e('A Typical Cruise Day', 'gogalapagos') ?></h2>
+                <span class="separator"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <p>A soothing morning wakeup call signals a freshly prepared al fresco breakfast on deck. Armed with snorkel gear, sunblock and camera we then board our pangas and head towards shore for our morning adventure. Every excursion is di􀈃erent, but might include a visit where we squeeze past boobies nesting on the narrow trail, sit and watch endemic waved albatross absorbed in their intricate courtship ritual, or stare into the eyes of a curious sea lion underwater as it peers into our face mask.</p>
+                <p>Returning aboard for a sumptuous, bu􀈃et-style, lunch we are able to enjoy time to relax in the pool, jacuzzi or on deck looking for wildlife                     and watching the scenery change as we cruise to our afternoon destination.</p>
+                <p>With every new visitor site being di􀈃erent from the last, we can once again expect another uniquely Galapagos experience for the afternoon hike. This could quite possibly be followed by another fabulous snorkel with turtles, large schools of yellow-tailed surgeonfish or even penguins! Some might choose to follow the dramatic shoreline in a kayak or e􀈃ortlessly glide over the sea bed from the comfort of our motorized glass-bottom boat.
+                <p>Return to the vessel to enjoy a delicious BBQ on deck as the sun sets on the horizon or, a sophisticated a la carte dinner. After dinner is a time to enjoy one of our many onboard activities, relax or be outside stargazing.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <img src="http://placehold.it/2000x600?text=Soles" class="img-responsive" style="margin: 36px auto;">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section sections">
+    <div class="fullpage-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h2><?= _e('Eco-Luxury Boutique Cruise Experience', 'gogalapagos') ?></h2>
+                    <span class="separator"></span>
+                </div>
+            </div>
+            <div class="row">
+                <p>Providing an ecologically sound cruise definitely does not mean that we have to compromise on luxury! Go Galapagos - Kleintours is acutely aware of the fragility and importance of the Galapagos National Park in which we have been operating and doing things right since 1983. Some of our eco-friendly practices include that all toiletries provided in our cabins are biodegradable and made from natural components as well as all the cleaning products used during housekeeping. As a complimentary gift, guests will find a thermos in each cabin to be refilled at one of our vessel’s potable water stations, thus reducing the use of plastic bottles.</p>
+                <p>Our vessels are equipped with sophisticated water treatment plants to desalinate, filter and purify water for consumable use. The decor of our vessels is acquired from sustainable-certified teak plantations and all our food supply is carefully planned to reduce kitchen waste. We aim to live the present and protect the future. While being pampered on one of our 5-star, boutique cruises, with true local flavor and personalized service, we want you still feel good about yourself in the comforting knowledge that our sustainable practices will preserve the integrity of the islands for generations to come.</p>
+            </div>
+        </div>
+    </div>
+    <div class="fullpage-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h2><?= _e('Eco-Luxury Boutique Cruise Experience 2', 'gogalapagos') ?></h2>
+                    <span class="separator"></span>
+                </div>
+            </div>
+            <div class="row">
+                <p>Providing an ecologically sound cruise definitely does not mean that we have to compromise on luxury! Go Galapagos - Kleintours is acutely aware of the fragility and importance of the Galapagos National Park in which we have been operating and doing things right since 1983. Some of our eco-friendly practices include that all toiletries provided in our cabins are biodegradable and made from natural components as well as all the cleaning products used during housekeeping. As a complimentary gift, guests will find a thermos in each cabin to be refilled at one of our vessel’s potable water stations, thus reducing the use of plastic bottles.</p>
+                <p>Our vessels are equipped with sophisticated water treatment plants to desalinate, filter and purify water for consumable use. The decor of our vessels is acquired from sustainable-certified teak plantations and all our food supply is carefully planned to reduce kitchen waste. We aim to live the present and protect the future. While being pampered on one of our 5-star, boutique cruises, with true local flavor and personalized service, we want you still feel good about yourself in the comforting knowledge that our sustainable practices will preserve the integrity of the islands for generations to come.</p>
+            </div>
+        </div>
+    </div>
+    <div class="fullpage-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h2><?= _e('Eco-Luxury Boutique Cruise Experience 3', 'gogalapagos') ?></h2>
+                    <span class="separator"></span>
+                </div>
+            </div>
+            <div class="row">
+                <p>Providing an ecologically sound cruise definitely does not mean that we have to compromise on luxury! Go Galapagos - Kleintours is acutely aware of the fragility and importance of the Galapagos National Park in which we have been operating and doing things right since 1983. Some of our eco-friendly practices include that all toiletries provided in our cabins are biodegradable and made from natural components as well as all the cleaning products used during housekeeping. As a complimentary gift, guests will find a thermos in each cabin to be refilled at one of our vessel’s potable water stations, thus reducing the use of plastic bottles.</p>
+                <p>Our vessels are equipped with sophisticated water treatment plants to desalinate, filter and purify water for consumable use. The decor of our vessels is acquired from sustainable-certified teak plantations and all our food supply is carefully planned to reduce kitchen waste. We aim to live the present and protect the future. While being pampered on one of our 5-star, boutique cruises, with true local flavor and personalized service, we want you still feel good about yourself in the comforting knowledge that our sustainable practices will preserve the integrity of the islands for generations to come.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section sections">
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2><?= _e('Services aboard our fleet','gogalapagos') ?></h2>
+                        <span class="separator"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="body-font text-center"><?= _e('Onboard service and facilities', 'gogalapagos') ?></h3>
+                        <?php 
+                            $onboards = get_post_meta(get_the_ID(), $prefix . 'ship_facilities_onboard', false);
+                        ?>
+                        <ul class="two-columns1">
+                            <?php 
+                                $onboards = array_shift($onboards);
+                                foreach ($onboards as $onboard){ 
+                            ?>
+                            <li><?= $onboard ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3 class="body-font text-center"><?= _e('Cabin service and facilities', 'gogalapagos') ?></h3>
+                        <?php 
+                            $oncabins = get_post_meta(get_the_ID(), $prefix . 'ship_facilities_cabin', false);
+                        ?>
+                        <ul class="two-columns1">
+                            <?php 
+                                $oncabins = array_shift($oncabins);
+                                foreach ($oncabins as $oncabin){ 
+                            ?>
+                            <li><?= $oncabin ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        * <?= _e('Services available in the Galapagos Legend only', 'gogalapagos'); ?>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section sections">
+   <div class="container-fluid">
+       <div class="row">
+           <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                <div style="margin: 80px 0;">
+                    <?= the_content(); ?>
+                </div>
+           </div>
+       </div>
+   </div>
+    
+</section>
 <?php 
-get_footer(); 
+    get_footer(); 
 ?>

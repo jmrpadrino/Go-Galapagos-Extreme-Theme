@@ -683,6 +683,17 @@ if ( is_page_template() ){
                     $('#ship-alter-navbar').removeClass('active');
                 }
                 <?php } ?>
+                <?php if( is_page('go-galapagos-cruises') ){?>
+                console.log(index); 
+                if(index == 3){
+                    $('#carousel-example-generic-3').carousel('cycle');
+                    $('#carousel-example-generic-4').carousel('pause');
+                }
+                if(index == 4){
+                    $('#carousel-example-generic-3').carousel('pause');
+                    $('#carousel-example-generic-4').carousel('cycle');
+                }
+                <?php } ?>
                 
             },
             onLeave: function (index, nextIndex, direction){
@@ -692,7 +703,6 @@ if ( is_page_template() ){
                 departuresCount.reset();
                 yearsOldCount.reset();
                 <?php } ?>
-                //console.log(index, nextIndex);
                 //console.log($('.section').data('index'));
                 if (index > 0 && direction == "down"){
                     $('#headerelements').addClass('moveUp');
@@ -708,6 +718,9 @@ if ( is_page_template() ){
                         $('#ship-alter-navbar').removeClass('active');
                     }
                 }
+            },
+            onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
+                
             }
         });
         <?php /*if ( is_singular( 'gganimal' ) ){ ?>

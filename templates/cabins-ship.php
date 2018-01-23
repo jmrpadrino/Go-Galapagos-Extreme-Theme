@@ -41,11 +41,11 @@ $cabinaRenders = get_post_meta( $cabina->ID, $prefix . 'cabin_render', false);
                     </div>
                 </div>
             </div>
-            <div id="floor-plan-<?= $cabina->post_name; ?>" class="cabin-floor-location-placeholder hidden">
+        </div>
+        <div id="floor-plan-<?= $cabina->post_name; ?>" class="cabin-floor-location-placeholder hidden">
                 <span class="fa fa-times close-cabin-placeholder"></span>
                 <?php 
                     if (count($cabinaRenders) > 1){
-                        echo '<div class="container">';
                         echo '<div class="row">';
                         echo '<div class="col-sm-6" style="height: 100vh; display: flex; align-content: center;">';
                         $rutaImagen = wp_get_attachment_image_src( $cabinaRenders[0], 'full', false );
@@ -54,7 +54,6 @@ $cabinaRenders = get_post_meta( $cabina->ID, $prefix . 'cabin_render', false);
                         echo '<div class="col-sm-6" style="height: 100vh; display: flex; align-content: center;">';
                         $rutaImagen = wp_get_attachment_image_src( $cabinaRenders[1], 'full', false );
                         echo '<img src="'.$rutaImagen[0].'" class="img-responsive">';
-                        echo '</div>';
                         echo '</div>';
                         echo '</div>';
                     }else{
@@ -67,5 +66,4 @@ $cabinaRenders = get_post_meta( $cabina->ID, $prefix . 'cabin_render', false);
                 <span class="fa fa-times close-cabin-placeholder"></span>
                 <img src="<?= $cabinaLocacion ?>" class="img-responsive">
             </div>
-        </div>
     </div>
