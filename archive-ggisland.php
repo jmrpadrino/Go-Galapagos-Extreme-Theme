@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header();?>
 <section class="sections section hero-and-title">
     <div class="container-fluid nopadding island-top-fold">
         <img src="<?php echo get_template_directory_uri(); ?>/images/archive-island-background.jpg" class="archive-island-background-img">
@@ -20,6 +20,8 @@
             </div>
         </div>
     </div>
+</section>
+<section class="section sections">
     <?php get_template_part('templates/archive-loop'); ?>  
 </section>
 <?php get_footer(); ?>

@@ -44,4 +44,15 @@ function get_post_meta_for_api( $object ) {
     return get_post_meta( $post_id );
 }
 
+
+function gogalapagos_posts_per_page(){
+    global $wp_query;
+    if ( is_post_type_archive( 'ggisland' ) ) {
+        // Display 50 posts for a custom post type called 'movie'
+        $wp_query->set( 'posts_per_page', -1 );
+        return;
+    }
+}
+add_action( 'pre_get_posts', 'gogalapagos_posts_per_page' );
+
 ?>

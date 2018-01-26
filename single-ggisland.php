@@ -25,9 +25,9 @@
                     if ($visitor_sites){
                         if ( count($visitor_sites) > 1 ){ //si es mas de un sitio de visita cambia el titulo
                 ?>
-                <h2><?php _e('Visitor\'s Sites', 'gogalapagos'); ?></h2>
+                <h2><?php _e('Visitor Sites', 'gogalapagos'); ?></h2>
                 <?php }else{ ?>
-                <h2><?php _e('Visitor\'s Site', 'gogalapagos'); ?></h2>
+                <h2><?php _e('Visitor Site', 'gogalapagos'); ?></h2>
                 <?php       
                         } // end si es mas de uno
                 ?>
@@ -35,7 +35,7 @@
                     <?php 
                         foreach($visitor_sites as $site){
                             echo '<li>';
-                            echo '<a href="' . get_the_permalink($site->ID) . '" title="#">' . esc_html($site->post_title) . '</a>';
+                            echo '<a href="' . get_the_permalink($site->ID) . '" title="'.esc_html($site->post_title).'">' . esc_html($site->post_title) . '</a>';
                             echo '</li>';
                         }
                     ?>
@@ -43,21 +43,43 @@
                 <?php } ?>
                 <div class="single-hero-convertion-area">
                     <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
-                    <p><a class="plan-your-trip-single-btn" href="#" target="_blank">Plan Your Trip Now</a> or <a href="#" target="_blank">Request a quote</a></p>
+                    <p><a class="plan-your-trip-single-btn" href="#" target="_blank"><?= _e('Plan Your Trip Now','gogalapagos'); ?></a> or <a href="#" target="_blank"><?= _e('Request a quote','gogalapagos'); ?></a></p>
                     <a href="#"><span class="conservation-icon"></span>Conservation of the Galapagos Islands</a>
                 </div>
             </div>
         </div>
     </div>
+    <?php 
+        $g_images = get_post_meta ( get_the_ID(), $prefix . 'island_gallery', true);
+    ?>
     <div class="single-carousel">
         <div id="single-hero-carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/Genovesa-Island-1.jpg" alt="Titulo de la imagen 1">
-                </div>
-                <div class="item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/Genovesa-Island-2.jpg" alt="Titulo de la imagen 2">
-                </div>
+                <?php
+                    if ( count($g_images[0]) > 0 ){ //Si tiene fotos en la galeria del item
+                        $i = 0;
+                        while( $i < count( $g_images[0] ) ){
+                            //echo $imagenes[0][$i] . '</br>';
+                            if( $i == 0){
+                                echo '<div class="item active">';
+                            }else{
+                                echo '<div class="item">';
+                            }
+                            echo '<img src="'.wp_get_attachment_url( $g_images[0][$i] ).'">';
+                            echo '</div>';
+                            $i++;
+                        }
+                    }else{
+                        if (has_post_thumbnail()){
+                            echo '<div class="item active">';
+                            echo get_the_post_thumbnail(get_the_ID(), 'full');
+                            echo '</div>';
+                            
+                        }else{
+                            echo '<div class="item active"></div>';
+                        }
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -92,15 +114,15 @@
             <div class="col-sm-2">
                 <h3 class="single-sidebar-title"><?php _e('Go visit this Island', 'gogalapagos'); ?></h3>
                 <span class="separator"></span>
-                <p class="font-serif">Itineraries available:</p>
+                <p class="font-serif"><?= _e('Itineraries available','gogalapagos'); ?>:</p>
                 <ul class="single-sidebar-product-list">
                     <li class="single-sidebar-product-item">
                         <h4 class="single-sidebar-product-title">Producto 1</h4>
-                        <a href="#" class="btn btn-warning pull-right">ENJOY</a>
+                        <a href="#" class="btn btn-warning pull-right"><?= _e('ENJOY','gogalapagos'); ?></a>
                     </li>
                     <li>
                         <h4 class="single-sidebar-product-title">Producto 2</h4>
-                        <a href="#" class="btn btn-default pull-right">ENJOY</a>
+                        <a href="#" class="btn btn-default pull-right"><?= _e('ENJOY','gogalapagos'); ?></a>
                     </li>
                 </ul>    
             </div>
@@ -113,16 +135,21 @@
             </div>
         </div>
         <script>
+<?php 
+    $coords = get_post_meta(get_the_ID(), $prefix . 'island_location', true);
+    $gcords = explode(',',$coords);
+?>
             function initMap() {
                 var map = new google.maps.Map(document.getElementById('g-map'), {
                     zoom: 8,
                     styles: styles,
-                    center: {lat: -0.450030, lng: -90.268706},
+                    center: {<?php echo 'lat: '.$gcords[0].', lng: '.$gcords[1]; ?>},
                     mapTypeId: 'roadmap',
                     disableDefaultUI: true
                 });
-                var marker = new google.maps.Marker({
-                    position: {lat: -0.255823, lng: -90.716505},
+                var marker<?php echo $marker; ?> = new google.maps.Marker({
+                    position: {<?php echo 'lat: '.$gcords[0].', lng: '.$gcords[1]; ?>},
+                    icon: icon,
                     map: map,
                     title: '<?php echo the_title(); ?>'
                 });
@@ -130,7 +157,7 @@
         </script>
     </div>
 </div>
-<div class="sections section single-island-activities-section">
+<!--div class="sections section single-island-activities-section">
     <h2 class="single-island-activities-title"><?php _e('Activities on the ') . the_title(); ?></h2>
     <div class="single-carousel">
         <div id="single-island-activities-carousel" class="carousel slide" data-ride="carousel">
@@ -191,7 +218,7 @@
             </li>
         </ul>
     </div>
-</div>
+</div-->
 <?php 
 $args = array(
     'post_type' => 'ggisland',

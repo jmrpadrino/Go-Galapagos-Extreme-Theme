@@ -27,4 +27,5 @@ function random_color_part() {
 function random_color() {
     return random_color_part() . random_color_part() . random_color_part();
 }
+
 ?>

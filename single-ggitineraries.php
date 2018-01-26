@@ -78,7 +78,11 @@ for($i=1; $i<=5; $i++){
             echo '<p>' . $content . '</p>';
             //echo '<p>' . esc_html($content_post->post_excerpt) . '</p>';
             echo '<ul>';
-            echo '<li><strong>'. __('Disembarking', 'gogalapagos') .':</strong> Valor</li>';
+            $disembarking = get_post_meta($content_post->ID, $prefix . 'visitors_site_disembarking', false);
+            var_dump($disembarking);
+            if( $disembarking ){
+            echo '<li><strong>'. __('Disembarking', 'gogalapagos') .':</strong> '.$disembarking[0].'</li>';
+            }
             echo '<li><strong>'. __('Difficulty Level', 'gogalapagos') .':</strong> Valor</li>';
             echo '<li><strong>'. __('Type of Terrain', 'gogalapagos') .':</strong> Valor</li>';
             //echo '<li><strong>'. __('Physical Conditions Required', 'gogalapagos') .':</strong> Valor</li>';
@@ -101,8 +105,11 @@ for($i=1; $i<=5; $i++){
             echo '<h3>' . esc_html($content_post->post_title) . '</h3>';
             //echo '<p>' . esc_html($content_post->post_excerpt) . '</p>';
             echo '<p>' . $content . '</p>';
+            $metas = get_post_meta($content_post->ID);
             echo '<ul>';
-            echo '<li><strong>'. __('Disembarking', 'gogalapagos') .':</strong> Valor</li>';
+            if( $metas[$prefix . 'visitors_site_disembarking'] and !empty( $metas[$prefix . 'visitors_site_disembarking'] ) ){
+            echo '<li><strong>'. __('Disembarking', 'gogalapagos') .':</strong> '.$metas[$prefix . 'visitors_site_disembarking'].'</li>';
+            }
             echo '<li><strong>'. __('Difficulty Level', 'gogalapagos') .':</strong> Valor</li>';
             echo '<li><strong>'. __('Type of Terrain', 'gogalapagos') .':</strong> Valor</li>';
             echo '<li><strong>'. __('Physical Conditions Required', 'gogalapagos') .':</strong> Valor</li>';
@@ -136,7 +143,84 @@ for($i=1; $i<=5; $i++){
     <img src="<?= $ruta ?>" class="img-responsive" alt="<?php echo __('Itineraty route', 'gogalapagos') ?> <?= the_title(); ?>">
 </div>
 <?php } // fin si tiene imagne de la ruta ?>
-<div class="sections section">
-<p>Slider de los otros itinerarios</p>
+<div class="sections section more-items-slider">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-center single-more-island-section-title"><?php echo get_the_title( $term ); ?> <?php _e('Itineraries','gogalapagos'); ?></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="single-carousel-islands">
+                    <div id="more-items-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <?php 
+                            $args = array(
+                                'post_type' => 'ggitineraries',
+                                'meta_query' => array(
+                                    array(
+                                        'key'     => $prefix . 'itinerary_ship_id',
+                                        'value'   => $term,
+                                        'compare' => 'LIKE',
+                                    ),
+                                ),
+                                'post__not_in' => array(get_the_ID()),
+                                'orderby' => 'post_date',
+                                'order' => 'ASC'
+                            );
+                            $demasItinerarios = get_posts($args);
+                            $cont = 0;
+                            foreach($demasItinerarios as $demasItinerario){
+                                if ($cont < 1){
+                                    echo '<div class="item more-islands active">';
+                                }else{
+                                    echo '<div class="item more-islands">';
+                                }
+                            ?>
+                            <div class="more-island-caption">
+                                <h3 class="more-island-title"><?php echo $demasItinerario->post_title; ?></h3>
+                                <span class="separator"></span>
+                                <?php 
+                                    $phrase = get_post_meta($demasItinerario->ID, $prefix . 'island_phrase', true); 
+                                    if ( !empty($phrase) ){
+                                        echo '<p>'.esc_html($phrase).'</p>';
+                                    }
+                                ?>
+                                <a class="view-more-about-this-island-link" href="<?php echo get_post_permalink($demasItinerario->ID); ?>"><?php _e('View more about this island', 'gogalapagos'); ?></a>       
+                            </div>
+                            <?php
+                                echo get_the_post_thumbnail($demasItinerario->ID);
+                                echo '</div>';
+                                $cont++;
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="rear-slider-controllers">
+                    <ul class="list-inline">
+                        <li>
+                            <a class="left" href="#more-items-carousel" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li><span class="text-between-controllers"><?php _e('Move through the islands','gogalapagos'); ?></span></li>
+                        <li>
+                            <a class="right" href="#more-items-carousel" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>       
+    </div>
 </div>
 <?php get_footer(); ?>

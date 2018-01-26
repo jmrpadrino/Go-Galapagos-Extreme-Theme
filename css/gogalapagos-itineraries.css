@@ -21,6 +21,7 @@
 }
 .itinerary-ship-owner{
     display: block;
+    margin-top: 120px;
 }
 .itinerary-hero .scroll-indicator{
     margin: 0 auto;
@@ -74,6 +75,7 @@
 }
 .itineraries-day-by-day{
     padding-left: 36px;
+    transform: translateY(-50px);
 }
 .itinerary-a{
     color: #dd2e89;
@@ -117,6 +119,18 @@
 .gmap-itineary{
     height: 60vh;
 }
+.animal-placeholder{
+    position: relative;
+}
+.animal-name-placeholder{
+    position: absolute;
+    bottom: 0;
+    padding: 8px;
+    background: rgba(46, 46, 46, 0.7);
+    width: auto;
+    font-size: 14px;
+    color: white;
+}
 /*---- SINGLE ITINERARIES ----*/
 .darker{
     background-color: #F6F4F5;
@@ -124,17 +138,54 @@
 .day-placeholder{
     width: 100%;
     padding: 60px 36px;
-    height: 100vh;
-    overflow: auto;
+    height: 98vh;
+    overflow-y:auto;
 }
+.more-items-slider{
+    background: #161616;
+}
+.single-more-island-section-title{
+    font-size: 60px;
+    margin: 36px;
+    color: white;
+}
+.single-carousel-islands{
+    max-height: 75vh;
+    overflow: hidden;
+}
+.more-items-slider .rear-slider-controllers{
+    position: relative;
+    margin-top: 36px;
+    left: 0;
+    bottom: 0;
+}
+.more-islands{
+    position: relative;
+}
+.more-islands img{
+    transform: translateY(-20%);
+}
+.more-island-caption{
+    position: absolute;
+    bottom: 50vh;
+    left: 60px;
+    max-width: 300px;
+    z-index: 999;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+.more-island-title{
+    color: white;
+}
+.view-more-about-this-island-link{
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
 
 
 /*---- MEDIA QUERIES ----*/
 /* PARA MONITORES BAJOS */
 @media screen and (max-height: 768px){
-    .itinerary-ship-owner{
-        margin-top: 120px;
-    }
     .itinerary-ship-description{
         font-size: 16px;
     }
