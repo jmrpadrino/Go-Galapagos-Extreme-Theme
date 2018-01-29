@@ -90,6 +90,11 @@
 <div class="sections section">
     <div class="container">
         <div class="row">
+            <div class="col-xs-12">
+                <?php include ( TEMPLATEPATH . '/templates/breadcrumbs.php'); ?>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
                 <h2><?php echo _e('More about ') . the_title(); ?></h2>
                 <div id="the_content" class="the-content">

@@ -104,6 +104,11 @@
 <div class="sections section single-more-content">
     <div class="container-fluid" style="height: 60vh;">
         <div class="row">
+            <div class="col-xs-12">
+                <?php include ( TEMPLATEPATH . '/templates/breadcrumbs.php'); ?>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-8 col-sm-offset-1">
                 <h2 class="single-more-about-content"><?php _e('More about ', 'gogalapagos') . the_title(); ?></h2>
                 <span class="separator"></span>

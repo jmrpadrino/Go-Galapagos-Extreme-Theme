@@ -668,6 +668,7 @@ if ( is_page_template() ){
             keyboardScrolling: true,
             scrollOverflow: true,
             afterLoad: function(anchorLink, index){
+                //console.log(index);
                 var location = window.location.hash;
                 paintHash(location);
                 <?php if (is_front_page()){ ?>
@@ -679,7 +680,12 @@ if ( is_page_template() ){
                 }
                 <?php } ?>
                 <?php if (is_singular('ggships')){?>
-                if (index == 6){
+                var linkToactive = $('a[href="'+anchorLink+'"]');
+                $('#phone-navbar-active-link').children('span').text(anchorLink);
+                console.log(linkToactive);
+                console.log(anchorLink);
+                console.log($('a[href="'+anchorLink+'"]').children('span').text());
+                if (index == 7){
                     $('#ship-alter-navbar').removeClass('active');
                 }
                 <?php } ?>

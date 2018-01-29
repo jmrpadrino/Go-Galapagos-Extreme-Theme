@@ -61,6 +61,7 @@ $areassociales = get_posts($args);
 // cabinas
 $args = array(
     'post_type' => 'ggcabins',
+    'posts_per_page' => -1,
     'meta_query' => array(
         array(
             'key'     => $prefix . 'cabin_ship_id',

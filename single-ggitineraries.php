@@ -11,6 +11,36 @@ $dias_de_la_semana = array(
     _x('Saturday','gogalapagos'),
     _x('Sunday','gogalapagos'),
 );
+$desembarqueCatalogo = array(
+    '0' => _x('None','gogalapagos'),
+    '1' => _x('Dry Landing','gogalapagos'),
+    '2' => _x('Wet Landing','gogalapagos'),
+    '3' => _x('Dry or Wet Landing','gogalapagos'),
+    '4' => _x('Circumnavigation','gogalapagos'),
+);
+$terrenoCatalogo = array(
+    '0' => _x('None','gogalapagos'),
+    '1' => _x('Eroded Tuff','gogalapagos'),
+    '2' => _x('Flat','gogalapagos'),
+    '3' => _x('Flat & Muddy','gogalapagos'),
+    '4' => _x('Flat & Petrified Lava','gogalapagos'),
+    '5' => _x('Flat & Sandy','gogalapagos'),
+    '6' => _x('Flat & Semi-rocky','gogalapagos'),
+    '7' => _x('Hill/mountain','gogalapagos'),
+    '8' => _x('Marsh','gogalapagos'),
+    '9' => _x('Muddy','gogalapagos'),
+    '10' => _x('Petrified Lava','gogalapagos'),
+    '11' => _x('Rocky','gogalapagos'),
+    '12' => _x('Rocky & Petrified Lava','gogalapagos'),
+    '13' => _x('Rocky & Sandy','gogalapagos'),
+    '14' => _x('Sandy','gogalapagos'),
+    '15' => _x('Shallow Ocean','gogalapagos'),
+    '16' => _x('Slippery','gogalapagos'),
+    '17' => _x('Steep','gogalapagos'),
+    '18' => _x('Steep & Petrified Lava','gogalapagos'),
+    '19' => _x('Water','gogalapagos'),
+    '20' => _x('Wooden Trail','gogalapagos'),
+);
 ?>
 <div class="sections section single-itinerary itinerary-hero">
     <div class="single-thumbnail-container">
@@ -79,14 +109,25 @@ for($i=1; $i<=5; $i++){
             //echo '<p>' . esc_html($content_post->post_excerpt) . '</p>';
             echo '<ul>';
             $disembarking = get_post_meta($content_post->ID, $prefix . 'visitors_site_disembarking', false);
-            var_dump($disembarking);
+            $terrain = get_post_meta($content_post->ID, $prefix . 'visitors_site_terrain', false);
+            $difficulty = get_post_meta($content_post->ID, $prefix . 'visitors_site_difficulty', false);
+            $duration = get_post_meta($content_post->ID, $prefix . 'visitors_site_duration', false);
+            $physical = get_post_meta($content_post->ID, $prefix . 'visitors_site_physical', false);
             if( $disembarking ){
-            echo '<li><strong>'. __('Disembarking', 'gogalapagos') .':</strong> '.$disembarking[0].'</li>';
+            echo '<li><strong>'. __('Disembarking', 'gogalapagos') .':</strong> '.$desembarqueCatalogo[$disembarking[0]].'</li>';
             }
-            echo '<li><strong>'. __('Difficulty Level', 'gogalapagos') .':</strong> Valor</li>';
-            echo '<li><strong>'. __('Type of Terrain', 'gogalapagos') .':</strong> Valor</li>';
-            //echo '<li><strong>'. __('Physical Conditions Required', 'gogalapagos') .':</strong> Valor</li>';
-            echo '<li><strong>'. __('Duration', 'gogalapagos') .':</strong> Valor</li>';
+            if( $terrain ){
+            echo '<li><strong>'. __('Type of Terrain', 'gogalapagos') .':</strong> '.$terrenoCatalogo[$terrain[0]].'</li>';
+            }
+            if( $difficulty ){
+            echo '<li><strong>'. __('Difficulty Level', 'gogalapagos') .':</strong> '.$difficulty[0].'</li>';
+            }
+            if( $physical ){
+            echo '<li><strong>'. __('Physical Conditions Required', 'gogalapagos') .':</strong> '.$physical[0].'</li>';
+            }
+            if( $duration ){
+            echo '<li><strong>'. __('Duration', 'gogalapagos') .':</strong> '.$duration[0].'</li>';
+            }
             echo '</ul>';
             //echo '<h4>'. __('Highlights','gogalalagos') .'</h4>';
         }
@@ -107,13 +148,26 @@ for($i=1; $i<=5; $i++){
             echo '<p>' . $content . '</p>';
             $metas = get_post_meta($content_post->ID);
             echo '<ul>';
-            if( $metas[$prefix . 'visitors_site_disembarking'] and !empty( $metas[$prefix . 'visitors_site_disembarking'] ) ){
-            echo '<li><strong>'. __('Disembarking', 'gogalapagos') .':</strong> '.$metas[$prefix . 'visitors_site_disembarking'].'</li>';
+            $disembarking = get_post_meta($content_post->ID, $prefix . 'visitors_site_disembarking', false);
+            $terrain = get_post_meta($content_post->ID, $prefix . 'visitors_site_terrain', false);
+            $difficulty = get_post_meta($content_post->ID, $prefix . 'visitors_site_difficulty', false);
+            $duration = get_post_meta($content_post->ID, $prefix . 'visitors_site_disembarking', false);
+            $physical = get_post_meta($content_post->ID, $prefix . 'visitors_site_disembarking', false);
+            if( $disembarking ){
+            echo '<li><strong>'. __('Disembarking', 'gogalapagos') .':</strong> '.$disembarking[0].'</li>';
             }
-            echo '<li><strong>'. __('Difficulty Level', 'gogalapagos') .':</strong> Valor</li>';
-            echo '<li><strong>'. __('Type of Terrain', 'gogalapagos') .':</strong> Valor</li>';
-            echo '<li><strong>'. __('Physical Conditions Required', 'gogalapagos') .':</strong> Valor</li>';
-            echo '<li><strong>'. __('Duration', 'gogalapagos') .':</strong> Valor</li>';
+            if( $terrain ){
+            echo '<li><strong>'. __('Type of Terrain', 'gogalapagos') .':</strong> '.$terrain[0].'</li>';
+            }
+            if( $difficulty ){
+            echo '<li><strong>'. __('Difficulty Level', 'gogalapagos') .':</strong> '.$difficulty[0].'</li>';
+            }
+            if( $physical ){
+            echo '<li><strong>'. __('Physical Conditions Required', 'gogalapagos') .':</strong> '.$physical[0].'</li>';
+            }
+            if( $duration ){
+            echo '<li><strong>'. __('Duration', 'gogalapagos') .':</strong> '.$duration[0].'</li>';
+            }
             echo '</ul>';
         }
                     ?>

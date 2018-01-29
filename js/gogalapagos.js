@@ -274,6 +274,20 @@ $(document).ready( function (){
             $('.filter-transparent-box ul li label[for="departures"]').removeClass('infocus');
         }
     });
+    // ABRIR NAVEGACION INTERNA BARCOS
+    $('#phone-navbar-active-link').click( function(){
+        var barra = $('.ship-phone-navbar');
+        if(barra.hasClass('open')){
+            barra.removeClass('open');
+            return;
+        }
+        $('.ship-phone-navbar').addClass('open');
+    });
+    $('.regular-link').click( function(){
+        var clickDeseado = $(this).children('span').text();
+        $('#phone-navbar-active-link').children('span').text(clickDeseado);
+        $('.ship-phone-navbar').removeClass('open');
+    })
 });
 
 // ACTIVAR Y DESACTIVA LA NAVEGACION ALTERNATIVA (LATERAL)

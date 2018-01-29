@@ -409,4 +409,52 @@ dd {
         font-size: 16px;
         line-height: 1.5;
     }
+    .ship-phone-navbar{
+        height: 60px;
+        overflow: hidden;
+        transition: all .2s ease-in;
+    }
+    .ship-phone-navbar.open{
+        height: inherit;
+        overflow: auto;
+        transition: all .2s ease-out;
+    }
+    .ship-navbar-items{
+        display: flex;
+        align-content: space-between;
+        margin: 0;
+        justify-content: center;
+        float: left;
+        padding: 0;
+        width: 100%;
+    }
+    .ship-navbar-items li:first-child{
+        width: 72px;
+    }
+    .ship-navbar-items li:last-child{
+        width: calc(100vw - 72px);
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: White;
+        cursor: pointer;
+    }
+    .ship-navbar-items-container{
+        list-style: none;
+        padding: 0;
+        background: white;
+        margin-top: 60px;
+    }
+    .ship-navbar-items-container ul{
+        margin: 0;
+        padding: 0;
+    }
+    .ship-navbar-items-container li{
+        min-height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #d1d1d1;
+    }
 }

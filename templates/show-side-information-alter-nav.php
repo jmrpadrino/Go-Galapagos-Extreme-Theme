@@ -87,8 +87,9 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="alter-preview-info animated fadeInLeft">
-                <?= _e('Every island in the Galapagos is different one from the other and all this is due to how they were formed. If the 4,600 million years of Earth´s history will be simulated in 24 hours, the Galapagos Islands had been formed in the last two minutes of that day.', 'gogalapagos'); ?>
+                <?= _e('Every island in the Galapagos is different one from the other and all this is due to how they were formed. If the 4,600 million years of Earth´s history will be simulated in 24 hours, the Galapagos Islands had been formed in the last two minutes of that day. The 19 islands and 219 islets were created by successive volcanic eruptions over a hot spot located on the seafloor of the Nazca Plate. The first of them emerged in the middle of the Pacific Ocean about 5 million years ago. The islands are settled on the Nazca Plate and move about 5 centimeters a year eastward. ', 'gogalapagos'); ?>
             </div>
+            <a href="<?php echo get_post_type_archive_link('ggisland') ?>" class="plan-your-trip-single-btn alter-nav-link"><?= _e('See more Islands','gogalapagos')?></a>
         </div>
         <div class="col-sm-8">
             <div class="pull-right alter-nav-layout-upper-image-placeholder animated fadeInRight">

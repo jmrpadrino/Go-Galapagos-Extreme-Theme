@@ -121,6 +121,9 @@
 }
 .animal-placeholder{
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .animal-name-placeholder{
     position: absolute;

@@ -1204,7 +1204,7 @@ a,a:hover{
     position: relative;
 }
 .desktop-side-alter-menu{
-    margin-top: 170px;
+    margin-top: 140px;
 }
 @media screen and (max-width: 1024px) and (orientation: landscape){
     .desktop-side-alter-menu{
@@ -1468,6 +1468,9 @@ li.load a:hover:after{
     color: #A9A9A9; 
     padding: 20px 40px; 
     min-height: 350px;
+}
+.plan-your-trip-single-btn.alter-nav-link{
+    margin-top: 36px;
 }
 .lower-info{
     margin-top: 72px;

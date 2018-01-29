@@ -211,7 +211,7 @@ foreach( $itinerarios as $itinetario ){
             ?>
             <!-- info itinerario -->
             <div class="col-lg-3 col-md-4 col-sm-5 itineraries-day-by-day">
-                <div class="itinerary-duration itinerary-a">                    
+                <div class="itinerary-duration itinerary-a" style="color:<?= $dayactive_5 = get_post_meta($itinetario->ID, $prefix . 'itinerary_frontend_color', true); ?>">                    
                     <p><?= $daysLong ?> days / <?= $nightsLong ?> Nights</p>
                     <p><?= $dias_de_la_semana[ $startDay ] ?> - <?= $dias_de_la_semana[ $total ] ?></p>
                 </div>
