@@ -21,6 +21,12 @@ function gg_set_all_cpts( $query ) {
         }
         
     }
+    if (is_archive('ggfaqs') or is_tax('go_faqs') ){
+        $query->set('order', 'DESC');
+        $query->set('orderby', 'rand');
+        $query->set('posts_per_page', 16);
+        
+    }
     return $query;
 };
 

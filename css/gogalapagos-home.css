@@ -711,7 +711,46 @@ filter: brightness(1) sepia(0);
     text-decoration: none;
     text-transform: uppercase;
 }
-
+.separator.statistics{
+    max-width: 100px;
+    margin: 8px auto;
+    opacity: .5;
+}
+.statistics{
+    margin: 48px auto;
+}
+.statistics .fa{
+    color: #EFB400;
+    margin-top: 120px;
+}
+.statistic-value{
+    color: white!important;
+    margin: 36px auto;
+    font-size: 60px!important;
+}
+.counters{
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;     
+    background-size: cover; 
+    background-position: 0% 70%; 
+}
+.counter-mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    transition: all ease-out .3s;
+}
+.counters .counter-name{
+    color: white;
+    font-size: 18px;
+    display: inline-block;
+    margin: 0 auto;
+}
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait){
     .ships .container-fluid{
         padding: 0;
@@ -771,6 +810,9 @@ filter: brightness(1) sepia(0);
     }
     .home-blog-article .more-content h2{
         font-size: 18px;
+    }
+    .statistics .fa{
+        margin-top: 0px;
     }
 }
 @media screen and (max-width: 767px) and (orientation: portrait){
@@ -898,44 +940,4 @@ filter: brightness(1) sepia(0);
         border: none;
         padding: 14px 17px;
     }
-}
-.separator.statistics{
-    max-width: 100px;
-    margin: 8px auto;
-    opacity: .5;
-}
-.statistics{
-    margin: 48px auto;
-}
-.statistics .fa{
-    color: #EFB400;
-}
-.statistic-value{
-    color: white!important;
-    margin: 36px auto;
-    font-size: 60px!important;
-}
-.counters{
-    position: relative; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;     
-    background-size: cover; 
-    background-position: 0% 70%; 
-    min-height: 65vh;
-}
-.counter-mask{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    transition: all ease-out .3s;
-}
-.counters .counter-name{
-    color: white;
-    font-size: 18px;
-    display: inline-block;
-    margin: 0 auto;
 }

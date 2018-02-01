@@ -1357,6 +1357,7 @@ li.load a:hover:after{
     color: darkorange;
 }
 /* 6. FOOTER */
+
 .footer-section{
     font-size: 14px;
 }
@@ -1364,6 +1365,17 @@ li.load a:hover:after{
     background: #32312E; 
     color: white; 
     padding: 48px 0;
+}
+.customer-section-title{
+    margin-bottom: 18px;
+    margin-top: 72px;
+}
+.stars-placeholder{
+    margin-bottom: 18px; 
+    color: gold;
+}
+.counters{
+    min-height: 55vh;
 }
 /*-- Constant contact suscribe form --*/
 .suscribe-input, .suscribe-form .t{
@@ -1419,31 +1431,24 @@ li.load a:hover:after{
     background-image: url(../images/galapagos-sea-view.jpg);
     background-position: 0% 120%;
     background-repeat: no-repeat;
-    height: calc(100vh - 315px);
-    padding-top: 120px;
 }
 .comment-placeholder{
     min-height: 100px;
 }
-.orgs-logos{
-    background-color: #232323;
-}
 .orgs-logos h2{
-    margin-top: 45px;
+    margin-top: 120px;
     margin-bottom: 60px;
     font-size: 36px;
-    color: white;
 }
 .orgs-logos img{
     margin-bottom: 36px;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
 }
 .copyright{
-    background: #2B2B2B;
-    color: white;
     font-size: 12px;
     padding: 20px;
+}
+.copy{
+    margin: 72px auto;
 }
 .cc_safesubscribe{
     display: none;
@@ -1496,6 +1501,47 @@ li.load a:hover:after{
     margin: auto;
 }
 /*--------------------------*/
+
+/*----- FAQS -----*/
+.faqs-groups-links{
+    margin-top: 72px;
+    margin-bottom: 36px;
+}
+.faqs-groups-links li{
+    position: relative;
+    margin-right: 10px;
+}
+.faqs-groups-links li:after{
+    content:'|';
+    display: inline-block;
+    margin: 0 10px;
+    position: absolute;
+    top: 0;
+}
+.faqs-groups-links li:last-child:after{
+    display: none;
+}
+.panel-group .panel, .panel, .panel-heading{
+    border-radius: 0;
+}
+.panel.panel-default.active .panel-heading{
+    background: #ed9016;
+    color: white;
+}
+.panel-title{
+    font-weight: 900;
+    font-size: 18px;
+}
+.panel-title-link:hover{
+    text-decoration: none;
+}
+.panel-title-link:hover .panel-heading{
+    background: rgba(255, 193, 7, 0.21);
+}
+.see-more-faqs-icon{
+    transform: translateY(-5px);
+}
+/*-----------------------*/
 
 /* ____RESPONSIVE PARA PANTALLAS WIDESCREEN___ */
 @media screen and (min-height: 600px) and (max-height: 769px){
@@ -1694,6 +1740,7 @@ li.load a:hover:after{
 .mobile-menu .qtranxs-lang-menu .sub-menu img{
     display: none;
 }
+
 /*---- blog archive ---*/
 .blog-fold{
     min-height: 460px;
@@ -1920,16 +1967,19 @@ li.load a:hover:after{
     }
 }
 @media screen and (max-height: 768px){
-    .footer-background{
-        height: auto;
-        background: none;
-        padding-top: 50px;
-        padding-bottom: 30px;
+    .customer-section{
+        padding-bottom: 0px;
+    }
+    .customer-section-title{
+        margin-top: 18px;
+    }
+    .counters{
+        min-height: 46vh;
     }
     .orgs-logos h2{
-        margin-top: 36px;
-        margin-bottom: 36px;
-        font-size: 28px;
+        margin-top: 0px;
+        margin-bottom: 18px;
+        font-size: 22px;
     }
     .orgs-logos img{
         margin-bottom: 26px;
@@ -1937,6 +1987,16 @@ li.load a:hover:after{
     }
     .ship-itinerary-link{
         left: 140px;
+    }
+    .footer-background{
+        background-position: 0% 150%;
+    }
+    .footer-section ul{
+        font-size: 12px;
+    }
+    .copy{
+        margin-bottom: 72px;
+        margin-top: 0;
     }
 }
 @media screen and (max-width: 480px){

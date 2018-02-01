@@ -1,7 +1,8 @@
 <?php 
     $prefix = 'gg_';
 ?>
-<section id="footer" class="sections section footer-section">
+<?php if(is_front_page()){ get_template_part('templates/footer-customer'); }?>
+<section id="footer" class="sections section footer-section footer-background">
     <?php if( wp_is_mobile() ){ ?>
     <div class="container-fluid nopadding top-bar" style="background-color: #3D3D3D; padding: 16px 0px;">
         <div class="row">
@@ -33,22 +34,6 @@
                                 );
                                 wp_nav_menu( $main_menu_args ); 
                             ?>
-                            <!--
-                            <li><a href="#">Galapagos Legend</a></li>
-                            <li><a href="#">Coral Yachts</a></li>
-                            <li><a href="#">Experience</a></li>
-                            <li><a href="#">Go Fun - on-board activities</a></li>
-                            <li><a href="#">Ecuador</a></li>
-                            <li><a href="#">Karanki Magdalena</a></li>
-                            <li><a href="#">Adventure Tours</a></li>
-                            <li><a href="#">Tours in Ecuador</a></li>
-                            <li><a href="#">Special Deals</a></li>
-                            <li><a href="#">Cruise Availability</a></li>
-                            <li><a href="#">Plan Your Trip</a></li>
-                            <li><a href="#">Edit Booking</a></li>
-                            <li><a href="#">Go Packages</a></li>
-                            <li><a href="#">Peru</a></li>
-                            -->
                         </ul>
                     </div>
                     <div class="col-md-3">
@@ -102,191 +87,6 @@
         </div>
     </div>
     <?php }else{ ?>
-    <div class="customer-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <h2 class="customer-section-title" style="margin-bottom:36px;"><?php _e ('Our customers say','gogalapagos'); ?></h2>
-                </div>
-            </div>
-            <?php
-                $args = array(
-                    'post_type' => 'ggtestimonial',
-                    'posts_per_page' => 5,
-                );
-                $comments = get_posts($args);
-                //var_dump($comments);
-                $commentsCount = 0;
-            ?>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div id="carousel-customer" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <?php
-                                foreach($comments as $comment){
-                                    $rate = get_post_meta($comment->ID, $prefix . 'testimonial_rate', true);
-                                    if ($commentsCount == 0){
-                            ?>
-                            <div class="item active">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center" style="margin-bottom: 18px; color: gold;">
-                                        <?php draw_stars($rate) ?>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center comment-placeholder">
-                                        <p class="customer-section-comment"><?= esc_html(get_the_excerpt($comment->ID)); ?></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <h3 class="customer-section-title"><?= esc_html(get_the_title($comment->ID)); ?></h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                                    }else{
-                            ?>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center" style="margin-bottom: 18px; color: gold;">
-                                        <?php draw_stars($rate) ?>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center comment-placeholder">
-                                        <p class="customer-section-comment"><?= esc_html(get_the_excerpt($comment->ID)); ?></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <h3 class="customer-section-title"><?= esc_html(get_the_title($comment->ID)); ?></h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php       
-                                    }
-                                    $commentsCount++;
-                                }
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <a class="customer-carousel-control left" href="#carousel-customer" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
-                    <a class="customer-carousel-control right" href="#carousel-customer" data-slide="next"><span class="fa fa-chevron-right"></span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php if(is_front_page()){ ?>
-    <div class="counters" style="background-image: url(<?= get_template_directory_uri() ?>/images/estadisticas-fondo.jpg); ">
-        <div class="counter-mask"></div>
-        <div class="container statistics">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <div class="progress yellow">
-                        <span class="progress-left">
-                            <span class="progress-bar"></span>
-                        </span>
-                        <span class="progress-right">
-                            <span class="progress-bar"></span>
-                        </span>
-                        <div class="progress-value"><span id="customers" >98</span>%</div>
-                    </div>
-                    <br />
-                    <span class="counter-name">Satisfied Customers</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 text-center">
-                    <span class="fa fa-4x fa-ship"></span>
-                    <h4 id="depart" class="statistic-value text-center">7632</h4>
-                    <span class="counter-name">Ship's Departures</span>
-                </div>
-                <div class="col-sm-6 text-center">
-                    <span class="fa fa-4x fa-calendar"></span>
-                    <h4 id="years-old" class="statistic-value text-center">36</h4>
-                    <span class="counter-name">Years of Experience</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php } ?>
-    <div class="container-fluid footer-background">
-        <div class="row">
-            <div class="col-sm-12 col-md-8 col-md-offset-2">
-                <div class="row">
-                    <div class="col-md-3">
-                        <h4 class="body-font"><?php _e('Members Site','gogalapagos'); ?></h4>    
-                        <ul>
-                            <li><a href="#"><?php _e('Login','gogalapagos'); ?></a></li>
-                            <li><a href="#"><?php _e('Register','gogalapagos'); ?></a></li>
-                            <li><a href="#"><?php _e('Rates','gogalapagos'); ?></a></li>
-                        </ul>
-                        <h4 class="body-font"><?php _e('Suscribe to our news','gogalapagos')?></h4>
-                        <div class="suscribe-form">
-                        <?php 
-                            dynamic_sidebar( 'suscribe' );
-                        ?>
-                            <!--
-                            <form role="form" action="<?php echo home_url(); ?>/thanks-for-suscribing/">
-                                <input class="suscribe-input" type="email" name="suscriber-mail" placeholder="<?php _e('Enter your Email','gogalapagos')?>" required>
-                                <input class="btn btn-warning pull-right suscribe-btn" type="submit" value="<?php _e('Send','gogalapagos')?>">
-                            </form>
-                            -->
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h4 class="body-font"><?php _e('Site Map','gogalapagos')?></h4>
-                        <ul class="three-columns">
-                            <?php 
-                                $main_menu_args = array(
-                                    'theme_location'  => 'footer-sitemap',	
-                                    'menu' => 'footer-sitemap',
-                                    //'container_class' => 'top-side-navigation col-sm-5 text-right',
-                                    //'container_id' => 'top-side-navigation',
-                                    //'menu_class' => 'list-inline'
-                                );
-                                wp_nav_menu( $main_menu_args ); 
-                            ?>
-                            <!--
-                            <li><a href="#">Galapagos Legend</a></li>
-                            <li><a href="#">Coral Yachts</a></li>
-                            <li><a href="#">Experience</a></li>
-                            <li><a href="#">Go Fun - on-board activities</a></li>
-                            <li><a href="#">Ecuador</a></li>
-                            <li><a href="#">Karanki Magdalena</a></li>
-                            <li><a href="#">Adventure Tours</a></li>
-                            <li><a href="#">Tours in Ecuador</a></li>
-                            <li><a href="#">Special Deals</a></li>
-                            <li><a href="#">Cruise Availability</a></li>
-                            <li><a href="#">Plan Your Trip</a></li>
-                            <li><a href="#">Edit Booking</a></li>
-                            <li><a href="#">Go Packages</a></li>
-                            <li><a href="#">Peru</a></li>
-                            -->
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h4 class="body-font"><?php _e('Contact Us','gogalapagos')?></h4>
-                        <ul>
-                            <li>USA: 1888 50 KLEIN / CANADA: 1-866-9785990</li>
-                            <li>EUROPA: 34-900-300-123 / UK: 00 44-8455-281-389</li>
-                            <li>Ph: (593) 2 - 2267000 / (593) 2 - 2267080</li>
-                        </ul>
-                        <h4 class="body-font">Go Galapagos by Kleintours</h4>
-                        <ul>
-                            <li>Av. Eloy Alfaro N 34-111 &amp; Catalina Aldaz.</li>
-                            <li>170515 Quito - Ecuador.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="container-fluid orgs-logos">
         <div class="row">
             <div class="col-xs-12 text-center">
@@ -311,10 +111,58 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid copyright">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="body-font"><?php _e('Members Site','gogalapagos'); ?></h4>    
+                        <ul>
+                            <li><a href="#"><?php _e('Login','gogalapagos'); ?></a></li>
+                            <li><a href="#"><?php _e('Register','gogalapagos'); ?></a></li>
+                            <li><a href="#"><?php _e('Rates','gogalapagos'); ?></a></li>
+                        </ul>
+                        <h4 class="body-font"><?php _e('Suscribe to our news','gogalapagos')?></h4>
+                        <div class="suscribe-form">
+                        <?php dynamic_sidebar( 'suscribe' ) ?>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="body-font"><?php _e('Site Map','gogalapagos')?></h4>
+                        <ul class="three-columns">
+                            <?php 
+                                $main_menu_args = array(
+                                    'theme_location'  => 'footer-sitemap',	
+                                    'menu' => 'footer-sitemap',
+                                    //'container_class' => 'top-side-navigation col-sm-5 text-right',
+                                    //'container_id' => 'top-side-navigation',
+                                    //'menu_class' => 'list-inline'
+                                );
+                                wp_nav_menu( $main_menu_args ); 
+                            ?>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h4 class="body-font"><?php _e('Contact Us','gogalapagos')?></h4>
+                        <ul>
+                            <li>USA: 1888 50 KLEIN / CANADA: 1-866-9785990</li>
+                            <li>EUROPA: 34-900-300-123 / UK: 00 44-8455-281-389</li>
+                            <li>Ph: (593) 2 - 2267000 / (593) 2 - 2267080</li>
+                        </ul>
+                        <h4 class="body-font">Go Galapagos by Kleintours</h4>
+                        <ul>
+                            <li>Av. Eloy Alfaro N 34-111 &amp; Catalina Aldaz.</li>
+                            <li>170515 Quito - Ecuador.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <p><?php _e('Go Galapagos Ltda. All rights reserved. 1980 - 2017','gogalapagos'); ?></p>
+                <p class="copy"><?php _e('Go Galapagos Ltda. All rights reserved.','gogalapagos'); ?> 1980 - <?= date('Y') ?></p>
             </div>
         </div>
     </div>
@@ -667,6 +515,9 @@ if ( is_page_template() ){
             css3: true,
             keyboardScrolling: true,
             scrollOverflow: true,
+            <?php if (is_page('go-galapagos-cruises')){?>
+            verticalCentered: false,
+            <?php } ?>
             afterLoad: function(anchorLink, index){
                 //console.log(index);
                 var location = window.location.hash;
@@ -700,7 +551,6 @@ if ( is_page_template() ){
                     $('#carousel-example-generic-4').carousel('cycle');
                 }
                 <?php } ?>
-                
             },
             onLeave: function (index, nextIndex, direction){
                 <?php if (is_front_page()){ ?>

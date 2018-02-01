@@ -406,6 +406,22 @@ $(document).on('click', '.nextSlide', function(){
     $.fn.fullpage.moveSlideRight();
 });
 
+/* COLLAPSE PANELLS */
+(function() {
+
+    $(".panel").on("show.bs.collapse hide.bs.collapse", function(e) {
+        if (e.type=='show'){
+            $(this).addClass('active');
+            $(this).children('a').children('.panel-heading').children('.see-more-faqs-icon').removeClass('fa-plus');
+            $(this).children('a').children('.panel-heading').children('.see-more-faqs-icon').addClass('fa-minus');
+        }else{
+            $(this).removeClass('active');
+            $(this).children('a').children('.panel-heading').children('.see-more-faqs-icon').removeClass('fa-minus');
+            $(this).children('a').children('.panel-heading').children('.see-more-faqs-icon').addClass('fa-plus');
+        }
+    });  
+
+}).call(this);
 
 
 var util = {
