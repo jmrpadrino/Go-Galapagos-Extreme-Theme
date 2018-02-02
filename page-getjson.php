@@ -257,6 +257,7 @@ foreach($elementos as $itinerario){
         'descripcion' => $itinerario->post_excerpt,
         'imagen_destacada' => get_the_post_thumbnail_url($itinerario->ID),
         'barco' => get_post_meta($itinerario->ID, $prefix . 'itinerary_ship_id', true),
+        'barco_dispoid' => get_post_meta(get_post_meta($itinerario->ID, $prefix . 'itinerary_ship_id', true), $prefix . 'dispo_ID', true),
         'url' => get_permalink( $itinerario->ID ),
         'imagen_ruta' => get_post_meta($itinerario->ID, $prefix . 'itinerary_route_image', true),
         'color_brochure' => get_post_meta($itinerario->ID, $prefix . 'itinerary_frontend_color', true),

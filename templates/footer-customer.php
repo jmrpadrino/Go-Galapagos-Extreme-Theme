@@ -1,3 +1,4 @@
+<?php $prefix = 'gg_' ?>
 <section class="section sections">
     <div class="customer-section">
         <div class="container-fluid">

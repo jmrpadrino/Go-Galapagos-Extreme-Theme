@@ -147,7 +147,7 @@
         </header>
 <?php
     if(!wp_is_mobile()){
-        if (is_singular('ggships')){
+        if (is_singular('ggships') or is_page('galapagos-legend')){
             get_template_part('templates/ship-navbar');
         }
         if (is_page('about-us')){

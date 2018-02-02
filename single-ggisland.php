@@ -3,44 +3,51 @@
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2">
-                <?php the_title('<h1 class="island-title">', '</h1>'); ?>
-                <span class="single-separator"></span>
-                <p><?php echo the_excerpt(); ?></p>
-                <?php 
-                    $args = array(
-                        'post_type' => 'gglocation',
-                        'posts_per_page' => -1,
-                        'meta_query' => array(
-                            'relation' => 'AND',
-                            array(
-                                'key' => $prefix . 'visitors_site_island',
-                                'value' => get_the_ID(),
-                                'compare' => 'LIKE'
-                            )
-                        )
-                    );
-                    $visitor_sites = get_posts($args);
-                    //var_dump($visitor_sites);
-                    if ($visitor_sites){
-                        if ( count($visitor_sites) > 1 ){ //si es mas de un sitio de visita cambia el titulo
-                ?>
-                <h2><?php _e('Visitor Sites', 'gogalapagos'); ?></h2>
-                <?php }else{ ?>
-                <h2><?php _e('Visitor Site', 'gogalapagos'); ?></h2>
-                <?php       
-                        } // end si es mas de uno
-                ?>
-                <ul class="visitors-site-list">
-                    <?php 
-                        foreach($visitor_sites as $site){
-                            echo '<li>';
-                            echo '<a href="' . get_the_permalink($site->ID) . '" title="'.esc_html($site->post_title).'">' . esc_html($site->post_title) . '</a>';
-                            echo '</li>';
-                        }
-                    ?>
-                </ul>
-                <?php } ?>
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <?php the_title('<h1 class="island-title">', '</h1>'); ?>
+                        <span class="single-separator"></span>
+                        <p><?php echo the_excerpt(); ?></p>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <?php 
+                            $args = array(
+                                'post_type' => 'gglocation',
+                                'posts_per_page' => -1,
+                                'meta_query' => array(
+                                    'relation' => 'AND',
+                                    array(
+                                        'key' => $prefix . 'visitors_site_island',
+                                        'value' => get_the_ID(),
+                                        'compare' => 'LIKE'
+                                    )
+                                )
+                            );
+                            $visitor_sites = get_posts($args);
+                            //var_dump($visitor_sites);
+                            if ($visitor_sites){
+                                if ( count($visitor_sites) > 1 ){ //si es mas de un sitio de visita cambia el titulo
+                        ?>
+                        <h2 class="visitor-site-title" style="font-size: 24px; margin-top: 33px;"><?php _e('Visitor Sites', 'gogalapagos'); ?></h2>
+                        <?php }else{ ?>
+                        <h2 class="visitor-site-title" style="font-size: 24px; margin-top: 33px;"><?php _e('Visitor Site', 'gogalapagos'); ?></h2>
+                        <?php       
+                                } // end si es mas de uno
+                        ?>
+                        <span class="single-separator"></span>
+                        <ul class="visitors-site-list" style="padding: 0; margin-left: 18px; margin-top: 12px;">
+                            <?php 
+                                foreach($visitor_sites as $site){
+                                    echo '<li>';
+                                    echo '<a href="' . get_the_permalink($site->ID) . '" title="'.esc_html($site->post_title).'">' . esc_html($site->post_title) . '</a>';
+                                    echo '</li>';
+                                }
+                            ?>
+                        </ul>
+                        <?php } ?>
+                    </div>
+                </div>
                 <div class="single-hero-convertion-area">
                     <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
                     <p><a class="plan-your-trip-single-btn" href="#" target="_blank"><?= _e('Plan Your Trip Now','gogalapagos'); ?></a> or <a href="#" target="_blank"><?= _e('Request a quote','gogalapagos'); ?></a></p>

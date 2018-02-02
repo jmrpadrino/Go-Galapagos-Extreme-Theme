@@ -11,46 +11,56 @@
     <div class="hero-content">
         <h1 class="home-hero-title animated fadeInDown wait3"><?php _e('Enjoy','gogalapagos'); ?></h1>
         <p class="home-hero-slogan"><?php _e('Join us in an <strong>unforgettable adventure</strong>','gogalapagos'); ?></p>
-        <form class="form-filter" role="form" action="http://quote.gogalapagos.com" method="get">
-            <div class="filter-transparent-box animated fadeInUp wait5">
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="col-sm-5">
-                            <label id="img_category_label"class="field"for="img_category"data-value="">
-                                <span><?php _e('Choose your trip','gogalapagos'); ?></span>
-                                <div id="img_category"class="psuedo_select"name="img_category">
-                                    <span class="selected"></span>
-                                    <ul id="img_category_options"class="options">
-                                        <li class="option"data-value="cruise">Cruise</li>
-                                        <li class="option"data-value="tour">Tour</li>
-                                        <li class="option"data-value="gopackage">Go Package</li>
-                                    </ul>
-                                </div>
-                            </label>
-                        </div>
-                        <div class="col-sm-5">
-                            <label id="img_category_label"class="field"for="img_category"data-value="">
-                                <span><?php _e('Choose your departure','gogalapagos'); ?></span>
-                                <div id="img_category"class="psuedo_select"name="img_category">
-                                    <span class="selected"></span>
-                                    <ul id="img_category_options"class="options">
-                                        <li class="option"data-value="jan2018">Jan 2018</li>
-                                        <li class="option"data-value="jan2018">Feb 2018</li>
-                                        <li class="option"data-value="jan2018">Mar 2018</li>
-                                        <li class="option"data-value="jan2018">Apr 2018</li>
-                                        <li class="option"data-value="jan2018">May 2018</li>
-                                        <li class="option"data-value="jan2018">Jun 2018</li>
-                                    </ul>
-                                </div>
-                            </label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="submit" class="btn btn-default hero-filter-btn" value="<?php _e('Find','gogalapagos'); ?>">
-                        </div>
-                    </div>
-                </div>
+        <div class="text-center scroll-down-placeholder">
+            <div class="scroll-down-indicator">
+                <div class="scroll-indicator"></div>
             </div>
-        </form>
+            <small>Scroll Down</small>
+        </div>
+        <div class="quote-filter">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><?php _e('Get your trip','gogalapagos'); ?></button>
+        </div>
+        
+        <!--<form class="form-filter" role="form" action="http://quote.gogalapagos.com" method="get">
+<div class="filter-transparent-box animated fadeInUp wait5">
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-5">
+<label id="img_category_label"class="field"for="img_category"data-value="">
+<span><?php _e('Choose your trip','gogalapagos'); ?></span>
+<div id="img_category"class="psuedo_select"name="img_category">
+<span class="selected"></span>
+<ul id="img_category_options"class="options">
+<li class="option"data-value="cruise">Cruise</li>
+<li class="option"data-value="tour">Tour</li>
+<li class="option"data-value="gopackage">Go Package</li>
+</ul>
+</div>
+</label>
+</div>
+<div class="col-sm-5">
+<label id="img_category_label"class="field"for="img_category"data-value="">
+<span><?php _e('Choose your departure','gogalapagos'); ?></span>
+<div id="img_category"class="psuedo_select"name="img_category">
+<span class="selected"></span>
+<ul id="img_category_options"class="options">
+<li class="option"data-value="jan2018">Jan 2018</li>
+<li class="option"data-value="jan2018">Feb 2018</li>
+<li class="option"data-value="jan2018">Mar 2018</li>
+<li class="option"data-value="jan2018">Apr 2018</li>
+<li class="option"data-value="jan2018">May 2018</li>
+<li class="option"data-value="jan2018">Jun 2018</li>
+</ul>
+</div>
+</label>
+</div>
+<div class="col-sm-2">
+<input type="submit" class="btn btn-default hero-filter-btn" value="<?php _e('Find','gogalapagos'); ?>">
+</div>
+</div>
+</div>
+</div>
+</form>-->
         <?php /*
         <!--div class="filter-transparent-box animated fadeInUp wait5">
             <form class="form-filter" role="form" action="http://quote.gogalapagos.com" method="get">
@@ -64,7 +74,7 @@
 <option value="3">Trip 3</option>
 <option value="3">Trip 4</option>
 </select-->
-                        
+
                     </li>
                     <li>
                         <!--label for="departures"><?php _e('Departures','gogalapagos'); ?></label>
@@ -77,7 +87,7 @@
                             <option value="3">Depar 5</option>
                             <option value="3">Depar 6</option>
                         </select-->
-                        
+
                     </li>
                     <li>
                         <input type="submit" class="btn btn-default hero-filter-btn" value="<?php _e('Find','gogalapagos'); ?>">
@@ -86,10 +96,8 @@
             </form>
         </div-->
         */?>
-        <div class="scroll-down-indicator">
-            <div class="scroll-indicator"></div>
-        </div>
     </div>
+
 </section>
 <?php }else{ ?>
 <section class="sections section text-center fold-mobile">
@@ -102,66 +110,45 @@
 </section>
 <?php } //END if is mobile ?>
 <section id="get-in-love" class="sections section get-in-love">
-    <div id="slide1" class="fullpage-slide active text-center home-get-in-love-slide slide-experience">
+    <div class="nextSlide">
+        <span class="fa fa-chevron-right"></span>        
+    </div>
+    <div class="prevSlide">
+        <span class="fa fa-chevron-left"></span>
+    </div>
+    <?php
+    $numeroSlides = get_option( 'gg_home_carousel_slides' );
+    for($i=1; $i <= $numeroSlides; $i++){
+    ?>
+    <div class="fullpage-slide text-center home-get-in-love-slide">
+        <img class="get-in-love-bkg-img img-responsive" src="<?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true) ?>" alt="<?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1'.$i, true) ?>">
         <div class="get-in-love-mask"></div>
         <div class="slider-container">
-            <h2 class="home-get-in-love-title">The Go Galapagos Experience</h2>
+            <h2 class="home-get-in-love-title"><?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1'.$i, true) ?></h2>
             <span class="home-get-in-love-separator"></span>
-            <p class="home-get-in-love-paragraph">With the first gaze from your cabin’s picture windows, as dawn breaks over the Pacific Ocean, the day begins in earnest. While the stress of a chaotic world fades to a distant memory a new, all-consuming, reality takes shape as our Galapagos adventure develops.</p>
+            <p class="home-get-in-love-paragraph"><?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_subtitle'.$i, true) ?></p>
         </div>
     </div>
-    <div id="slide3" class="fullpage-slide text-center home-get-in-love-slide slide-life">
-        <div class="get-in-love-mask"></div>
-        <div class="slider-container">
-            <h2 class="home-get-in-love-title">The Go Galapagos Life</h2>
-            <span class="home-get-in-love-separator"></span>
-            <p class="home-get-in-love-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus commodi, non perspiciatis inventore. Quas voluptate odio fuga id sapiente ab quod dolorum, perferendis autem corporis ipsam beatae quaerat culpa at.</p>    
-        </div>
-    </div>
-    <div id="slide2" class="fullpage-slide text-center home-get-in-love-slide slide-emotions">
-        <div class="get-in-love-mask"></div>
-        <div class="slider-container">
-            <h2 class="home-get-in-love-title">The Go Galapagos Emotions</h2>
-            <span class="home-get-in-love-separator"></span>
-            <p class="home-get-in-love-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quae incidunt itaque error veritatis eligendi similique ipsum natus laboriosam voluptas, iste quia perspiciatis ducimus accusantium tempora voluptatem sequi minus quas.</p>
-        </div>
-    </div>
-    <div id="slide2" class="fullpage-slide text-center home-get-in-love-slide slide-enjoy-our-cruises">
-        <div class="get-in-love-mask"></div>
-        <div class="slider-container">
-            <h2 class="home-get-in-love-title">Enjoy our cruises</h2>
-            <span class="home-get-in-love-separator"></span>
-            <p class="home-get-in-love-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quae incidunt itaque error veritatis eligendi similique ipsum natus laboriosam voluptas, iste quia perspiciatis ducimus accusantium tempora voluptatem sequi minus quas.</p>
-        </div>
-    </div>
-    <div id="slide4" class="fullpage-slide text-center home-get-in-love-slide slide-getinvolved">
-        <div class="get-in-love-mask"></div>
-        <div class="slider-container">
-            <h2 class="home-get-in-love-title">Get Involved</h2>
-            <span class="home-get-in-love-separator"></span>
-            <p class="home-get-in-love-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorem nam minus explicabo cum aspernatur optio error tempora architecto ratione, molestias, sed, dolores quisquam voluptatem expedita! Possimus, neque. Voluptates, voluptatem.</p>
-            <a href="#" class="btn btn-warning" title="Conservation of The Galapagos Islands">Conservation of The Galapagos Islands</a>
-        </div>
-    </div>
-    <div class="get-in-love-controls">
-        <ul>
-            <li class="active">
-                <span class="get-in-love-control-circle" data-goto-slide="0"></span>
-            </li>
-            <li>
-                <span class="get-in-love-control-circle" data-goto-slide="1"></span>
-            </li>
-            <li>
-                <span class="get-in-love-control-circle" data-goto-slide="2"></span>
-            </li>
-            <li>
-                <span class="get-in-love-control-circle" data-goto-slide="3"></span>
-            </li>
-            <li>
-                <span class="get-in-love-control-circle" data-goto-slide="4"></span>
-            </li>
-        </ul>
-    </div>
+    <?php } ?>
+    <!--div class="get-in-love-controls">
+<ul>
+<li class="active">
+<span class="get-in-love-control-circle" data-goto-slide="0"></span>
+</li>
+<li>
+<span class="get-in-love-control-circle" data-goto-slide="1"></span>
+</li>
+<li>
+<span class="get-in-love-control-circle" data-goto-slide="2"></span>
+</li>
+<li>
+<span class="get-in-love-control-circle" data-goto-slide="3"></span>
+</li>
+<li>
+<span class="get-in-love-control-circle" data-goto-slide="4"></span>
+</li>
+</ul>
+</div-->
 </section>
 <section id="offers-and-news" class="sections section offers-and-news">
     <div class="section-ribbon">
@@ -246,55 +233,47 @@
             <div class="col-md-6 nopadding home-blog-section">
                 <div class="row">
                     <div class="col-md-6 nopadding home-blog-article">
-                        <img class="img-responsive" src="<?= get_the_post_thumbnail_url( $blogPosts[0]->ID, 'medium' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[0]->ID, 'full' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
                         <span class="alter-title serif-font"><?= $blogPosts[0]->post_title ?></span>
                         <div class="more-content upper-post">
                             <span class="say-blog">BLOG</span>
-                            <a href="#" title="Meet the new Updates in the Coral II"><h2><?= $blogPosts[0]->post_title ?></h2></a>
+                            <a href="#" title="<?= $blogPosts[0]->post_title ?>"><h2><?= $blogPosts[0]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
                             <p><?= esc_html(get_the_excerpt($blogPosts[0]->ID))?></p>
                             <a class="home-offers-btn" href="<?= get_post_permalink( $blogPosts[0]->ID)?>">Read More</a>
                         </div>
                     </div>
                     <div class="col-md-6 nopadding home-blog-article">
-                        <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/blog-post-home.jpg" alt="The post Title">
-                        <span class="alter-title serif-font">Learn about mating season of the marine iguana</span>
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[1]->ID, 'full' ) ?>" alt="<?= $blogPosts[1]->post_title ?>">
+                        <span class="alter-title serif-font"><?= $blogPosts[1]->post_title ?></span>
                         <div class="more-content upper-post">
                             <span class="say-blog">BLOG</span>
-                            <a href="#" title="Learn about mating season of the marine iguana"><h2>Learn about mating season of the marine iguana</h2></a>
+                            <a href="#" title="<?= $blogPosts[1]->post_title ?>"><h2><?= $blogPosts[1]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
-                            <a class="home-offers-btn" href="#">Read More</a>
+                            <p><?= esc_html(get_the_excerpt($blogPosts[1]->ID))?></p>
+                            <a class="home-offers-btn" href="<?= get_post_permalink( $blogPosts[1]->ID)?>">Read More</a>
                         </div>
                     </div>
                     <div class="col-md-6 nopadding home-blog-article">
-                        <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/blog-post-home.jpg" alt="The post Title">
-                        <span class="alter-title serif-font">December is the spawning season for sea turtles in the Galapagos</span>
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[2]->ID, 'full' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
+                        <span class="alter-title serif-font"><?= $blogPosts[2]->post_title ?></span>
                         <div class="more-content lower-post">
                             <span class="say-blog">BLOG</span>
-                            <a href="3" title="December is the spawning season for sea turtles in the Galapagos"><h2>December is the spawning season for sea turtles in the Galapagos</h2></a>
+                            <a href="#" title="<?= $blogPosts[2]->post_title ?>"><h2><?= $blogPosts[2]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
-                            <a class="home-offers-btn" href="#">Read More</a>
+                            <p><?= esc_html(get_the_excerpt($blogPosts[2]->ID))?></p>
+                            <a class="home-offers-btn" href="<?= get_post_permalink( $blogPosts[2]->ID)?>">Read More</a>
                         </div>
                     </div>
                     <div class="col-md-6 nopadding home-blog-article">
-                        <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/blog-post-home-2.jpg" alt="The post Title">
-                        <?php if (!wp_is_mobile()){ ?>
-                        <span class="alter-title serif-font">HONEYMOON CRUISES, REDIFINING ROMANCE</span>
-                        <?php } ?>
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[3]->ID, 'full' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
+                        <span class="alter-title serif-font"><?= $blogPosts[3]->post_title ?></span>
                         <div class="more-content lower-post">
                             <span class="say-blog">BLOG</span>
-                            <a href="#" title="HONEYMOON CRUISES, REDIFINING ROMANCE"><h2>HONEYMOON CRUISES, REDIFINING ROMANCE</h2></a>
-                            <?php if (!wp_is_mobile()){ ?>
+                            <a href="#" title="<?= $blogPosts[3]->post_title ?>"><h2><?= $blogPosts[3]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
-                            <a class="home-offers-btn" href="#">Read More</a>
-                            <?php 
-}else{
-    echo '<a class="home-offers-btn" href="#">Read More</a>';
-}
-                            ?>
+                            <p><?= esc_html(get_the_excerpt($blogPosts[3]->ID))?></p>
+                            <a class="home-offers-btn" href="<?= get_post_permalink( $blogPosts[3]->ID)?>">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -308,38 +287,49 @@
     </div>
     <div class="container-fluid">
         <div class="row">
+            <?php 
+            $args = array(
+                'post_type' => 'ggships',
+                'posts_per_page' => 2,
+                'orderby' => 'post_date',
+                'order' => 'ASC'
+            );
+            $barcos = get_posts($args);
+            ?>
+            <?php foreach($barcos as $barco){ ?>
             <div class="col-md-6 nopadding ship-placeholder">
                 <?php if ( !wp_is_mobile() ){ ?>
-                <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/gogalapagos-legend-section-item-background.jpg" alt="The pack Title">
+                <img class="img-responsive" src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">
                 <?php }else{ ?>
-                <img class="mobile-image" src="<?php echo get_template_directory_uri(); ?>/images/gogalapagos-legend-section-item-background.jpg" alt="The pack Title">
+                <img class="mobile-image" src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">
                 <?php } ?>
                 <div class="more-content lower-post">
-                    <a href="<?= home_url('/ship/galapagos-legend/'); ?>" title="Galapagos Legend"><h2>Galapagos Legend</h2></a>
-                    <span class="ship-slogan">Boutique Cruise Ship</span>
+                    <a href="<?= get_the_permalink($barco->ID); ?>" title="Galapagos Legend"><h2><?= $barco->post_title ?></h2></a>
+                    <span class="ship-slogan"><?= esc_html(get_post_meta($barco->ID, $prefix . 'ship_slogan', true)) ?></span>
                     <?php if( !wp_is_mobile() ) { ?>
                     <span class="offers-and-news-hover-separator"></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
-                    <a class="home-ship-btn" href="<?= home_url('/ship/galapagos-legend/'); ?>">Learn More</a>
+                    <p><?= get_the_excerpt($barco->ID) ?></p>
+                    <a class="home-ship-btn" href="<?= get_the_permalink($barco->ID); ?>">Learn More</a>
                     <?php } ?>
                 </div>
             </div>
-            <div class="col-md-6 nopadding ship-placeholder">
-                <?php if ( !wp_is_mobile() ){ ?>
-                <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/gogalapagos-corals-yachts-section-item-background.jpg" alt="The pack Title">
-                <?php }else{ ?>
-                <img class="mobile-image" src="<?php echo get_template_directory_uri(); ?>/images/gogalapagos-corals-yachts-section-item-background.jpg" alt="The pack Title">
-                <?php } ?>
-                <div class="more-content lower-post">
-                    <a href="<?= home_url('/ship/coral-yachts/'); ?>" title="Coral I &amp; Coral II"><h2>Coral I &amp; Coral II</h2></a>
-                    <span class="ship-slogan">Expedition Twin Yachts</span>
-                    <?php if( !wp_is_mobile() ) { ?>
-                    <span class="offers-and-news-hover-separator"></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
-                    <a class="home-ship-btn" href="<?= home_url('/ship/coral-yachts/'); ?>">Learn More</a>
-                    <?php } ?>
-                </div>
-            </div>
+            <?php } ?>
+            <!--div class="col-md-6 nopadding ship-placeholder">
+<?php if ( !wp_is_mobile() ){ ?>
+<img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/gogalapagos-corals-yachts-section-item-background.jpg" alt="The pack Title">
+<?php }else{ ?>
+<img class="mobile-image" src="<?php echo get_template_directory_uri(); ?>/images/gogalapagos-corals-yachts-section-item-background.jpg" alt="The pack Title">
+<?php } ?>
+<div class="more-content lower-post">
+<a href="<?= home_url('/ship/coral-yachts/'); ?>" title="Coral I &amp; Coral II"><h2>Coral I &amp; Coral II</h2></a>
+<span class="ship-slogan">Expedition Twin Yachts</span>
+<?php if( !wp_is_mobile() ) { ?>
+<span class="offers-and-news-hover-separator"></span>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
+<a class="home-ship-btn" href="<?= home_url('/ship/coral-yachts/'); ?>">Learn More</a>
+<?php } ?>
+</div>
+</div-->
         </div>
     </div>
 </section>

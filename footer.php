@@ -169,6 +169,11 @@
     <?php } ?>
 </section>
 </div><!-- END fullpage -->
+<?php 
+if (is_front_page()){ 
+    get_template_part('templates/modal-cruise-filter');
+} 
+?>
 <script type="application/ld+json">
 <?php if ( is_home() ){ ?>
     {
@@ -500,7 +505,8 @@ if ( is_page_template() ){
         
         <?php } ?>
         fullPageArea.fullpage({
-            navigation: false,
+            navigation: true,
+            navigationPosition: 'right',
             slideSelector: '.fullpage-slide',
             <?php if (is_singular('ggships')){?>
             anchors: ['top','experience','activities','socialareas','cabins','moreinfo'],
@@ -512,7 +518,7 @@ if ( is_page_template() ){
             anchors: ['top','our-history','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
             <?php } ?>
             scrollBar: false,
-            css3: true,
+            css3: false,
             keyboardScrolling: true,
             scrollOverflow: true,
             <?php if (is_page('go-galapagos-cruises')){?>

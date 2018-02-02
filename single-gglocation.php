@@ -54,8 +54,12 @@ $physical_options = array(
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 col-lg-offset-1">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1">
+               <?php
+                $parent_island = get_post_meta( get_the_ID(), $prefix . 'visitors_site_island', true);
+                ?>
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
+                <span class="serif-font fold-backlink"> at the <a href="<?= get_permalink( $parent_island ) ?>"><?php echo get_the_title( $parent_island ) ?> Island</a></span>
                 <span class="separator"></span>
                 <?php 
                 if ( has_excerpt( get_the_ID() ) ){ 

@@ -32,4 +32,12 @@
         </div>
     </div>
 </section>
-<?php the_content(); ?>
+<section class="section sections">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <?php the_content(); ?>
+            </div>
+        </div>
+    </div>
+</section>
