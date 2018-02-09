@@ -18,10 +18,11 @@ $virtual360Link = get_post_meta($post->ID, $prefix . 'ship_section_360_link', tr
                     <li><a class="regular-link" href="#activities"><span><?php _e('Activities','gogalapagos'); ?></span></a></li>
                     <li><a class="regular-link" href="#socialareas"><span><?php _e('Social Areas','gogalapagos'); ?></span></a></li>
                     <li><a class="regular-link" href="#cabins"><span><?php _e('Cabins','gogalapagos'); ?></span></a></li>
+                    <li><a class="regular-link" href="#itineraries"><span><?php _e('Itineraries','gogalapagos'); ?></span></a></li>
+                    <!--li><a class="regular-link" href="<?php echo home_url($post->post_name . '-itineraries/'); ?>" target="_blank"><span><?php _e('Itineraries','gogalapagos'); ?></span></a></li-->
                     <li><a class="regular-link" href="#moreinfo"><span><?php _e('Deck Plan & Technical Information','gogalapagos'); ?></span></a></li>
                     <li><a class="regular-link" href="<?= $virtual360Link ?>" target="_blank"><span><?php _e('360 Virtual Tour','gogalapagos'); ?></span></a></li>
-                    <li><a class="regular-link" href="<?php echo home_url($post->post_name . '-itineraries/'); ?>" target="_blank"><span><?php _e('Itineraries','gogalapagos'); ?></span></a></li>
-                    <li><a class="plan-your-trip-btn" href="#"><span><?php _e('Plan Your Trip Now!','gogalapagos'); ?></span></a></li>
+                    <li><a class="plan-your-trip-btn" data-toggle="modal" data-target="#tripFilter" href="#"><span><?php _e('Plan Your Trip Now!','gogalapagos'); ?></span></a></li>
                 </ul>
             </div>
         </div>

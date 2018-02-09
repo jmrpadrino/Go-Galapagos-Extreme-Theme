@@ -1,4 +1,5 @@
 var info, lastinfo, elementoModal;
+var innerscrollbar;
 var fullPageArea = $('#gogafullpage'); 
 var styles = [
     {
@@ -287,9 +288,21 @@ $(document).ready( function (){
         var clickDeseado = $(this).children('span').text();
         $('#phone-navbar-active-link').children('span').text(clickDeseado);
         $('.ship-phone-navbar').removeClass('open');
-    })
+    });
 });
 
+// REMOVER LA FUNCIONALIDAD DE SCROLL SI ESTA ENCIMA DEL ITINERARIO LARGO
+
+$('.day-placeholder').mouseenter(function(){
+    console.log('dentro');
+    fullPageArea.fullpage.setAllowScrolling(false);
+    fullPageArea.fullpage.setKeyboardScrolling(false);
+});
+$('.day-placeholder').mouseout(function(){
+    console.log('fuera');
+    fullPageArea.fullpage.setAllowScrolling(true);
+    fullPageArea.fullpage.setKeyboardScrolling(true);
+});
 // ACTIVAR Y DESACTIVA LA NAVEGACION ALTERNATIVA (LATERAL)
 $('.navTrigger, .navTrigger-ship').click(function(){
     $(this).toggleClass('active');
@@ -299,12 +312,13 @@ $('.navTrigger, .navTrigger-ship').click(function(){
         $('.menu-word').html('Esc');
         $('.menu-word').prop('title','Press Esc to exit menu');
         fullPageArea.fullpage.setAllowScrolling(false);
+        fullPageArea.fullpage.setKeyboardScrolling(false);
     }else{
         console.log('NO esta activo');
         $('.menu-word').prop('title','Go Galapagos alternate menu');
         $('.menu-word').html('Menu');
-        $('.alter-nav-container').html('');
         fullPageArea.fullpage.setAllowScrolling(true);
+        fullPageArea.fullpage.setKeyboardScrolling(true);
         lastinfo = '';
     }
 });
@@ -316,9 +330,11 @@ $('.search-icon').click(function(){
         $('.search-icon').css('z-index',10000);
         $('.search-box').addClass('active');
         fullPageArea.fullpage.setAllowScrolling(false);
+        fullPageArea.fullpage.setKeyboardScrolling(false);
     }else{
         $('.search-box').removeClass('active');
         fullPageArea.fullpage.setAllowScrolling(true);
+        fullPageArea.fullpage.setKeyboardScrolling(true);
         setTimeout( function(){
             $('.search-icon').css('z-index',999);
         },400);
@@ -336,6 +352,10 @@ $(window).scroll(function() {
 })
 $(document).keyup(function(e) {
     if (e.keyCode == 27) { // escape key maps to keycode `27`
+        
+        fullPageArea.fullpage.setAllowScrolling(true);
+        fullPageArea.fullpage.setKeyboardScrolling(true);
+        
         if( $('.navTrigger').hasClass('active') ){
             $('#alter-nav').removeClass('active');
             $('.navTrigger').toggleClass('active');
@@ -384,7 +404,7 @@ $('.close-cabin-placeholder').click( function(){
 
 $(window).mousemove(function(e){
     if($('#headerelements').hasClass('moveUp')){
-        if (e.pageY < 20){
+        if (e.pageY < 60){
             $('#headerelements').removeClass('moveUp');
         }
     }

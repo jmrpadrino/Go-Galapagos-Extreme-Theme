@@ -178,8 +178,8 @@ for($i=1; $i<=5; $i++){
         $featuredImage = get_post_meta( get_the_ID(), $prefix . 'itinerary_featured_image_day_'.$i, true);
         $rutaImagen = wp_get_attachment_image_src( $featuredImage, 'full', false );
                 ?>
-                <div class="day-image-placeholder" style="display: flex; justify-content: center; flex-direction: column; align-items: center; height: 100vh;">
-                    <img src="<?= $rutaImagen[0] ?>" alt="" style="margin: auto; height: 100%; width: auto;">
+                <div class="day-image-placeholder">
+                    <img src="<?= $rutaImagen[0] ?>" alt="">
                 </div>
             </div>
         </div>

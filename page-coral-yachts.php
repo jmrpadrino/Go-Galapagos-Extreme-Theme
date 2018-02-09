@@ -7,7 +7,7 @@
 * CASO CONTRARIO SE USA "FALSE"
 */
 
-$the_slug = 'galapagos-legend';
+$the_slug = 'coral-yachts';
 $args = array(
     'name'        => $the_slug,
     'post_type'   => 'ggships',
@@ -123,7 +123,7 @@ die();*/
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="the-excerpt text-justify">
-                        <p class="fold-text"><?php echo !empty($barco__resumen) ? esc_html($barco__resumen) : ''; ?></p>
+                        <p class="fold-text"><?php echo !empty($barco__resumen) ? $barco__resumen : ''; ?></p>
                     </div>
                     <?php if($barco__foldpicture){ ?>
                     <div class="deckplan-placeholder">
@@ -277,16 +277,12 @@ die();*/
     </div>
     <?php 
     foreach ($cabinas as $cabina){
-        set_query_var( 'barco', $barco__dispoID );
         set_query_var( 'cabina', $cabina );
+        set_query_var( 'barco', $barco__dispoID );
         get_template_part('templates/cabins-ship');
     } 
     ?>
 </section>
-<?php    
-    set_query_var( 'barcoID', $barcoID );
-    get_template_part('templates/template-itineraries-inside-ships');
-?>
 <section data-anchor="moreinfo" class="sections section moreinfo">
     <div class="nextSlide">
         <span class="fa fa-chevron-right"></span>        
@@ -334,7 +330,7 @@ die();*/
                                     foreach($decks as $deck){
                                         if ($deckCounter == 0){
                                     ?>
-                                    <li role="presentation" class="first active">
+                                    <li role="presentation" class="active">
                                         <a href="#<?= $deck->post_name ?>" aria-controls="home" role="tab" data-toggle="tab"><?= get_post_meta($deck->ID, $prefix . 'deck_frontend_name', true); ?></a>
                                     </li>
                                     <?php

@@ -18,7 +18,7 @@
             <small>Scroll Down</small>
         </div>
         <div class="quote-filter">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><?php _e('Get your trip','gogalapagos'); ?></button>
+            <button type="button" class="btn btn-primary getyourtrip-btn" data-toggle="modal" data-target="#tripFilter"><?php _e('Get your trip','gogalapagos'); ?></button>
         </div>
         
         <!--<form class="form-filter" role="form" action="http://quote.gogalapagos.com" method="get">
@@ -150,6 +150,13 @@
 </ul>
 </div-->
 </section>
+<?php 
+    $specialArgs = array(
+        'post_type' => 'ggspecialoffer',
+        'posts_per_page' => -1,
+    );
+    $special = get_posts($specialArgs);
+?>
 <section id="offers-and-news" class="sections section offers-and-news">
     <div class="section-ribbon">
         <span><?php _e('Offers &amp; News','gogalapagos'); ?></span>
@@ -159,45 +166,15 @@
             <div class="col-md-6 carousel">
                 <div id="index-carousel-products" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
+                        <?php 
+                            $specialCounter = 0;
+                            foreach($special as $offer){ 
+                        ?>
+                        <?php if ($specialCounter == 0){ ?>
                         <div class="item active">
-                            <?php if ( !wp_is_mobile() ) {  ?>
-                            <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/producto-carousel-home.jpg" alt="The pack Title">
-                            <?php }else{ ?>
-                            <img class="mobile-image" src="<?php echo get_template_directory_uri(); ?>/images/producto-carousel-home.jpg" alt="The pack Title">
-                            <?php } ?>
-                            <div class="gg-post-type">
-                                <span class="product-type"></span>
-                                <span class="alter-title serif-font font-shading">New expedition cruises to Genovesa Island 1</span>
-                                <div class="more-content">
-                                    <a href="#" title="New expedition cruises to Genovesa Island"><h2>New expedition cruises to Genovesa Island</h2></a>
-                                    <span class="offers-and-news-hover-separator"></span>
-                                    <?php if ( !wp_is_mobile() ) {  ?>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
-                                    <?php } ?>
-                                    <a class="home-offers-btn" href="#">Request a Quote</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item"> 
-                            <?php if ( !wp_is_mobile() ) {  ?>
-                            <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/producto-carousel-home.jpg" alt="The pack Title">
-                            <?php }else{ ?>
-                            <img class="mobile-image" src="<?php echo get_template_directory_uri(); ?>/images/producto-carousel-home.jpg" alt="The pack Title">
-                            <?php } ?>
-                            <div class="gg-post-type">
-                                <span class="product-type"></span>
-                                <span class="alter-title serif-font font-shading">New expedition cruises to Genovesa Island 2</span>
-                                <div class="more-content">
-                                    <a href="#" title="New expedition cruises to Genovesa Island"><h2>New expedition cruises to Genovesa Island</h2></a>
-                                    <span class="offers-and-news-hover-separator"></span>
-                                    <?php if ( !wp_is_mobile() ) {  ?>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
-                                    <?php } ?>
-                                    <a class="home-offers-btn" href="#">Request a Quote</a>
-                                </div>
-                            </div>                      
-                        </div>
+                        <?php }else{ ?>
                         <div class="item">
+                        <?php } ?>
                             <?php if ( !wp_is_mobile() ) {  ?>
                             <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/producto-carousel-home.jpg" alt="The pack Title">
                             <?php }else{ ?>
@@ -205,20 +182,23 @@
                             <?php } ?>
                             <div class="gg-post-type">
                                 <span class="product-type"></span>
-                                <span class="alter-title serif-font font-shading">New expedition cruises to Genovesa Island 3</span>
+                                <span class="alter-title serif-font font-shading"><?= $offer->post_title ?></span>
                                 <div class="more-content">
-                                    <a href="#" title="New expedition cruises to Genovesa Island"><h2>New expedition cruises to Genovesa Island</h2></a>
+                                    <a href="<?= get_permalink($offer->ID) ?>" title="New expedition cruises to Genovesa Island"><h2><?= $offer->post_title ?></h2></a>
                                     <span class="offers-and-news-hover-separator"></span>
                                     <?php if ( !wp_is_mobile() ) {  ?>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
+                                    <p><?= esc_html( get_the_excerpt($offer->ID) ) ?></p>
                                     <?php } ?>
-                                    <a class="home-offers-btn" href="#">Request a Quote</a>
+                                    <a class="home-offers-btn" href="<?= get_permalink($offer->ID) ?>">Get the deal</a>
                                 </div>
                             </div>
                         </div>
+                        <?php $specialCounter++; } ?>
                     </div>
+                    <?php if (count($special) > 1){ ?>
                     <a class="product-carousel-control left" href="#index-carousel-products" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
                     <a class="product-carousel-control right" href="#index-carousel-products" data-slide="next"><span class="fa fa-chevron-right"></span></a>
+                    <?php } ?>
                 </div>
             </div>
             <?php 
@@ -237,10 +217,10 @@
                         <span class="alter-title serif-font"><?= $blogPosts[0]->post_title ?></span>
                         <div class="more-content upper-post">
                             <span class="say-blog">BLOG</span>
-                            <a href="#" title="<?= $blogPosts[0]->post_title ?>"><h2><?= $blogPosts[0]->post_title ?></h2></a>
+                            <a href="<?= get_permalink( $blogPosts[0]->ID)?>" title="<?= $blogPosts[0]->post_title ?>"><h2><?= $blogPosts[0]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
                             <p><?= esc_html(get_the_excerpt($blogPosts[0]->ID))?></p>
-                            <a class="home-offers-btn" href="<?= get_post_permalink( $blogPosts[0]->ID)?>">Read More</a>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[0]->ID)?>">Read More</a>
                         </div>
                     </div>
                     <div class="col-md-6 nopadding home-blog-article">
@@ -248,10 +228,10 @@
                         <span class="alter-title serif-font"><?= $blogPosts[1]->post_title ?></span>
                         <div class="more-content upper-post">
                             <span class="say-blog">BLOG</span>
-                            <a href="#" title="<?= $blogPosts[1]->post_title ?>"><h2><?= $blogPosts[1]->post_title ?></h2></a>
+                            <a href="<?= get_permalink( $blogPosts[1]->ID)?>" title="<?= $blogPosts[1]->post_title ?>"><h2><?= $blogPosts[1]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
                             <p><?= esc_html(get_the_excerpt($blogPosts[1]->ID))?></p>
-                            <a class="home-offers-btn" href="<?= get_post_permalink( $blogPosts[1]->ID)?>">Read More</a>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[1]->ID)?>">Read More</a>
                         </div>
                     </div>
                     <div class="col-md-6 nopadding home-blog-article">
@@ -259,10 +239,10 @@
                         <span class="alter-title serif-font"><?= $blogPosts[2]->post_title ?></span>
                         <div class="more-content lower-post">
                             <span class="say-blog">BLOG</span>
-                            <a href="#" title="<?= $blogPosts[2]->post_title ?>"><h2><?= $blogPosts[2]->post_title ?></h2></a>
+                            <a href="<?= get_permalink( $blogPosts[2]->ID)?>" title="<?= $blogPosts[2]->post_title ?>"><h2><?= $blogPosts[2]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
                             <p><?= esc_html(get_the_excerpt($blogPosts[2]->ID))?></p>
-                            <a class="home-offers-btn" href="<?= get_post_permalink( $blogPosts[2]->ID)?>">Read More</a>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[2]->ID)?>">Read More</a>
                         </div>
                     </div>
                     <div class="col-md-6 nopadding home-blog-article">
@@ -270,10 +250,10 @@
                         <span class="alter-title serif-font"><?= $blogPosts[3]->post_title ?></span>
                         <div class="more-content lower-post">
                             <span class="say-blog">BLOG</span>
-                            <a href="#" title="<?= $blogPosts[3]->post_title ?>"><h2><?= $blogPosts[3]->post_title ?></h2></a>
+                            <a href="<?= get_permalink( $blogPosts[3]->ID)?>" title="<?= $blogPosts[3]->post_title ?>"><h2><?= $blogPosts[3]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
                             <p><?= esc_html(get_the_excerpt($blogPosts[3]->ID))?></p>
-                            <a class="home-offers-btn" href="<?= get_post_permalink( $blogPosts[3]->ID)?>">Read More</a>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[3]->ID)?>">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -308,28 +288,12 @@
                     <span class="ship-slogan"><?= esc_html(get_post_meta($barco->ID, $prefix . 'ship_slogan', true)) ?></span>
                     <?php if( !wp_is_mobile() ) { ?>
                     <span class="offers-and-news-hover-separator"></span>
-                    <p><?= get_the_excerpt($barco->ID) ?></p>
+                    <p><?= esc_html__( get_the_excerpt($barco->ID) ) ?></p>
                     <a class="home-ship-btn" href="<?= get_the_permalink($barco->ID); ?>">Learn More</a>
                     <?php } ?>
                 </div>
             </div>
             <?php } ?>
-            <!--div class="col-md-6 nopadding ship-placeholder">
-<?php if ( !wp_is_mobile() ){ ?>
-<img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/gogalapagos-corals-yachts-section-item-background.jpg" alt="The pack Title">
-<?php }else{ ?>
-<img class="mobile-image" src="<?php echo get_template_directory_uri(); ?>/images/gogalapagos-corals-yachts-section-item-background.jpg" alt="The pack Title">
-<?php } ?>
-<div class="more-content lower-post">
-<a href="<?= home_url('/ship/coral-yachts/'); ?>" title="Coral I &amp; Coral II"><h2>Coral I &amp; Coral II</h2></a>
-<span class="ship-slogan">Expedition Twin Yachts</span>
-<?php if( !wp_is_mobile() ) { ?>
-<span class="offers-and-news-hover-separator"></span>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio eos, ducimus ut corporis repellat facilis impedit. Repudiandae maiores mollitia accusamus alias esse tempora. Numquam voluptatum, magnam facilis amet! Praesentium, quod!</p>
-<a class="home-ship-btn" href="<?= home_url('/ship/coral-yachts/'); ?>">Learn More</a>
-<?php } ?>
-</div>
-</div-->
         </div>
     </div>
 </section>

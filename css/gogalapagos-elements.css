@@ -158,7 +158,11 @@ a img.aligncenter {
     -webkit-transition-delay: 5s;
     transition-delay: 5s;
 }
-:focus{
+*:focus{
+    outline: none;
+    -webkit-outline: none;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
     outline: none;
     -webkit-outline: none;
 }
@@ -632,19 +636,17 @@ a,a:hover{
 /* HEADER ELEMENTS */
 .headerelements{
     position: fixed;
+    top: 0;
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0) translateY(0);
     z-index: 999;
     height: 60px;
     width: 100vw;
-    -webkit-transition: -webkit-transform ease-in .2s;
-    transition: -webkit-transform ease-in .2s;
-    transition: transform ease-in .2s;
-    transition: transform ease-in .2s, -webkit-transform ease-in .2s;
+    -webkit-transition: all ease-in .2s;
+    transition: all ease-in .2s;    
 }
 .headerelements.moveUp{
-    -webkit-transform: translateY(-60px);
-    transform: translateY(-60px);
+    top: -60px;
 }
 /* Alternative Menu Icon effects */
 .fp-viewing-0 .headerelements, .fp-viewing-0-0 .headerelements, .fp-viewing-top .headerelements{
@@ -670,7 +672,6 @@ a,a:hover{
     -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
 }
-
 /* IE8- CSS hack */
 @media \0screen\,screen\9 {
     .gradient {
@@ -718,6 +719,9 @@ a,a:hover{
     z-index: 1000;
     -webkit-transition: top ease-in .2s;
     transition: top ease-in .2s;
+}
+.navTrigger.hidden{
+    top: -60px;
 }
 .fp-viewing-0 .navTrigger, .fp-viewing-0-0 .navTrigger, .fp-viewing-top .navTrigger{
     top: 40px;
@@ -1232,6 +1236,164 @@ a,a:hover{
 .tag-list li.active, .tag-list li a:hover{
     color: white;                
 }
+/*------ MODAL CRUISE FILTER -------*/
+.getyourtrip-btn,.getyourtrip-navbar-btn{
+    background: #f58903;
+    color: white;
+    border-radius: 0px;
+    border: none;
+}
+.getyourtrip-btn:hover,.getyourtrip-navbar-btn:hover,.getyourtrip-btn:focus,.getyourtrip-navbar-btn:focus{
+    background-color: #F44336;
+}
+.getyourtrip-navbar-btn{
+    position: absolute;
+    left: 140px;
+    top: 14px;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform ease-in 1s;
+    transition: -webkit-transform ease-in 1s;
+    transition: transform ease-in 1s;
+    transition: transform ease-in 1s, -webkit-transform ease-in 1s;
+}
+.getyourtrip-navbar-btn.hidden{
+    -webkit-transform: translateY(-60px);
+    transform: translateY(-60px);
+}
+.modal-title{
+    font-size: 36px;
+}
+.modal-lg{
+    
+}
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+.modal-backdrop.in{
+    background: #FC466B;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-gradient(linear, left top, right top, from(#3F5EFB), to(#FC466B));
+background: linear-gradient(to right, #3F5EFB, #FC466B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.modal-backdrop.in{
+    opacity: .9;
+}
+.modal-header,.modal-footer{
+    border: none;
+}
+.modal-header{
+    padding-bottom: 0px;
+}
+.modal-content{
+    *background: #00bcd4;
+    background: #32312E;
+    background: #ffca00;
+    background: rgba(183,222,237,1);
+background: radial-gradient(ellipse at center, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 39%, rgba(33,180,226,1) 90%, rgba(183,222,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#b7deed', GradientType=1 );
+    border-radius: 0px;
+}
+.trip-type-list{
+    list-style: none;
+    padding: 0px;
+}
+.checkout_field{
+    display: none;
+}
+.filter-button{
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.filter-button.deactivated{
+    cursor: not-allowed;
+}
+.inner-btn,.inner-btn-radio,.inner-btn-radio-ship{
+    text-align: center;
+    padding: 14px;
+    color: #fff;
+    background: #003956;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 3px;
+    -webkit-transition: background ease-in .1s;
+    -webkit-transition: background ease-in .2s;
+    transition: background ease-in .2s;
+}
+.inner-btn:hover,.inner-btn.active,.inner-btn-radio:hover,.inner-btn-radio.active,.inner-btn-radio-ship:hover,.inner-btn-radio-ship.active{
+    background: #00acff;
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+    -webkit-box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.7);
+}
+.inner-btn-radio.deactivated,.inner-btn-radio.deactivated:hover{
+    background: gray;
+    cursor: default;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.inner-btn.selected{
+    background: #1B93FF url(/content/Celebrity/checkmark_white.png) 110px 5px no-repeat;
+    background-size: 14px 10px;
+    color: white;
+}
+.step-title{
+    font-size: 18px;
+    font-weight: bold;
+}
+.step-bullet{
+    display: inline-block;
+    border-radius: 50%;
+    background: #ffca00;
+    color: #2b2b2b;
+    background: #313131;
+    color: #ffffff;
+    font-weight: 900;
+    padding: 4px 10px;
+    margin-right: 8px;
+}
+.year-selector{
+    margin-top: 18px;
+}
+.year-placeholder{
+    font-weight: bold;
+}
+.year-selector .year-arrow{
+    color: white;
+    margin: 0 12px;
+    display: inline-block;
+    cursor: pointer;
+}
+.doitlater-btn{
+    border: none;
+    background: transparent;
+    color: black;
+}
+.people-counter{
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    text-align: center;
+}
+/*----------------------------------*/
 /*------------*/
 .alter-nav,.search-box{
     position: fixed;
@@ -1330,6 +1492,10 @@ a,a:hover{
 }
 .fun-facts-link a{
     color: deeppink!important;
+    font-weight: bold;
+}
+.special-offer-link a{
+    color: gold!important;
     font-weight: bold;
 }
 @media screen and (max-width: 1024px) and (orientation: landscape){
@@ -1589,6 +1755,17 @@ li.load a:hover:after{
 .alter-nav-content *{
     -webkit-animation-duration: .3s;
     animation-duration: .3s;
+}
+.contenedor .ship-placeholder{
+    position: relative;
+}
+.contenedor .ship-placeholder{
+    height: auto;
+}
+.contenedor .ship-placeholder .alter-nav-container-ship-logo{
+    position: absolute;
+    right: 24px;
+    top: 12px;
 }
 .alter-preview-info{
     background-color: #2E2E2E; 

@@ -446,5 +446,25 @@ die();*/
             <?php } ?>
         </div>
     </div>
+    <?php
+    $seguridad = get_post_meta($barcoID, $prefix . 'ship_section_sec_info', true);
+    if(($seguridad)){
+    ?>
+    <div class="fullpage-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="element-title"><?php echo the_title(); ?> <?php _e('Security Information');?></h2>
+                    <span class="separator"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <p><?= $seguridad ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
 </section>
 <?php get_footer(); ?>

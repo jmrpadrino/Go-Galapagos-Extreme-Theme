@@ -141,6 +141,17 @@ foreach ($elementos as $key => $elemento){
         $cabins = get_posts($args);
         $cabinasInfo = '';
         foreach($cabins as $cabin){
+            $imagenesCabinas = '';
+            foreach($imagesSizes as $imagesSize){
+                $imagenesCabinas[] = array(
+                    'size' => $imagesSize,
+                    'URL' => get_the_post_thumbnail_url( $cabin->ID, $imagesSize)
+                );
+            }
+            $imagenesCabinas[] = array(
+                'size' => 'original',
+                'URL' => get_the_post_thumbnail_url( $cabin->ID)
+            );
             $cabinasInfo[$key][] = array(
                 'id' => $cabin->ID,
                 'dispo_code' => get_post_meta($cabin->ID, $prefix . 'dispo_ID', true),
@@ -149,7 +160,8 @@ foreach ($elementos as $key => $elemento){
                 'url' => get_permalink( $cabin->ID ),
                 'color' => get_post_meta($cabin->ID, $prefix . 'cabin_category_color', true),
                 'descripcionCorta' => esc_html(get_the_excerpt($cabin->ID)),
-                'imagen_destacada' => get_the_post_thumbnail_url( $cabin->ID ),
+                //'imagen_destacada' => get_the_post_thumbnail_url( $cabin->ID ),
+                'imagenes' => $imagenesCabinas,
                 'imagen_locacion_cabina' => get_post_meta($cabin->ID, $prefix . 'cabin_deck_location_image', true),
                 'imagen_3d' => get_post_meta($cabin->ID, $prefix . 'cabin_deck_location_image', true),
                 'especificaciones' => get_post_meta($cabin->ID, $prefix . 'cabin_featurelist', false)

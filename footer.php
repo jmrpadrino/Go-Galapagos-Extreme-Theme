@@ -169,11 +169,7 @@
     <?php } ?>
 </section>
 </div><!-- END fullpage -->
-<?php 
-if (is_front_page()){ 
-    get_template_part('templates/modal-cruise-filter');
-} 
-?>
+<?php get_template_part('templates/modal-cruise-filter'); ?>
 <script type="application/ld+json">
 <?php if ( is_home() ){ ?>
     {
@@ -509,7 +505,7 @@ if ( is_page_template() ){
             navigationPosition: 'right',
             slideSelector: '.fullpage-slide',
             <?php if (is_singular('ggships')){?>
-            anchors: ['top','experience','activities','socialareas','cabins','moreinfo'],
+            anchors: ['top','experience','activities','socialareas','cabins','itineraries','moreinfo'],
             <?php } ?>
             <?php if (is_page('about-us')){?>
             anchors: ['top','our-history','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
@@ -524,30 +520,40 @@ if ( is_page_template() ){
             <?php if (is_page('go-galapagos-cruises')){?>
             verticalCentered: false,
             <?php } ?>
+            afterRender: function(){
+            },
             afterLoad: function(anchorLink, index){
-                //console.log(index);
                 var location = window.location.hash;
                 paintHash(location);
                 <?php if (is_front_page()){ ?>
-                if (index == 5){
+                if(index == 5){
                     $('.progress-left .progress-bar').addClass('now');
                     customersCount.start();
                     departuresCount.start();
                     yearsOldCount.start();
                 }
                 <?php } ?>
-                <?php if (is_singular('ggships')){?>
+                <?php if(is_page('galapagos-legend') or is_page('coral-yachts')){?>
                 var linkToactive = $('a[href="'+anchorLink+'"]');
                 $('#phone-navbar-active-link').children('span').text(anchorLink);
                 console.log(linkToactive);
                 console.log(anchorLink);
                 console.log($('a[href="'+anchorLink+'"]').children('span').text());
-                if (index == 7){
+                if(index == 6 || index == 7){                    
+                    $('.first').addClass('active');
+                }
+                if(index == 8){
                     $('#ship-alter-navbar').removeClass('active');
                 }
                 <?php } ?>
+                if(index == 1){
+                    $('.getyourtrip-navbar-btn').addClass('hidden');
+                    $('.navTrigger').removeClass('hidden');
+                }
+                if(index > 1){
+                    $('.getyourtrip-navbar-btn').removeClass('hidden');
+                }
                 <?php if( is_page('go-galapagos-cruises') ){?>
-                console.log(index); 
                 if(index == 3){
                     $('#carousel-example-generic-3').carousel('cycle');
                     $('#carousel-example-generic-4').carousel('pause');
@@ -568,6 +574,7 @@ if ( is_page_template() ){
                 //console.log($('.section').data('index'));
                 if (index > 0 && direction == "down"){
                     $('#headerelements').addClass('moveUp');
+                    $('.navTrigger').addClass('hidden');
                 }else{
                     $('#headerelements').removeClass('moveUp');
                 }
@@ -585,6 +592,7 @@ if ( is_page_template() ){
                 
             }
         });
+        
         <?php /*if ( is_singular( 'gganimal' ) ){ ?>
         $('#the_content').niceScroll({
             autohidemode: false,
