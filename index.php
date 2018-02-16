@@ -34,7 +34,7 @@
             <div class="col-xs-12 text-center">
                 <h2><?= _e('Tags', 'gogalapagos'); ?></h2>
                 <span class="separator"></span>
-                <?= $tag_list = get_the_tag_list( '<div class="tag-list">', '<span class="tag-separator">|</span>', '</div>' ); ?> 
+                <?php echo get_the_tag_list( '<div class="tag-list">', '<span class="tag-separator">|</span>', '</div>' ); ?> 
             </div>
         </div>
     </div>
@@ -56,10 +56,10 @@
             ?>
             <div class="post-placeholder col-sm-4 nopadding" style="background-image: url(<?= $imagen ?>); ">
                 <div class="archive-item-mask"></div>
-                <?= the_title('<h2 class="archive-item-title body-font">','</h2>') ?>
-                <span class="post-date"><?php the_date('d/m/Y','',''); ?></span>
+                <a href="<?= the_permalink() ?>"><?= the_title('<h2 class="archive-item-title body-font">','</h2>') ?></a>
+                <!--span class="post-date"><?php the_date('d/m/Y','',''); ?></span-->
                 <div class="hidden-content">
-                    <p><?= get_the_excerpt(get_the_ID());?></p>
+                    <p><?= esc_html( get_the_excerpt(get_the_ID()) );?></p>
                 </div>
             </div>
             <?php
@@ -97,4 +97,4 @@
         </div>
     </div>    
 </section>
-<?php get_footer(); ?>
+<?php get_footer('blog'); ?>

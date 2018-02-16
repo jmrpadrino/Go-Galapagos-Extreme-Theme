@@ -1,60 +1,13 @@
 <?php 
 get_header(); 
 the_post();
+$prefix = 'gg_';
+$options = array(
+    '0' => _x('Direct Sales','gogalapagos'),
+    '1' => _x('Incoming Sales','gogalapagos'),
+    '2' => _x('Business Development','gogalapagos'),
+);
 ?>
-<style>
-    .contact-page-folder{
-        background-position: center top;
-        background-size: cover;
-        color: white;
-        position: relative;
-    }
-    .mask{
-        position: absolute;
-        top: 0;
-        width: 100%;
-        display: flex;
-        background: rgba(29, 29, 29, .6);
-        height: 100%;
-    }
-    .contact-page-title{
-        margin-top: 120px;
-    }
-    .contact-form [type="text"],
-    .contact-form [type="phone"],
-    .contact-form [type="email"]{
-        border-radius: 0px;
-        border: none;
-        border-bottom: 1px solid white;
-        background: transparent;
-    }
-    .contact-folder-btn{
-        display: block;
-        margin: 0 auto;
-        background: #038bae;
-        color: white;
-        border: none;
-        padding: 14px 17px;
-        min-width: 200px;
-        margin-bottom: 36px;
-        text-transform: uppercase;
-    }
-    .separator{
-        border-bottom: 4px solid #292929;
-        margin: 0 auto;
-        margin-top: 40px;
-        margin-bottom: 70px;
-        box-shadow: none;
-    }
-    .tollfree{
-        margin-bottom: 72px;
-    }
-    @media screen and(max-width: 480px){
-        .contact-page-title{
-            margin-top: 80px;
-        }
-    }
-</style>
 <section class="sections section contact-page-folder" style="background-image: url(<?= get_template_directory_uri() ?>/images/contacto-bkg.jpg)">
     <div class="mask"></div>
     <div class="container">
@@ -129,7 +82,7 @@ the_post();
             </div>
         </div>
     </div>
-    <div class="directions" style="background: #f5f3f3;">
+    <div class="directions">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -444,119 +397,35 @@ the_post();
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="text-center"><?php _e('Our Sales Team Email Adresses','gogalapagos'); ?></h2>
+                <h2 class="text-center salesexpert-area-title"><?php _e('Our Sales Team Email Adresses','gogalapagos'); ?></h2>
                 <span class="contact-separator"></span>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <?php 
+                $args = array(
+                    'post_type' => 'ggsalesexpert',
+                    'posts_per_page' => -1
+                );
+                $salesExperts = get_posts($args);
+                
+                foreach ($salesExperts as $expert){
+            ?>
+            <div id="<?= $expert->ID?>" class="col-sm-6">
                 <div class="row">
                     <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
+                        <span class="fa fa-3x fa-envelope"></span>
                     </div>
                     <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
+                        <?php if ($correo = get_post_meta($expert->ID, $prefix . 'salesexpert_email', true)){ ?>
+                        <p><strong><a href="mailto:<?= $correo ?>"><?= $correo ?></a></strong></p>
+                        <?php } ?>
+                        <p><strong><?= $expert->post_title ?> <small>Ext. <?= get_post_meta($expert->ID, $prefix . 'salesexpert_ext', true) ?></small></strong></p>
+                        <p><?= $options[get_post_meta($expert->ID, $prefix . 'salesexpert_charge', true)] ?> - <?= get_post_meta($expert->ID, $prefix . 'salesexpert_region', true) ?></p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </section>

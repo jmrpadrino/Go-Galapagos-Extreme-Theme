@@ -162,9 +162,37 @@ a img.aligncenter {
     outline: none;
     -webkit-outline: none;
 }
+:lang(it) > .lang-it{
+    opacity: 1!important;
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+:lang(en) > .lang-en{
+    opacity: 1!important;
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+:lang(de) > .lang-de{
+    opacity: 1!important;
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+:lang(es) > .lang-es{
+    opacity: 1!important;
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+:lang(fr) > .lang-fr{
+    opacity: 1!important;
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
     outline: none;
     -webkit-outline: none;
+}
+#fp-nav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li a.active span, .fp-slidesNav ul li:hover a.active span{
+    border: 3px solid white;
 }
 body{
     font-family: 'Didact Gothic', sans-serif;
@@ -716,7 +744,7 @@ a,a:hover{
     top: 20px;
     right: 0;
     bottom: 0;
-    z-index: 1000;
+    z-index: 999;
     -webkit-transition: top ease-in .2s;
     transition: top ease-in .2s;
 }
@@ -1736,9 +1764,9 @@ li.load a:hover:after{
 .regular-link {   
     width: 100%;
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
     -ms-flex-line-pack: center;
     align-content: center;
     -webkit-box-align: center;
@@ -1809,6 +1837,7 @@ li.load a:hover:after{
 .faqs-groups-links{
     margin-top: 72px;
     margin-bottom: 36px;
+    font-size: 20px;
 }
 .faqs-groups-links li{
     position: relative;
@@ -1823,6 +1852,10 @@ li.load a:hover:after{
 }
 .faqs-groups-links li:last-child:after{
     display: none;
+}
+.faqs-groups-links a:hover{
+    text-decoration: none;
+    color: orange;
 }
 .panel-group .panel, .panel, .panel-heading{
     border-radius: 0;
@@ -2023,6 +2056,11 @@ li.load a:hover:after{
     border-top: 1px solid #252525;
     -webkit-box-shadow: -4px -1px 25px 0 rgba(0, 0, 0, 0.4);
     box-shadow: -4px -1px 25px 0 rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+}
+.social-icons-list{
+    margin-left: 36px;
+    margin-top: 18px;
 }
 .credits{
     color: #717171;
@@ -2051,6 +2089,9 @@ li.load a:hover:after{
 }
 
 /*---- blog archive ---*/
+body.blog{
+    overflow-x: hidden;
+}
 .blog-fold{
     min-height: 460px;
     display: -webkit-box;
@@ -2067,8 +2108,8 @@ li.load a:hover:after{
     color: white;
     position: relative;
 }
-.separator{
-    margin: 12px 0;
+.blog-fold .separator{
+    margin: 12px auto;
     -webkit-box-shadow: none;
     box-shadow: none;
     border-color: white;
@@ -2076,6 +2117,7 @@ li.load a:hover:after{
 .tags .separator{
     border-color: #262626;
     width: 10%;
+    margin: 18px auto;
 }
 .tag-list{
     margin-top: 80px;
@@ -2154,6 +2196,7 @@ li.load a:hover:after{
 .archive-item-title,.post-date{
     position: absolute;
     left: 40px;
+    right: 40px;
     color: white;
 }
 .archive-item-title{
@@ -2249,7 +2292,43 @@ li.load a:hover:after{
     color: #FF9600;
     border-bottom: 1px solid #FF9600;
 }
-
+.post-editor-content{
+    margin-bottom: 36px;
+}
+.other-posts .separator{
+    margin: 36px auto; 
+    border-bottom: 2px solid #1d1d1d;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.single-post{
+    overflow-x: hidden;
+}
+.single-fold{
+    position: relative;
+    overflow: hidden;
+}
+.single-post .post_excerpt{
+    margin-bottom: 48px;
+    font-size: 18px;
+    line-height: 2;
+    font-style: italic;
+}
+.post-editor-content img{
+    width: 100%;
+    height: auto;
+    margin: 36px auto;
+}
+.post-editor-content figure{
+    position: relative;
+}
+.post-editor-content figure figcaption{
+    position: absolute;
+    bottom: 72px;
+    left: 36px;
+    color: white;
+    font-size: 18px;
+}
 /* RESPONSIVE DIRECTIVES */
 @media screen and (max-width: 767px) and (orientation: portrait){
     .fp-viewing-0 .headerelements, .fp-viewing-0-0 .headerelements{

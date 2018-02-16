@@ -8,7 +8,7 @@ the_post();
     }*/
 $prefix = 'gg_';
 ?>
-<section id="top" class="sections section thumbnail-page">
+<!--section id="top" class="sections section thumbnail-page">
     <div class="container-fluid nopadding text-center" style="height: 60vh; background-image: url(<?php echo the_post_thumbnail_url(); ?>); background-position: center; background-size: cover; background-repeat: no-repeat; padding-top: 30vh;">
         <?php 
         $meta = get_post_meta(get_the_id(), $prefix . 'page_alter_title', true);
@@ -26,7 +26,7 @@ $prefix = 'gg_';
         ?>
         <span class="home-get-in-love-separator"></span>
     </div>
-    <div class="container-fluid" style="height: 40vh;">
+    <div class="container-fluid" style="height: 70vh;">
         <div class="row">
             <div class="col-xs-12 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 60px;">
                 <?php 
@@ -34,6 +34,37 @@ $prefix = 'gg_';
                 if(!empty($meta)){
                     echo '<p class="page-fold-text">'. $meta . '</p>';
                 }
+                ?>
+            </div>
+        </div>
+    </div>
+</section-->
+<section class="sections section thumbnail-page">
+    <div class="container-fluid nopadding text-center" style="height: 60vh; background-image: url(<?php echo the_post_thumbnail_url(); ?>); background-position: center; background-size: cover; background-repeat: no-repeat; padding-top: 30vh;">
+        <?php 
+            $meta = get_post_meta(get_the_id(), $prefix . 'page_alter_title', true);
+            if(!empty($meta)){
+                echo '<h1 style="margin: auto; color: white; text-shadow: 1px 1px 3px black;">'. $meta . '</h1>';
+            }else{
+                echo the_title('<h1 style="margin: auto; color: white; text-shadow: 1px 1px 3px black;">','</h1>'); 
+            }
+        ?>
+        <span class="home-get-in-love-separator"></span>
+        <?php 
+            $meta = get_post_meta(get_the_id(), $prefix . 'page_hero_text', true);
+            if(!empty($meta)){
+                echo '<p class="page-hero-text">'. $meta . '</p>';
+            }
+        ?>
+    </div>
+    <div class="container-fluid" style="height: 40vh;">
+        <div class="row">
+            <div class="col-xs-12 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 36px;">
+                <?php 
+                    $meta = get_post_meta(get_the_id(), $prefix . 'page_first_section_content', true);
+                    if(!empty($meta)){
+                        echo '<p class="page-fold-text">'. $meta . '</p>';
+                    }
                 ?>
             </div>
         </div>
@@ -185,13 +216,9 @@ $prefix = 'gg_';
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 nopadding">
-                <img src="http://placehold.it/2000x1333?text=karanki" class="img-responsive social-investment-img">
-            </div>
-        </div>
-    </div>
+</section>
+<section class="section sections social-karanki">
+    <img src="http://placehold.it/2000x1333?text=karanki" class="img-responsive social-investment-img">
 </section>
 <section class="section sections">
     <div class="container">
@@ -219,46 +246,8 @@ $prefix = 'gg_';
                             echo 'There are no memberships registred in wordpress administrator.';
                         }
                     ?>
-                    <!--
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    -->
                 </div>
             </div>            
-            <!--
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            -->
         </div>
     </div>
 </section>

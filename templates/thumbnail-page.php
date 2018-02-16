@@ -21,7 +21,7 @@
     </div>
     <div class="container-fluid" style="height: 40vh;">
         <div class="row">
-            <div class="col-xs-12 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 60px;">
+            <div class="col-xs-12 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 36px;">
                 <?php 
                     $meta = get_post_meta(get_the_id(), $prefix . 'page_first_section_content', true);
                     if(!empty($meta)){
@@ -39,5 +39,5 @@
                 <?php the_content(); ?>
             </div>
         </div>
-    </div>
+    </div>    
 </section>

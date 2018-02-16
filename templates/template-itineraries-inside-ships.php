@@ -12,7 +12,6 @@ $dias_de_la_semana = array(
     '6' => _x('Sunday','gogalapagos')
 );
 ?>
-<section data-anchor="itineraries" class="section sections">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -48,7 +47,7 @@ $dias_de_la_semana = array(
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="duration4or5nights">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <div id="ship-itineraries-slider" class="carousel slide" data-ride="carousel">
                                 <?php /*
                                 <ol class="carousel-indicators">
                                     <?php for($iti = 0; $iti < count($itinerariosSimples); $iti++ ){ ?>
@@ -153,8 +152,8 @@ $dias_de_la_semana = array(
                                     <?php } //END FOR ?>
                                 </div>
                                 <div class="ship-itineraries-carousel-controls">
-                                    <a class="left carousel-control itinerary-control" href="#carousel-example-generic" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
-                                    <a class="right carousel-control itinerary-control" href="#carousel-example-generic" data-slide="next"><span class="fa fa-chevron-right"></span></a>
+                                    <a class="left carousel-control itinerary-control" href="#ship-itineraries-slider" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
+                                    <a class="right carousel-control itinerary-control" href="#ship-itineraries-slider" data-slide="next"><span class="fa fa-chevron-right"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -166,5 +165,3 @@ $dias_de_la_semana = array(
             </div>
         </div>
     </div>
-
-</section>

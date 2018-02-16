@@ -283,6 +283,12 @@ die();*/
     } 
     ?>
 </section>
+<section id="itineraries-section" data-anchor="itineraries" class="section sections">
+<?php    
+    set_query_var( 'barcoID', $barcoID );
+    get_template_part('templates/template-itineraries-inside-ships');
+?>
+</section>
 <section data-anchor="moreinfo" class="sections section moreinfo">
     <div class="nextSlide">
         <span class="fa fa-chevron-right"></span>        

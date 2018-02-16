@@ -5,29 +5,43 @@
     <title>Prueba Barco</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
+        body{
+            overflow: hidden;
+        }
+        .img-background{
+            position: absolute;
+            top: -50%; 
+            left: -25%;
+        }
         @keyframes float {
             0% {
-                transform: translatey(0px);
+                transform: translateY(0px) rotate(0);
             }
-            50% {
-                transform: translatey(-5px);
+            25% {
+                transform: translateY(-5px) rotate(2deg);
+            }
+            50%{
+                transform: translateY(-5px) rotate(0);
+            }
+            75%{
+                transform: translateY(-5px) rotate(-2deg);
             }
             100% {
-                transform: translatey(0px);
+                transform: translateY(0px) rotate(0);
             }
         }
         svg{
             width: 100%;
             height: auto;
             animation: float;
-            animation-duration: 3s;
+            animation-duration: 18s;
             animation-iteration-count: infinite;
         }
         .contenedor-small{
+            z-index: 999;
             width: 80%;
             margin: auto;
             margin-top: 10%;
-            transform: rotateZ(-5deg);
         }
         .cabin-path path, .cabin-path polygon{
             cursor: pointer;
@@ -52,6 +66,9 @@
     </style>
 </head>
 <body>
+<div class="img-background">
+    <img src="<?= get_template_directory_uri() ?>/images/page-svg-back.jpg">
+</div>
 <div class="contenedor-small">
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->

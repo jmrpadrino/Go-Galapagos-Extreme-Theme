@@ -34,16 +34,17 @@ function gg_add_styles_and_scripts() {
     wp_enqueue_style( 'gogalapagos-main',  get_template_directory_uri() .'/css/gogalapagos-elements.css', array(), $ver, 'screen' );
     // elements Scripts
     wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array ( 'jquery' ), '3.3.7', true);
-    wp_enqueue_script( 'goga-fullpage', get_template_directory_uri() .'/js/jquery.fullPage.js', array ( 'jquery' ), $ver, true); 
-    wp_enqueue_script( 'goga-fullpage-scrolloverflow', get_template_directory_uri() .'/js/scrolloverflow.min.js', array ( 'jquery' ), $ver, true);
-    //wp_enqueue_script( 'goga-fullpage-extensions', get_template_directory_uri() .'/js/jquery.fullPage.extensions.min.js', array ( 'jquery' ), $ver, true);
     wp_enqueue_script( 'nicescroll', get_template_directory_uri() .'/js/jquery.nicescroll.min.js', array ( 'jquery' ), $ver, true);
+    wp_enqueue_script( 'goga-fullpage-easeing', get_template_directory_uri() .'/js/jquery.easings.min.js', array ( 'jquery' ), $ver, true);
+    wp_enqueue_script( 'goga-fullpage-scrolloverflow', get_template_directory_uri() .'/js/scrolloverflow.min.js', array ( 'jquery' ), $ver, true);
+    wp_enqueue_script( 'goga-fullpage', get_template_directory_uri() .'/js/jquery.fullPage.js', array ( 'jquery' ), $ver, true); 
+    wp_enqueue_script( 'goga-fullpage-extensions', get_template_directory_uri() .'/js/jquery.fullPage.extensions.min.js', array ( 'jquery' ), $ver, true);
     if ( is_home() or is_front_page() ){
         wp_enqueue_script( 'countJs', get_template_directory_uri() .'/js/countUp.min.js', array ( 'jquery' ), $ver, true); 
     }
     if ( is_singular('ggitineraries') ){
         wp_enqueue_style( 'gogalapagos-itineraries',  get_template_directory_uri() .'/css/gogalapagos-itineraries.css', array(), $ver, 'screen' );
-        wp_enqueue_script( 'iscroll', get_template_directory_uri() .'/js/iscroll.js', array ( 'jquery' ), $ver, true);
+        //wp_enqueue_script( 'iscroll', get_template_directory_uri() .'/js/iscroll.js', array ( 'jquery' ), $ver, true);
     }
     wp_enqueue_script( 'gogalapagos', get_template_directory_uri() .'/js/gogalapagos.js', array ( 'jquery' ), $ver, true); 
     //Cruise Filter functionality
@@ -62,9 +63,10 @@ function gg_add_styles_and_scripts() {
             wp_enqueue_style( 'gogalapagos-about-us-page',  get_template_directory_uri() .'/css/gogalapagos-about-us-page.css', array(), $ver, 'screen' );
         }
     }
-    if (is_page('galapagos-legend')){
+    if (is_page('galapagos-legend') or is_page('coral-yachts')){
         wp_enqueue_style( 'gogalapagos-itineraries',  get_template_directory_uri() .'/css/gogalapagos-itineraries.css', array(), $ver, 'screen' );
-        wp_enqueue_script( 'iscroll', get_template_directory_uri() .'/js/iscroll.js', array ( 'jquery' ), $ver, true);
+        wp_enqueue_script( 'nicescroll', get_template_directory_uri() .'/js/jquery.nicescroll.min.js', array ( 'jquery' ), $ver, true);
+        //wp_enqueue_script( 'iscroll', get_template_directory_uri() .'/js/iscroll.js', array ( 'jquery' ), $ver, true);
     }
     if ( is_page_template() ){
         $pagetemplate = get_page_template_slug($post->ID);

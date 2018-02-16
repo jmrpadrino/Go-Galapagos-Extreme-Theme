@@ -2,7 +2,7 @@
     $prefix = 'gg_';
 ?>
 <?php if(is_front_page()){ get_template_part('templates/footer-customer'); }?>
-<section id="footer" class="sections section footer-section footer-background">
+<section id="footer" data-anchor="footer-page" class="sections section footer-section footer-background">
     <?php if( wp_is_mobile() ){ ?>
     <div class="container-fluid nopadding top-bar" style="background-color: #3D3D3D; padding: 16px 0px;">
         <div class="row">
@@ -472,6 +472,15 @@ if ( is_page_template() ){
 <?php wp_footer(); ?>
 <script type="text/javascript">
     $(document).ready( function (){
+        var location = window.location.hash;
+        // ACTIVAR LENGUAJE
+        var theLanguage = $('html').attr('lang');
+        theLanguage = theLanguage.split('-');
+        console.log( $('.lang-' + theLanguage[0]) );
+        if($('.lang-'+theLanguage[0]).length > 0){
+            console.log('notiene');
+            $('li.lang-'+theLanguage[0]).addClass('active');
+        };
         <?php if (is_front_page()){ ?>
         var easingFn = function (t, b, c, d) {
         var ts = (t /= d) * t;
@@ -498,14 +507,15 @@ if ( is_page_template() ){
         video.addEventListener( "canplay", function() {
             video.play();
         });
-        
         <?php } ?>
         fullPageArea.fullpage({
             navigation: true,
+            autoScrolling: true,
+            animateAnchor: true,
             navigationPosition: 'right',
             slideSelector: '.fullpage-slide',
-            <?php if (is_singular('ggships')){?>
-            anchors: ['top','experience','activities','socialareas','cabins','itineraries','moreinfo'],
+            <?php if (is_page('galapagos-legend')){?>
+            anchors: ['top','experience','activities','socialareas','cabins','itineraries','moreinfo', 'footer-page'],
             <?php } ?>
             <?php if (is_page('about-us')){?>
             anchors: ['top','our-history','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
@@ -524,7 +534,24 @@ if ( is_page_template() ){
             },
             afterLoad: function(anchorLink, index){
                 var location = window.location.hash;
+                console.log(location);
                 paintHash(location);
+                $('.day-placeholder').niceScroll({
+                    autohidemode: false,
+                    cursorwidth: 8,
+                    cursorborder:'none',
+                    background:"rgba(28, 28, 28, 0.3)",
+                    cursorcolor:"rgba(28, 28, 28, 0.6)"
+                });
+                if(index == 1){
+                    $('.getyourtrip-navbar-btn').addClass('hidden');
+                    $('.navTrigger').removeClass('hidden');
+                    $('.search-icon').removeClass('hidden');
+                }
+                if(index > 1){
+                    $('.getyourtrip-navbar-btn').removeClass('hidden');
+                    $('#header-logo').attr('src', goga_url.themeurl + '/images/go-logo.png');
+                }
                 <?php if (is_front_page()){ ?>
                 if(index == 5){
                     $('.progress-left .progress-bar').addClass('now');
@@ -536,23 +563,43 @@ if ( is_page_template() ){
                 <?php if(is_page('galapagos-legend') or is_page('coral-yachts')){?>
                 var linkToactive = $('a[href="'+anchorLink+'"]');
                 $('#phone-navbar-active-link').children('span').text(anchorLink);
-                console.log(linkToactive);
-                console.log(anchorLink);
-                console.log($('a[href="'+anchorLink+'"]').children('span').text());
+                //console.log(linkToactive);
+                //console.log(anchorLink);
+                //console.log(index);
+                //console.log($('a[href="'+anchorLink+'"]').children('span').text());
+                if(anchorLink == 'itineraries'){
+                    $('.itineraries-day-by-day-list').niceScroll({
+                        autohidemode: false,
+                        cursorwidth: 8,
+                        cursorborder:'none',
+                        background:"rgba(28, 28, 28, 0.3)",
+                        cursorcolor:"rgba(28, 28, 28, 0.6)"
+                    });
+                    $('#ship-itineraries-slider').on('slid.bs.carousel', function(){
+                        $('.itineraries-day-by-day-list').niceScroll().remove();
+                        $('.itineraries-day-by-day-list').niceScroll({
+                            autohidemode: false,
+                            cursorwidth: 8,
+                            cursorborder:'none',
+                            background:"rgba(28, 28, 28, 0.3)",
+                            cursorcolor:"rgba(28, 28, 28, 0.6)"
+                        });
+                    })
+                }else{
+                    $('#ship-itineraries-slider').on('slid.bs.carousel', function(){
+                        $('.itineraries-day-by-day-list').getNiceScroll().remove();
+                    });
+                }
                 if(index == 6 || index == 7){                    
                     $('.first').addClass('active');
                 }
                 if(index == 8){
                     $('#ship-alter-navbar').removeClass('active');
                 }
+                if (index == 3 || index == 4){
+                    this.fullpage.moveTo(index, 0);
+                }
                 <?php } ?>
-                if(index == 1){
-                    $('.getyourtrip-navbar-btn').addClass('hidden');
-                    $('.navTrigger').removeClass('hidden');
-                }
-                if(index > 1){
-                    $('.getyourtrip-navbar-btn').removeClass('hidden');
-                }
                 <?php if( is_page('go-galapagos-cruises') ){?>
                 if(index == 3){
                     $('#carousel-example-generic-3').carousel('cycle');
@@ -562,9 +609,12 @@ if ( is_page_template() ){
                     $('#carousel-example-generic-3').carousel('pause');
                     $('#carousel-example-generic-4').carousel('cycle');
                 }
+                
                 <?php } ?>
             },
             onLeave: function (index, nextIndex, direction){
+                $('.itineraries-day-by-day-list').getNiceScroll().remove();
+                $('.day-placeholder').getNiceScroll().remove();
                 <?php if (is_front_page()){ ?>
                 $('.progress-left .progress-bar').removeClass('now');
                 customersCount.reset();
@@ -575,7 +625,10 @@ if ( is_page_template() ){
                 if (index > 0 && direction == "down"){
                     $('#headerelements').addClass('moveUp');
                     $('.navTrigger').addClass('hidden');
+                    $('.search-icon').addClass('hidden');
                 }else{
+                    $('.navTrigger').removeClass('hidden');
+                    $('.search-icon').removeClass('hidden');
                     $('#headerelements').removeClass('moveUp');
                 }
                 if (nextIndex > 1){
@@ -583,16 +636,15 @@ if ( is_page_template() ){
                         $('#ship-alter-navbar').addClass('active');
                     }
                 }else{
+                    $('#header-logo').attr('src', goga_url.themeurl + '/images/go-galapagos-logo.png');
                     if($('#ship-alter-navbar').length > 0){
                         $('#ship-alter-navbar').removeClass('active');
                     }
                 }
             },
             onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
-                
             }
         });
-        
         <?php /*if ( is_singular( 'gganimal' ) ){ ?>
         $('#the_content').niceScroll({
             autohidemode: false,

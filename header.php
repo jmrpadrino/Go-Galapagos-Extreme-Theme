@@ -7,9 +7,37 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-        <?php wp_head(); ?>        
+        <style>
+            body{
+                position: relative;
+                overflow: hidden;
+            }
+            .loader{
+                height: 100vh;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #191919;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 99999999999;
+            }
+            .loader-text{
+                display: block;
+                margin: auto;
+                font-size: 48px;
+                color: white;
+                font-weight: 999;
+            }
+        </style>
+        <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
+        <div id="loader" class="loader">
+            <span class="loader-text"><?= _e('Loading', 'gogalapagos') ?></span>
+        </div>
         <?php 
         /**
         / Navigation
@@ -38,7 +66,7 @@
                 </div>
             </div>
         </header>
-        <button type="button" class="btn btn-primary getyourtrip-navbar-btn hidden" data-toggle="modal" data-target="#tripFilter"><?php _e('Get your trip','gogalapagos'); ?></button>
+        <!--button type="button" class="btn btn-primary getyourtrip-navbar-btn hidden" data-toggle="modal" data-target="#tripFilter"><?php _e('Get your trip','gogalapagos'); ?></button-->
         <div class="navTrigger">
             <i></i><i></i><i></i> <span class="menu-word" title="Go Galapagos alternate menu"><?php _e('Menu','gogalapagos'); ?></span>
         </div>
@@ -57,7 +85,12 @@
                         wp_nav_menu( $alter_menu_args ); 
                     ?>
                     <div class="social-and-credits">
-                        <ul class="list-inline text-center social-icons-list">
+                        <?php if ( is_active_sidebar( 'translation' ) ) : ?>
+                            <div id="languages_widget" class="languages_widget widget-area" role="complementary">
+                                <?php dynamic_sidebar( 'translation' ); ?>
+                            </div><!-- #primary-sidebar -->
+                        <?php endif; ?>
+                        <ul class="list-inline social-icons-list">
                             <li><a href="#"><span class="fa fa-facebook"></span></a></li>
                             <li><a href="#"><span class="fa fa-twitter"></span></a></li>
                             <li><a href="#"><span class="fa fa-youtube-play"></span></a></li>

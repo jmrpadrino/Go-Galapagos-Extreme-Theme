@@ -235,6 +235,12 @@ var styles = [
     }
 ];
 var icon = goga_url.themeurl + '/images/marcador-map.png';
+
+$(window).bind("load", function() {
+   $('#loader').remove();
+});
+
+
 $(document).ready( function (){
     var timer;
     // ALTO DEL VIEWPORT
@@ -249,6 +255,7 @@ $(document).ready( function (){
         autohidemode: false,
         smoothscroll: true,
     })
+    
     // FIXES DE BUSCADOR
     $('#search-form input').val('');
     $('#search-form input').focusin( function(){            
@@ -308,12 +315,14 @@ $('.navTrigger, .navTrigger-ship').click(function(){
     $(this).toggleClass('active');
     $('#alter-nav').toggleClass('active');
     if( $('.navTrigger, .navTrigger-ship').hasClass('active') ){
+        $(this).css('z-index',9999);
         console.log('esta activo');
         $('.menu-word').html('Esc');
         $('.menu-word').prop('title','Press Esc to exit menu');
         fullPageArea.fullpage.setAllowScrolling(false);
         fullPageArea.fullpage.setKeyboardScrolling(false);
     }else{
+        $(this).css('z-index',999);
         console.log('NO esta activo');
         $('.menu-word').prop('title','Go Galapagos alternate menu');
         $('.menu-word').html('Menu');
@@ -340,8 +349,7 @@ $('.search-icon').click(function(){
         },400);
     }
 });
-
-// FIXES PARA VALIDAR Y HA USADO LA TECLA "ESC"
+// Cambiar logo barra superior
 $(window).scroll(function() {
     //console.log( $(this).scrollTop(),  $(window).height() - 1 );
     if ($(this).scrollTop() >= $(this).height() ){
@@ -350,6 +358,7 @@ $(window).scroll(function() {
         $('#header-logo').attr('src', goga_url.themeurl + '/images/go-galapagos-logo.png');
     };
 })
+// FIXES PARA VALIDAR Y HA USADO LA TECLA "ESC"
 $(document).keyup(function(e) {
     if (e.keyCode == 27) { // escape key maps to keycode `27`
         
@@ -406,6 +415,8 @@ $(window).mousemove(function(e){
     if($('#headerelements').hasClass('moveUp')){
         if (e.pageY < 60){
             $('#headerelements').removeClass('moveUp');
+            $('.navTrigger').removeClass('hidden');
+            $('.search-icon').removeClass('hidden');
         }
     }
 
@@ -535,7 +546,7 @@ var util = {
         f: {
             init: {
                 register: function () {
-                    console.clear()// just cuz codepen
+                    
                     var child, children = document.getElementsByClassName("field"), i
                     for (i = 0; i < children.length; i += 1) {
                         child = children[i]

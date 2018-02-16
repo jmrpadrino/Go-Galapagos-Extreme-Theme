@@ -1,5 +1,6 @@
 .ship-itinerary-title{
-    margin-top: 100px;
+    text-align: center;
+    margin-top: 70px;
 }
 .single-thumbnail-container{
     position: absolute;
@@ -118,6 +119,10 @@
 .itineraries-day-by-day-list{
     list-style: none;
     padding: 0px;
+    width: 93%!important;
+    max-height: 265px;
+    height: 265px;
+    overflow-y: auto;
 }
 .day-name{
     margin: 0px;
@@ -174,7 +179,6 @@
     width: 100%;
     padding: 60px 36px;
     height: 98vh;
-    overflow-y:auto;
 }
 .more-items-slider{
     background: #161616;

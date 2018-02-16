@@ -2,27 +2,45 @@
 /* alter navigation */
 .ship-alter-navbar{
     display: block;
+    -webkit-transition: all ease-in .2s;
     transition: all ease-in .2s;
     background: #42403c;
     *height: 85px;
-    position: relative;
+    position: absolute;
+    width: 100%;
     z-index: 999;
+    -webkit-transform: translateY(-150px);
     transform: translateY(-150px);
+    -webkit-transition: -webkit-transform ease-in .2s;
+    transition: -webkit-transform ease-in .2s;
     transition: transform ease-in .2s;
+    transition: transform ease-in .2s, -webkit-transform ease-in .2s;
 }
 .ship-alter-navbar.active{
+    -webkit-transform: translateY(0px);
     transform: translateY(0px);
+    -webkit-transition: -webkit-transform ease-in .8s;
+    transition: -webkit-transform ease-in .8s;
     transition: transform ease-in .8s;
+    transition: transform ease-in .8s, -webkit-transform ease-in .8s;
 }
 .ship-navbar-items{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-line-pack: justify;
     align-content: space-between;
     margin: 0;
 }
 .ship-navbar-items li{
     height: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-line-pack: center;
     align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     border: 1px solid black;
     padding: 0px;
@@ -54,7 +72,6 @@
 .ship-navbar-items li a{
     color: #42403c;
     font-size: 16px;
-    display: block;
     text-align: center;
     margin: auto;
 }
@@ -81,9 +98,11 @@
     z-index: 999;
 }
 .rotar-derecha{
+    -webkit-transform: rotate(10deg);
     transform: rotate(10deg);
 }
 .rotar-izquierda{
+    -webkit-transform: rotate(-10deg);
     transform: rotate(-10deg);
 }
 .year{
@@ -96,21 +115,39 @@
     border-bottom: 4px solid #292929;
     margin-top: 40px;
     margin-bottom: 70px;
+    -webkit-box-shadow: none;
     box-shadow: none;
 }
 .partners-container{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 .partners-container img{
     display: inline-block;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
     height: calc(100% * (1/3) - 10px - 1px);
     width: calc(100% * (1/3) - 10px - 1px);
     margin: 5px;
 }
+.social-karanki{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
 .social-investment-img{
-    margin-top: 245px;
+    width: 100%;
+    height: auto;
+    margin: auto;
 }
 @media screen and (max-width: 800px){
     .separator{

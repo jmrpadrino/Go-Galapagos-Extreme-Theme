@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php if ( !wp_is_mobile() ) {  ?>
-<section class="sections section hero-video">
+<section id="top-page" data-anchor="top" class="sections section hero-video">
     <div class="video-placeholer">
         <video id="hero-video" data-keepplaying class="hero-video" poster="<?php echo get_template_directory_uri(); ?>/images/home-hero-video-poster.jpg" loop autoplay>
             <source src="<?php echo get_template_directory_uri(); ?>/videos/Underwater.webm" type='video/webm' />
@@ -109,7 +109,7 @@
     </div>
 </section>
 <?php } //END if is mobile ?>
-<section id="get-in-love" class="sections section get-in-love">
+<section id="get-in-love" data-anchor="galapagos-experience" class="sections section get-in-love">
     <div class="nextSlide">
         <span class="fa fa-chevron-right"></span>        
     </div>
@@ -157,7 +157,7 @@
     );
     $special = get_posts($specialArgs);
 ?>
-<section id="offers-and-news" class="sections section offers-and-news">
+<section id="offers-and-news" data-anchor="offers-news" class="sections section offers-and-news">
     <div class="section-ribbon">
         <span><?php _e('Offers &amp; News','gogalapagos'); ?></span>
     </div>
@@ -261,7 +261,7 @@
         </div>
     </div>    
 </section>
-<section class="sections section ships">
+<section data-anchor="galapagos-cruises" class="sections section ships">
     <div class="section-ribbon">
         <span><?php _e('Our Vessels','gogalapagos'); ?></span>
     </div>
@@ -284,12 +284,12 @@
                 <img class="mobile-image" src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">
                 <?php } ?>
                 <div class="more-content lower-post">
-                    <a href="<?= get_the_permalink($barco->ID); ?>" title="Galapagos Legend"><h2><?= $barco->post_title ?></h2></a>
+                    <a href="<?= home_url($barco->post_name); ?>" title="Galapagos Legend"><h2><?= $barco->post_title ?></h2></a>
                     <span class="ship-slogan"><?= esc_html(get_post_meta($barco->ID, $prefix . 'ship_slogan', true)) ?></span>
                     <?php if( !wp_is_mobile() ) { ?>
                     <span class="offers-and-news-hover-separator"></span>
                     <p><?= esc_html__( get_the_excerpt($barco->ID) ) ?></p>
-                    <a class="home-ship-btn" href="<?= get_the_permalink($barco->ID); ?>">Learn More</a>
+                    <a class="home-ship-btn" href="<?= home_url($barco->post_name); ?>">Learn More</a>
                     <?php } ?>
                 </div>
             </div>

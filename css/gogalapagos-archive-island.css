@@ -9,6 +9,7 @@
     position: absolute;
     width: 100%;
     top: -50%;
+    -webkit-transform: translateY(-25%);
     transform: translateY(-25%);
 }
 
@@ -28,6 +29,9 @@
 .archive-description{
     margin-bottom: 48px;
 }
+.archive-description p{
+    margin-bottom: 36px;
+}
 .island-link:hover{
     color: #ff9d02;
     font-weight: bold;
@@ -39,6 +43,7 @@
     .archive-island-background-img{
         width: auto;
         top: -50%;
+        -webkit-transform: translateY(-30%);
         transform: translateY(-30%);
         left: -50%;
     }
