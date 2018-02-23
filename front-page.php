@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header(); $prefix = 'gg_'; ?>
 <?php if ( !wp_is_mobile() ) {  ?>
 <section id="top-page" data-anchor="top" class="sections section hero-video">
     <div class="video-placeholer">

@@ -10,7 +10,6 @@
         <style>
             body{
                 position: relative;
-                overflow: hidden;
             }
             .loader{
                 height: 100vh;

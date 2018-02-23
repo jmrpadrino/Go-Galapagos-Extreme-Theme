@@ -119,6 +119,7 @@ function gg_ajustes_wordpress(){
     );*/
     register_setting( 'go-galapagos-theme-setings', 'gg_home_carousel_slides');
     register_setting( 'go-galapagos-theme-setings', 'gg_home_carousel_slides_test');
+    register_setting( 'go-galapagos-theme-setings', 'gg_why_galapagos_sections');
 }
 
 function gg_theme_dashboard(){
@@ -135,7 +136,7 @@ function gg_theme_dashboard(){
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
         <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Front Page</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li role="presentation"><a href="#inner-pages" aria-controls="inner-pages" role="tab" data-toggle="tab">Inner Pages</a></li>
         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
     </ul>
@@ -157,7 +158,16 @@ function gg_theme_dashboard(){
                 </div>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="profile">...</div>
+        <div role="tabpanel" class="tab-pane fade" id="inner-pages">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="gg_home_carousel_slides_test">Why Galapagos Sections</label>
+                        <input class="form-control" type="number" name="gg_why_galapagos_sections" min="1" max="10" value="<?php echo get_option( 'gg_why_galapagos_sections' ); ?>"/>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
         <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
     </div>
@@ -167,12 +177,14 @@ function gg_theme_dashboard(){
 
 <?php
 }
+/*
 add_action('admin_enqueue_scripts','gg_add_theme_settings_style_and_scripts');
 function gg_add_theme_settings_style_and_scripts($hook){
     wp_enqueue_style( 'bootstrap', URLPLUGINGOGALAPAGOS . 'css/bootstrap.css', array(), '3.3' );
     wp_enqueue_style( 'goga_admin', URLPLUGINGOGALAPAGOS . 'css/bootstrap.css', array(), '3.3' );
     wp_enqueue_script('bootstrapjs');
 }
+*/
 /*----------------------------------------------*/
 
 ?>

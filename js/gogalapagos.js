@@ -237,7 +237,7 @@ var styles = [
 var icon = goga_url.themeurl + '/images/marcador-map.png';
 
 $(window).bind("load", function() {
-   $('#loader').remove();
+    $('#loader').remove();
 });
 
 
@@ -255,7 +255,7 @@ $(document).ready( function (){
         autohidemode: false,
         smoothscroll: true,
     })
-    
+
     // FIXES DE BUSCADOR
     $('#search-form input').val('');
     $('#search-form input').focusin( function(){            
@@ -361,10 +361,10 @@ $(window).scroll(function() {
 // FIXES PARA VALIDAR Y HA USADO LA TECLA "ESC"
 $(document).keyup(function(e) {
     if (e.keyCode == 27) { // escape key maps to keycode `27`
-        
+
         fullPageArea.fullpage.setAllowScrolling(true);
         fullPageArea.fullpage.setKeyboardScrolling(true);
-        
+
         if( $('.navTrigger').hasClass('active') ){
             $('#alter-nav').removeClass('active');
             $('.navTrigger').toggleClass('active');
@@ -546,7 +546,7 @@ var util = {
         f: {
             init: {
                 register: function () {
-                    
+
                     var child, children = document.getElementsByClassName("field"), i
                     for (i = 0; i < children.length; i += 1) {
                         child = children[i]

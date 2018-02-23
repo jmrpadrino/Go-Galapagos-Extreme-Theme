@@ -57,17 +57,25 @@ function gg_add_styles_and_scripts() {
         wp_enqueue_style( 'gogalapagos-404',  get_template_directory_uri() .'/css/gogalapagos-404.css', array(), $ver, 'screen' );
     }
     if ( is_page() and !is_page_template() ){
-        wp_enqueue_style( 'gogalapagos-ships',  get_template_directory_uri() .'/css/gogalapagos-ships.css', array(), $ver, 'screen' );
+        //wp_enqueue_style( 'gogalapagos-ships',  get_template_directory_uri() .'/css/gogalapagos-ships.css', array(), $ver, 'screen' );
         wp_enqueue_style( 'gogalapagos-basic-pages',  get_template_directory_uri() .'/css/gogalapagos-basic-pages.css', array(), $ver, 'screen' );
         if(is_page('about-us')){
             wp_enqueue_style( 'gogalapagos-about-us-page',  get_template_directory_uri() .'/css/gogalapagos-about-us-page.css', array(), $ver, 'screen' );
         }
     }
     if (is_page('galapagos-legend') or is_page('coral-yachts')){
+        wp_enqueue_style( 'gogalapagos-ships',  get_template_directory_uri() .'/css/gogalapagos-ships.css', array(), $ver, 'screen' );
         wp_enqueue_style( 'gogalapagos-itineraries',  get_template_directory_uri() .'/css/gogalapagos-itineraries.css', array(), $ver, 'screen' );
         wp_enqueue_script( 'nicescroll', get_template_directory_uri() .'/js/jquery.nicescroll.min.js', array ( 'jquery' ), $ver, true);
         //wp_enqueue_script( 'iscroll', get_template_directory_uri() .'/js/iscroll.js', array ( 'jquery' ), $ver, true);
     }
+    if (is_page('why-galapagos')){
+        wp_enqueue_style( 'gogalapagos-itineraries',  get_template_directory_uri() .'/css/gogalapagos-itineraries.css', array(), $ver, 'screen' );
+    }
+    /*
+    if (is_page('booking')){
+        
+    }*/
     if ( is_page_template() ){
         $pagetemplate = get_page_template_slug($post->ID);
         if ($pagetemplate == 'templates/template-itinerarios.php'){

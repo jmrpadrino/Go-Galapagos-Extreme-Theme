@@ -1,4 +1,5 @@
 <!-- Modal -->
+<form action="<?= home_url('booking') ?>/" role="form" method="GET">
 <div class="modal fade" id="tripFilter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -54,6 +55,7 @@
                                     <span class="fa fa-chevron-left year-arrow"></span>
                                     <span class="year-placeholder">2018</span>
                                     <span class="fa fa-chevron-right year-arrow"></span>
+                                    <input type="hidden" name="year" value="2018">
                                 </div>
                             </div>
                         </div>
@@ -141,8 +143,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default doitlater-btn" data-dismiss="modal">I'll do it later</button>
-                <button type="button" class="btn btn-success">GO get it NOW!</button>
+                <button type="submit" class="btn btn-success">GO get it NOW!</button>
             </div>
         </div>
     </div>
 </div>
+</form>

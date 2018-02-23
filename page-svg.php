@@ -30,11 +30,27 @@
                 transform: translateY(0px) rotate(0);
             }
         }
+        @keyframes moves{
+            0%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(1.02);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
         svg{
             width: 100%;
             height: auto;
             animation: float;
             animation-duration: 18s;
+            animation-iteration-count: infinite;
+        }
+        .ocean-moves{
+            animation: moves;
+            animation-duration: 9s;
             animation-iteration-count: infinite;
         }
         .contenedor-small{
@@ -62,12 +78,14 @@
         .cabin-path.active path, .cabin-path.active polygon{
             fill: rgba(78, 255, 0, 1);
         }
-        
+        .cabin-path.last-selected path, .cabin-path.last-selected polygon {
+            fill: url(#diagonalHatch);
+        }
     </style>
 </head>
 <body>
 <div class="img-background">
-    <img src="<?= get_template_directory_uri() ?>/images/page-svg-back.jpg">
+    <img class="ocean-moves" src="<?= get_template_directory_uri() ?>/images/page-svg-back.jpg">
 </div>
 <div class="contenedor-small">
 <?xml version="1.0" encoding="utf-8"?>
@@ -173,6 +191,14 @@
                            
 <?xpacket end="w"?>
 	</metadata>
+<pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="5" height="5">
+  <!--path d="M-1,1 l2,-2
+           M0,4 l4,-4
+           M3,5 l2,-2" 
+        style="stroke:black; stroke-width:1" /-->
+        <rect width='5' height='5' fill='rgba(158, 158, 158, 0.7)'/>
+<path d='M0 5L5 0ZM6 4L4 6ZM-1 1L1 -1Z' stroke='#393939' stroke-width='1'/>
+</pattern>
 <g id="Capa_1">
 	<path fill="none" d="z"/>
 	
@@ -10102,15 +10128,15 @@ kZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkfHuxf8XYAATFTnuXx4JtQAAAABJRU5ErkJggg==" transf
 	<path fill="#6FCAF2" stroke="#EFE96F" stroke-width="2" stroke-miterlimit="10" d="M329,102.833h15l22-10.667h32
 		c0,0,1.5-70.833,0-72s-69,3.667-69,3.667V102.833z"/>
 </g>
-<g id="c-26" class="cabin-path">
+<g id="c-25" class="cabin-path">
 	<polygon fill="#6FCAF2" stroke="#EFE96F" stroke-width="2" stroke-miterlimit="10" points="399.334,92.5 433.834,92.5 
 		445.334,84.833 467.834,83.667 467.834,17.5 399.334,19.985 	"/>
 </g>
-<g id="c-25" class="cabin-path">
+<g id="c-23A" class="cabin-path">
 	<polygon fill="#6FCAF2" stroke="#EFE96F" stroke-width="2" stroke-miterlimit="10" points="472,17.5 533.834,17.5 533.834,80.833 
 		472,81.667 	"/>
 </g>
-<g id="c-24" class="cabin-path busy">
+<g id="c-23" class="cabin-path busy">
 	<polygon fill="#6FCAF2" stroke="#EFE96F" stroke-width="2" stroke-miterlimit="10" points="536.334,81.667 536.334,16.5 
 		618.667,17.5 618.667,90.833 587.834,90.833 588.167,81.667 	"/>
 </g>
@@ -10120,14 +10146,24 @@ kZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkfHuxf8XYAATFTnuXx4JtQAAAABJRU5ErkJggg==" transf
 
 <script>
     $('.cabin-path').click( function(){
+        var cabins_selected = [];
+        var cabinas = '';
         if(!$(this).hasClass('busy')){
+            id = $(this).attr('id');
+            id = id.split('-');
             //$('svg').find('.cabin-path').removeClass('active');
-            if( $(this).hasClass('active') ){
+            if( $(this).hasClass('active') ){              
                 $(this).removeClass('active');
             }else{
-                $(this).addClass('active');
+                $(this).addClass('active');   
             }
         }
+        cabinas = $('.cabin-path.active');
+        $.each( cabinas, function(i,v){
+            var idcabina = cabinas[i].id.split('-');  
+            cabins_selected[i] = idcabina[1];
+        });
+        console.log(cabins_selected);
     })
 </script>
 </body>
