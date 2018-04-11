@@ -2,7 +2,7 @@
     $prefix = 'gg_';
 ?>
 <?php if(is_front_page()){ get_template_part('templates/footer-customer'); }?>
-<section id="footer" data-anchor="footer-page" class="sections section footer-section footer-background">
+<section id="footer" <?= is_front_page() ? 'data-anchor="footer-page"': ''?> class="sections section footer-section footer-background">
     <?php if( wp_is_mobile() ){ ?>
     <div class="container-fluid nopadding top-bar" style="background-color: #3D3D3D; padding: 16px 0px;">
         <div class="row">
@@ -49,11 +49,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 text-center social-media-icons">
-                        <span class="fa fa-2x fa-facebook"></span>
-                        <span class="fa fa-2x fa-youtube"></span>
-                        <span class="fa fa-2x fa-instagram"></span>
-                        <span class="fa fa-2x fa-twitter"></span>
+                    <div class="col-xs-12">
+                        <div class="social-media-icons">
+                            <span class="fa fa-2x fa-facebook"></span>
+                            <span class="fa fa-2x fa-youtube"></span>
+                            <span class="fa fa-2x fa-instagram"></span>
+                            <span class="fa fa-2x fa-twitter"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -508,6 +510,7 @@ if ( is_page_template() ){
             video.play();
         });
         <?php } ?>
+        if ($(window).width() > 600){
         fullPageArea.fullpage({
             navigation: true,
             autoScrolling: true,
@@ -645,6 +648,7 @@ if ( is_page_template() ){
             onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
             }
         });
+        }
         <?php /*if ( is_singular( 'gganimal' ) ){ ?>
         $('#the_content').niceScroll({
             autohidemode: false,

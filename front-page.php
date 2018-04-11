@@ -298,3 +298,72 @@
     </div>
 </section>
 <?php get_footer(); ?>
+<script>
+    $(document).ready( function(){
+        
+        console.clear();
+        
+        var ancho_viewport = $(window).width();
+        var inlove_slides = $('.home-get-in-love-slide');
+        var products_slides = $('#index-carousel-products').children('.carousel-inner').children('.item');
+        var blog_posts = $('.home-blog-article');
+        
+        console.log(products_slides);
+        
+        /*-----------------
+        / SI LA PANTALLA ES MOVIL PORTRAIT
+        -----------------*/
+        if(window.innerHeight > window.innerWidth){
+            
+            /*---------------
+            / CAMBIAR IMAGENES A FONDOS PARA SECCION DE GET-IN-LOVE
+            ---------------*/
+            $.each(inlove_slides, function(){
+                
+                var imagen_url = $(this).children('div').children('.get-in-love-bkg-img');
+                
+                acomodarFondo(imagen_url, $(this));
+                
+            });
+            
+            /*---------------
+            / CAMBIAR IMAGENES A FONDOS PARA SECCION DE GET-IN-LOVE
+            ---------------*/
+            $.each(products_slides, function(){
+                
+                var imagen_url = $(this).children('.mobile-image');
+                
+                acomodarFondo(imagen_url, $(this));
+                
+            });
+            
+            /*---------------
+            / CAMBIAR IMAGENES A FONDOS PARA SECCION DE GET-IN-LOVE
+            ---------------*/
+            $.each(blog_posts, function(){
+                
+                var imagen_url = $(this).children('.blog-home-thumbnail');
+                
+                acomodarFondo(imagen_url, $(this));
+                
+            });
+        }
+    })
+    /*---------------
+    / FUNCION PARA CAMBIAR IMAGENES A FONDOS
+    ---------------*/
+    function acomodarFondo(elemento, item){
+
+        item.addClass('now-mobile');
+        item.css(
+            {
+                'background-image'      :   'url('+elemento.attr('src')+')',
+                'background-position'   :   'center bottom',
+                'background-size'       :   'cover'
+            }
+        );
+
+        elemento.remove();
+
+    }
+</script>

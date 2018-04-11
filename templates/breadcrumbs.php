@@ -1,6 +1,7 @@
 <div class="breadcrumbs">
 <?php
 function breadcrumbs() {
+    global $post;
 	$url = get_bloginfo('url');
 	$a = explode("/",$url);
 	$b = explode("/",$_SERVER["REQUEST_URI"]);
@@ -44,8 +45,9 @@ function breadcrumbs() {
 			}
 		}
 	}
-	echo wp_title();
+	echo ' &raquo; <span class="breadcrumb-active-view"><strong>' . $post->post_title . '</strong></span>';
 }
+    
 breadcrumbs();
 ?>
 </div>

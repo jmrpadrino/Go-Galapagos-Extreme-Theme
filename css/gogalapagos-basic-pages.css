@@ -216,6 +216,9 @@ section.activities{
 .salesexpert-area-title{
     margin-bottom: 36px;
 }
+.contact-form-responsive{
+    padding: 48px 0;
+}
 @media screen and(max-width: 480px){
     .contact-page-title{
         margin-top: 80px;

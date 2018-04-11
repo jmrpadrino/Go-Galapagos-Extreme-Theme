@@ -141,10 +141,10 @@ die();*/
     </div>
 </section>
 <section id="activities-section" data-anchor="activities" data-index="3" class="sections section activities">
-    <div class="nextSlide">
+    <div class="nextSlide hidden-xs">
         <span class="fa fa-chevron-right"></span>        
     </div>
-    <div class="prevSlide">
+    <div class="prevSlide hidden-xs">
         <span class="fa fa-chevron-left"></span>
     </div>
     <?php   
@@ -165,10 +165,10 @@ die();*/
     ?>
 </section>
 <section id="socialareas-section" data-anchor="socialareas" data-index="3" class="sections section socialarea">
-    <div class="nextSlide">
+    <div class="nextSlide hidden-xs">
         <span class="fa fa-chevron-right"></span>        
     </div>
-    <div class="prevSlide">
+    <div class="prevSlide hidden-xs">
         <span class="fa fa-chevron-left"></span>
     </div>
     <?php   
@@ -188,10 +188,10 @@ die();*/
     ?>
 </section>
 <section id="cabins-section" data-anchor="cabins" data-index="3" class="sections section cabins">
-    <div class="nextSlide">
+    <div class="nextSlide hidden-xs">
         <span class="fa fa-chevron-right"></span>        
     </div>
-    <div class="prevSlide">
+    <div class="prevSlide hidden-xs">
         <span class="fa fa-chevron-left"></span>
     </div>
     <?php 
@@ -209,10 +209,10 @@ die();*/
 ?>
 </section>
 <section id="moreinfo-section" data-anchor="moreinfo" class="sections section moreinfo">
-    <div class="nextSlide">
+    <div class="nextSlide hidden-xs">
         <span class="fa fa-chevron-right"></span>        
     </div>
-    <div class="prevSlide">
+    <div class="prevSlide hidden-xs">
         <span class="fa fa-chevron-left"></span>
     </div>
     <div class="fullpage-slide">
@@ -245,7 +245,7 @@ die();*/
             $deckCounter = 0;
             ?>
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-sm-12 hidden-xs">
                     <div class="tabpanel" role="tabpanel">
                         <div class="row">
 
@@ -298,6 +298,9 @@ die();*/
                             ?>
                         </div>
                     </div>
+                </div>
+                <div class="visible-xs">
+                    hola
                 </div>
             </div>
         </div>

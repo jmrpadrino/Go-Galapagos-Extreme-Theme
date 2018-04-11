@@ -102,7 +102,7 @@ foreach ($elementos as $key => $elemento){
             'descripcion' => $item[1]
         );
     }
-    
+
     //recuperar los decks del barco
     $args = array(
         'post_type' => 'ggdecks',
@@ -192,7 +192,7 @@ foreach ($elementos as $key => $elemento){
             foreach($galeria as $imagen){
                 $pics[] = wp_get_attachment_url( $imagen );
             }
-            
+
             $areassocialesinfo[$key][] = array(
                 'id' => $socialarea->ID,
                 'nombre' => $socialarea->post_title,
@@ -203,7 +203,8 @@ foreach ($elementos as $key => $elemento){
         }
         $deckInfo[$key][] = array(
             'id' => $deck->ID,
-            'nombre' => $deck->post_title,
+            'nombre' => get_post_meta($deck->ID, $prefix . 'deck_frontend_name', true),
+            'nombre_web' => $deck->post_title,
             'slug' => $deck->post_name,
             'descripcionCorta' => esc_html(get_the_excerpt($deck->ID)),
             'distribucion_cabinas' => get_post_meta($deck->ID, $prefix . 'deck_plan_image', true),
@@ -215,6 +216,7 @@ foreach ($elementos as $key => $elemento){
 
     $response[$metas[$key][$prefix.'dispo_ID'][0]] = array(
         'id' => $elemento->ID,
+        'codigoAgrupado' => $metas[$key][$prefix. 'ship_group_code'][0],
         'titulo' => $elemento->post_title,
         'nombre' => $elemento->post_name,
         'slogan' => $metas[$key][$prefix. 'ship_slogan'][0],
@@ -223,6 +225,7 @@ foreach ($elementos as $key => $elemento){
         'descripcionLarga' => $elemento->post_content,
         'informacion_tecnica' => $technical_item,
         'logo' => $metas[$key][$prefix. 'ship_logo'][0],
+        'capacidad' => $metas[$key][$prefix. 'ship_capacity'][0],
         'decks' => $deckInfo[$key],
         //"wpBarcometas" => $metas
     );
@@ -232,26 +235,47 @@ foreach ($elementos as $key => $elemento){
 
 // AGREGAR ITINERARIOS AL JSON
 $posttype = 'ggitineraries';
+
 $args = array(
     'post_type' => $posttype,
     'posts_per_page' => -1,
     'orderby' => 'post_id',
     'order' => 'ASC'
 );
+if ($_GET['anio']){
+    $anio = $_GET['anio'];
+    
+    $args = array(
+        'post_type' => $posttype,
+        'posts_per_page' => -1,
+        'orderby' => 'post_id',
+        'order' => 'ASC',
+        'meta_query' => array(
+            array(
+                'key'     => $prefix . 'itinerary_year',
+                'value'   => $anio,
+                'compare' => 'LIKE',
+            ),
+        ),
+    );
+    
+}
+
 $elementos = get_posts($args);
 foreach($elementos as $itinerario){
     
-    $diasActivos = 0;
+    $duracion = get_post_meta($itinerario->ID, $prefix . 'itinerary_duration', true);
     
-    for ($i = 0; $i < 5; $i++){
-        if( get_post_meta($itinerario->ID, $prefix . 'itinerary_active_day_'.$i, true) == 1){
-            // sumar dia activo
-            $diasActivos++;
-            
+    $contenido = [];
+    
+    for ($i = 1; $i <= $duracion; $i++){
+        $activo = get_post_meta($itinerario->ID, $prefix . 'itinerary_active_day_'.$i, true);
+        if( $activo == 1){
+
             // Imagen destacada
             $featuredImage = get_post_meta($itinerario->ID, $prefix . 'itinerary_featured_image_day_'.$i, true);
             $rutaImagen = wp_get_attachment_image_src( $featuredImage, 'full', true );
-            
+
             // llenar variable contenido
             $contenido[$i] = array(
                 'descripcion' => get_post_meta($itinerario->ID, $prefix . 'itinerary_description_day_'.$i, true),
@@ -259,7 +283,7 @@ foreach($elementos as $itinerario){
                 'am' => get_post_meta($itinerario->ID, $prefix . 'itinerary_am_activities_list_day_'.$i, true),
                 'pm' => get_post_meta($itinerario->ID, $prefix . 'itinerary_pm_activities_list_day_'.$i, true)
             );
-        };
+        };        
     }
     
     $itinerarios[$itinerario->ID] = array(
@@ -274,10 +298,11 @@ foreach($elementos as $itinerario){
         'imagen_ruta' => get_post_meta($itinerario->ID, $prefix . 'itinerary_route_image', true),
         'color_brochure' => get_post_meta($itinerario->ID, $prefix . 'itinerary_frontend_color', true),
         'animales_recorrido' => get_post_meta($itinerario->ID, $prefix . 'itinerary_animal_list', false),
+        'anio_operacion' => get_post_meta($itinerario->ID, $prefix . 'itinerary_year', false),
         'dia_inicio' => get_post_meta($itinerario->ID, $prefix . 'itinerary_start_day', true),
         'duracion' => array(
-            'dias' => $diasActivos,
-            'noches' => $diasActivos -1
+            'dias' => $duracion,
+            'noches' => (string)($duracion - 1)
         ),
         'day_by_day' => $contenido,
     );
@@ -337,6 +362,82 @@ foreach($elementos as $animal){
 $response['animales'] = $animales;
 // FIN ANIMALES
 
+// AGREGAR SITIOS DE VISITA AL JSON
+$posttype = 'gglocation';
+$args = array(
+    'post_type' => $posttype,
+    'posts_per_page' => -1,
+    'orderby' => 'post_id',
+    'order' => 'ASC'
+);
+$elementos = get_posts($args);
+foreach($elementos as $sitio){
+    $sitios[$sitio->ID] = array(
+        'id' => $sitio->ID,
+        'nombre' => $sitio->post_title,
+        'descripcion' => $sitio->post_content,
+        'resumen' => $sitio->post_excerpt,
+        'isla' => get_post_meta($sitio->ID, $prefix . 'visitors_site_island', true),
+        'desembarque' => get_post_meta($sitio->ID, $prefix. 'visitors_site_disembarking', false),
+        'terreno' => get_post_meta($sitio->ID, $prefix. 'visitors_site_terrain', false),
+        'dificultad' => get_post_meta($sitio->ID, $prefix. 'visitors_site_difficulty', false),
+        'condicion_fisica' => get_post_meta($sitio->ID, $prefix. 'visitors_site_physical', false),
+        'duracion' => get_post_meta($sitio->ID, $prefix. 'visitors_site_duration', true),
+        'destacados' => get_post_meta($sitio->ID, $prefix. 'visitors_site_highlights', true),
+        'url' => get_permalink( $sitio->ID )
+    );
+}
+$response['sitios_visita'] = $sitios;
+// FIN SITIOS DE VISITA
+
+$response['desembarque'] = array(
+    '0' => 'None',
+    '1' => 'Dry Landing',
+    '2' => 'Wet Landing',
+    '3' => 'Dry or Wet Landing',
+    '4' => 'Circumnavigation',
+);
+
+
+$response['terreno'] = array(
+    '0' => 'None',
+    '1' => 'Eroded Tuff',
+    '2' => 'Flat',
+    '3' => 'Flat & Muddy',
+    '4' => 'Flat & Petrified Lava',
+    '5' => 'Flat & Sandy',
+    '6' => 'Flat & Semi-rocky',
+    '7' => 'Hill/mountain',
+    '8' => 'Marsh',
+    '9' => 'Muddy',
+    '10' => 'Petrified Lava',
+    '11' => 'Rocky',
+    '12' => 'Rocky & Petrified Lava',
+    '13' => 'Rocky & Sandy',
+    '14' => 'Sandy',
+    '15' => 'Shallow Ocean',
+    '16' => 'Slippery',
+    '17' => 'Steep',
+    '18' => 'Steep & Petrified Lava',
+    '19' => 'Water',
+    '20' => 'Wooden Trail',
+);
+
+$response['dificultad'] = array(
+    '0' => 'Low',
+    '1' => 'High',
+    '2' => 'Intermediate',
+    '3' => 'Easy',
+    '4' => 'Moderate',
+    '5' => 'Difficult'
+);
+
+$response['condicion_fisica'] = array(
+    '0' => 'Low',
+    '1' => 'High',
+    '2' => 'Medium',
+    '3' => 'Medium / High',
+);
 
 $response['dias'] = array(
     '0' => 'Monday',

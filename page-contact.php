@@ -55,7 +55,7 @@ $options = array(
     </div>
 </section>
 <section class="sections section">
-    <div class="container">
+    <div class="container contacts-begins">
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-center"><?php _e('Emergency contact','gogalapagos'); ?> 24/7</h2>
@@ -64,18 +64,18 @@ $options = array(
         </div>
         <div class="row">
             <div class="col-sm-4 text-center">
-                <img src="http://placehold.it/130x100?text=Envelope">
+                <img width="130" src="<?= get_template_directory_uri() ?>/images/recurso-mail.png">
                 <h3 class="body-font"><?php _e('Land Operations Manager','gogalapagos'); ?></h3>
                 <span class="contact-separator"></span>
                 <p><a href="mailto:ops3@gogalapagos.com.ec"><strong>ops3@gogalapagos.com.ec</strong></a></p>
             </div>
             <div class="col-sm-4 text-center">
-                <img src="http://placehold.it/130x100?text=Phone">
+                <img width="100" src="<?= get_template_directory_uri() ?>/images/recurso-phone.png">
                 <h3 class="body-font"><?php _e('From outside','gogalapagos'); ?> Ecuador</h3>
                 <p><strong><a href="tel:+593999456205">(593-9) 9945-6205</a></strong></p>
             </div>
             <div class="col-sm-4 text-center">
-                <img src="http://placehold.it/130x100?text=Phone">
+                <img width="100" src="<?= get_template_directory_uri() ?>/images/recurso-phone.png">
                 <h3 class="body-font"><?php _e('From','gogalapagos'); ?> Ecuador</h3>
                 <p><strong><a href="tel:+593999456205">(09) 9945-6205</a></strong></p>
 
@@ -91,8 +91,8 @@ $options = array(
                 </div>
             </div>
             <div class="row tollfree">
-                <div class="col-md-4">
-                    <h3 class="body-font"><?php _e('Main Office','gogalapagos'); ?></h3>
+                <div class="col-md-4 col-sm-8 col-sm-offset-2">
+                    <h3 class="body-font text-center"><?php _e('Main Office','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Address'); ?>:</h4>
                     <p>Eloy Alfaro Ave. N34-111 &amp; Catalina Aldaz St. <br/> Quito - Ecuador</p>
                     <h4 class="body-font"><?= _e('Phone (Area Code)','gogalapagos'); ?>:</h4>
@@ -102,8 +102,8 @@ $options = array(
                     <h4 class="body-font"><?= _e('Office Schedule', 'gogalapagos'); ?>:</h4>
                     <p>8:30 - 17:30 (<?= _e('Quito time', 'gogalapagos'); ?></p>
                 </div>
-                <div class="col-md-4">
-                    <h3 class="body-font"><?php _e('Galapagos Office','gogalapagos'); ?></h3>
+                <div class="col-md-4 col-sm-8 col-sm-offset-2">
+                    <h3 class="body-font text-center"><?php _e('Galapagos Office','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Address'); ?>:</h4>
                     <p>Rabida s/n &amp; Floreana &amp; Piqueros <br /> Santa Cruz Island - Galapagos</p>
                     <h4 class="body-font"><?= _e('Phone (Area Code)','gogalapagos'); ?>:</h4>
@@ -113,8 +113,8 @@ $options = array(
                     <h4 class="body-font"><?= _e('Office Schedule', 'gogalapagos'); ?>:</h4>
                     <p>(593-5) 252 6327 (<?= _e('Galapagos time', 'gogalapagos'); ?></p>
                 </div>
-                <div class="col-md-4">
-                    <h3 class="body-font"><?php _e('Toll Free Numbres','gogalapagos'); ?></h3>
+                <div class="col-md-4 col-sm-8 col-sm-offset-2">
+                    <h3 class="body-font text-center"><?php _e('Toll Free Numbres','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Partners'); ?>:</h4>
                     <ul>
                         <li>US: 1-888-50 KLEIN (55346)</li>
@@ -414,7 +414,7 @@ $options = array(
             <div id="<?= $expert->ID?>" class="col-sm-6">
                 <div class="row">
                     <div class="col-sm-4 text-center">
-                        <span class="fa fa-3x fa-envelope"></span>
+                        <img width="59" src="<?= get_template_directory_uri() ?>/images/recurso-mail-gris.png">
                     </div>
                     <div class="col-sm-8">
                         <?php if ($correo = get_post_meta($expert->ID, $prefix . 'salesexpert_email', true)){ ?>
@@ -430,3 +430,34 @@ $options = array(
     </div>
 </section>
 <?php get_footer(); ?>
+<script>
+    $(document).ready( function(){
+        console.log('hola');
+        var window_width = $(window).width();
+        cambiarFormularioDeLugar(window_width);
+    })
+    function cambiarFormularioDeLugar(window_width){
+        
+        if (window_width <= 768){
+            
+            var htmlCode = '';
+            
+            htmlCode        =   '<div class="container">';
+            htmlCode        +=  '<div class="row">';
+            htmlCode        +=  '<div class="col-sm-10 col-sm-offset-1">';
+            
+            htmlCode        +=  '<div id="form-responsive" class="contact-form-responsive"></div>';
+            
+            htmlCode        +=  '</div>';
+            htmlCode        +=  '</div>';
+            htmlCode        +=  '</div>';
+            
+            
+            //$('.contacts-begins').prepend(htmlCode);
+            $(htmlCode).insertBefore('.contacts-begins');
+            $('#contact-form').appendTo('#form-responsive');
+            
+        }
+        
+    }
+</script>

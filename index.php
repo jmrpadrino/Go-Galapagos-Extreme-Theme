@@ -32,9 +32,16 @@
         
         <div class="row tags">
             <div class="col-xs-12 text-center">
-                <h2><?= _e('Tags', 'gogalapagos'); ?></h2>
+                <h2><?= _e('Categories', 'gogalapagos'); ?></h2>
                 <span class="separator"></span>
-                <?php echo get_the_tag_list( '<div class="tag-list">', '<span class="tag-separator">|</span>', '</div>' ); ?> 
+                <ul class="list-inline tag-list">
+                <?php 
+                    //echo get_the_categories( '', '<span class="tag-separator">|</span>', '</div>' ); 
+                    foreach( get_categories() as $category){
+                        echo '<li><a href="#">' . $category->cat_name . '</a></li>';
+                    }
+                ?> 
+                </ul>
             </div>
         </div>
     </div>

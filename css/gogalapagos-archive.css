@@ -223,9 +223,18 @@ div section h1 {
         width: auto;
     }
 }
-.archive-item-placeholder{
+.archive-item-placeholder{     
+    max-height: 410px;
     overflow: hidden;
-    max-height: 45vh;
+}   
+@media screen and (max-width: 1360px) {
+    .archive-item-placeholder{
+        max-height: 300px;
+    }
+}
+.post-type-archive.post-type-archive-gganimal .archive-item-placeholder{
+    max-height: 100%;
+    padding: 36px;
 }
 .archive-item-placeholder:hover img{
     -webkit-transform: scale(1.1);

@@ -464,7 +464,8 @@ label.field.focused .psuedo_select ul {
     height: 100vh;
     overflow: hidden;
 }
-.offers-and-news .carousel img{
+.offers-and-news .carousel .now-mobile{
+    height: 100vh;
     /*    position: absolute;
     top: 0;
     left: 0;
@@ -976,9 +977,6 @@ filter: brightness(1) sepia(0);
     .footer-section h4{
         margin-top: 36px;
     }
-    .social-media-icons{
-        margin: 36px 0;
-    }
     .orgs-logos h2{
         font-size: 18px;
         margin-bottom: 36px;
@@ -986,6 +984,9 @@ filter: brightness(1) sepia(0);
     .orgs-logos img{
         margin-bottom: 20px;
         max-width: 80px;
+    }
+    .footer-background{
+        background: none;
     }
 }
 @media screen and (max-width: 480px){

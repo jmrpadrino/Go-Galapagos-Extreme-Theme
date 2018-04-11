@@ -86,7 +86,7 @@ function gg_add_styles_and_scripts() {
     if ( is_archive() or is_tax() or is_tag() ){
         wp_enqueue_style( 'gogalapagos-archives',  get_template_directory_uri() .'/css/gogalapagos-archive.css', array(), $ver, 'screen' );
     }
-    if ( is_archive('ggislan') ){
+    if ( is_archive('ggisland') ){
         wp_enqueue_style( 'gogalapagos-archives-island',  get_template_directory_uri() .'/css/gogalapagos-archive-island.css', array(), $ver, 'screen' );
     }
     if ( is_search() ){

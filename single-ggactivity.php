@@ -1,13 +1,9 @@
 <?php get_header(); the_post(); $prefix = 'gg_' ?>
-<div class="sections section single-hero single-island">
+<div id="content-top" class="sections section single-hero single-island">
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1">
-                <?php
-                $term = get_the_terms( get_the_ID(), 'animalgroup' );
-                ?>
-                <span class="serif-font"><?php echo $term[0]->name; ?></span>
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
                 <span class="separator"></span>
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
@@ -17,23 +13,23 @@
         </div>
     </div>
     <?php 
-        $g_images = get_post_meta ( get_the_ID(), $prefix . 'activity_gallery', true);
+        $g_images = get_post_meta ( get_the_ID(), $prefix . 'activity_gallery', false);
     ?>
     <div class="single-carousel">
         <div id="single-hero-carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
             <div class="carousel-inner" role="listbox">
                 <?php
-                    if ( count($g_images[0]) > 0 ){ //Si tiene fotos en la galeria del item
+                    if ( count($g_images) > 0 ){ //Si tiene fotos en la galeria del item
                         $i = 0;
                         $hero_controls = true;
-                        while( $i < count( $g_images[0] ) ){
+                        while( $i < count( $g_images ) ){
                             //echo $imagenes[0][$i] . '</br>';
                             if( $i == 0){
                                 echo '<div class="item active">';
                             }else{
                                 echo '<div class="item">';
                             }
-                            echo '<img src="'.wp_get_attachment_url( $g_images[0][$i] ).'">';
+                            echo '<img src="'.wp_get_attachment_url( $g_images[$i] ).'">';
                             echo '</div>';
                             $i++;
                         }
@@ -90,7 +86,7 @@
 </div>
 </div-->
 </div>
-<div class="sections section">
+<div id="main-content-single" class="sections section">
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">

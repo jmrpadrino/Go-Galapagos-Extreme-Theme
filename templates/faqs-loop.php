@@ -5,14 +5,16 @@
                 'taxonomy' => 'go_faqs',
                 'hide_empty' => false,
             ) );
+            echo $term;  
         ?>
         <div class="col-xs-12">
             <ul class="list-inline faqs-groups-links">
-                <li><a href="<?= get_post_type_archive_link('ggfaqs') ?>"><?= _e('All FAQs', 'gogalapagos') ?></a></li>
+                <li class="faq-term-link <?php echo is_post_type_archive('ggfaqs') == '1' ? 'activated' : '' ?>"><a href="<?= get_post_type_archive_link('ggfaqs') ?>"><?= _e('All FAQs', 'gogalapagos') ?></a></li>
                 <?php 
-                    
                     foreach($faqs_groups as $faqs_group){
-                        echo '<li><a href="'.get_term_link( $faqs_group->term_id, 'go_faqs' ).'">' . $faqs_group->name . '</a></li>';
+                        echo '<li class="faq-term-link ';
+                        echo $faqs_group->slug == $term ? 'activated' : '';
+                        echo '"><a href="'.get_term_link( $faqs_group->term_id, 'go_faqs' ).'">' . $faqs_group->name . '</a></li>';
                     }
                 ?>
             </ul>

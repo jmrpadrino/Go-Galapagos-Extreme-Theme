@@ -8,7 +8,7 @@ $args = array(
 );
 $barcos = get_posts($args);
 ?>
-<div class="col-sm-9 alter-nav-container">
+<div class="col-md-9 hidden-sm hidde-xs alter-nav-container">
     <div class="contenedor">
         <div class="row">
             <div class="col-xs-12">
