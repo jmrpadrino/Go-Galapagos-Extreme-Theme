@@ -20,6 +20,8 @@
     font-weight: 900;
     width: 36px;
     height: 36px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 .island-inner-navigation .inner-navigation-icon:hover{
@@ -42,6 +44,7 @@
     color: white;
     text-shadow: 1px 1px 1px black;
     margin-top: 15vh;
+    -webkit-transition: all ease-out .3s;
     transition: all ease-out .3s;
 }
 .single-hero-convertion-area{
@@ -55,11 +58,14 @@
     left: 0;
     height: 100vh;
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     z-index: -1;
     overflow: hidden;
 }
 .single-carousel img{
+    -webkit-transform: translateY(-20%);
     transform: translateY(-20%);
 }
 .single-carousel .separator{
@@ -80,6 +86,7 @@
     margin-top: 80px;
 }
 .single-ggisland .single-more-content .separator{
+    -webkit-box-shadow: none;
     box-shadow: none;
     border-bottom: 2px solid #272727;
     margin-bottom: 18px;
@@ -148,6 +155,7 @@
     position: relative;
 }
 .more-islands img{
+    -webkit-transform: translateY(-20%);
     transform: translateY(-20%);
 }
 .more-island-caption{
@@ -164,6 +172,20 @@
 .view-more-about-this-island-link{
     color: #ffcc00;
     text-decoration: underline;
+}
+.itinerary-plan-your-trip-btn{
+    padding: 14px 17px;
+    background: #ff9626;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    display: table;
+    margin-bottom: 36px;
+}
+.itinerary-plan-your-trip-btn:hover{
+    text-decoration: none;
 }
 @media screen and (max-width: 480px){
     .single-more-island-section-title{

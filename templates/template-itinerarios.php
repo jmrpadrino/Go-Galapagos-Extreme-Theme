@@ -253,7 +253,7 @@ foreach( $itinerarios as $itinetario ){
                     </li>
                 <?php } //fin for de los dias ?>
                 </ul>
-                <a href="#" class="itinerary-plan-your-trip-btn"><?php _e('Plan your trip now','gogalapagos'); ?></a>
+                <a href="#" class="itinerary-plan-your-trip-btn"><?php _e('Request a Quote','gogalapagos'); ?></a>
                 <a href="<?= get_permalink($itinetario->ID) ?>" class="view-itinerary-btn" target="_blank"><?php _e('View Complete Itinerary','gogalapagos'); ?></a>
             </div>
         </div>

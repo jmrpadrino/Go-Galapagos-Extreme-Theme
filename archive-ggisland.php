@@ -20,8 +20,6 @@
             </div>
         </div>
     </div>
-</section>
-<section class="section sections">
     <?php get_template_part('templates/archive-loop'); ?>  
 </section>
 <?php get_footer(); ?>

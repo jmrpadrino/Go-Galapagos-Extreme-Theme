@@ -36,7 +36,7 @@
     color: #ff9d02;
     font-weight: bold;
 }
-@media screen and (max-width: 768px){
+@media screen and (min-width: 768px) and (max-width: 1024px){
     .island-top-fold{
         padding-bottom: 60px;
     }
@@ -48,7 +48,7 @@
         left: -50%;
     }
     .archive-title{
-        margin-top: 130px;
+        margin-top: 200px;
     }
     .hero-and-title .separator{
         width: 30%;

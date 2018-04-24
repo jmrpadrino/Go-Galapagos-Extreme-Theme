@@ -510,4 +510,40 @@ dd {
         align-items: center;
         border-bottom: 1px solid #d1d1d1;
     }
+    .info-container{
+        padding-bottom: 36px;
+        border-bottom: 1px solid rgba(38, 38, 38, .2);
+    }
+    .cabin-description-placeholder{
+        padding: 30px 15px;
+        margin-bottom: 18px;
+    }
+    .cabin-description-placeholder br{
+        display: none;
+    }
+    .cabin-feature-list{
+        max-height: 100%!important;
+    }
+    .cabin-description-placeholder{
+        height: 100%;
+    }
+    .btn-cabin-modal, .btn-cabin-modal:hover{
+        display: block;
+        margin-right: 0;
+        margin: 18px 0;
+    }
+    .btn-cabin-request{
+        position: initial;
+        display: block;
+    }
+    .cabin-thumbnail-placeholder{
+        height: auto;
+        margin-bottom: 18px;
+    }
+    .cabin-thumbnail{
+        position: initial;
+    }
+    .element-title{
+        margin-top: 36px;
+    }
 }

@@ -42,19 +42,19 @@ $dias_de_la_semana = array(
     <div class="row">
         <div class="col-xs-12">
             <?php
-    //OBTENER LOS ITINERARIOS ASIGNADOS A ESTE BARCO POR EL ID DEL BARCO
-    $args = array(
-    'post_type' => 'ggitineraries',
-    'meta_query' => array(
-        array(
-            'key'     => $prefix . 'itinerary_ship_id',
-            'value'   => $post_barco->ID,
-            'compare' => 'LIKE',
-        ),
-    ),
-    'orderby' => 'post_date',
-    'order' => 'ASC'
-);
+                //OBTENER LOS ITINERARIOS ASIGNADOS A ESTE BARCO POR EL ID DEL BARCO
+                $args = array(
+                    'post_type' => 'ggitineraries',
+                    'meta_query' => array(
+                        array(
+                            'key'     => $prefix . 'itinerary_ship_id',
+                            'value'   => $post_barco->ID,
+                            'compare' => 'LIKE',
+                        ),
+                    ),
+                    'orderby' => 'post_date',
+                    'order' => 'ASC'
+                );
                 $itinerariosSimples = get_posts($args);
             ?>
             <div>
@@ -97,7 +97,7 @@ $dias_de_la_semana = array(
                                                 <div class="row">
                                                     <div class="col-xs-12">
                                                         <div class="itinerary-placeholder">
-                                                            <img src="<?= get_post_meta($itinerariosSimples[$iti]->ID, $prefix . 'itinerary_route_image', true ) ?>" class="img-responsive" alt="<?= $itinerariosSimples[$iti]->post_title ?>">
+                                                            <img src="<?= get_post_meta($itinerariosSimples[$iti]->ID, $prefix . 'itinerary_route_image', true ) ?>" class="img-responsive side-itinerary-image" alt="<?= $itinerariosSimples[$iti]->post_title ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -162,7 +162,7 @@ $dias_de_la_semana = array(
                                                     </li>
                                                     <?php } //fin for de los dias ?>
                                                 </ul>
-                                                <a href="#" class="itinerary-plan-your-trip-btn"><?php _e('Plan your trip now','gogalapagos'); ?></a>
+                                                <a href="<?= home_url('request-a-quote')?>?itid=<?= $itinerariosSimples[$iti]->ID ?>" class="itinerary-plan-your-trip-btn"><?php _e('Request a Quote','gogalapagos'); ?></a>
                                                 <a href="<?= get_permalink($itinerariosSimples[$iti]->ID) ?>" class="view-itinerary-btn" target="_blank"><?php _e('View Complete Itinerary','gogalapagos'); ?></a>
                                             </div>
                                         </div>
@@ -284,7 +284,7 @@ $dias_de_la_semana = array(
                                             );
                                         }
                                         ?>
-                                        <ul class="itineraries-day-by-day-list">
+                                        <ul class="itineraries-day-by-day-list extended">
                                         <li>
                                         <?php
                                         $dayadd = 0;

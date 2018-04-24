@@ -123,7 +123,7 @@ die();*/
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="the-excerpt text-justify">
-                        <p class="fold-text"><?php echo !empty($barco__resumen) ? $barco__resumen : ''; ?></p>
+                        <p class="fold-text"><?php echo !empty($barco__resumen) ? esc_html($barco__resumen) : ''; ?></p>
                     </div>
                     <?php if($barco__foldpicture){ ?>
                     <div class="deckplan-placeholder">

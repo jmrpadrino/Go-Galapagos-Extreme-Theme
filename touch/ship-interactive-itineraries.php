@@ -23,6 +23,17 @@ $args = array(
 );
 $itinerarios = get_posts($args);
 
+set_query_var('itinerarios_array', $itinerarios);
+
+$itinerario_index = 0;
+if ( isset($_GET['itinerario_id']) ){
+    $itinerario_index = $_GET['itinerario_id'];
+}
+
+//echo '<pre>';
+//print_r($itinerarios);
+//echo '</pre>';
+
 $dias_de_la_semana = array(
     '0' => _x('Monday','gogalapagos'),
     '1' => _x('Tuesday','gogalapagos'),
@@ -40,7 +51,7 @@ $dias_de_la_semana = array(
     '13' => _x('Sunday','gogalapagos')
 );
 
-$metas = get_post_meta( $itinerarios[0]->ID );
+$metas = get_post_meta( $itinerarios[$itinerario_index]->ID );
 //    echo '<pre>';
 //    print_r( $metas );
 //    echo '</pre>';
@@ -89,6 +100,23 @@ $empieza = $metas['gg_itinerary_start_day'][0];
                 display: inline-block;
                 text-align: left;
                 vertical-align: middle;
+            }
+            .modal-list{
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .modal-itinerary-item{
+                text-align: center;
+            }
+            .modal-itinerary-item a{
+                padding: 14px 17px;
+                display: block;
+                background: #008C96;
+                border-radius: 6px;
+                color: white;
+                text-decoration: none;
+                margin-bottom: 8px;
             }
             /*----------------------*/
             .touch-navbar{
@@ -165,14 +193,39 @@ $empieza = $metas['gg_itinerary_start_day'][0];
                 border-left: 1px solid black;
                 border-bottom: 1px solid black;
             }
+            .options-menu.open{
+                top: 70px;
+            }
             .itinerary-title{
                 color: white;
                 display: inline-block;
                 line-height: 18px;
                 font-size: 18px;
             }
-            .options-menu.open{
-                top: 70px;
+            .header-headings{
+                font-weight: bold;
+            }
+            .itinerary-item-placeholder{
+                padding: 10px 0;
+                border-top: 1px solid #e0e0e0;
+            }
+            .itinerary-item-placeholder:last-child{
+                border-bottom: 1px solid #e0e0e0;
+            }
+            .item-title{
+                color: #595959;
+            }
+            @media screen and ( min-width: 480px ) and ( max-width: 768px ) {
+                .touch-navbar{
+                }
+                .itinerary-title{
+                    line-height: 14px;
+                    font-size: 14px;
+                }
+                .item-title{
+                    font-size: 16px;
+                    margin: 0px;
+                }
             }
             @media screen and ( max-width: 480px ){
                 .touch-navbar{
@@ -182,16 +235,17 @@ $empieza = $metas['gg_itinerary_start_day'][0];
                     font-size: 14px;
                 }
                 .item-title{
-                    font-size: 12px;
-                    margin: 0px;
+                    font-size: 14px;
+                    margin: 0;
+                    margin-top: 1px;
                 }
             }
         </style>
     </head>
     <body>
         <nav class="touch-navbar">
-            <div class="navbar-icon-placeholder"><i class="glyphicon glyphicon-arrow-left"></i></div>
-            <div class="navbar-icon-placeholder text-left"><span class="itinerary-title"><?= $itinerarios[0]->post_title ?></span></div>
+            <div class="navbar-icon-placeholder"></div>
+            <div class="navbar-icon-placeholder text-left"><span class="itinerary-title"><?= $itinerarios[$itinerario_index]->post_title ?></span></div>
             <div id="alter-nav" class="navbar-icon-placeholder"><i class="glyphicon glyphicon-option-vertical"></i></div>
             <ul class="options-menu">
                 <li><a href="#" data-toggle="modal" data-target="#langModal">Languaje Selector</a></li>
@@ -202,7 +256,7 @@ $empieza = $metas['gg_itinerary_start_day'][0];
 
         <section class="itinerary-information-placeholder">
             <div class="itinerary-map-placeholder">
-                <img src="<?= $metas[ $prefix . 'itinerary_route_image' ][0] ?>" class="img-responsive" alt="<?= $itinerarios[0]->post_title ?>">
+                <img src="<?= $metas[ $prefix . 'itinerary_route_image' ][0] ?>" class="img-responsive" alt="<?= $itinerarios[$itinerario_index]->post_title ?>">
             </div>
             <div class="day-by-day-placeholder">
 
@@ -215,7 +269,7 @@ $empieza = $metas['gg_itinerary_start_day'][0];
                                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $i ?>" aria-expanded="<?= $i == 1 ? 'true' : 'false' ?>" aria-controls="collapse<?= $i ?>">
                                     <?= $dias_de_la_semana[$empieza + $i - 1] ?>
                                 </a>
-                                <a class="pull-right" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $i ?>" aria-expanded="<?= $i == 1 ? 'true' : 'false' ?>" aria-controls="collapse<?= $i ?>">
+                                <a class="pull-right" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $i ?>" aria-expanded="<?= $i == 1 ? 'true' : 'false' ?>" aria-controls="collapse<?= $i ?>">
                                     <i class="glyphicon glyphicon-chevron-down <?= $i == 1 ? 'opened' : 'closed' ?>"></i>
                                 </a>
                             </h4>
@@ -228,56 +282,62 @@ $empieza = $metas['gg_itinerary_start_day'][0];
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-3">
-                                        <h4>TIME</h4>
+                                    <div class="col-xs-3 col-sm-2">
+                                        <h4 class="header-headings">TIME</h4>
                                     </div>
-                                    <div class="col-xs-9">
-                                        <h4>ACTIVITIES</h4>
+                                    <div class="col-xs-9 col-sm-10">
+                                        <h4 class="header-headings">ACTIVITIES</h4>
                                     </div>
                                 </div>
                                 <?php
-    $actividadesAm = get_post_meta( $itinerarios[0]->ID, $prefix . 'itinerary_am_activities_list_day_'. $i, true);
-                                                                                       $activity = get_post($actividadesAm[0]);           
+                                    $actividadesAm = get_post_meta( $itinerarios[$itinerario_index]->ID, $prefix . 'itinerary_am_activities_list_day_'. $i, true);
+                                    
+                                    foreach($actividadesAm as $actividad ){
+                                        $activity = get_post($actividad); 
                                 ?>
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        07:00
+                                <div class="row itinerary-item-placeholder">
+                                    <div class="col-xs-3 col-sm-2">
+                                        <span class="day-time">13H00</span>
                                     </div>
-                                    <div class="col-xs-7">
-                                        <h2 class="item-title"><?= get_the_title( $actividadesAm[0] ) ?></h2>
+                                    <div class="col-xs-7 col-sm-8">
+                                        <h2 class="item-title"><?= esc_html( $activity->post_title ) ?></h2>
                                     </div>
                                     <div class="col-xs-2 text-center">
-                                        <a class="text-warning" href="<?= get_permalink($post->ID) ?>/activity/<?= $activity->post_name ?>"><i class="glyphicon glyphicon-new-window"></i></a>
+                                        <a class="text-warning" href="<?= get_permalink($post->ID) ?>/activity/?shipid=<?= $barcoId ?>&activityid=<?= $activity->ID ?>"><img src="<?= get_template_directory_uri() ?>/images/enter-visitor-site.png"></a>
                                     </div>
                                 </div>
+                                <?php } ?>  
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <h3>PM</h3>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-3">
-                                        <h4>TIME</h4>
+                                    <div class="col-xs-3 col-sm-2">
+                                        <h4 class="header-headings">TIME</h4>
                                     </div>
-                                    <div class="col-xs-9">
-                                        <h4>ACTIVITIES</h4>
+                                    <div class="col-xs-9 col-sm-10">
+                                        <h4 class="header-headings">ACTIVITIES</h4>
                                     </div>
                                 </div>
                                 <?php
-                                    $actividadesPm = get_post_meta( $itinerarios[0]->ID, $prefix . 'itinerary_pm_activities_list_day_'. $i, true);
-                                    $activity = get_post($actividadesPm[0]); 
-                                ?>                                
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        13:00
+                                    $actividadesPm = get_post_meta( $itinerarios[$itinerario_index]->ID, $prefix . 'itinerary_pm_activities_list_day_'. $i, true);
+                                    
+                                    foreach($actividadesPm as $actividad ){
+                                        $activity = get_post($actividad); 
+                                ?>
+                                <div class="row itinerary-item-placeholder">
+                                    <div class="col-xs-3 col-sm-2">
+                                        <span class="day-time">13H00</span>
                                     </div>
-                                    <div class="col-xs-7">
-                                        <h2 class="item-title"><?= get_the_title( $actividadesPm[0] ) ?></h2>
+                                    <div class="col-xs-7 col-sm-8">
+                                        <h2 class="item-title"><?= esc_html( $activity->post_title ) ?></h2>
                                     </div>
                                     <div class="col-xs-2 text-center">
-                                        <a class="text-warning" href="<?= get_permalink($post->ID) ?>/activity/<?= $activity->post_name ?>"><i class="glyphicon glyphicon-new-window"></i></a>
+                                        <a class="text-warning" href="<?= get_permalink($post->ID) ?>/activity/?shipid=<?= $barcoId ?>&activityid=<?= $activity->ID ?>"><img src="<?= get_template_directory_uri() ?>/images/enter-visitor-site.png"></a>
                                     </div>
                                 </div>
+                                <?php } ?>                                
                             </div>
                         </div>
                     </div>
@@ -285,57 +345,15 @@ $empieza = $metas['gg_itinerary_start_day'][0];
                 </div>
             </div>        
         </section>
-
-        <!-- Modal -->
-        <div class="modal fade" id="langModal" tabindex="-1" role="dialog" aria-labelledby="langModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal for languajes</h4>
-                    </div>
-                    <div class="modal-body">
-                        <ul>
-                            <li>Español</li>
-                            <li>English</li>
-                            <li>Francois</li>
-                            <li>Italiano</li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="itinerariesModal" tabindex="-1" role="dialog" aria-labelledby="itinerariesModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Galapagos Legend Itineraries</h4>
-                    </div>
-                    <div class="modal-body">
-                        <ul>
-                            <li>A</li>
-                            <li>B</li>
-                            <li>C</li>
-                            <li>D</li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?= get_template_part('touch/templates/modal-idiomas')?>
+        <?= get_template_part('touch/templates/modal-itinerarios')?>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script>
             $(document).ready( function(){
-                //console.log(window.location.href);
+                console.log(window.location.href);
                 $('.collapse').on('hide.bs.collapse', function () {
                     $(this).siblings('.panel-heading').find('.glyphicon').toggleClass('opened');
                 });
@@ -351,8 +369,21 @@ $empieza = $metas['gg_itinerary_start_day'][0];
                 })
                 $(window).scroll( function(){
                     $('.options-menu').removeClass('open');
-                })
-            })
+                });
+            });
+
+            $(".panel").on("show.bs.collapse hide.bs.collapse", function(e) {
+                if (e.type=='show'){
+                    $(this).addClass('active');
+                    $(this).children('a').children('.panel-heading').children('.see-more-faqs-icon').removeClass('fa-plus');
+                    $(this).children('a').children('.panel-heading').children('.see-more-faqs-icon').addClass('fa-minus');
+                }else{
+                    $(this).removeClass('active');
+                    $(this).children('a').children('.panel-heading').children('.see-more-faqs-icon').removeClass('fa-minus');
+                    $(this).children('a').children('.panel-heading').children('.see-more-faqs-icon').addClass('fa-plus');
+                }
+            });  
+
         </script>
     </body>
 </html>

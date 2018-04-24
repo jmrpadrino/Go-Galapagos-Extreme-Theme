@@ -54,7 +54,7 @@ $barcos = get_posts($args);
                     <span class="slogan"><?= $slogan ?></span>
                     <span class="separator"></span>
                 </div>
-                <p class="cruise-excerpt"><?= get_the_excerpt($barco->ID) ?></p>
+                <p class="cruise-excerpt"><?= esc_html(get_the_excerpt($barco->ID)) ?></p>
                 <a class="cruise-link" href="<?= $link ?>"><?= _e('View More','gogalapagos')?></a>
             </div>
             <?php } ?>
@@ -120,15 +120,15 @@ $barcos = get_posts($args);
     <div class="fullpage-slide">
         <div class="container-fluid centered-elements">
             <div class="row">
-                <div class="col-xs-6 nopadding">
+                <div class="col-sm-6 nopadding">
                     <?php $ecoImage = get_post_meta(get_the_ID(), $prefix . 'galapagos_cruises_eco_image', true); ?>
                     <div class="side-image-placeholder">
                         <img src="<?= $ecoImage ?>" alt="Go Galapagos - Eco Luxury" class="img-responsive">
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-sm-6">
                     <div class="row">
-                        <div class="col-xs-10 col-xs-offset-1">
+                        <div class="col-md-10 col-md-offset-1">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h2 class="galapagos-cruises-inner-sections-title"><?= get_post_meta(get_the_ID(), $prefix . 'galapagos_cruises_eco_title', true) ?></h2>
@@ -148,12 +148,12 @@ $barcos = get_posts($args);
         </div>
     </div>
 </section>
-<section class="section sections crew" style="overflow: hidden; height: 100vh;">
+<section class="section sections crew">
     <div class="container-fluid centered-elements">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-md-6">
                <div class="row">
-                    <div class="col-xs-10 col-xs-offset-1">
+                    <div class="col-md-10 col-md-offset-1">
                         <div class="row">
                             <div class="col-sm-12">
                                 <h2 class="galapagos-cruises-inner-sections-title"><?= get_post_meta(get_the_ID(), $prefix . 'galapagos_cruises_crew_title', true) ?></h2>
@@ -169,7 +169,7 @@ $barcos = get_posts($args);
                    </div>
                 </div>    
             </div>
-            <div class="col-sm-6 hidden-xs noppading">
+            <div class="col-md-6 hidden-xs noppading">
                 <?php $crewImage = get_post_meta(get_the_ID(), $prefix . 'galapagos_cruises_crew_image', true); ?>
                 <div class="side-image-placeholder">
                     <img src="<?= $crewImage ?>" alt="Go Galapagos - Eco Luxury" class="img-responsive">
@@ -178,7 +178,7 @@ $barcos = get_posts($args);
         </div>
     </div>
 </section>
-<section class="section sections activities" style="overflow: hidden; height: 100vh;">
+<section class="section sections activities">
     <div class="nextSlide">
         <span class="fa fa-chevron-right"></span>        
     </div>

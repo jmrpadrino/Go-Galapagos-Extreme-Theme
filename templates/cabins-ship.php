@@ -13,7 +13,12 @@ $cabinaRenders = get_post_meta( $cabina->ID, $prefix . 'cabin_render', false);
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-sm-8 col-sm-push-4">
+                    <div class="cabin-thumbnail-placeholder">
+                        <img class="cabin-thumbnail" src="<?= get_the_post_thumbnail_url($cabina->ID); ?>" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-sm-4 col-sm-pull-8">
                     <div class="cabin-description-placeholder">
                         <!--p><?= get_the_excerpt($cabina->ID); ?></p-->
                         <ul class="cabin-feature-list">
@@ -32,12 +37,7 @@ $cabinaRenders = get_post_meta( $cabina->ID, $prefix . 'cabin_render', false);
                             //echo $cabin__dispoID;
                             //echo $barco;
                         ?>
-                        <a href="https://quote.gogalapagos.com/en/site/cruceroAcomodacion?date=<?= $fecha ?>&ship=<?= $barco ?>&cabin=<?= $cabin__dispoID ?>" class="btn btn-cabin-request" target="_blank"><?php _e('Request a Quote','gogalapagos'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="cabin-thumbnail-placeholder">
-                        <img class="cabin-thumbnail" src="<?= get_the_post_thumbnail_url($cabina->ID); ?>" class="img-responsive">
+                        <a class="itinerary-plan-your-trip-btn" href="<?= home_url('request-a-quote')?>?ct=<?= $cabin__dispoID ?>" class="btn btn-cabin-request" target="_blank"><?php _e('Request a Quote','gogalapagos'); ?></a>
                     </div>
                 </div>
             </div>

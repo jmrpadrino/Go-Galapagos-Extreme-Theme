@@ -37,6 +37,7 @@
 .ggcruises-thumbnail-placeholder .separator{
     float: left;
     margin-top: 18px;
+    border-color: white;
 }
 .ggcruises-thumbnail-placeholder *{
     z-index: 999;

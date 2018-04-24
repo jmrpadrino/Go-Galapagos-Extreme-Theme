@@ -232,6 +232,11 @@ div section h1 {
         max-height: 300px;
     }
 }
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .archive-item-placeholder{
+        max-height: 256px;
+    }
+}
 .post-type-archive.post-type-archive-gganimal .archive-item-placeholder{
     max-height: 100%;
     padding: 36px;
@@ -293,6 +298,7 @@ div section h1 {
     .archive-item-title{
         bottom: 30px;
         left: 40px;
+        font-size: 24px;
     }
 }
 .land-tours{

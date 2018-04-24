@@ -120,9 +120,18 @@
     list-style: none;
     padding: 0px;
     width: 93%!important;
-    max-height: 265px;
-    height: 265px;
+    max-height: 260px;
+    height: 260px;
     overflow-y: auto;
+}
+@media screen and ( min-width: 1500px ){
+    .itineraries-day-by-day-list{
+        max-height: 100%;
+        height: auto;
+    }
+}
+.itineraries-day-by-day-list.extended{
+    max-height: 55vh;
 }
 .day-name{
     margin: 0px;
@@ -242,8 +251,14 @@
     height: auto; 
     width: 100%;
 }
-
-
+.itinerary-placeholder .side-itinerary-image{
+    max-height: calc(100vh - 220px);
+    margin: 0 auto;
+}
+.deckplan-img{
+    max-height: calc(100vh - 220px);
+    margin: 0 auto;
+}
 /*---- MEDIA QUERIES ----*/
 /* PARA MONITORES BAJOS */
 @media screen and (max-height: 768px){
@@ -269,6 +284,16 @@
     .itinerary-plan-your-trip-btn{
         margin-top: 20px;
         margin-bottom: 18px;
+    }
+}
+@media screen and (min-height: 768px) and (min-height: 1024px){
+    .day-placeholder{
+        width: 100%;
+        padding: 30px 18px;
+        height: auto;
+    }
+    .day-image-placeholder img{
+        margin: 0;   
     }
 }
 @media screen and (max-width: 480px){

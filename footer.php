@@ -120,9 +120,13 @@
                     <div class="col-md-3">
                         <h4 class="body-font"><?php _e('Members Site','gogalapagos'); ?></h4>    
                         <ul>
-                            <li><a href="#"><?php _e('Login','gogalapagos'); ?></a></li>
-                            <li><a href="#"><?php _e('Register','gogalapagos'); ?></a></li>
-                            <li><a href="#"><?php _e('Rates','gogalapagos'); ?></a></li>
+                            <?php 
+                                $main_menu_args = array(
+                                    'theme_location'  => 'parters-main-menu',	
+                                    'menu' => 'parters-main-menu',
+                                );
+                                wp_nav_menu( $main_menu_args ); 
+                            ?>
                         </ul>
                         <h4 class="body-font"><?php _e('Suscribe to our news','gogalapagos')?></h4>
                         <div class="suscribe-form">
@@ -474,6 +478,13 @@ if ( is_page_template() ){
 <?php wp_footer(); ?>
 <script type="text/javascript">
     $(document).ready( function (){
+        <?php if ( is_front_page() and !wp_is_mobile() /*or is_archive('ggpackage')*/ ) { ?>
+        var video = document.getElementById("hero-video");
+        // REPRODUCIR EL VIDEO
+        video.addEventListener( "canplay", function() {
+            video.play();
+        });
+        <?php } ?>
         var location = window.location.hash;
         // ACTIVAR LENGUAJE
         var theLanguage = $('html').attr('lang');
@@ -502,13 +513,6 @@ if ( is_page_template() ){
         var customersCount = new CountUp('customers', 0, customers, 0, 2.5, options);
         var departuresCount = new CountUp('depart', 0, departures, 0, 2.5, options);
         var yearsOldCount = new CountUp('years-old', 0, yearsOld, 0, 2.5, options);
-        <?php } ?>
-        <?php if ( is_front_page() and !wp_is_mobile() /*or is_archive('ggpackage')*/ ) { ?>
-        var video = document.getElementById("hero-video");
-        // REPRODUCIR EL VIDEO
-        video.addEventListener( "canplay", function() {
-            video.play();
-        });
         <?php } ?>
         if ($(window).width() > 600){
         fullPageArea.fullpage({
@@ -570,7 +574,7 @@ if ( is_page_template() ){
                 //console.log(anchorLink);
                 //console.log(index);
                 //console.log($('a[href="'+anchorLink+'"]').children('span').text());
-                if(anchorLink == 'itineraries'){
+                /*if(anchorLink == 'itineraries'){
                     $('.itineraries-day-by-day-list').niceScroll({
                         autohidemode: false,
                         cursorwidth: 8,
@@ -592,7 +596,7 @@ if ( is_page_template() ){
                     $('#ship-itineraries-slider').on('slid.bs.carousel', function(){
                         $('.itineraries-day-by-day-list').getNiceScroll().remove();
                     });
-                }
+                }*/
                 if(index == 6 || index == 7){                    
                     $('.first').addClass('active');
                 }
@@ -616,8 +620,8 @@ if ( is_page_template() ){
                 <?php } ?>
             },
             onLeave: function (index, nextIndex, direction){
-                $('.itineraries-day-by-day-list').getNiceScroll().remove();
-                $('.day-placeholder').getNiceScroll().remove();
+                //$('.itineraries-day-by-day-list').getNiceScroll().remove();
+                //$('.day-placeholder').getNiceScroll().remove();
                 <?php if (is_front_page()){ ?>
                 $('.progress-left .progress-bar').removeClass('now');
                 customersCount.reset();

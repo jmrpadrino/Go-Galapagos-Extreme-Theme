@@ -35,7 +35,7 @@ while ($i <= $whyGalapagosnumberofsections){
 <section class="sections section <?= $i % 2 == 0 ? 'darker' : '' ?>">
     <div class="container-fluid">
         <div class="row nopadding">
-            <div class="col-sm-6">
+            <div class="col-md-6">
                 <div class="day-placeholder">
                     <h2><?= $titulo ?></h2>
                     <div class="why-galapagos-section-paragrahp">
@@ -46,7 +46,7 @@ while ($i <= $whyGalapagosnumberofsections){
                     <?php } ?>
                 </div>
             </div>
-            <div class="col-sm-6 nopadding">
+            <div class="col-md-6 nopadding">
                 <?php if($imagen){ ?>
                 <div class="day-image-placeholder">
                     <img src="<?= $imagen ?>" alt="">

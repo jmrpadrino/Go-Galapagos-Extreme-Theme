@@ -5,7 +5,6 @@
                 'taxonomy' => 'go_faqs',
                 'hide_empty' => false,
             ) );
-            echo $term;  
         ?>
         <div class="col-xs-12">
             <ul class="list-inline faqs-groups-links">

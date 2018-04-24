@@ -2,6 +2,10 @@
 /*
 Template Name: InteractiveTouch
 */
+$prefix = 'gg_';
+$barco_meta_ID = get_post_meta($post->ID, $prefix . 'touch_itinerary_ship_id', true);
+$barco = get_post($barco_meta_ID);
+$barco_metas = get_post_meta($barco->ID);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +13,7 @@ Template Name: InteractiveTouch
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Galapagos Legend Itineraries</title>
+        <title><?= $barco->post_title ?> Itineraries</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -150,7 +154,7 @@ Template Name: InteractiveTouch
                 <img src="<?= get_template_directory_uri() ?>/touch/go-galapagos-logo.png" alt="Go Galapagos - Ecuador"> 
             </div>
             <div class="ship-logo-container">
-                <img src="<?= get_template_directory_uri() ?>/touch/galapagos-legend-logo.png" alt="Galapagos Legend"> 
+                <img src="<?= array_shift( $barco_metas[ $prefix. 'ship_logo' ] )?>" alt="Galapagos Legend"> 
             </div>
             <div class="welcome-message-container">
                 <p><?= _e('Welcome to experience Galapagos, the islands that changed the world') ?></p>

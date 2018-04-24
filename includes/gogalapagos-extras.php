@@ -136,6 +136,7 @@ function gg_theme_dashboard(){
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
         <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Front Page</a></li>
+        <li role="presentation"><a href="#archives" aria-controls="archives" role="tab" data-toggle="tab">Archives</a></li>
         <li role="presentation"><a href="#inner-pages" aria-controls="inner-pages" role="tab" data-toggle="tab">Inner Pages</a></li>
         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
@@ -157,6 +158,18 @@ function gg_theme_dashboard(){
                     </div>
                 </div>
             </div>
+        </div>
+        <div role="tabpanel" class="tab-pane active" id="archives">
+            <?php $post_types = get_post_types(); ?>
+            <pre>
+            <?php 
+                foreach (array_keys($post_types) as $key){
+                    if (strpos($key, 'gg') !== false){
+                        echo $key . '<br />';
+                    }
+                }
+            ?>
+            </pre>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="inner-pages">
             <div class="row">

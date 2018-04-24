@@ -1,7 +1,4 @@
-<?php get_header(); ?>
-<section class="section sections">
-    <h1>ofertas especiales</h1>
-</section>
+<?php get_header(); $prefix = 'gg_'?>
 <?php while ( have_posts() ){ the_post(); ?>
 <div class="sections section single-hero single-island">
     <div class="hero-mask"></div>
@@ -21,7 +18,7 @@
         </div>
     </div>
     <?php 
-        $g_images = get_post_meta ( get_the_ID(), $prefix . 'offer_gallery', true);
+        $g_images = get_post_meta( get_the_ID(), $prefix . 'offer_gallery', true);      
     ?>
     <div class="single-carousel">
         <div id="single-hero-carousel_<?= get_the_ID() ?>" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">

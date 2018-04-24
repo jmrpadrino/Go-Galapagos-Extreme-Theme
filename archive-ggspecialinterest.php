@@ -14,7 +14,7 @@
     <div class="container island-archive-container">
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 archive-description">
-                <p>bla bla bla Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium a totam deserunt quas enim nesciunt saepe alias soluta, accusantium maxime id excepturi, repellendus exercitationem officiis unde. Delectus accusantium sapiente earum? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita nulla non totam illum culpa vel animi ullam, voluptate perspiciatis, sit pariatur ea consequatur ducimus autem quae odit atque nesciunt commodi.</p>
+                <p><?= _e('We offer ample flexibility to adapt to any special needs or interests of the new traveler. From special activities to dietary needs we have hosted several types of travelers and made their vacation a true tailor-made experience. These are some examples of our programs.', 'gogalapagos'); ?></p>
             </div>
         </div>
     </div>  

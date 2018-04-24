@@ -1767,7 +1767,7 @@ li.load a:hover:after{
 }
 .orgs-logos{
     background: #32312E;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 .orgs-logos h2{
     margin-top: 120px;
@@ -2473,6 +2473,30 @@ body.blog{
     .social-media-icons span{
         display: inline-block;
         margin: auto;
+    }
+    .search-box-title{
+        margin-bottom: 20px;
+    }
+    .tag-list{
+        margin-top: 18px;
+    }
+    .tag-list li a{
+        margin-bottom: 0px;
+    }
+    .centered-elements{
+        display: block!important;
+        height: auto!important;
+    }
+    .centered-elements .separator{
+        margin-bottom: 0px!important;
+    }
+    .galapagos-cruises-inner-sections-title{
+        margin-top: 18px!important;
+        text-align: center;
+        font-size: 24px;
+    }
+    .centered-elements h2{
+        text-align: center;
     }
 }
 
