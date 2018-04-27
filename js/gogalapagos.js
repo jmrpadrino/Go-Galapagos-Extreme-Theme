@@ -305,6 +305,11 @@ $('.day-placeholder').mouseenter(function(){
     fullPageArea.fullpage.setAllowScrolling(false);
     fullPageArea.fullpage.setKeyboardScrolling(false);
 });
+$('.day-placeholder').mouseover(function(){
+    console.log('dentro');
+    fullPageArea.fullpage.setAllowScrolling(false);
+    fullPageArea.fullpage.setKeyboardScrolling(false);
+});
 $('.day-placeholder').mouseout(function(){
     console.log('fuera');
     fullPageArea.fullpage.setAllowScrolling(true);

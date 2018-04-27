@@ -33,6 +33,9 @@
 .ggcruises-thumbnail-placeholder{
     padding-top: 72px;
     padding-left: 36px;
+    position: relative; 
+    height: 50vh; 
+    overflow: hidden;
 }
 .ggcruises-thumbnail-placeholder .separator{
     float: left;
@@ -42,6 +45,7 @@
 .ggcruises-thumbnail-placeholder *{
     z-index: 999;
     display: block;
+    color: white;
 }
 .ggcruises-thumbnail-placeholder .hero-mask{
     z-index: -10;
@@ -68,6 +72,7 @@
     margin-bottom: 48px;
     text-transform: uppercase;
 }
+
 section.activities{
     overflow: hidden;
 }
@@ -232,5 +237,19 @@ section.activities{
     }
     .service-facilities-list{
         font-size: 12px;
+    }
+}
+@media screen and ( max-width: 1024px ){
+    .ggcruises-thumbnail-placeholder{
+        position: relative; 
+        height: 40vh; 
+        color: white; 
+        overflow: hidden;
+    }
+    .cruise-excerpt{
+        font-size: 20px!important;
+    }
+    .service-facilities-list{
+        font-size: 16px!important;
     }
 }

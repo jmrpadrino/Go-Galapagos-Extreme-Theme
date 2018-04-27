@@ -238,3 +238,17 @@ $physical_options = array(
     </div>
 </div>
 <?php get_footer(); ?>
+<script>
+    $(document).ready( function(){
+        // pasa la imagen destacada como fondo del FOLD y luego elimina la imagen destacada del DOM 
+        // solo en pantallas menores a 1024 (tablets)
+        if( $(window).width() < 1025 ){
+            if ( $('.single-carousel') ){
+                var ruta_imagen_primer_slide = $('.carousel-inner').children('.item').find('img').attr('src');
+                $('.single-hero').css('background-image', 'url(' + ruta_imagen_primer_slide + ')');
+                $('.single-carousel').remove();
+                $('.rear-slider-controllers').remove();
+            }
+        }
+    });
+</script>

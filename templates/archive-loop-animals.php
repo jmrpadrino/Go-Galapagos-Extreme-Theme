@@ -1,6 +1,6 @@
     <div class="container-fluid nopadding">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">            
+            <div class="col-md-8 col-md-offset-2">            
     <?php 
         $grupoAnimales = get_terms('animalgroup', array('hide_empty' => false));
         //var_dump($grupoAnimales); 

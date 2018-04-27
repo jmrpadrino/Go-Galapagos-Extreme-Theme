@@ -16,7 +16,7 @@ $prefix = 'gg_';
     </div>
     <div class="container-fluid" style="height: 40vh;">
         <div class="row">
-            <div class="col-xs-12 col-lg-10 col-lg-offset-1 inner-page-content" style="margin-top: 30px;">
+            <div class="col-sm-10 col-sm-offset-1 col-lg-10 col-lg-offset-1 inner-page-content" style="margin-top: 30px;">
                 <h2 class="cruises-page-title body-font"><?= _e('Experience the best of The Pacific Coast','gogalapagos'); ?></h2>
                 <div class="cruise-page-content">    
                     <?php 
@@ -47,7 +47,7 @@ $barcos = get_posts($args);
     $link = get_post_permalink($barco->ID); 
             ?>
             <div class="col-sm-6 nopadding">
-                <div class="ggcruises-thumbnail-placeholder" style="position: relative; height: 50vh; color: white; overflow: hidden;">
+                <div class="ggcruises-thumbnail-placeholder">
                     <img src="<?= $thumbnail ?>" class="img-responsive" alt="<?= $barco->post_title ?>" style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto;">
                     <div class="hero-mask"></div>
                     <h2><?= $barco->post_title ?></h2>
@@ -224,7 +224,7 @@ $barcos = get_posts($args);
 <section class="section sections">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-10 col-lg-offset-1">
                 <div style="margin: 80px 0;">
                     <?php echo the_content(); ?>
                 </div>
@@ -233,6 +233,4 @@ $barcos = get_posts($args);
     </div>
 
 </section>
-<?php 
-get_footer(); 
-?>
+<?php get_footer(); ?>

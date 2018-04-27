@@ -37,8 +37,8 @@ function gg_add_styles_and_scripts() {
     wp_enqueue_script( 'nicescroll', get_template_directory_uri() .'/js/jquery.nicescroll.min.js', array ( 'jquery' ), $ver, true);
     wp_enqueue_script( 'goga-fullpage-easeing', get_template_directory_uri() .'/js/jquery.easings.min.js', array ( 'jquery' ), $ver, true);
     wp_enqueue_script( 'goga-fullpage-scrolloverflow', get_template_directory_uri() .'/js/scrolloverflow.min.js', array ( 'jquery' ), $ver, true);
-    wp_enqueue_script( 'goga-fullpage', get_template_directory_uri() .'/js/jquery.fullPage.js', array ( 'jquery' ), $ver, true); 
-    wp_enqueue_script( 'goga-fullpage-extensions', get_template_directory_uri() .'/js/jquery.fullPage.extensions.min.js', array ( 'jquery' ), $ver, true);
+    wp_enqueue_script( 'goga-fullpage', get_template_directory_uri() .'/js/jquery.fullpage.js', array ( 'jquery' ), $ver, true); 
+    wp_enqueue_script( 'goga-fullpage-extensions', get_template_directory_uri() .'/js/jquery.fullpage.extensions.min.js', array ( 'jquery' ), $ver, true);
     if ( is_home() or is_front_page() ){
         wp_enqueue_script( 'countJs', get_template_directory_uri() .'/js/countUp.min.js', array ( 'jquery' ), $ver, true); 
     }

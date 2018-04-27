@@ -22,7 +22,7 @@ the_post();
     </div>
     <div class="container-fluid post_excerpt">
         <div class="row">
-            <div class="col-xs-12 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 36px;">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 36px;">
                 <?= esc_html( get_the_excerpt() ) ?>
             </div>
         </div>
@@ -31,7 +31,7 @@ the_post();
 <section class="post-editor-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-sm-8 col-sm-offset-2">
                 <?= the_content() ?>
             </div>
         </div>

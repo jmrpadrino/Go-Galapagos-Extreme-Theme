@@ -74,7 +74,10 @@
                         $memberships = get_posts($args);
                 
                         foreach($memberships as $membership){
-                            echo '<li><img src="'.get_the_post_thumbnail_url( $membership->ID, 'thumbnail' ).'" alt="Go Galapagos is member of '.$membership->post_title.'" class="img-responsive"></li>';
+                            $logoBlanco = get_post_meta($membership->ID, $prefix . 'membership_white_logo', false);
+                            if($logoBlanco){
+                                echo '<li><img src="'.$logoBlanco[0].'" alt="Go Galapagos is member of '.$membership->post_title.'" class="img-responsive"></li>';
+                            }
                         }
                     ?>
                 </ul>
@@ -543,13 +546,6 @@ if ( is_page_template() ){
                 var location = window.location.hash;
                 console.log(location);
                 paintHash(location);
-                $('.day-placeholder').niceScroll({
-                    autohidemode: false,
-                    cursorwidth: 8,
-                    cursorborder:'none',
-                    background:"rgba(28, 28, 28, 0.3)",
-                    cursorcolor:"rgba(28, 28, 28, 0.6)"
-                });
                 if(index == 1){
                     $('.getyourtrip-navbar-btn').addClass('hidden');
                     $('.navTrigger').removeClass('hidden');

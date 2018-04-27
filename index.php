@@ -61,7 +61,7 @@
                         $imagen = get_template_directory_uri() . '/images/no-thumbnail-post.jpg';
                     }
             ?>
-            <div class="post-placeholder col-sm-4 nopadding" style="background-image: url(<?= $imagen ?>); ">
+            <div class="post-placeholder col-sm-6 col-md-4 nopadding" style="background-image: url(<?= $imagen ?>); ">
                 <div class="archive-item-mask"></div>
                 <a href="<?= the_permalink() ?>"><?= the_title('<h2 class="archive-item-title body-font">','</h2>') ?></a>
                 <!--span class="post-date"><?php the_date('d/m/Y','',''); ?></span-->

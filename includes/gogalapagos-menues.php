@@ -7,6 +7,8 @@
         'desktop-side-alter-menu' => 'Menu auxiliar',
         'footer-sitemap' => 'Footer Sitemap',
         'mobile-main-menu' => 'Menu visible en mobile',
-        'parters-main-menu' => 'Menu Area Partners'
+        'parters-main-menu' => 'Menu Area Partners',
+        'search-area-top' => 'Search Area Top Menu',
+        'search-area-bottom' => 'Search Area Bottom Menu',
     ));
 ?>

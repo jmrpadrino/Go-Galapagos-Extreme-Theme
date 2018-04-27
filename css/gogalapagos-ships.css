@@ -227,6 +227,16 @@
     position: absolute;
     width: 100%;
 }
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .cabin-thumbnail-placeholder, .cabin-description-placeholder{
+        height: 100%;
+    }
+    .cabin-thumbnail{
+        position: relative;
+        width: 100%;
+        margin-bottom: 36px;
+    }
+}
 .btn-cabin-modal,.btn-cabin-modal:hover{
     padding: 14px 17px;
     background: #43403b;

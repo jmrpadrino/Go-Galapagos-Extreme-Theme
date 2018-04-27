@@ -6,18 +6,26 @@
                     <input id="s" type="text" name="s" width="100%">
                 </form>
                 <h2 class="search-box-title-smaller"><?php _e('You may also be interested in','gogalapagos'); ?></h2>
-                <ul class="list-inline tag-list">
-                    <li><a href="#">Galapagos Animals</a></li>
-                    <li><a href="#">Galapagos Islands</a></li>
-                    <li><a href="#">Galapagos Climate</a></li>
-                    <li><a href="#">Charles Darwin</a></li>
-                    <li><a href="#">Galapagos Facts</a></li>
-                </ul>
-                <ul class="list-inline tag-list">
-                    <li><a href="#">Go Galapagos Cruises</a></li>
-                    <li><a href="#">Galapagos Legend</a></li>
-                    <li><a href="#">Coral Yachts</a></li>
-                </ul>
+                <?php
+                    $alter_menu_args = array(
+                        'theme_location'  => 'search-area-top',
+                        'menu' => 'search-area-top',
+                        'container_class' => '',
+                        'container_id' => '',
+                        'menu_class' => 'list-inline tag-list'
+                    );
+                    wp_nav_menu( $alter_menu_args ); 
+                ?>
+                <?php
+                    $alter_menu_args = array(
+                        'theme_location'  => 'search-area-bottom',
+                        'menu' => 'search-area-bottom',
+                        'container_class' => '',
+                        'container_id' => '',
+                        'menu_class' => 'list-inline tag-list'
+                    );
+                    wp_nav_menu( $alter_menu_args ); 
+                ?>
             </div>
         </div>
         <div class="search-icon" title="Open searh box">

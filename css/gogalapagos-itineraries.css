@@ -16,6 +16,8 @@
 .itinerary-hero{
     color: white;
     overflow: hidden;
+    background-size: cover!important;
+    background-position: center!important;
 }
 .itinerary-title{
     margin: 0px;
@@ -188,6 +190,7 @@
     width: 100%;
     padding: 60px 36px;
     height: 98vh;
+    overflow: auto;
 }
 .more-items-slider{
     background: #161616;

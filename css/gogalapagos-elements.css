@@ -1778,6 +1778,12 @@ li.load a:hover:after{
 .orgs-logos img{
     margin-bottom: 18px;
 }
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .orgs-logos .list-inline{
+        -webkit-column-count: 4;
+        column-count: 4;
+    }
+}
 .copyright{
     font-size: 12px;
     padding: 20px;

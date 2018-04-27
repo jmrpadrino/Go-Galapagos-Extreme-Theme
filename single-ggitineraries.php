@@ -49,7 +49,7 @@ $terrenoCatalogo = array(
     <div class="hero-mask"></div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1">
                 <?php
                 $term = get_post_meta( get_the_ID(), $prefix . 'itinerary_ship_id', true );
                 ?>
@@ -58,6 +58,20 @@ $terrenoCatalogo = array(
                 <span class="separator"></span>
                 <p><?php echo get_the_excerpt(); ?></p>
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <?php $sugerencias = get_post_meta( get_the_ID(), $prefix . 'pax_sugerencia', false); ?>
+                <ul class="list-inline">
+                    <?php foreach($sugerencias as $sugerencia){ ?>
+                    <li><img width="50" src="<?= get_template_directory_uri() ?>/images/icono-<?= $sugerencia ?>.png" alt="<?= $sugerencia ?>" title="<?= $sugerencia ?>"></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1">
                 <p><a class="plan-your-trip-single-btn">Plan Your Trip Now</a> or <a href="#">Request a Quote</a></p>
             </div>
         </div>
@@ -90,7 +104,7 @@ for($i=1; $i<=5; $i++){
 <div class="sections section <?= $i % 2 == 0 ? 'darker' : '' ?>">
     <div class="container-fluid">
         <div class="row nopadding">
-            <div class="col-sm-6">
+            <div class="col-md-6">
                 <div class="day-placeholder">
                     <h2><?= _e('Day','gogalapagos'); ?> <?= $i ?>. <?= $dias_de_la_semana[$i-1]?></h2>
                     <span class="serif-font" style="display: block;">AM</span>
@@ -173,7 +187,7 @@ for($i=1; $i<=5; $i++){
                     ?>
                 </div>
             </div>
-            <div class="col-sm-6 nopadding">
+            <div class="col-md-6 nopadding">
                 <?php
         $featuredImage = get_post_meta( get_the_ID(), $prefix . 'itinerary_featured_image_day_'.$i, true);
         $rutaImagen = wp_get_attachment_image_src( $featuredImage, 'full', false );
@@ -194,7 +208,7 @@ for($i=1; $i<=5; $i++){
     if ($ruta){
 ?>
 <div class="sections section">
-    <img src="<?= $ruta ?>" class="img-responsive" alt="<?php echo __('Itineraty route', 'gogalapagos') ?> <?= the_title(); ?>">
+    <img src="<?= $ruta ?>" class="img-responsive text-center" alt="<?php echo __('Itineraty route', 'gogalapagos') ?> <?= the_title(); ?>">
 </div>
 <?php } // fin si tiene imagne de la ruta ?>
 <div class="sections section more-items-slider">
@@ -278,3 +292,13 @@ for($i=1; $i<=5; $i++){
     </div>
 </div>
 <?php get_footer(); ?>
+<script>
+    $(document).ready( function(){
+        // pasa la imagen destacada como fondo del FOLD y luego elimina la imagen destacada del DOM 
+        // solo en pantallas menores a 1024 (tablets)
+        if( $(window).width() < 1025 ){
+            $('.single-thumbnail-container').parents('.section').css('background-image','url('+ $('.single-thumbnail-container').children('img').attr('src') +')');
+            $('.single-thumbnail-container').remove();
+        }
+    });
+</script>
