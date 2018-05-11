@@ -241,6 +241,11 @@ div section h1 {
     max-height: 100%;
     padding: 36px;
 }
+.post-type-archive.post-type-archive-gganimal .archive-item-placeholder .separator{
+    border-bottom-color: #333333;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 .archive-item-placeholder:hover img{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);

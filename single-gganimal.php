@@ -10,6 +10,7 @@
                 <span class="serif-font fold-backlink"><a href="<?= get_term_link( $term[0]->term_id, 'animalgroup' ) ?>"><?php echo $term[0]->name; ?></a></span>
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
                 <span class="separator"></span>
+                <p class="single-excerpt"><?= get_the_excerpt() ?></p>
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
                 <p><span class="btn btn-warning">Plan your Trip</span> or <a href="#">Request a Quote</a></p>
                 <a href="#">Conservation of the Galapagos Islands</a>
@@ -157,7 +158,7 @@
     $coords = get_post_meta(get_the_ID(), $prefix . 'gmap_coords', true);
     $marker = 0;
 ?>
-                <div id="g-map" class="g-map" style="height: 40vh;"></div>
+                <div id="g-map" class="g-map" style="height: 40vh; margin-bottom: 36px;"></div>
                 <script>
                     function initMap() {
                         var map = new google.maps.Map(document.getElementById('g-map'), {

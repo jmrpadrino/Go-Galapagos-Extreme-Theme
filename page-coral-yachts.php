@@ -139,87 +139,6 @@ die();*/
     <div class="experience-video-placeholder" style="overflow: hidden;">
         <img src="http://placehold.it/2000x1200?text=VideoExperience" class="mientras">
     </div>
-    <?php /*
-    <div class="fullpage-slide">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h2>Experience</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="fullpage-slide">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <h2><?= _e('Services aboard our fleet','gogalapagos') ?></h2>
-                    <span class="separator"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <h3><?= _e('Onboard service and facilities', 'gogalapagos') ?></h3>
-                    <ul class="two-columns">
-                        <li>Item content alternative 1</li>
-                        <li>Item content alternative 2</li>
-                        <li>Item content alternative 3</li>
-                        <li>Item content alternative 4</li>
-                        <li>Item content alternative 5</li>
-                        <li>Item content alternative 6</li>
-                        <li>Item content alternative 7</li>
-                        <li>Item content alternative 8</li>
-                        <li>Item content alternative 9</li>
-                        <li>Item content alternative 10</li>
-                        <li>Item content alternative 11</li>
-                        <li>Item content alternative 12</li>
-                        <li>Item content alternative 13</li>
-                        <li>Item content alternative 14</li>
-                    </ul>
-                    <h3><?= _e('Cabin service and facilities', 'gogalapagos') ?></h3>
-                    <ul class="two-columns">
-                        <li>Item content alternative 1</li>
-                        <li>Item content alternative 2</li>
-                        <li>Item content alternative 3</li>
-                        <li>Item content alternative 4</li>
-                        <li>Item content alternative 5</li>
-                        <li>Item content alternative 6</li>
-                        <li>Item content alternative 7</li>
-                        <li>Item content alternative 8</li>
-                        <li>Item content alternative 9</li>
-                        <li>Item content alternative 10</li>
-                        <li>Item content alternative 11</li>
-                        <li>Item content alternative 12</li>
-                        <li>Item content alternative 13</li>
-                        <li>Item content alternative 14</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="fullpage-slide">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"> </li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="http://placehold.it/2000x1333?text=VideoExperience1" class="img-responsive">
-                </div>
-                <div class="item">
-                    <img src="http://placehold.it/2000x1333?text=VideoExperience2" class="img-responsive">
-                </div>
-                <div class="item">
-                    <img src="http://placehold.it/2000x1333?text=VideoExperience3" class="img-responsive">
-                </div>
-            </div>
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-    </div>
-    */ ?>
 </section>
 <section data-anchor="activities" data-index="3" class="sections section activities">
     <div class="nextSlide">
@@ -232,16 +151,19 @@ die();*/
     //$socialAreaCounter = 0;
     foreach ($actividades as $actividad){
         $gallery = get_post_meta($actividad->ID, $prefix . 'activity_gallery', false);
-        set_query_var( 'activityInfo', $actividad );
-        set_query_var( 'activityGalery', $gallery );        
-        //if ($socialAreaCounter < 5){
+        $mostrar = get_post_meta($actividad->ID, $prefix . 'activity_ship_id', false);
+        if (in_array($barcoID, $mostrar)) {
+            set_query_var( 'activityInfo', $actividad );
+            set_query_var( 'activityGalery', $gallery );        
+            //if ($socialAreaCounter < 5){
 
-        $template = get_post_meta($actividad->ID, $prefix . 'social_template', true);
-        $template == 1 ? get_template_part('templates/activity-left-small') : get_template_part('templates/activity-left-big');
-        /*}else{
-             get_template_part('templates/social-area-fullscreen');
+            $template = get_post_meta($actividad->ID, $prefix . 'social_template', true);
+            $template == 1 ? get_template_part('templates/activity-left-small') : get_template_part('templates/activity-left-big');
+            /*}else{
+                 get_template_part('templates/social-area-fullscreen');
+            }
+            $socialAreaCounter++;*/   
         }
-        $socialAreaCounter++;*/
     }
     ?>
 </section>

@@ -209,6 +209,18 @@ h1,h2,h3,h4,h5,h6{
 a,a:hover{
     color: inherit;
 }
+.text-white{
+    color: white;
+}
+.is-link{
+    cursor: pointer;
+}
+.fold-video-control{
+    opacity: .3;
+}
+.fold-video-control:hover{
+    opacity: 1;
+}
 .serif-font{
     font-family: 'Yeseva One', cursive;
 }
@@ -761,7 +773,9 @@ a,a:hover{
     bottom: 0;
     z-index: 999;
     -webkit-transition: top ease-in .2s;
-    transition: top ease-in .2s;
+    -webkit-transition: top .2s ease-in .2s;
+    -webkit-transition: top .2s ease-in 1s;
+    transition: top .2s ease-in 1s;
 }
 .navTrigger.hidden{
     top: -60px;
@@ -1122,7 +1136,8 @@ a,a:hover{
     padding: 0px 0;
     text-align: center;
     -webkit-transition: top ease-in .2s;
-    transition: top ease-in .2s;
+    -webkit-transition: top .2s ease-in .2s;
+    transition: top .2s ease-in .2s;
 }
 .fp-viewing-0 .search-icon, 
 .fp-viewing-0-0 .search-icon,
@@ -1469,6 +1484,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', end
     border-right: 2px solid #272727;
     height: 100vh;
     position: relative;
+    background: rgba(25, 25, 25, .9);
 }
 .desktop-side-alter-menu{
     margin-top: 140px;

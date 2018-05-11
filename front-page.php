@@ -2,15 +2,15 @@
 <?php if ( !wp_is_mobile() ) {  ?>
 <section id="top-page" data-anchor="top" class="sections section hero-video">
     <div class="video-placeholer">
-        <video id="hero-video" data-keepplaying class="hero-video" poster="<?php echo get_template_directory_uri(); ?>/images/home-hero-video-poster.jpg" loop autoplay>
-            <source src="<?php echo get_template_directory_uri(); ?>/videos/Underwater.webm" type='video/webm' />
-            <source src="<?php echo get_template_directory_uri(); ?>/videos/Underwater.mp4" type='video/mp4' />
+        <video id="hero-video" data-keepplaying class="hero-video" poster="<?php echo get_template_directory_uri(); ?>/images/home-hero-video-poster-2.jpg" muted>
+            <source src="<?php echo get_template_directory_uri(); ?>/videos/2016-Video-Go-Galapagos.mp4" type='video/mp4' />
+            <source src="<?php echo get_template_directory_uri(); ?>/videos/2016-Video-Go-Galapagos.webm" type='video/webm' />
             <source src="<?php echo get_template_directory_uri(); ?>/videos/Underwater.ogv" type="video/ogv" />
         </video>
     </div>
     <div class="hero-content">
-        <h1 class="home-hero-title animated fadeInDown wait3"><?php _e('Enjoy','gogalapagos'); ?></h1>
-        <p class="home-hero-slogan"><?php _e('Join us in an <strong>unforgettable adventure</strong>','gogalapagos'); ?></p>
+        <h1 class="home-hero-title animated fadeInDown wait3"><?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1', true) ?></h1>
+        <p class="home-hero-slogan"><?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_subtitle', true) ?></p>
         <div class="text-center scroll-down-placeholder">
             <div class="scroll-down-indicator">
                 <div class="scroll-indicator"></div>
@@ -18,9 +18,15 @@
             <small>Scroll Down</small>
         </div>
         <div class="quote-filter">
-            <button type="button" class="btn btn-primary getyourtrip-btn" data-toggle="modal" data-target="#tripFilter"><?php _e('Get your trip','gogalapagos'); ?></button>
+            <!--
+<button type="button" class="btn btn-primary getyourtrip-btn" data-toggle="modal" data-target="#tripFilter"><?php _e('Get your trip','gogalapagos'); ?></button>
+-->
+            <span id="play-video" class="fa fa-play fold-video-control is-link text-white"></span>
+            <br />
+            <span id="mute-video" class="fa fa-volume-off fold-video-control is-link text-white"></span>
         </div>
-        
+
+
         <!--<form class="form-filter" role="form" action="http://quote.gogalapagos.com" method="get">
 <div class="filter-transparent-box animated fadeInUp wait5">
 <div class="row">
@@ -121,7 +127,9 @@
     for($i=1; $i <= $numeroSlides; $i++){
     ?>
     <div class="fullpage-slide text-center home-get-in-love-slide">
+        <?php if (get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true)){ ?>
         <img class="get-in-love-bkg-img img-responsive" src="<?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true) ?>" alt="<?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1'.$i, true) ?>">
+        <?php } ?>
         <div class="get-in-love-mask"></div>
         <div class="slider-container">
             <h2 class="home-get-in-love-title"><?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1'.$i, true) ?></h2>
@@ -130,32 +138,13 @@
         </div>
     </div>
     <?php } ?>
-    <!--div class="get-in-love-controls">
-<ul>
-<li class="active">
-<span class="get-in-love-control-circle" data-goto-slide="0"></span>
-</li>
-<li>
-<span class="get-in-love-control-circle" data-goto-slide="1"></span>
-</li>
-<li>
-<span class="get-in-love-control-circle" data-goto-slide="2"></span>
-</li>
-<li>
-<span class="get-in-love-control-circle" data-goto-slide="3"></span>
-</li>
-<li>
-<span class="get-in-love-control-circle" data-goto-slide="4"></span>
-</li>
-</ul>
-</div-->
 </section>
 <?php 
-    $specialArgs = array(
-        'post_type' => 'ggspecialoffer',
-        'posts_per_page' => -1,
-    );
-    $special = get_posts($specialArgs);
+$specialArgs = array(
+    'post_type' => 'ggspecialoffer',
+    'posts_per_page' => -1,
+);
+$special = get_posts($specialArgs);
 ?>
 <section id="offers-and-news" data-anchor="offers-news" class="sections section offers-and-news">
     <div class="section-ribbon">
@@ -167,18 +156,12 @@
                 <div id="index-carousel-products" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <?php 
-                            $specialCounter = 0;
-                            foreach($special as $offer){ 
+                        $specialCounter = 0;
+                        foreach($special as $offer){ 
                         ?>
-                        <?php if ($specialCounter == 0){ ?>
-                        <div class="item active">
-                        <?php }else{ ?>
-                        <div class="item">
-                        <?php } ?>
-                            <?php if ( !wp_is_mobile() ) {  ?>
+                        <div class="item <?= $specialCounter == 0 ? 'active' : '' ?> <?= (wp_is_mobile()) ? '' : 'not-mobile' ?>" <?= (wp_is_mobile()) ? '' : 'style="background-image: url('.get_template_directory_uri().'/images/producto-carousel-home.jpg);"' ?>>
+                            <?php if ( wp_is_mobile() ) {  ?>
                             <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/producto-carousel-home.jpg" alt="The pack Title">
-                            <?php }else{ ?>
-                            <img class="mobile-image" src="<?php echo get_template_directory_uri(); ?>/images/producto-carousel-home.jpg" alt="The pack Title">
                             <?php } ?>
                             <div class="gg-post-type">
                                 <span class="product-type"></span>
@@ -271,16 +254,12 @@
             $args = array(
                 'post_type' => 'ggships',
                 'posts_per_page' => 2,
-                'orderby' => 'post_date',
-                'order' => 'ASC'
             );
             $barcos = get_posts($args);
             ?>
             <?php foreach($barcos as $barco){ ?>
-            <div class="col-md-6 nopadding ship-placeholder">
-                <?php if ( !wp_is_mobile() ){ ?>
-                <img class="img-responsive" src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">
-                <?php }else{ ?>
+            <div class="col-md-6 nopadding ship-placeholder <?= (wp_is_mobile()) ? '' : 'not-mobile' ?>" <?= (wp_is_mobile()) ? '' : 'style="background-image: url('.get_post_meta($barco->ID, $prefix . 'ship_home_image', true).');"' ?>>
+                <?php if ( wp_is_mobile() ){ ?>
                 <img class="mobile-image" src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">
                 <?php } ?>
                 <div class="more-content lower-post">
@@ -300,52 +279,101 @@
 <?php get_footer(); ?>
 <script>
     $(document).ready( function(){
-        
+
         console.clear();
-        
+
         var ancho_viewport = $(window).width();
         var inlove_slides = $('.home-get-in-love-slide');
         var products_slides = $('#index-carousel-products').children('.carousel-inner').children('.item');
         var blog_posts = $('.home-blog-article');
+        var video_frame = $('#hero-video');
+        document.getElementById('hero-video').addEventListener('ended',alFinalizarVideo,false);
+
+        /*---------------
+        / FUNCION PARA SILENCIAR VIDEO
+        ---------------*/
+        $('#mute-video').click( function(){
+            if (video_frame.prop('muted') == false){ 
+                video_frame.prop('muted', true);
+                $(this).addClass('fa-volume-off');
+                $(this).removeClass('fa-volume-up');
+            }else{
+                video_frame.prop('muted', false);
+                $(this).removeClass('fa-volume-off');
+                $(this).addClass('fa-volume-up');
+            }
+        });
+
+        /*---------------
+        / FUNCION PARA DETENER VIDEO
+        ---------------*/
+        $('#play-video').click( function(){
+            if ($("#hero-video").get(0).paused) {
+                $('.home-hero-title').hide();
+                $('.home-hero-slogan').hide();
+                $('.scroll-down-placeholder').hide();
+                $("#hero-video").get(0).play();
+                $(this).removeClass('fa-play');
+                $(this).addClass('fa-stop');
+            } else {
+                $('.home-hero-title').show();
+                $('.home-hero-slogan').show();
+                $('.scroll-down-placeholder').show();
+                $("#hero-video").get(0).pause();
+                $(this).addClass('fa-play');
+                $(this).removeClass('fa-stop');
+            }
+        });
         
-        console.log(products_slides);
-        
+        /*---------------
+        / FUNCION SI FINALIZA VIDEO
+        ---------------*/
+        function alFinalizarVideo(e){
+            $('.home-hero-title').show();
+            $('.home-hero-slogan').show();
+            $('.scroll-down-placeholder').show();
+            $("#hero-video").load();
+            $("#hero-video").pause();
+            $('#play-video').addClass('fa-play');
+            $('#play-video').removeClass('fa-stop');
+        }
+
         /*-----------------
         / SI LA PANTALLA ES MOVIL PORTRAIT
         -----------------*/
         if(window.innerHeight > window.innerWidth){
-            
+
             /*---------------
             / CAMBIAR IMAGENES A FONDOS PARA SECCION DE GET-IN-LOVE
             ---------------*/
             $.each(inlove_slides, function(){
-                
+
                 var imagen_url = $(this).children('div').children('.get-in-love-bkg-img');
-                
+
                 acomodarFondo(imagen_url, $(this));
-                
+
             });
-            
+
             /*---------------
             / CAMBIAR IMAGENES A FONDOS PARA SECCION DE GET-IN-LOVE
             ---------------*/
             $.each(products_slides, function(){
-                
+
                 var imagen_url = $(this).children('.mobile-image');
-                
+
                 acomodarFondo(imagen_url, $(this));
-                
+
             });
-            
+
             /*---------------
             / CAMBIAR IMAGENES A FONDOS PARA SECCION DE GET-IN-LOVE
             ---------------*/
             $.each(blog_posts, function(){
-                
+
                 var imagen_url = $(this).children('.blog-home-thumbnail');
-                
+
                 acomodarFondo(imagen_url, $(this));
-                
+
             });
         }
     })

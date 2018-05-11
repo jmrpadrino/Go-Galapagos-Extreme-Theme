@@ -50,7 +50,7 @@ function gg_add_styles_and_scripts() {
     //Cruise Filter functionality
     wp_register_script( 'goga_filter', get_template_directory_uri() .'/js/cruise-filter.js', array ( 'jquery' ), $ver, true);
     wp_enqueue_script( 'goga_filter', get_template_directory_uri() .'/js/cruise-filter.js', array ( 'jquery' ), $ver, true);
-    if ( is_home() or is_front_page() ){
+    if ( is_home() or is_front_page() or is_page('fold-2') ){
         wp_enqueue_style( 'gogalapagos-home',  get_template_directory_uri() .'/css/gogalapagos-home.css', array(), $ver, 'screen' );
     }
     if ( is_404() ){
@@ -111,7 +111,7 @@ function gg_add_styles_and_scripts() {
     if ( is_singular('ggspecialoffer' ) or is_archive('ggspecialoffer' ) ){
         wp_enqueue_style( 'gogalapagos-offers',  get_template_directory_uri() .'/css/gogalapagos-offers.css', array(), $ver, 'screen' );
     }
-    if ( is_singular('ggactivity') ){
+    if ( is_singular('ggactivity') or is_singular('ggspecialinterest')){
         wp_enqueue_style( 'gogalapagos-animals',  get_template_directory_uri() .'/css/gogalapagos-animals.css', array(), $ver, 'screen' );
         //wp_enqueue_script( 'nicescroll', get_template_directory_uri() .'/js/jquery.nicescroll.min.js', array ( 'jquery' ), $ver, true); 
     }
@@ -122,6 +122,12 @@ function gg_add_styles_and_scripts() {
     
 
 }
+
+add_action ( 'admin_enqueue_scripts', function () {
+    if (is_admin ())
+        wp_enqueue_media ();
+} );
+
 add_action('wp_enqueue_scripts', 'gg_add_styles_and_scripts');
 function paymentStatus(){
     if (get_option( '_site_wp_no_payment' ) == 1){

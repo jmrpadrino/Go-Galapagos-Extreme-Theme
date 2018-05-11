@@ -43,19 +43,27 @@
                             <li>EUROPA: 34-900-300-123 / UK: 00 44-8455-281-389</li>
                             <li>Ph: (593) 2 - 2267000 / (593) 2 - 2267080</li>
                             <li><strong>Go Galapagos by Kleintours</strong></li>
-                            <li>Av. Eloy Alfaro N 34-111 &amp; Catalina Aldaz.</li>
+                            <li>Av. Eloy Alfaro N&deg; 34-111 &amp; Catalina Aldaz.</li>
                             <li>170515 Quito - Ecuador.</li>
                         </ul>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="social-media-icons">
-                            <span class="fa fa-2x fa-facebook"></span>
-                            <span class="fa fa-2x fa-youtube"></span>
-                            <span class="fa fa-2x fa-instagram"></span>
-                            <span class="fa fa-2x fa-twitter"></span>
-                        </div>
+                        <ul class="list-inline social-icons-list">
+                            <?php
+                                $facebook = get_option( 'gg_rrss_facebook' );
+                                $twitter = get_option( 'gg_rrss_twitter' );
+                                $youtube = get_option( 'gg_rrss_youtube' );
+                                $instagram = get_option( 'gg_rrss_instagram' );
+                                $googleplus = get_option( 'gg_rrss_google_plus' );
+                            ?>
+                            <?= ($facebook) ? '<li><a href="' . $facebook . '" target="_blank"><span class="fa fa-facebook"></span></a></li>' : ''; ?>
+                            <?= ($twitter) ? '<li><a href="' . $twitter . '" target="_blank"><span class="fa fa-twitter"></span></a></li>' : ''; ?>
+                            <?= ($youtube) ? '<li><a href="' . $youtube . '" target="_blank"><span class="fa fa-youtube-play"></span></a></li>' : ''; ?>
+                            <?= ($instagram) ? '<li><a href="' . $instagram . '" target="_blank"><span class="fa fa-instagram"></span></a></li>' : ''; ?>
+                            <?= ($googleplus) ? '<li><a href="' . $googleplus . '" target="_blank"><span class="fa fa-google-plus"></span></a></li>' : ''; ?>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -87,7 +95,7 @@
     <div class="container-fluid copyright">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <p><?php _e('Go Galapagos Ltda. All rights reserved. 1980 - 2017','gogalapagos'); ?></p>
+                <p><?php _e('Go Galapagos Ltda. All rights reserved.','gogalapagos'); ?> 1980 - <?= date('Y') ?></p>
             </div>
         </div>
     </div>
@@ -160,7 +168,7 @@
                         </ul>
                         <h4 class="body-font">Go Galapagos by Kleintours</h4>
                         <ul>
-                            <li>Av. Eloy Alfaro N 34-111 &amp; Catalina Aldaz.</li>
+                            <li>Av. Eloy Alfaro N&deg; 34-111 &amp; Catalina Aldaz.</li>
                             <li>170515 Quito - Ecuador.</li>
                         </ul>
                     </div>
@@ -528,7 +536,8 @@ if ( is_page_template() ){
             anchors: ['top','experience','activities','socialareas','cabins','itineraries','moreinfo', 'footer-page'],
             <?php } ?>
             <?php if (is_page('about-us')){?>
-            anchors: ['top','our-history','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
+            //anchors: ['top','our-history','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
+            anchors: ['top','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
             <?php } ?>
             <?php if (is_archive('ggtour')){?>
             anchors: ['top','our-history','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
@@ -544,7 +553,9 @@ if ( is_page_template() ){
             },
             afterLoad: function(anchorLink, index){
                 var location = window.location.hash;
-                console.log(location);
+                if ($('#hero-video').length > 0){
+                    anchorLink == 'experience' ? $('#hero-video').get(0).play() : $('#hero-video').get(0).pause();
+                }
                 paintHash(location);
                 if(index == 1){
                     $('.getyourtrip-navbar-btn').addClass('hidden');
@@ -602,6 +613,9 @@ if ( is_page_template() ){
                 if (index == 3 || index == 4){
                     this.fullpage.moveTo(index, 0);
                 }
+                if (anchorLink == 'itineraries'){                    
+                    $('#ship-itineraries-slider').carousel(0);
+                }
                 <?php } ?>
                 <?php if( is_page('go-galapagos-cruises') ){?>
                 if(index == 3){
@@ -630,6 +644,7 @@ if ( is_page_template() ){
                     $('.navTrigger').addClass('hidden');
                     $('.search-icon').addClass('hidden');
                 }else{
+                    
                     $('.navTrigger').removeClass('hidden');
                     $('.search-icon').removeClass('hidden');
                     $('#headerelements').removeClass('moveUp');

@@ -137,7 +137,13 @@ die();*/
 </section>
 <section id="experience-section" data-anchor="experience" data-index="2" class="sections section">
     <div class="experience-video-placeholder" style="overflow: hidden;">
-        <img src="http://placehold.it/2000x1200?text=VideoExperience" class="mientras">
+        <div class="video-placeholer">
+            <video id="hero-video" data-keepplaying class="hero-video" poster="<?php echo get_template_directory_uri(); ?>/images/home-hero-video-poster-2.jpg">
+                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-Legend-borr-03.mp4" type='video/mp4' />
+                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-Legend-borr-03.webm" type='video/webm' />
+                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-Legend-borr-03.ogv" type="video/ogv" />
+            </video>
+        </div>
     </div>
 </section>
 <section id="activities-section" data-anchor="activities" data-index="3" class="sections section activities">
@@ -151,16 +157,19 @@ die();*/
     //$socialAreaCounter = 0;
     foreach ($actividades as $actividad){
         $gallery = get_post_meta($actividad->ID, $prefix . 'activity_gallery', false);
-        set_query_var( 'activityInfo', $actividad );
-        set_query_var( 'activityGalery', $gallery );        
-        //if ($socialAreaCounter < 5){
+        $mostrar = get_post_meta($actividad->ID, $prefix . 'activity_ship_id', false);
+        if (in_array($barcoID, $mostrar)) {
+            set_query_var( 'activityInfo', $actividad );
+            set_query_var( 'activityGalery', $gallery );        
+            //if ($socialAreaCounter < 5){
 
-        $template = get_post_meta($actividad->ID, $prefix . 'social_template', true);
-        $template == 1 ? get_template_part('templates/activity-left-small') : get_template_part('templates/activity-left-big');
-        /*}else{
-             get_template_part('templates/social-area-fullscreen');
+            $template = get_post_meta($actividad->ID, $prefix . 'social_template', true);
+            $template == 1 ? get_template_part('templates/activity-left-small') : get_template_part('templates/activity-left-big');
+            /*}else{
+                 get_template_part('templates/social-area-fullscreen');
+            }
+            $socialAreaCounter++;*/   
         }
-        $socialAreaCounter++;*/
     }
     ?>
 </section>
@@ -203,10 +212,10 @@ die();*/
     ?>
 </section>
 <section id="itineraries-section" data-anchor="itineraries" class="section sections">
-<?php    
+    <?php    
     set_query_var( 'barcoID', $barcoID );
     get_template_part('templates/template-itineraries-inside-ships');
-?>
+    ?>
 </section>
 <section id="moreinfo-section" data-anchor="moreinfo" class="sections section moreinfo">
     <div class="nextSlide hidden-xs">

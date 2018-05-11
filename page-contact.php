@@ -64,18 +64,18 @@ $options = array(
         </div>
         <div class="row">
             <div class="col-sm-4 text-center">
-                <img width="130" src="<?= get_template_directory_uri() ?>/images/recurso-mail.png">
+                <img width="80" src="<?= get_template_directory_uri() ?>/images/recurso-mail.png">
                 <h3 class="body-font"><?php _e('Land Operations Manager','gogalapagos'); ?></h3>
                 <span class="contact-separator"></span>
                 <p><a href="mailto:ops3@gogalapagos.com.ec"><strong>ops3@gogalapagos.com.ec</strong></a></p>
             </div>
             <div class="col-sm-4 text-center">
-                <img width="100" src="<?= get_template_directory_uri() ?>/images/recurso-phone.png">
+                <img width="60" src="<?= get_template_directory_uri() ?>/images/recurso-phone.png">
                 <h3 class="body-font"><?php _e('From outside','gogalapagos'); ?> Ecuador</h3>
                 <p><strong><a href="tel:+593999456205">(593-9) 9945-6205</a></strong></p>
             </div>
             <div class="col-sm-4 text-center">
-                <img width="100" src="<?= get_template_directory_uri() ?>/images/recurso-phone.png">
+                <img width="60" src="<?= get_template_directory_uri() ?>/images/recurso-phone.png">
                 <h3 class="body-font"><?php _e('From','gogalapagos'); ?> Ecuador</h3>
                 <p><strong><a href="tel:+593999456205">(09) 9945-6205</a></strong></p>
 
@@ -91,7 +91,7 @@ $options = array(
                 </div>
             </div>
             <div class="row tollfree">
-                <div class="col-md-4 col-sm-8 col-sm-offset-2">
+                <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
                     <h3 class="body-font text-center"><?php _e('Main Office','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Address'); ?>:</h4>
                     <p>Eloy Alfaro Ave. N34-111 &amp; Catalina Aldaz St. <br/> Quito - Ecuador</p>
@@ -102,7 +102,7 @@ $options = array(
                     <h4 class="body-font"><?= _e('Office Schedule', 'gogalapagos'); ?>:</h4>
                     <p>8:30 - 17:30 (<?= _e('Quito time', 'gogalapagos'); ?></p>
                 </div>
-                <div class="col-md-4 col-sm-8 col-sm-offset-2">
+                <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
                     <h3 class="body-font text-center"><?php _e('Galapagos Office','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Address'); ?>:</h4>
                     <p>Rabida s/n &amp; Floreana &amp; Piqueros <br /> Santa Cruz Island - Galapagos</p>
@@ -113,7 +113,7 @@ $options = array(
                     <h4 class="body-font"><?= _e('Office Schedule', 'gogalapagos'); ?>:</h4>
                     <p>(593-5) 252 6327 (<?= _e('Galapagos time', 'gogalapagos'); ?></p>
                 </div>
-                <div class="col-md-4 col-sm-8 col-sm-offset-2">
+                <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
                     <h3 class="body-font text-center"><?php _e('Toll Free Numbres','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Partners'); ?>:</h4>
                     <ul>

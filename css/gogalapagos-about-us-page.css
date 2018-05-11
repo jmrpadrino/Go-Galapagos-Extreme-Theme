@@ -114,7 +114,7 @@
 .separator{
     border-bottom: 4px solid #292929;
     margin-top: 40px;
-    margin-bottom: 70px;
+    margin-left: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -140,14 +140,31 @@
     display: flex;
     -ms-flex-line-pack: center;
     align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    height: 100vh;
 }
-.social-investment-img{
-    width: 100%;
-    height: auto;
+.social-investment-img{    
     margin: auto;
+}
+.proudly-title{
+    margin-top: 80px;
+}
+.logos-conservacy{
+    
+}
+@media screen and (min-width: 1280px) and (max-width: 1400px){
+    .logos-conservacy{
+        max-width: 250px;
+    } 
+    .separator{
+        margin-top: 20px;
+        margin-bottom: 18px;
+    }
 }
 @media screen and (max-width: 800px){
     .separator{

@@ -14,26 +14,27 @@ $disembarking_options = array(
     '8' => 'Dry Landing (On Tuff)'
 );
 $terrain_options = array(
-    '0' => 'Sandy',
-    '1' => 'Volcanic',
-    '2' => 'Rocky',
-    '3' => 'Hard',
-    '4' => 'Water',
-    '5' => 'Sandy',
-    '6' => 'Flat',
-    '7' => 'Sandy and Flat',
-    '8' => 'Lava',
-    '9' => 'Dinghy Ride',
-    '10' => 'Steep',
-    '11' => 'Semi Rocky',
-    '12' => 'Windings',
-    '13' => 'Wooded Path',
-    '14' => 'Walking Path',
-    '15' => 'White Sandy Beach',
-    '16' => 'Red Sandy Beach',
-    '17' => 'Eroded Tuff',
-    '18' => 'Muddy',
-    '19' => 'Slippery'
+    '0' => 'None',
+    '1' => 'Eroded Tuff',
+    '2' => 'Flat',
+    '3' => 'Flat & Muddy',
+    '4' => 'Flat & Petrified Lava',
+    '5' => 'Flat & Sandy',
+    '6' => 'Flat & Semi-rocky',
+    '7' => 'Hill/mountain',
+    '8' => 'Marsh',
+    '9' => 'Muddy',
+    '10' => 'Petrified Lava',
+    '11' => 'Rocky',
+    '12' => 'Rocky & Petrified Lava',
+    '13' => 'Rocky & Sandy',
+    '14' => 'Sandy',
+    '15' => 'Shallow Ocean',
+    '16' => 'Slippery',
+    '17' => 'Steep',
+    '18' => 'Steep & Petrified Lava',
+    '19' => 'Water',
+    '20' => 'Wooden Trail',
 );
 $difficulty_options = array(
     '0' => 'Low',
@@ -61,11 +62,7 @@ $physical_options = array(
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
                 <span class="serif-font fold-backlink"> at the <a href="<?= get_permalink( $parent_island ) ?>"><?php echo get_the_title( $parent_island ) ?> Island</a></span>
                 <span class="separator"></span>
-                <?php 
-                if ( has_excerpt( get_the_ID() ) ){ 
-                    echo '<p>'. get_the_excerpt(). '</p>';
-                } 
-                ?>
+                <p class="single-excerpt"><?= get_the_excerpt() ?></p>
                 <!--p id="more-to-show" class="more-to-show"><span class="conservation-info-icon">i</span><span class="single-more-info-action"><?php _e('More Information','gogalapagos'); ?></span></p-->
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
                 <p><span class="btn btn-warning">Plan your Trip</span> or <a href="#">Request a Quote</a></p>
@@ -154,12 +151,12 @@ $physical_options = array(
 <div class="sections section">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-sm-8 col-sm-offset-2">
                 <?php include ( TEMPLATEPATH . '/templates/breadcrumbs.php'); ?>
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <h2><?php echo _e('More about ') . the_title(); ?></h2>

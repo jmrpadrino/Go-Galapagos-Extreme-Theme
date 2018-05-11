@@ -16,7 +16,7 @@ $prefix = 'gg_';
     </div>
     <div class="container-fluid" style="height: 40vh;">
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-lg-10 col-lg-offset-1 inner-page-content" style="margin-top: 30px;">
+            <div class="col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 30px;">
                 <h2 class="cruises-page-title body-font"><?= _e('Experience the best of The Pacific Coast','gogalapagos'); ?></h2>
                 <div class="cruise-page-content">    
                     <?php 
@@ -32,8 +32,6 @@ $prefix = 'gg_';
 $args = array(
     'post_type' => 'ggships',
     'posts_per_page' => 2,
-    'orderby' => 'post_title',
-    'order' => 'DESC'
 );
 $barcos = get_posts($args);
 ?>
@@ -190,6 +188,7 @@ $barcos = get_posts($args);
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text-center">
                     <h2><?= _e('Have fun on the Galapagos Islands','gogalapagos'); ?></h2>
+                    <span class="separator"></span>
                     <p><?= _e('These two yachts are the intimate experience guest are looking for, with their respective capacity of 19 and 12, their cabins offer a sense of an intimate and private yacht experience. In small spaces, the service is more personalized and meeting fellow travelers are easy to share the experience of the trip. All social areas are designed with style and comfort, as well as the cabins that include excellent amenities. The external open deck areas have perfect spaces designed to socialize, relax and enjoy the best of the Pacific sun.'.'gogalapagos'); ?></p>
                     <a class="cruise-link activities" href="<?= get_post_type_archive_link( 'ggactivity' ); ?>"><?= _e('Know all activities','gogalapagos') ?></a>
                 </div>

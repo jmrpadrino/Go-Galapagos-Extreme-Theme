@@ -8,7 +8,7 @@
                     <div class="col-sm-7">
                         <?php the_title('<h1 class="island-title">', '</h1>'); ?>
                         <span class="single-separator"></span>
-                        <?= has_excerpt($post->ID) ? '<p>' . the_excerpt() . '</p>' : ''; ?>
+                        <p class="single-excerpt"><?= get_the_excerpt() ?></p>
                     </div>
                     <div class="col-sm-4 col-sm-offset-1">
                         <?php 
@@ -185,10 +185,10 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid nopadding">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12">
-                <div id="g-map" class="contact-page-google-map" style="height: 40vh;"></div>  
+            <div class="col-md-8 col-md-offset-1">
+                <div id="g-map" class="contact-page-google-map" style="height: 40vh; margin: 36px 0;"></div>  
             </div>
         </div>
         <script>

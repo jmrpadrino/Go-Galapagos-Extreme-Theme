@@ -237,6 +237,7 @@ var styles = [
 var icon = goga_url.themeurl + '/images/marcador-map.png';
 
 $(window).bind("load", function() {
+    $('body').css('overflow', 'inherit');
     $('#loader').remove();
 });
 

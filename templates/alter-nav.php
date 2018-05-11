@@ -1,7 +1,7 @@
-        <div class="navTrigger">
+        <div class="navTrigger <?= (is_page('fold-2') ? 'active' : '') ?>" <?= (is_page('fold-2') ? 'style="z-index: 9999999;"' : '') ?>>
             <i></i><i></i><i></i> <span class="menu-word" title="Go Galapagos alternate menu"><?php _e('Menu','gogalapagos'); ?></span>
         </div>
-        <div id="alter-nav" class="alter-nav">
+        <div id="alter-nav" class="alter-nav <?= (is_page('fold-2') ? 'active' : '') ?>" <?= (is_page('fold-2') ? 'style="background: none"' : '') ?>>
             <div class="container-fluid">
                 <div class="row">
                     <?php
@@ -22,11 +22,18 @@
                             </div><!-- #primary-sidebar -->
                         <?php endif; ?>
                         <ul class="list-inline social-icons-list">
-                            <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fa fa-youtube-play"></span></a></li>
-                            <li><a href="#"><span class="fa fa-instagram"></span></a></li>
-                            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                            <?php
+                                $facebook = get_option( 'gg_rrss_facebook' );
+                                $twitter = get_option( 'gg_rrss_twitter' );
+                                $youtube = get_option( 'gg_rrss_youtube' );
+                                $instagram = get_option( 'gg_rrss_instagram' );
+                                $googleplus = get_option( 'gg_rrss_google_plus' );
+                            ?>
+                            <?= ($facebook) ? '<li><a href="' . $facebook . '" target="_blank"><span class="fa fa-facebook"></span></a></li>' : ''; ?>
+                            <?= ($twitter) ? '<li><a href="' . $twitter . '" target="_blank"><span class="fa fa-twitter"></span></a></li>' : ''; ?>
+                            <?= ($youtube) ? '<li><a href="' . $youtube . '" target="_blank"><span class="fa fa-youtube-play"></span></a></li>' : ''; ?>
+                            <?= ($instagram) ? '<li><a href="' . $instagram . '" target="_blank"><span class="fa fa-instagram"></span></a></li>' : ''; ?>
+                            <?= ($googleplus) ? '<li><a href="' . $googleplus . '" target="_blank"><span class="fa fa-google-plus"></span></a></li>' : ''; ?>
                         </ul>
                         <div class="credits">
                             <p>GO Galapagos / Kleintours</p>
@@ -35,7 +42,9 @@
                     </div>
                     <?php
                         echo '</div>';
-                        get_template_part('/templates/alter-nav-default-side-container');
+                        if (!is_page('fold-2')){
+                            get_template_part('/templates/alter-nav-default-side-container');
+                        }
                     }else{
                         echo '<div class="col-xs-12 menu-placeholder">';
                         $alter_menu_args = array(

@@ -9,7 +9,7 @@
                         <i style="border: 2px solid white; border-radius: 2px; display: block; width: 28px; margin-bottom: 5px;"></i>
                     </a>
                 </li>
-                <li><a class="regular-link" href="#our-history"><?php _e('Our History','gogalapagos'); ?></a></li>
+                <!--li><a class="regular-link" href="#our-history"><?php _e('Our History','gogalapagos'); ?></a></li-->
                 <li><a class="regular-link" href="#galapagos-conservancy"><?php _e('Galapagos Conservancy','gogalapagos'); ?></a></li>
                 <li><a class="regular-link" href="#social-investment"><?php _e('Social Investment','gogalapagos'); ?></a></li>
                 <li><a class="regular-link" href="#our-partners"><?php _e('Our Partners','gogalapagos'); ?></a></li>

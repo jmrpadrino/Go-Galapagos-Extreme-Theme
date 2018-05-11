@@ -133,6 +133,9 @@ section.activities{
 .galapagos-cruises-inner-sections-title{
         margin-top: 96px;
 }
+.galapagos-cruises-inner-sections-title+.separator{
+    margin-left: 0;
+}
 .prevSlide,.nextSlide{
     position: absolute;
     color: white;

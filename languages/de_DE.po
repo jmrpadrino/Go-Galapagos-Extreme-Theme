@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gogalapagos\n"
-"POT-Creation-Date: 2018-01-02 16:04-0500\n"
-"PO-Revision-Date: 2018-01-02 16:04-0500\n"
+"POT-Creation-Date: 2018-05-10 09:22-0500\n"
+"PO-Revision-Date: 2018-05-10 09:22-0500\n"
 "Last-Translator: Jose Rodriguez <jrodriguez@webcreek.com>\n"
 "Language-Team: Choclomedia <ceo@choclomedia.com>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -29,8 +29,10 @@ msgstr ""
 msgid "Return to Homepage"
 msgstr ""
 
-#: archive-ggactivity.php:10 archive-gganimal.php:10 archive-ggisland.php:10
-#: archive-gglocation.php:10
+#: archive-ggactivity.php:10 archive-gganimal.php:10 archive-ggfaqs.php:10
+#: archive-ggisland.php:10 archive-gglocation.php:10
+#: archive-ggspecialinterest.php:10 single-ggisland.php:53
+#: taxonomy-animalgroup.php:14 taxonomy-go_faqs.php:12
 msgid "Plan Your Trip Now"
 msgstr ""
 
@@ -69,12 +71,79 @@ msgid ""
 "types of cones and tunnels formed by flows inside the Earth."
 msgstr ""
 
-#: archive-ggitineraries.php:37 templates/template-itinerarios.php:33
+#: archive-ggitineraries.php:37 templates/template-itinerarios-TEST.php:33
+#: templates/template-itinerarios.php:48
 msgid "Explore the "
 msgstr ""
 
 #: archive-ggitineraries.php:38
 msgid "Check departure dates"
+msgstr ""
+
+#: archive-ggpackage.php:8
+msgid "Go Packages"
+msgstr ""
+
+#: archive-ggpackage.php:9
+msgid ""
+"Get the best from both worlds! These are our recommended tours that we have "
+"prepared for vacationers that want to have a more complete travel experience."
+msgstr ""
+
+#: archive-ggpackage.php:10
+msgid ""
+"Our all-inclusive Go Packages are a favorite amongst our clients due that "
+"they mix an unforgettable luxury cruise in the Galapagos Islands with "
+"amazing inland landscapes and cultural experiences in continental Ecuador "
+"and Peru."
+msgstr ""
+
+#: archive-ggpackage.php:57 includes/gogalapagos-string-translations.php:8
+msgid "Adults"
+msgstr "Erwachsene"
+
+#: archive-ggpackage.php:61 includes/gogalapagos-string-translations.php:9
+msgid "Children"
+msgstr "Kinder"
+
+#: archive-ggpackage.php:67 footer-blog.php:16 footer-blog.php:123
+#: footer-booking.php:16 footer-booking.php:123 footer.php:16
+#: includes/gogalapagos-string-translations.php:5 page-booking.php:123
+#: page-booking.php:230 page-find-cruise.php:212 page-find-cruise.php:319
+msgid "Rates"
+msgstr "Raten"
+
+#: archive-ggpackage.php:67 includes/gogalapagos-string-translations.php:6
+msgid "per person"
+msgstr "pro Person"
+
+#: archive-ggpackage.php:74 includes/gogalapagos-string-translations.php:4
+msgid "Total Estimated"
+msgstr "Geschätzte Gesamtmenge"
+
+#: archive-ggpackage.php:78 includes/gogalapagos-string-translations.php:7
+#: single-ggisland.php:181 templates/cabins-ship.php:40
+#: templates/template-itineraries-inside-ships.php:165
+#: templates/template-itinerarios.php:256
+msgid "Request a Quote"
+msgstr "Angebot anfordern"
+
+#: archive-ggspecialinterest.php:17
+msgid ""
+"We offer ample flexibility to adapt to any special needs or interests of the "
+"new traveler. From special activities to dietary needs we have hosted "
+"several types of travelers and made their vacation a true tailor-made "
+"experience. These are some examples of our programs."
+msgstr ""
+
+#: archive-ggspecialoffer.php:11 single-ggspecialoffer.php:10
+msgid "Get the deal"
+msgstr ""
+
+#: archive-ggspecialoffer.php:62 single-ggactivity.php:59
+#: single-gganimal.php:61 single-ggisland.php:101 single-gglocation.php:124
+#: single-ggspecialinterest.php:63 single-ggspecialoffer.php:61
+msgid "Move through the images"
 msgstr ""
 
 #: archive-ggtour.php:8
@@ -85,157 +154,139 @@ msgstr ""
 msgid "Enjoy new experiences"
 msgstr ""
 
-#: footer-2.php:5 footer.php:77 footer.php:260
-msgid "Proud member of:"
-msgstr "Stolzes Mitglied von:"
-
-#: footer-2.php:24 footer.php:190
-msgid "Members Site"
-msgstr "Mitglieder Site"
-
-#: footer-2.php:26 footer.php:6 footer.php:192
+#: footer-blog.php:10 footer-blog.php:121 footer-booking.php:10
+#: footer-booking.php:121 footer.php:10 page-booking.php:117
+#: page-booking.php:228 page-find-cruise.php:206 page-find-cruise.php:317
 msgid "Login"
 msgstr "Anmeldung"
 
-#: footer-2.php:27 footer.php:9 footer.php:193
+#: footer-blog.php:13 footer-blog.php:122 footer-booking.php:13
+#: footer-booking.php:122 footer.php:13 page-booking.php:120
+#: page-booking.php:229 page-find-cruise.php:209 page-find-cruise.php:318
 msgid "Register"
 msgstr "Neu registrieren"
 
-#: footer-2.php:28 footer.php:12 footer.php:194
-#: includes/gogalapagos-string-translations.php:5
-msgid "Rates"
-msgstr "Raten"
-
-#: footer-2.php:30 footer.php:196
-msgid "Suscribe to our news"
-msgstr ""
-
-#: footer-2.php:33
-msgid "Enter your email"
-msgstr ""
-
-#: footer-2.php:34 footer.php:204 page-contact.php:95
-msgid "Send"
-msgstr ""
-
-#: footer-2.php:39 footer.php:21 footer.php:210
+#: footer-blog.php:25 footer-blog.php:131 footer-booking.php:25
+#: footer-booking.php:131 footer.php:25 footer.php:148 page-booking.php:132
+#: page-booking.php:238 page-find-cruise.php:221 page-find-cruise.php:327
 msgid "Site Map"
 msgstr ""
 
-#: footer-2.php:58 footer.php:52 footer.php:241
+#: footer-blog.php:40 footer-blog.php:146 footer-booking.php:40
+#: footer-booking.php:146 footer.php:40 footer.php:163 page-booking.php:147
+#: page-booking.php:253 page-find-cruise.php:236 page-find-cruise.php:342
 #, fuzzy
 #| msgid "Contacto"
 msgid "Contact Us"
 msgstr "Contact"
 
-#: footer-2.php:77 footer.php:94 footer.php:280
+#: footer-blog.php:65 footer-blog.php:93 footer-booking.php:65
+#: footer-booking.php:93 footer.php:75 footer.php:106 page-booking.php:172
+#: page-booking.php:200 page-find-cruise.php:261 page-find-cruise.php:289
+msgid "Proud member of:"
+msgstr "Stolzes Mitglied von:"
+
+#: footer-blog.php:85 footer-booking.php:85 page-booking.php:192
+#: page-find-cruise.php:281
 #, fuzzy
 #| msgid "Go Galapagos Ltda. All rights reserved."
 msgid "Go Galapagos Ltda. All rights reserved. 1980 - 2017"
 msgstr "Go Galapagos Ltda Alle Rechte vorbehalten."
 
-#: footer.php:103
-msgid "Our customers say"
+#: footer-blog.php:119 footer-booking.php:119 footer.php:132
+#: page-booking.php:226 page-find-cruise.php:315
+msgid "Members Site"
+msgstr "Mitglieder Site"
+
+#: footer-blog.php:125 footer-booking.php:125 footer.php:142
+#: page-booking.php:232 page-find-cruise.php:321
+msgid "Suscribe to our news"
 msgstr ""
 
-#: footer.php:203
-msgid "Enter your Email"
-msgstr ""
+#: footer-blog.php:165 footer-booking.php:165 footer.php:98 footer.php:182
+#: page-booking.php:272 page-find-cruise.php:361
+#, fuzzy
+#| msgid "Go Galapagos Ltda. All rights reserved."
+msgid "Go Galapagos Ltda. All rights reserved."
+msgstr "Go Galapagos Ltda Alle Rechte vorbehalten."
 
-#: front-page.php:12 front-page.php:54
-msgid "Enjoy"
-msgstr ""
+#: front-page.php:22
+#, fuzzy
+#| msgid "Choose your trip"
+msgid "Get your trip"
+msgstr "Wählen Sie Ihre Reise"
 
-#: front-page.php:13
-msgid "Join us in an <strong>unforgettable adventure</strong>"
-msgstr "Begleiten Sie uns in ein <strong>unvergessliches Abenteuer</strong>"
-
-#: front-page.php:18
+#: front-page.php:36
 msgid "Choose your trip"
 msgstr "Wählen Sie Ihre Reise"
 
-#: front-page.php:28
-msgid "Departures"
-msgstr "Abflüge"
+#: front-page.php:49
+#, fuzzy
+#| msgid "Choose your trip"
+msgid "Choose your departure"
+msgstr "Wählen Sie Ihre Reise"
 
-#: front-page.php:40
+#: front-page.php:64
 msgid "Find"
 msgstr "Finden"
 
-#: front-page.php:55
+#: front-page.php:112
+msgid "Enjoy"
+msgstr ""
+
+#: front-page.php:113
 msgid "the Enchanted Islands"
 msgstr ""
 
-#: front-page.php:56
+#: front-page.php:114 single-ggisland.php:53
 #, fuzzy
 #| msgid "Request a Quote"
 msgid "Request a quote"
 msgstr "Angebot anfordern"
 
-#: front-page.php:124
+#: front-page.php:151
 msgid "Offers &amp; News"
 msgstr ""
 
-#: front-page.php:254
+#: front-page.php:251
 msgid "Our Vessels"
 msgstr ""
 
-#: header-slide-singles.php:20 header.php:20
+#: header-slide-singles.php:20 templates/alter-nav.php:2
 msgid "Menu"
 msgstr "Menü"
 
-#: header-slide-singles.php:77 header.php:105
+#: header-slide-singles.php:77 templates/search-box.php:3
 msgid "Tell us what are you looking for?"
 msgstr "Sagen Sie uns was Sie suchen?"
 
-#: header-slide-singles.php:79 header.php:107 search.php:10
+#: header-slide-singles.php:79 search.php:10 templates/search-box.php:5
 msgid "Type here and press enter"
 msgstr "Hier eingeben und Enter drücken"
 
-#: header-slide-singles.php:82 header.php:110
+#: header-slide-singles.php:82 templates/search-box.php:8
 msgid "You may also be interested in"
 msgstr "Sie könnten auch interessiert sein an"
 
-#: includes/gogalapagos-ajax-calls.php:9
-#, fuzzy
-#| msgid "Visit The Galapagos Islands"
-msgctxt "gogalapagos"
-msgid "Galapagos Islands"
-msgstr "Besuchen Sie die Galapagos Inseln"
-
-#: includes/gogalapagos-ajax-calls.php:13
-msgctxt "gogalapagos"
-msgid "#MustDo"
+#: header.php:60 page-booking.php:60 page-find-cruise.php:60
+msgid "Loading"
 msgstr ""
 
-#: includes/gogalapagos-ajax-calls.php:17
-msgctxt "gogalapagos"
-msgid "Animals & Wildlife"
+#: includes/gogalapagos-extras.php:87
+msgid "Multi Idioma"
 msgstr ""
 
-#: includes/gogalapagos-ajax-calls.php:54
-msgid "Animals Grouped By"
+#: includes/gogalapagos-extras.php:89
+msgid "Uso exclusivo del qTranslate-x"
 msgstr ""
 
-#: includes/gogalapagos-string-translations.php:4
-msgid "Total Estimated"
-msgstr "Geschätzte Gesamtmenge"
+#: includes/gogalapagos-extras.php:97
+msgid "Suscribe"
+msgstr ""
 
-#: includes/gogalapagos-string-translations.php:6
-msgid "per person"
-msgstr "pro Person"
-
-#: includes/gogalapagos-string-translations.php:7 templates/cabins-ship.php:35
-msgid "Request a Quote"
-msgstr "Angebot anfordern"
-
-#: includes/gogalapagos-string-translations.php:8
-msgid "Adults"
-msgstr "Erwachsene"
-
-#: includes/gogalapagos-string-translations.php:9
-msgid "Children"
-msgstr "Kinder"
+#: includes/gogalapagos-extras.php:99
+msgid "Uso exclusivo de Constant Contact"
+msgstr ""
 
 #: includes/tpl_shortcodes.php:451
 msgid "Choose a Deck"
@@ -263,124 +314,232 @@ msgstr ""
 msgid "Search the blog"
 msgstr "Buscar"
 
-#: index.php:35 tag.php:35
-msgid "Tags"
-msgstr ""
+#: index.php:35
+#, fuzzy
+#| msgid "Series"
+msgid "Categories"
+msgstr "Series"
 
-#: index.php:70 tag.php:70
+#: index.php:77 single.php:78 tag.php:70
 #, fuzzy
 #| msgid "Type here and press enter"
 msgid "There's no posts yet"
 msgstr "Hier eingeben und Enter drücken"
 
-#: page-contact.php:65
+#: js/moment.min.js:1
+msgid ": "
+msgstr ""
+
+#: page-contact.php:6
+msgctxt "gogalapagos"
+msgid "Direct Sales"
+msgstr ""
+
+#: page-contact.php:7
+msgctxt "gogalapagos"
+msgid "Incoming Sales"
+msgstr ""
+
+#: page-contact.php:8
+msgctxt "gogalapagos"
+msgid "Business Development"
+msgstr ""
+
+#: page-contact.php:18
 msgid ""
 "Stay in touch with us by calling (593) 2-2267000 or by completing the "
 "following form:"
 msgstr ""
 
-#: page-contact.php:72
+#: page-contact.php:25
 msgid "First Name"
 msgstr ""
 
-#: page-contact.php:76
+#: page-contact.php:29
 msgid "Last Name"
 msgstr ""
 
-#: page-contact.php:80
+#: page-contact.php:33
 msgid "Email Address"
 msgstr ""
 
-#: page-contact.php:84
+#: page-contact.php:37
 #, fuzzy
 #| msgid "Phone Services"
 msgid "Phone Number"
 msgstr "Servicios Telefónicos"
 
-#: page-contact.php:88
+#: page-contact.php:41
 #, fuzzy
 #| msgid "Request a Quote"
 msgid "Request"
 msgstr "Angebot anfordern"
 
-#: page-contact.php:92
+#: page-contact.php:45
 msgid "Description"
 msgstr ""
 
-#: page-contact.php:108
+#: page-contact.php:48
+msgid "Send"
+msgstr ""
+
+#: page-contact.php:61
 msgid "Emergency contact"
 msgstr ""
 
-#: page-contact.php:115
+#: page-contact.php:68
 msgid "Land Operations Manager"
 msgstr ""
 
-#: page-contact.php:121
+#: page-contact.php:74
 msgid "From outside"
 msgstr ""
 
-#: page-contact.php:126
+#: page-contact.php:79
 msgid "From"
 msgstr ""
 
-#: page-contact.php:136
+#: page-contact.php:89
 msgid "Directions & Toll Free Numbers"
 msgstr ""
 
-#: page-contact.php:142
+#: page-contact.php:95
 msgid "Main Office"
 msgstr ""
 
-#: page-contact.php:143 page-contact.php:154
+#: page-contact.php:96 page-contact.php:107
 msgid "Address"
 msgstr ""
 
-#: page-contact.php:145 page-contact.php:156
+#: page-contact.php:98 page-contact.php:109
 msgid "Phone (Area Code)"
 msgstr ""
 
-#: page-contact.php:147 page-contact.php:158
+#: page-contact.php:100 page-contact.php:111
 msgid "Fax"
 msgstr ""
 
-#: page-contact.php:149 page-contact.php:160
+#: page-contact.php:102 page-contact.php:113
 msgid "Office Schedule"
 msgstr ""
 
-#: page-contact.php:150
+#: page-contact.php:103
 msgid "Quito time"
 msgstr ""
 
-#: page-contact.php:153
+#: page-contact.php:106
 msgid "Galapagos Office"
 msgstr ""
 
-#: page-contact.php:161
+#: page-contact.php:114
 #, fuzzy
 #| msgid "Visit The Galapagos Islands"
 msgid "Galapagos time"
 msgstr "Besuchen Sie die Galapagos Inseln"
 
-#: page-contact.php:164
+#: page-contact.php:117
 msgid "Toll Free Numbres"
 msgstr ""
 
-#: page-contact.php:165
+#: page-contact.php:118
 msgid "Partners"
 msgstr ""
 
-#: page-contact.php:173
+#: page-contact.php:126
 msgid "Direct Passengers"
 msgstr ""
 
-#: page-contact.php:179
+#: page-contact.php:132
 #, fuzzy
 #| msgid "Phone Services"
 msgid "Local Phone Numbers"
 msgstr "Servicios Telefónicos"
 
-#: page-contact.php:447
+#: page-contact.php:400
 msgid "Our Sales Team Email Adresses"
+msgstr ""
+
+#: page-coral-yachts.php:225 page-galapagos-legend.php:231
+#: single-ggships.php:287
+msgid "Deck Plan"
+msgstr ""
+
+#: page-coral-yachts.php:316 page-coral-yachts.php:340
+#: page-coral-yachts.php:363 page-galapagos-legend.php:325
+#: page-galapagos-legend.php:349 page-galapagos-legend.php:372
+#: single-ggships.php:378 single-ggships.php:402 single-ggships.php:425
+msgid "Technical Information"
+msgstr ""
+
+#: page-coral-yachts.php:395 page-galapagos-legend.php:404
+#: single-ggships.php:457
+msgid "Security Information"
+msgstr ""
+
+#: page-go-galapagos-cruises.php:12
+#, fuzzy
+#| msgid "Visit The Galapagos Islands"
+msgid "The Go Galapagos Difference"
+msgstr "Besuchen Sie die Galapagos Inseln"
+
+#: page-go-galapagos-cruises.php:20
+msgid "Experience the best of The Pacific Coast"
+msgstr ""
+
+#: page-go-galapagos-cruises.php:58
+#, fuzzy
+msgid "View More"
+msgstr "Buscar"
+
+#: page-go-galapagos-cruises.php:77
+msgid "Services aboard our fleet"
+msgstr ""
+
+#: page-go-galapagos-cruises.php:83
+msgid "Onboard service and facilities"
+msgstr ""
+
+#: page-go-galapagos-cruises.php:97
+msgid "Cabin service and facilities"
+msgstr ""
+
+#: page-go-galapagos-cruises.php:113
+msgid "Services available in the Galapagos Legend only"
+msgstr ""
+
+#: page-go-galapagos-cruises.php:141 page-go-galapagos-cruises.php:166
+#: page-go-galapagos-cruises.php:194
+msgid "Know all activities"
+msgstr ""
+
+#: page-go-galapagos-cruises.php:192
+#, fuzzy
+#| msgid "Visit The Galapagos Islands"
+msgid "Have fun on the Galapagos Islands"
+msgstr "Besuchen Sie die Galapagos Inseln"
+
+#: page-go-galapagos-cruises.php:193
+msgid ""
+"These two yachts are the intimate experience guest are looking for, with "
+"their respective capacity of 19 and 12, their cabins offer a sense of an "
+"intimate and private yacht experience. In small spaces, the service is more "
+"personalized and meeting fellow travelers are easy to share the experience "
+"of the trip. All social areas are designed with style and comfort, as well "
+"as the cabins that include excellent amenities. The external open deck areas "
+"have perfect spaces designed to socialize, relax and enjoy the best of the "
+"Pacific sun.gogalapagos"
+msgstr ""
+
+#: page-go-galapagos-cruises.php:203
+msgid "A Typical Cruise Day"
+msgstr ""
+
+#: page-request-a-quote.php:125
+msgid "Please fill the form"
+msgstr ""
+
+#: page-why-galapagos.php:45
+msgid "Learn More"
 msgstr ""
 
 #: search.php:8
@@ -400,7 +559,7 @@ msgstr ""
 msgid "Islands"
 msgstr "Buscar"
 
-#: search.php:20
+#: search.php:20 templates/ship-navbar.php:18 templates/ship-navbar.php:46
 msgid "Activities"
 msgstr ""
 
@@ -412,156 +571,368 @@ msgstr ""
 msgid "Read More"
 msgstr ""
 
-#: single-ggactivity.php:63 single-gganimal.php:61 single-ggisland.php:72
-#: single-gglocation.php:119
-msgid "Move through the images"
-msgstr ""
-
-#: single-ggactivity.php:74 single-gganimal.php:71 single-gglocation.php:130
+#: single-ggactivity.php:70 single-gganimal.php:71 single-gglocation.php:135
+#: single-ggspecialinterest.php:74
 msgid "Close"
 msgstr ""
 
-#: single-ggactivity.php:78 single-ggactivity.php:97 single-gganimal.php:75
-#: single-gganimal.php:94 single-ggisland.php:86 single-gglocation.php:134
-#: single-gglocation.php:154
+#: single-ggactivity.php:74 single-ggactivity.php:93 single-gganimal.php:75
+#: single-gganimal.php:99 single-ggisland.php:163 single-gglocation.php:139
+#: single-gglocation.php:166 single-ggspecialinterest.php:78
+#: single-ggspecialinterest.php:97
 msgid "More about "
 msgstr ""
 
-#: single-ggactivity.php:89 single-gganimal.php:86 single-gglocation.php:145
+#: single-ggactivity.php:85 single-gganimal.php:86 single-gglocation.php:150
+#: single-ggspecialinterest.php:89
 #, fuzzy
 #| msgid "Visit The Galapagos Islands"
 msgid "at the Galapagos Islands"
 msgstr "Besuchen Sie die Galapagos Inseln"
 
-#: single-gganimal.php:103
+#: single-gganimal.php:108
 #, fuzzy
 msgid "Animal Groups"
 msgstr "Buscar"
 
-#: single-gganimal.php:105
+#: single-gganimal.php:110
 msgid "Animal Group"
 msgstr ""
 
-#: single-gganimal.php:117
+#: single-gganimal.php:122
 msgid "Scientific Name"
 msgstr ""
 
-#: single-gganimal.php:126
+#: single-gganimal.php:131
 msgid "Animal Average Size"
 msgstr ""
 
-#: single-gganimal.php:135
+#: single-gganimal.php:140
 msgid "Animal Average Weight"
 msgstr ""
 
-#: single-gganimal.php:142
+#: single-gganimal.php:147
 msgid "Places where you may see this animal"
 msgstr ""
 
-#: single-ggisland.php:28
-msgid "Visitor's Sites"
+#: single-ggisland.php:32
+msgid "Visitor Sites"
 msgstr ""
 
-#: single-ggisland.php:30
-msgid "Visitor's Site"
+#: single-ggisland.php:34
+msgid "Visitor Site"
 msgstr ""
 
-#: single-ggisland.php:93
+#: single-ggisland.php:170
 msgid "Go visit this Island"
 msgstr ""
 
-#: single-ggisland.php:134
+#: single-ggisland.php:172
+#, fuzzy
+msgid "Itineraries available"
+msgstr "Buscar"
+
+#: single-ggisland.php:222
 msgid "Activities on the "
 msgstr ""
 
-#: single-ggisland.php:147 single-ggisland.php:159 single-ggisland.php:171
+#: single-ggisland.php:235 single-ggisland.php:247 single-ggisland.php:259
 msgid "More about this activity"
 msgstr ""
 
-#: single-ggisland.php:185
+#: single-ggisland.php:273
 msgid "Move through the activities"
 msgstr ""
 
-#: single-ggisland.php:207
+#: single-ggisland.php:295
 #, fuzzy
 #| msgid "Visit The Galapagos Islands"
 msgid "The Galapagos Islands"
 msgstr "Besuchen Sie die Galapagos Inseln"
 
-#: single-ggisland.php:233
+#: single-ggisland.php:321 single-ggitineraries.php:258
 msgid "View more about this island"
 msgstr ""
 
-#: single-ggisland.php:256
+#: single-ggisland.php:344 single-ggitineraries.php:281
 msgid "Move through the islands"
 msgstr ""
 
+#: single-ggitineraries.php:6 templates/template-itineraries-inside-ships.php:6
+#: templates/template-itineraries-inside-ships.php:13
+#: templates/template-itineraries-inside-ships.php:20
+#: templates/template-itineraries-inside-ships.php:27
+#: templates/template-itinerarios.php:17
+#: touch/ship-interactive-itineraries.php:38
+#: touch/ship-interactive-itineraries.php:45
+msgctxt "gogalapagos"
+msgid "Monday"
+msgstr ""
+
+#: single-ggitineraries.php:7 templates/template-itineraries-inside-ships.php:7
+#: templates/template-itineraries-inside-ships.php:14
+#: templates/template-itineraries-inside-ships.php:21
+#: templates/template-itineraries-inside-ships.php:28
+#: templates/template-itinerarios.php:18
+#: touch/ship-interactive-itineraries.php:39
+#: touch/ship-interactive-itineraries.php:46
+msgctxt "gogalapagos"
+msgid "Tuesday"
+msgstr ""
+
+#: single-ggitineraries.php:8 templates/template-itineraries-inside-ships.php:8
+#: templates/template-itineraries-inside-ships.php:15
+#: templates/template-itineraries-inside-ships.php:22
+#: templates/template-itineraries-inside-ships.php:29
+#: templates/template-itinerarios.php:19
+#: touch/ship-interactive-itineraries.php:40
+#: touch/ship-interactive-itineraries.php:47
+msgctxt "gogalapagos"
+msgid "Wednesday"
+msgstr ""
+
+#: single-ggitineraries.php:9 templates/template-itineraries-inside-ships.php:9
+#: templates/template-itineraries-inside-ships.php:16
+#: templates/template-itineraries-inside-ships.php:23
+#: templates/template-itineraries-inside-ships.php:30
+#: templates/template-itinerarios.php:20
+#: touch/ship-interactive-itineraries.php:41
+#: touch/ship-interactive-itineraries.php:48
+msgctxt "gogalapagos"
+msgid "Thursday"
+msgstr ""
+
+#: single-ggitineraries.php:10
+#: templates/template-itineraries-inside-ships.php:10
+#: templates/template-itineraries-inside-ships.php:17
+#: templates/template-itineraries-inside-ships.php:24
+#: templates/template-itineraries-inside-ships.php:31
+#: templates/template-itinerarios.php:21
+#: touch/ship-interactive-itineraries.php:42
+#: touch/ship-interactive-itineraries.php:49
+msgctxt "gogalapagos"
+msgid "Friday"
+msgstr ""
+
+#: single-ggitineraries.php:11
+#: templates/template-itineraries-inside-ships.php:11
+#: templates/template-itineraries-inside-ships.php:18
+#: templates/template-itineraries-inside-ships.php:25
+#: templates/template-itineraries-inside-ships.php:32
+#: templates/template-itinerarios.php:22
+#: touch/ship-interactive-itineraries.php:43
+#: touch/ship-interactive-itineraries.php:50
+msgctxt "gogalapagos"
+msgid "Saturday"
+msgstr ""
+
+#: single-ggitineraries.php:12
+#: templates/template-itineraries-inside-ships.php:12
+#: templates/template-itineraries-inside-ships.php:19
+#: templates/template-itineraries-inside-ships.php:26
+#: templates/template-itineraries-inside-ships.php:33
+#: templates/template-itinerarios.php:23
+#: touch/ship-interactive-itineraries.php:44
+#: touch/ship-interactive-itineraries.php:51
+msgctxt "gogalapagos"
+msgid "Sunday"
+msgstr ""
+
+#: single-ggitineraries.php:15 single-ggitineraries.php:22
+msgctxt "gogalapagos"
+msgid "None"
+msgstr ""
+
+#: single-ggitineraries.php:16
+msgctxt "gogalapagos"
+msgid "Dry Landing"
+msgstr ""
+
+#: single-ggitineraries.php:17
+msgctxt "gogalapagos"
+msgid "Wet Landing"
+msgstr ""
+
+#: single-ggitineraries.php:18
+msgctxt "gogalapagos"
+msgid "Dry or Wet Landing"
+msgstr ""
+
+#: single-ggitineraries.php:19
+msgctxt "gogalapagos"
+msgid "Circumnavigation"
+msgstr ""
+
+#: single-ggitineraries.php:23
+msgctxt "gogalapagos"
+msgid "Eroded Tuff"
+msgstr ""
+
+#: single-ggitineraries.php:24
+msgctxt "gogalapagos"
+msgid "Flat"
+msgstr ""
+
+#: single-ggitineraries.php:25
+msgctxt "gogalapagos"
+msgid "Flat & Muddy"
+msgstr ""
+
 #: single-ggitineraries.php:26
+msgctxt "gogalapagos"
+msgid "Flat & Petrified Lava"
+msgstr ""
+
+#: single-ggitineraries.php:27
+msgctxt "gogalapagos"
+msgid "Flat & Sandy"
+msgstr ""
+
+#: single-ggitineraries.php:28
+msgctxt "gogalapagos"
+msgid "Flat & Semi-rocky"
+msgstr ""
+
+#: single-ggitineraries.php:29
+msgctxt "gogalapagos"
+msgid "Hill/mountain"
+msgstr ""
+
+#: single-ggitineraries.php:30
+msgctxt "gogalapagos"
+msgid "Marsh"
+msgstr ""
+
+#: single-ggitineraries.php:31
+msgctxt "gogalapagos"
+msgid "Muddy"
+msgstr ""
+
+#: single-ggitineraries.php:32
+msgctxt "gogalapagos"
+msgid "Petrified Lava"
+msgstr ""
+
+#: single-ggitineraries.php:33
+msgctxt "gogalapagos"
+msgid "Rocky"
+msgstr ""
+
+#: single-ggitineraries.php:34
+msgctxt "gogalapagos"
+msgid "Rocky & Petrified Lava"
+msgstr ""
+
+#: single-ggitineraries.php:35
+msgctxt "gogalapagos"
+msgid "Rocky & Sandy"
+msgstr ""
+
+#: single-ggitineraries.php:36
+msgctxt "gogalapagos"
+msgid "Sandy"
+msgstr ""
+
+#: single-ggitineraries.php:37
+msgctxt "gogalapagos"
+msgid "Shallow Ocean"
+msgstr ""
+
+#: single-ggitineraries.php:38
+msgctxt "gogalapagos"
+msgid "Slippery"
+msgstr ""
+
+#: single-ggitineraries.php:39
+msgctxt "gogalapagos"
+msgid "Steep"
+msgstr ""
+
+#: single-ggitineraries.php:40
+msgctxt "gogalapagos"
+msgid "Steep & Petrified Lava"
+msgstr ""
+
+#: single-ggitineraries.php:41
+#, fuzzy
+#| msgctxt "Taxonomy Singular Name"
+#| msgid "Material"
+msgctxt "gogalapagos"
+msgid "Water"
+msgstr "Material"
+
+#: single-ggitineraries.php:42
+msgctxt "gogalapagos"
+msgid "Wooden Trail"
+msgstr ""
+
+#: single-ggitineraries.php:80
 #, fuzzy
 msgid "View Itinerary Map"
 msgstr "Buscar"
 
-#: single-gglocation.php:65
-msgid "More Information"
+#: single-ggitineraries.php:109
+msgid "Day"
 msgstr ""
 
-#: single-gglocation.php:163
+#: single-ggitineraries.php:131 single-ggitineraries.php:171
+#: single-gglocation.php:175 touch/ship-interactive-activity.php:352
 msgid "Disembarking"
 msgstr ""
 
-#: single-gglocation.php:174
+#: single-ggitineraries.php:134 single-ggitineraries.php:174
+#: single-gglocation.php:186 touch/ship-interactive-activity.php:363
 msgid "Type of Terrain"
 msgstr ""
 
-#: single-gglocation.php:185
+#: single-ggitineraries.php:137 single-ggitineraries.php:177
+#: single-gglocation.php:197 touch/ship-interactive-activity.php:374
 msgid "Difficulty Level"
 msgstr ""
 
-#: single-gglocation.php:196
+#: single-ggitineraries.php:140 single-ggitineraries.php:180
+#: single-gglocation.php:208 touch/ship-interactive-activity.php:385
 msgid "Physical Conditions Required"
 msgstr ""
 
-#: single-gglocation.php:207
+#: single-ggitineraries.php:143 single-ggitineraries.php:183
+#: single-gglocation.php:219 touch/ship-interactive-activity.php:396
 msgid "Duration"
 msgstr ""
 
-#: single-gglocation.php:216
+#: single-ggitineraries.php:211
+#, fuzzy
+msgid "Itineraty route"
+msgstr "Buscar"
+
+#: single-ggitineraries.php:218 templates/ship-navbar.php:21
+#: templates/ship-navbar.php:22 templates/ship-navbar.php:51
+#: templates/template-itineraries-inside-ships.php:39
+#: templates/template-itinerarios-TEST.php:28
+#: templates/template-itinerarios.php:43
+#, fuzzy
+msgid "Itineraries"
+msgstr "Buscar"
+
+#: single-gglocation.php:70 touch/ship-interactive-activity.php:330
+#: touch/ship-interactive-activity.php:337
+msgid "More Information"
+msgstr ""
+
+#: single-gglocation.php:228 touch/ship-interactive-activity.php:405
 msgid "Highlights"
 msgstr ""
 
-#: single-ggships.php:209
-msgid "Technical Information"
+#: single.php:44
+msgid "Our latest posts"
 msgstr ""
 
-#: single-ggships.php:242
-msgid "Deck Plan"
-msgstr ""
-
-#: single-ggships.php:259
-#, fuzzy
-msgid "Sea Deck"
-msgstr "Buscar"
-
-#: single-ggships.php:262
-#, fuzzy
-msgid "Earth Deck"
-msgstr "Buscar"
-
-#: single-ggships.php:265
-#, fuzzy
-msgid "Sky Deck"
-msgstr "Buscar"
-
-#: single-ggships.php:268
-msgid "Moon Deck"
+#: tag.php:35
+msgid "Tags"
 msgstr ""
 
 #: tag.php:37
 msgid "All"
-msgstr ""
-
-#: taxonomy-animalgroup.php:21
-msgid "There is not animals in this group yet."
 msgstr ""
 
 #: taxonomy-go_tours.php:21
@@ -584,23 +955,51 @@ msgstr ""
 msgid "Our Partners"
 msgstr ""
 
-#: templates/about-us-navbar.php:19 templates/ship-navbar.php:18
+#: templates/about-us-navbar.php:19 templates/ship-navbar.php:25
+#: templates/ship-navbar.php:52
 msgid "Plan Your Trip Now!"
 msgstr ""
 
-#: templates/archive-loop-animals.php:13
-msgid "Sorry!. There are no animal groups on this list for now"
+#: templates/alter-nav-default-side-container.php:15
+#: templates/alter-nav-default-side-container.php:32
+#, fuzzy
+#| msgid "Visit The Galapagos Islands"
+msgid "The Go Galapagos Experience"
+msgstr "Besuchen Sie die Galapagos Inseln"
+
+#: templates/alter-nav-default-side-container.php:24
+msgid "The"
 msgstr ""
 
-#: templates/cabins-ship.php:27
+#: templates/breadcrumbs.php:23
+msgctxt "gogalapagos"
+msgid "You're in"
+msgstr ""
+
+#: templates/breadcrumbs.php:23
+#, fuzzy
+#| msgid "Home"
+msgctxt "gogalapagos"
+msgid "Home"
+msgstr "Inicio"
+
+#: templates/cabins-ship.php:32
 msgid "3D Floor Plan"
 msgstr ""
 
-#: templates/cabins-ship.php:28
+#: templates/cabins-ship.php:33
 #, fuzzy
 #| msgid "Por Locacion"
 msgid "Cabin Location"
 msgstr "By Location"
+
+#: templates/faqs-loop.php:11
+msgid "All FAQs"
+msgstr ""
+
+#: templates/footer-customer.php:7
+msgid "Our customers say"
+msgstr ""
 
 #: templates/land-tours-navbar.php:12
 msgid "Quito & Surroundings"
@@ -628,45 +1027,158 @@ msgstr "Categories"
 msgid "hacer el SEARCH"
 msgstr ""
 
-#: templates/ship-navbar.php:12
+#: templates/ship-navbar.php:17 templates/ship-navbar.php:45
 msgid "Experience"
 msgstr ""
 
-#: templates/ship-navbar.php:13
+#: templates/ship-navbar.php:19 templates/ship-navbar.php:47
 #, fuzzy
 #| msgid "Social Media"
 msgid "Social Areas"
 msgstr "Social Media"
 
-#: templates/ship-navbar.php:14
+#: templates/ship-navbar.php:20 templates/ship-navbar.php:48
 msgid "Cabins"
 msgstr ""
 
-#: templates/ship-navbar.php:15
+#: templates/ship-navbar.php:23 templates/ship-navbar.php:49
+msgid "Deck Plan & Technical Information"
+msgstr ""
+
+#: templates/ship-navbar.php:24 templates/ship-navbar.php:50
 msgid "360 Virtual Tour"
 msgstr ""
 
-#: templates/ship-navbar.php:16
-msgid "Technical Information & Deck Plan"
+#: templates/show-side-information-alter-nav.php:5
+#, fuzzy
+#| msgid "Visit The Galapagos Islands"
+msgctxt "gogalapagos"
+msgid "Galapagos Islands"
+msgstr "Besuchen Sie die Galapagos Inseln"
+
+#: templates/show-side-information-alter-nav.php:9
+msgctxt "gogalapagos"
+msgid "#MustDo"
 msgstr ""
 
-#: templates/ship-navbar.php:17 templates/template-itinerarios.php:28
+#: templates/show-side-information-alter-nav.php:13
+msgctxt "gogalapagos"
+msgid "Animals & Wildlife"
+msgstr ""
+
+#: templates/show-side-information-alter-nav.php:27
+msgid ""
+"Adaptation, evolution, endemism and fearlessness are probably the concepts "
+"that best describe the only animals that complement the natural magic of the "
+"Galapagos Islands. The species that by chance were carried by ocean or air "
+"currents, managed to reach these isolated and remote islands, facing a very "
+"different and extreme environment."
+msgstr ""
+
+#: templates/show-side-information-alter-nav.php:45
+msgid "Animals Grouped By"
+msgstr ""
+
+#: templates/show-side-information-alter-nav.php:90
+msgid ""
+"Every island in the Galapagos is different one from the other and all this "
+"is due to how they were formed. If the 4,600 million years of Earth´s "
+"history will be simulated in 24 hours, the Galapagos Islands had been formed "
+"in the last two minutes of that day. The 19 islands and 219 islets were "
+"created by successive volcanic eruptions over a hot spot located on the "
+"seafloor of the Nazca Plate. The first of them emerged in the middle of the "
+"Pacific Ocean about 5 million years ago. The islands are settled on the "
+"Nazca Plate and move about 5 centimeters a year eastward. "
+msgstr ""
+
+#: templates/show-side-information-alter-nav.php:92
 #, fuzzy
-msgid "Itineraries"
+msgid "See more Islands"
 msgstr "Buscar"
 
-#: templates/template-itinerarios.php:34
-msgid "Check departure dates "
+#: templates/social-area-fullscreen.php:7
+#, fuzzy
+#| msgid "Social Media"
+msgid "Anothers Social Areas"
+msgstr "Social Media"
+
+#: templates/template-itineraries-inside-ships.php:64
+#: templates/template-itineraries-inside-ships.php:65
+msgid "Days"
 msgstr ""
 
-#: templates/template-itinerarios.php:192
-msgid "Plan your trip now"
+#: templates/template-itineraries-inside-ships.php:127
+#: templates/template-itineraries-inside-ships.php:223
+msgid "to"
 msgstr ""
 
-#: templates/template-itinerarios.php:193
+#: templates/template-itineraries-inside-ships.php:166
+#: templates/template-itinerarios-TEST.php:193
+#: templates/template-itinerarios.php:257
 #, fuzzy
 msgid "View Complete Itinerary"
 msgstr "Buscar"
+
+#: templates/template-itineraries-inside-ships.php:204
+#, fuzzy
+msgctxt "gogalapagos"
+msgid "and"
+msgstr "Buscar"
+
+#: templates/template-itineraries-inside-ships.php:205
+msgid "Extended Cruise"
+msgstr ""
+
+#: templates/template-itinerarios-TEST.php:34
+#: templates/template-itinerarios.php:49
+msgid "Check departure dates "
+msgstr ""
+
+#: templates/template-itinerarios-TEST.php:192
+msgid "Plan your trip now"
+msgstr ""
+
+#: touch/ship-interactive-activity.php:331
+#: touch/ship-interactive-activity.php:338
+#, fuzzy
+#| msgid "Mapa"
+msgid "Map"
+msgstr "Map"
+
+#: touch/ship-interactive-activity.php:332
+msgid "Fauna"
+msgstr ""
+
+#: touch/ship-interactive-activity.php:339
+msgid "Flora &amp; Fauna"
+msgstr ""
+
+#: touch/ship-interactive.php:160
+msgid "Welcome to experience Galapagos, the islands that changed the world"
+msgstr ""
+
+#: touch/ship-interactive.php:176
+msgid ""
+"Schedule subject to change at any time due to park regulations and weather."
+msgstr ""
+
+#~ msgid "Join us in an <strong>unforgettable adventure</strong>"
+#~ msgstr "Begleiten Sie uns in ein <strong>unvergessliches Abenteuer</strong>"
+
+#~ msgid "Departures"
+#~ msgstr "Abflüge"
+
+#, fuzzy
+#~ msgid "Sea Deck"
+#~ msgstr "Buscar"
+
+#, fuzzy
+#~ msgid "Earth Deck"
+#~ msgstr "Buscar"
+
+#, fuzzy
+#~ msgid "Sky Deck"
+#~ msgstr "Buscar"
 
 #, fuzzy
 #~ msgid "Parent Ship:"
@@ -685,10 +1197,6 @@ msgstr "Buscar"
 #~| msgid "Editar Item"
 #~ msgid "Edit Deck"
 #~ msgstr "Edit item"
-
-#, fuzzy
-#~ msgid "View Deck"
-#~ msgstr "Buscar"
 
 #, fuzzy
 #~ msgid "View Decks"
@@ -717,10 +1225,6 @@ msgstr "Buscar"
 
 #, fuzzy
 #~ msgid "Parent Island:"
-#~ msgstr "Buscar"
-
-#, fuzzy
-#~ msgid "Search Island"
 #~ msgstr "Buscar"
 
 #, fuzzy
@@ -1091,9 +1595,6 @@ msgstr "Buscar"
 #~ msgid "Accesorios"
 #~ msgstr "Accesories"
 
-#~ msgid "Mapa"
-#~ msgstr "Map"
-
 #~ msgid "Ver mas"
 #~ msgstr "See more"
 
@@ -1271,9 +1772,6 @@ msgstr "Buscar"
 #~ msgid "Serie"
 #~ msgstr "Serie"
 
-#~ msgid "Series"
-#~ msgstr "Series"
-
 #~ msgid "Item padre"
 #~ msgstr "Parent ítem:"
 
@@ -1315,10 +1813,6 @@ msgstr "Buscar"
 #~ msgctxt "Taxonomy General Name"
 #~ msgid "Materiales"
 #~ msgstr "Materials"
-
-#~ msgctxt "Taxonomy Singular Name"
-#~ msgid "Material"
-#~ msgstr "Material"
 
 #~ msgid "Materiales"
 #~ msgstr "Materials"
@@ -1634,9 +2128,6 @@ msgstr "Buscar"
 #~ msgctxt "mnt"
 #~ msgid "producto"
 #~ msgstr "item"
-
-#~ msgid "Home"
-#~ msgstr "Inicio"
 
 #~ msgid "About Us"
 #~ msgstr "¿Quiénes Somos?"

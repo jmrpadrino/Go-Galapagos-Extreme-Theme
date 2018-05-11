@@ -2,9 +2,7 @@
 <?php 
 $args = array(
     'post_type' => 'ggships',
-    'posts_per_page' => 2,
-    'orderby' => 'post_date',
-    'order' => 'ASC'
+    'posts_per_page' => 2
 );
 $barcos = get_posts($args);
 ?>
@@ -36,7 +34,7 @@ $barcos = get_posts($args);
                         <?php foreach($barcos as $barco){ ?>
                         <div class="col-md-6 ship-placeholder">
                             <div class="alter-nav-container-ship-logo">
-                                <img class="img-responsive" width="180" src="<?= get_post_meta($barco->ID, $prefix . 'ship_logo', true) ?>" alt="<?= $barco->post_title ?>">
+                                <img class="img-responsive" width="120" src="<?= get_post_meta($barco->ID, $prefix . 'ship_logo', true) ?>" alt="<?= $barco->post_title ?>">
                             </div>
                             <a class="home-ship-btn" href="<?= home_url($barco->post_name); ?>">
                             <img class="img-responsive" src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">

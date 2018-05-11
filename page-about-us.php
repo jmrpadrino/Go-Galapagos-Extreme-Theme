@@ -70,7 +70,7 @@ $prefix = 'gg_';
         </div>
     </div>
 </section>
-<section class="section sections">
+<!--section class="section sections">
     <canvas id="elcanvas1" class="our-history-background-dots"></canvas>
     <div class="history-timeline">
         <div id="history-timeline" class="container">
@@ -184,7 +184,7 @@ $prefix = 'gg_';
         */
 
     </script>
-</section>
+</section-->
 <section class="section sections">
     <div class="container">
         <div class="row">
@@ -196,12 +196,12 @@ $prefix = 'gg_';
                 <p>Galapagos Conservancy works to balance both conservation and community in one of the world’s most remarkable ecosystems. Through support from its members, GC works to preserve, protect, and restore the Galapagos Islands and their extraordinary marine and terrestrial biodiversity through three main conservation programs: Giant Tortoise Restoration, Ecosystem and Species Restoration, and Education for Sustainability. Visit www.galapagos.org to learn more. Our work in Galapagos goes hand-in-hand with that of the Galapagos National Park Service, an institution key to the wellbeing of the islands.</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 36px;">
             <div class="col-sm-6">
-                <img src="http://placehold.it/640x200?text=Galapagos%20Conservancy" class="img-responsive">
+                <img src="<?= get_template_directory_uri() ?>/images/galapagos-conservancy-gogalapagos.png" class="img-responsive logos-conservacy" style="display: block; margin: 0 auto;">
             </div>
             <div class="col-sm-6">
-                <img src="http://placehold.it/640x200?text=Parque%20Nacional" class="img-responsive">
+                <img src="<?= get_template_directory_uri() ?>/images/parque-nacional-galapagos-gogalapagos.png" class="img-responsive logos-conservacy" style="display: block; margin: 0 auto;">
             </div>  
         </div>
     </div>
@@ -217,14 +217,18 @@ $prefix = 'gg_';
         </div>
     </div>
 </section>
-<section class="section sections social-karanki">
-    <img src="http://placehold.it/2000x1333?text=karanki" class="img-responsive social-investment-img">
+<section class="section sections">
+    <div class="social-karanki">
+        <div class="social-karanki1" style="display: flex;">
+            <img src="http://placehold.it/2000x1333?text=karanki" class="img-responsive social-investment-img">
+        </div>
+    </div>
 </section>
 <section class="section sections">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2>Proudly members of</h2>
+                <h2 class="proudly-title">Proudly members of</h2>
             </div>
         </div>
         <div class="row">
