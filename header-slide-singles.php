@@ -36,7 +36,7 @@
                             <ul class="list-inline">
                                 <li><a href="#">Why Galapagos?</a></li>
                                 <li><a href="#">Go Galapagos</a></li>
-                                <li><a href="#" class="plan-your-trip-link">Plan your trip now</a></li>
+                                <li><a href="#" class="plan-your-trip-link">Request a Quote</a></li>
                                 <li><a href="#">Request a quote</a></li>
                             </ul>
                         </div>

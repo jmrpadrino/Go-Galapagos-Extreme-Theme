@@ -189,7 +189,7 @@ foreach( $itinerarios as $itinetario ){
                         </ul>
                     </li>
                 </ul>
-                <a href="#" class="itinerary-plan-your-trip-btn"><?php _e('Plan your trip now','gogalapagos'); ?></a>
+                <a href="#" class="itinerary-plan-your-trip-btn"><?php _e('Request a Quote','gogalapagos'); ?></a>
                 <a href="#" class="view-itinerary-btn"><?php _e('View Complete Itinerary','gogalapagos'); ?></a>
             </div>
         </div>

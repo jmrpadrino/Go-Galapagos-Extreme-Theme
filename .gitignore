@@ -1,3 +1,7 @@
+/videos/
+/uploads/
+/minified1/
+/nbproject/
 *.log
 wp-config.php
 wp-content/advanced-cache.php

@@ -1,60 +1,13 @@
 <?php 
 get_header(); 
 the_post();
+$prefix = 'gg_';
+$options = array(
+    '0' => _x('Direct Sales','gogalapagos'),
+    '1' => _x('Incoming Sales','gogalapagos'),
+    '2' => _x('Business Development','gogalapagos'),
+);
 ?>
-<style>
-    .contact-page-folder{
-        background-position: center top;
-        background-size: cover;
-        color: white;
-        position: relative;
-    }
-    .mask{
-        position: absolute;
-        top: 0;
-        width: 100%;
-        display: flex;
-        background: rgba(29, 29, 29, .6);
-        height: 100%;
-    }
-    .contact-page-title{
-        margin-top: 120px;
-    }
-    .contact-form [type="text"],
-    .contact-form [type="phone"],
-    .contact-form [type="email"]{
-        border-radius: 0px;
-        border: none;
-        border-bottom: 1px solid white;
-        background: transparent;
-    }
-    .contact-folder-btn{
-        display: block;
-        margin: 0 auto;
-        background: #038bae;
-        color: white;
-        border: none;
-        padding: 14px 17px;
-        min-width: 200px;
-        margin-bottom: 36px;
-        text-transform: uppercase;
-    }
-    .separator{
-        border-bottom: 4px solid #292929;
-        margin: 0 auto;
-        margin-top: 40px;
-        margin-bottom: 70px;
-        box-shadow: none;
-    }
-    .tollfree{
-        margin-bottom: 72px;
-    }
-    @media screen and(max-width: 480px){
-        .contact-page-title{
-            margin-top: 80px;
-        }
-    }
-</style>
 <section class="sections section contact-page-folder" style="background-image: url(<?= get_template_directory_uri() ?>/images/contacto-bkg.jpg)">
     <div class="mask"></div>
     <div class="container">
@@ -102,7 +55,7 @@ the_post();
     </div>
 </section>
 <section class="sections section">
-    <div class="container">
+    <div class="container contacts-begins">
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-center"><?php _e('Emergency contact','gogalapagos'); ?> 24/7</h2>
@@ -111,25 +64,25 @@ the_post();
         </div>
         <div class="row">
             <div class="col-sm-4 text-center">
-                <img src="http://placehold.it/130x100?text=Envelope">
+                <img width="80" src="<?= get_template_directory_uri() ?>/images/recurso-mail.png">
                 <h3 class="body-font"><?php _e('Land Operations Manager','gogalapagos'); ?></h3>
                 <span class="contact-separator"></span>
                 <p><a href="mailto:ops3@gogalapagos.com.ec"><strong>ops3@gogalapagos.com.ec</strong></a></p>
             </div>
             <div class="col-sm-4 text-center">
-                <img src="http://placehold.it/130x100?text=Phone">
+                <img width="60" src="<?= get_template_directory_uri() ?>/images/recurso-phone.png">
                 <h3 class="body-font"><?php _e('From outside','gogalapagos'); ?> Ecuador</h3>
                 <p><strong><a href="tel:+593999456205">(593-9) 9945-6205</a></strong></p>
             </div>
             <div class="col-sm-4 text-center">
-                <img src="http://placehold.it/130x100?text=Phone">
+                <img width="60" src="<?= get_template_directory_uri() ?>/images/recurso-phone.png">
                 <h3 class="body-font"><?php _e('From','gogalapagos'); ?> Ecuador</h3>
                 <p><strong><a href="tel:+593999456205">(09) 9945-6205</a></strong></p>
 
             </div>
         </div>
     </div>
-    <div class="directions" style="background: #f5f3f3;">
+    <div class="directions">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -138,8 +91,8 @@ the_post();
                 </div>
             </div>
             <div class="row tollfree">
-                <div class="col-md-4">
-                    <h3 class="body-font"><?php _e('Main Office','gogalapagos'); ?></h3>
+                <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                    <h3 class="body-font text-center"><?php _e('Main Office','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Address'); ?>:</h4>
                     <p>Eloy Alfaro Ave. N34-111 &amp; Catalina Aldaz St. <br/> Quito - Ecuador</p>
                     <h4 class="body-font"><?= _e('Phone (Area Code)','gogalapagos'); ?>:</h4>
@@ -149,8 +102,8 @@ the_post();
                     <h4 class="body-font"><?= _e('Office Schedule', 'gogalapagos'); ?>:</h4>
                     <p>8:30 - 17:30 (<?= _e('Quito time', 'gogalapagos'); ?></p>
                 </div>
-                <div class="col-md-4">
-                    <h3 class="body-font"><?php _e('Galapagos Office','gogalapagos'); ?></h3>
+                <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                    <h3 class="body-font text-center"><?php _e('Galapagos Office','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Address'); ?>:</h4>
                     <p>Rabida s/n &amp; Floreana &amp; Piqueros <br /> Santa Cruz Island - Galapagos</p>
                     <h4 class="body-font"><?= _e('Phone (Area Code)','gogalapagos'); ?>:</h4>
@@ -160,8 +113,8 @@ the_post();
                     <h4 class="body-font"><?= _e('Office Schedule', 'gogalapagos'); ?>:</h4>
                     <p>(593-5) 252 6327 (<?= _e('Galapagos time', 'gogalapagos'); ?></p>
                 </div>
-                <div class="col-md-4">
-                    <h3 class="body-font"><?php _e('Toll Free Numbres','gogalapagos'); ?></h3>
+                <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                    <h3 class="body-font text-center"><?php _e('Toll Free Numbres','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Partners'); ?>:</h4>
                     <ul>
                         <li>US: 1-888-50 KLEIN (55346)</li>
@@ -444,120 +397,67 @@ the_post();
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="text-center"><?php _e('Our Sales Team Email Adresses','gogalapagos'); ?></h2>
+                <h2 class="text-center salesexpert-area-title"><?php _e('Our Sales Team Email Adresses','gogalapagos'); ?></h2>
                 <span class="contact-separator"></span>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <?php 
+                $args = array(
+                    'post_type' => 'ggsalesexpert',
+                    'posts_per_page' => -1
+                );
+                $salesExperts = get_posts($args);
+                
+                foreach ($salesExperts as $expert){
+            ?>
+            <div id="<?= $expert->ID?>" class="col-sm-6">
                 <div class="row">
                     <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
+                        <img width="59" src="<?= get_template_directory_uri() ?>/images/recurso-mail-gris.png">
                     </div>
                     <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
+                        <?php if ($correo = get_post_meta($expert->ID, $prefix . 'salesexpert_email', true)){ ?>
+                        <p><strong><a href="mailto:<?= $correo ?>"><?= $correo ?></a></strong></p>
+                        <?php } ?>
+                        <p><strong><?= $expert->post_title ?> <small>Ext. <?= get_post_meta($expert->ID, $prefix . 'salesexpert_ext', true) ?></small></strong></p>
+                        <p><?= $options[get_post_meta($expert->ID, $prefix . 'salesexpert_charge', true)] ?> - <?= get_post_meta($expert->ID, $prefix . 'salesexpert_region', true) ?></p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <img src="http://placehold.it/60x40?text=Envelope">
-                    </div>
-                    <div class="col-sm-8">
-                        <p><strong>mail@gogalapagos.com.ec</strong></p>
-                        <p><strong>Nombre operador</strong></p>
-                        <p>Oficina operador - Region</p>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </section>
 <?php get_footer(); ?>
+<script>
+    $(document).ready( function(){
+        console.log('hola');
+        var window_width = $(window).width();
+        cambiarFormularioDeLugar(window_width);
+    })
+    function cambiarFormularioDeLugar(window_width){
+        
+        if (window_width <= 768){
+            
+            var htmlCode = '';
+            
+            htmlCode        =   '<div class="container">';
+            htmlCode        +=  '<div class="row">';
+            htmlCode        +=  '<div class="col-sm-10 col-sm-offset-1">';
+            
+            htmlCode        +=  '<div id="form-responsive" class="contact-form-responsive"></div>';
+            
+            htmlCode        +=  '</div>';
+            htmlCode        +=  '</div>';
+            htmlCode        +=  '</div>';
+            
+            
+            //$('.contacts-begins').prepend(htmlCode);
+            $(htmlCode).insertBefore('.contacts-begins');
+            $('#contact-form').appendTo('#form-responsive');
+            
+        }
+        
+    }
+</script>

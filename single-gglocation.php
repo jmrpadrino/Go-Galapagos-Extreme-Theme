@@ -14,26 +14,27 @@ $disembarking_options = array(
     '8' => 'Dry Landing (On Tuff)'
 );
 $terrain_options = array(
-    '0' => 'Sandy',
-    '1' => 'Volcanic',
-    '2' => 'Rocky',
-    '3' => 'Hard',
-    '4' => 'Water',
-    '5' => 'Sandy',
-    '6' => 'Flat',
-    '7' => 'Sandy and Flat',
-    '8' => 'Lava',
-    '9' => 'Dinghy Ride',
-    '10' => 'Steep',
-    '11' => 'Semi Rocky',
-    '12' => 'Windings',
-    '13' => 'Wooded Path',
-    '14' => 'Walking Path',
-    '15' => 'White Sandy Beach',
-    '16' => 'Red Sandy Beach',
-    '17' => 'Eroded Tuff',
-    '18' => 'Muddy',
-    '19' => 'Slippery'
+    '0' => 'None',
+    '1' => 'Eroded Tuff',
+    '2' => 'Flat',
+    '3' => 'Flat & Muddy',
+    '4' => 'Flat & Petrified Lava',
+    '5' => 'Flat & Sandy',
+    '6' => 'Flat & Semi-rocky',
+    '7' => 'Hill/mountain',
+    '8' => 'Marsh',
+    '9' => 'Muddy',
+    '10' => 'Petrified Lava',
+    '11' => 'Rocky',
+    '12' => 'Rocky & Petrified Lava',
+    '13' => 'Rocky & Sandy',
+    '14' => 'Sandy',
+    '15' => 'Shallow Ocean',
+    '16' => 'Slippery',
+    '17' => 'Steep',
+    '18' => 'Steep & Petrified Lava',
+    '19' => 'Water',
+    '20' => 'Wooden Trail',
 );
 $difficulty_options = array(
     '0' => 'Low',
@@ -54,17 +55,17 @@ $physical_options = array(
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 col-lg-offset-1">
-                <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
-                <span class="separator"></span>
-                <?php 
-                if ( has_excerpt( get_the_ID() ) ){ 
-                    echo '<p>'. get_the_excerpt(). '</p>';
-                } 
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1">
+               <?php
+                $parent_island = get_post_meta( get_the_ID(), $prefix . 'visitors_site_island', true);
                 ?>
+                <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
+                <span class="serif-font fold-backlink"> at the <a href="<?= get_permalink( $parent_island ) ?>"><?php echo get_the_title( $parent_island ) ?> Island</a></span>
+                <span class="separator"></span>
+                <p class="single-excerpt"><?= get_the_excerpt() ?></p>
                 <!--p id="more-to-show" class="more-to-show"><span class="conservation-info-icon">i</span><span class="single-more-info-action"><?php _e('More Information','gogalapagos'); ?></span></p-->
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
-                <p><span class="btn btn-warning">Plan your Trip</span> or <a href="#">Request a Quote</a></p>
+                <p><a href="<?= home_url('request-a-quote') . '/?for=' . $post->post_title  ?>" class="plan-your-trip-single-btn"><?php _e('Request a Quote','gogalapagos'); ?></a></p>
             </div>
         </div>
         <div class="row">
@@ -81,29 +82,29 @@ $physical_options = array(
         <div id="single-hero-carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
             <div class="carousel-inner" role="listbox">
                 <?php
-                    if ( count($imagenes[0]) > 0 ){ //Si tiene fotos en la galeria del item
-                        $i = 0;
-                        while( $i < count( $imagenes[0] ) ){
-                            //echo $imagenes[0][$i] . '</br>';
-                            if( $i == 0){
-                                echo '<div class="item active">';
-                            }else{
-                                echo '<div class="item">';
-                            }
-                            echo '<img src="'.wp_get_attachment_url( $imagenes[0][$i] ).'">';
-                            echo '</div>';
-                            $i++;
-                        }
-                    }else{
-                        if (has_post_thumbnail()){
+                if ( count($imagenes[0]) > 0 ){ //Si tiene fotos en la galeria del item
+                    $i = 0;
+                    while( $i < count( $imagenes[0] ) ){
+                        //echo $imagenes[0][$i] . '</br>';
+                        if( $i == 0){
                             echo '<div class="item active">';
-                            echo the_post_thumbnail();
-                            echo '</div>';
-                            
                         }else{
-                            echo '<div class="item active"></div>';
+                            echo '<div class="item">';
                         }
+                        echo '<img src="'.wp_get_attachment_url( $imagenes[0][$i] ).'">';
+                        echo '</div>';
+                        $i++;
                     }
+                }else{
+                    if (has_post_thumbnail()){
+                        echo '<div class="item active">';
+                        echo the_post_thumbnail();
+                        echo '</div>';
+
+                    }else{
+                        echo '<div class="item active"></div>';
+                    }
+                }
                 ?>
             </div>
         </div>
@@ -147,8 +148,15 @@ $physical_options = array(
 </div>
 -->
 </div>
-<div class="sections section">
-    <div class="container">
+<div class="sections section" <?= (get_post_meta ( get_the_ID(), $prefix . 'background_image_content', true)) ? 'style="background-image: url('.get_post_meta ( get_the_ID(), $prefix . 'background_image_content', true).'); background-repeat: no-repeat; background-position: bottom right; background-size: contain;"' : ''; ?>>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <?php include ( TEMPLATEPATH . '/templates/breadcrumbs.php'); ?>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <h2><?php echo _e('More about ') . the_title(); ?></h2>
@@ -156,68 +164,68 @@ $physical_options = array(
                     <?php echo the_content(); ?>
                     <ul class="visitor-site-fearured-information-list">
                         <?php
-                            // Disembarking feature
-                            $disembarking = get_post_meta(get_the_ID(), $prefix . 'visitors_site_disembarking', false);
-                            if (!empty($disembarking)){
-                                echo '<li class="item-featured"><strong>';
-                                _e('Disembarking', 'gogalapagos');
-                                echo ':</strong> ';
-                                foreach ($disembarking as $disembark){
-                                    echo '<span class="featured-value">'.$disembarking_options[$disembark].'</span>';
-                                }
-                                echo '</li>';
+                        // Disembarking feature
+                        $disembarking = get_post_meta(get_the_ID(), $prefix . 'visitors_site_disembarking', false);
+                        if (!empty($disembarking)){
+                            echo '<li class="item-featured"><strong>';
+                            _e('Disembarking', 'gogalapagos');
+                            echo ':</strong> ';
+                            foreach ($disembarking as $disembark){
+                                echo '<span class="featured-value">'.$disembarking_options[$disembark].'</span>';
                             }
-                            // Type of terrain feature
-                            $terrains = get_post_meta(get_the_ID(), $prefix . 'visitors_site_terrain', false);
-                            if (!empty($terrains)){
-                                echo '<li><strong>';
-                                _e('Type of Terrain', 'gogalapagos');
-                                echo ':</strong> ';
-                                foreach ($terrains as $terrain){
-                                    echo '<span class="item-featured">'.$terrain_options[$terrain].'</span>';
-                                }
-                                echo '</li>';
+                            echo '</li>';
+                        }
+                        // Type of terrain feature
+                        $terrains = get_post_meta(get_the_ID(), $prefix . 'visitors_site_terrain', false);
+                        if (!empty($terrains)){
+                            echo '<li><strong>';
+                            _e('Type of Terrain', 'gogalapagos');
+                            echo ':</strong> ';
+                            foreach ($terrains as $terrain){
+                                echo '<span class="item-featured">'.$terrain_options[$terrain].'</span>';
                             }
-                            // Difficulty feature
-                            $d_levels = get_post_meta(get_the_ID(), $prefix . 'visitors_site_difficulty', false);
-                            if (!empty($d_levels)){
-                                echo '<li><strong>';
-                                _e('Difficulty Level', 'gogalapagos');
-                                echo ':</strong> ';
-                                foreach ($d_levels as $d_level){
-                                    echo '<span class="item-featured">'.$difficulty_options[$d_level].'</span>';
-                                }
-                                echo '</li>';
+                            echo '</li>';
+                        }
+                        // Difficulty feature
+                        /*$d_levels = get_post_meta(get_the_ID(), $prefix . 'visitors_site_difficulty', false);
+                        if (!empty($d_levels)){
+                            echo '<li><strong>';
+                            _e('Difficulty Level', 'gogalapagos');
+                            echo ':</strong> ';
+                            foreach ($d_levels as $d_level){
+                                echo '<span class="item-featured">'.$difficulty_options[$d_level].'</span>';
                             }
-                            // Physical feature
-                            $p_levels = get_post_meta(get_the_ID(), $prefix . 'visitors_site_physical', false);
-                            if (!empty($p_levels)){
-                                echo '<li><strong>';
-                                _e('Physical Conditions Required', 'gogalapagos');
-                                echo ':</strong> ';
-                                foreach ($p_levels as $p_level){
-                                    echo '<span class="item-featured">'.$physical_options[$p_level].'</span>';
-                                }
-                                echo '</li>';
+                            echo '</li>';
+                        }*/
+                        // Physical feature
+                        $p_levels = get_post_meta(get_the_ID(), $prefix . 'visitors_site_physical', false);
+                        if (!empty($p_levels)){
+                            echo '<li><strong>';
+                            _e('Physical Conditions Required', 'gogalapagos');
+                            echo ':</strong> ';
+                            foreach ($p_levels as $p_level){
+                                echo '<span class="item-featured">'.$physical_options[$p_level].'</span>';
                             }
-                            // Duration feature
-                            $duration = get_post_meta(get_the_ID(), $prefix . 'visitors_site_duration', true);
-                            if (!empty($duration)){
-                                echo '<li><strong>';
-                                _e('Duration', 'gogalapagos');
-                                echo ':</strong> ';
-                                echo '<span class="item-featured">'.$duration.'</span>';
-                                echo '</li>';
-                            }
-                            // Highlights feature
-                            $highlights = get_post_meta(get_the_ID(), $prefix . 'visitors_site_highlights', true);
-                            if (!empty($highlights)){
-                                echo '<li><strong>';
-                                _e('Highlights', 'gogalapagos');
-                                echo ':</strong> ';
-                                echo '<span class="item-featured">'.$highlights.'</span>';
-                                echo '</li>';
-                            }
+                            echo '</li>';
+                        }
+                        // Duration feature
+                        $duration = get_post_meta(get_the_ID(), $prefix . 'visitors_site_duration', true);
+                        if (!empty($duration)){
+                            echo '<li><strong>';
+                            _e('Activities', 'gogalapagos');
+                            echo ':</strong> ';
+                            echo '<span class="item-featured">'.$duration.'</span>';
+                            echo '</li>';
+                        }
+                        // Highlights feature
+                        $highlights = get_post_meta(get_the_ID(), $prefix . 'visitors_site_highlights', true);
+                        if (!empty($highlights)){
+                            echo '<li><strong>';
+                            _e('Highlights', 'gogalapagos');
+                            echo ':</strong> ';
+                            echo '<span class="item-featured">'.$highlights.'</span>';
+                            echo '</li>';
+                        }
                         ?>
                     </ul>
                 </div>
@@ -227,3 +235,17 @@ $physical_options = array(
     </div>
 </div>
 <?php get_footer(); ?>
+<script>
+    $(document).ready( function(){
+        // pasa la imagen destacada como fondo del FOLD y luego elimina la imagen destacada del DOM 
+        // solo en pantallas menores a 1024 (tablets)
+        if( $(window).width() < 1025 ){
+            if ( $('.single-carousel') ){
+                var ruta_imagen_primer_slide = $('.carousel-inner').children('.item').find('img').attr('src');
+                $('.single-hero').css('background-image', 'url(' + ruta_imagen_primer_slide + ')');
+                $('.single-carousel').remove();
+                $('.rear-slider-controllers').remove();
+            }
+        }
+    });
+</script>

@@ -6,12 +6,12 @@
             <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                 <div class="inside-form">
                     <h1 class="search-results-title"><?php _e('Results for: ','gogalapagos'); ?><?php echo $_GET['s']; ?></h1>
-                    <form id="search-form" class="search-form" role="form" action="<?php echo home_url('/'); ?>">
+                    <form id="search-form" class="search-form" action="<?php echo home_url('/'); ?>">
                         <label for="s"><?php _e('Type here and press enter','gogalapagos'); ?></label>
                         <?php if (isset($_GET['blog'])){ ?>
                         <input type="hidden" name="blog">
                         <?php } ?>
-                        <input id="s" type="text" name="s" width="100%" value="<?php echo $_GET['s']; ?>">
+                        <input id="s" type="text" name="s" value="<?php echo $_GET['s']; ?>">
                     </form>
                     <ul class="list-inline filter-tags">
                         <li><a href="#"><?php _e('All Results','gogalapagos');?></a></li>
@@ -30,7 +30,7 @@
 ?>
     <div class="container results-container">    
         <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
         <?php 
             while (have_posts()){
                 the_post();

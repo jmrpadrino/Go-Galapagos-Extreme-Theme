@@ -33,6 +33,15 @@ $barco__securityINFO = get_post_meta($barcoID, $prefix . 'ship_section_security_
 * 3. DECKS              -> @post_type = ggdecks         -> $decks (array)
 */
 
+// actividades
+$args = array(
+    'post_type' => 'ggactivity',
+    'posts_per_page' => -1,
+    'orderby' => 'menu_order',
+    'order' => 'ASC'
+);
+$actividades = get_posts($args);
+
 // areas sociales
 $args = array(
     'post_type' => 'ggsocialarea',
@@ -52,6 +61,7 @@ $areassociales = get_posts($args);
 // cabinas
 $args = array(
     'post_type' => 'ggcabins',
+    'posts_per_page' => -1,
     'meta_query' => array(
         array(
             'key'     => $prefix . 'cabin_ship_id',
@@ -201,6 +211,30 @@ die();*/
     </div>
     */ ?>
 </section>
+<section data-anchor="activities" data-index="3" class="sections section activities">
+    <div class="nextSlide">
+        <span class="fa fa-chevron-right"></span>        
+    </div>
+    <div class="prevSlide">
+        <span class="fa fa-chevron-left"></span>
+    </div>
+    <?php   
+    //$socialAreaCounter = 0;
+    foreach ($actividades as $actividad){
+        $gallery = get_post_meta($actividad->ID, $prefix . 'activity_gallery', false);
+        set_query_var( 'activityInfo', $actividad );
+        set_query_var( 'activityGalery', $gallery );        
+        //if ($socialAreaCounter < 5){
+
+            $template = get_post_meta($actividad->ID, $prefix . 'social_template', true);
+            $template == 1 ? get_template_part('templates/activity-left-small') : get_template_part('templates/activity-left-big');
+        /*}else{
+             get_template_part('templates/social-area-fullscreen');
+        }
+        $socialAreaCounter++;*/
+    }
+    ?>
+</section>
 <section data-anchor="socialareas" data-index="3" class="sections section socialarea">
     <div class="nextSlide">
         <span class="fa fa-chevron-right"></span>        
@@ -209,18 +243,18 @@ die();*/
         <span class="fa fa-chevron-left"></span>
     </div>
     <?php   
-    $socialAreaCounter = 0;
+    //$socialAreaCounter = 0;
     foreach ($areassociales as $areasocial){
         $gallery = get_post_meta($areasocial->ID, $prefix . 'social_gallery', false);
         set_query_var( 'areasocialInfo', $areasocial );
         set_query_var( 'areasocialGalery', $gallery );        
-        if ($socialAreaCounter < 5){
+        //if ($socialAreaCounter < 5){
             $template = get_post_meta($areasocial->ID, $prefix . 'social_template', true);
             $template == 1 ? get_template_part('templates/social-area-left-small') : get_template_part('templates/social-area-left-big');
-        }else{
+        /*}else{
              get_template_part('templates/social-area-fullscreen');
         }
-        $socialAreaCounter++;
+        $socialAreaCounter++;*/
     }
     ?>
 </section>
@@ -245,6 +279,93 @@ die();*/
     </div>
     <div class="prevSlide">
         <span class="fa fa-chevron-left"></span>
+    </div>
+    <div class="fullpage-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="deck-plan-title element-title"><?php echo the_title(); ?> <?php _e('Deck Plan');?></h2>
+                    <span class="separator"></span>
+                </div>
+            </div>
+            <?php
+            // Seleccionar los decks y areas sociales de este barco
+            //Obtener los decks del barco
+            $args = array(
+                'post_type' => 'ggdecks',
+                'meta_query' => array(
+                    array(
+                        'key'     => 'gg_deck_ship_id',
+                        'value'   => $barcoID,
+                        'compare' => 'LIKE',
+                    ),
+                ),
+                'posts_per_page' => -1
+            );
+            // Query
+            $decks = get_posts($args);
+            /*        echo '<pre>';
+        print_r($decks);
+        echo '</pre>';*/
+            $deckCounter = 0;
+            ?>
+            <div class="row">
+                <div class="col-sm-12 hidden-xs">
+                    <div class="tabpanel" role="tabpanel">
+                        <div class="row">
+
+                            <div class="col-sm-6 col-sm-offset-4 text-center">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <?php 
+                                    foreach($decks as $deck){
+                                        if ($deckCounter == 0){
+                                    ?>
+                                    <li role="presentation" class="active">
+                                        <a href="#<?= $deck->post_name ?>" aria-controls="home" role="tab" data-toggle="tab"><?= get_post_meta($deck->ID, $prefix . 'deck_frontend_name', true); ?></a>
+                                    </li>
+                                    <?php
+                                        }else{
+                                    ?>
+                                    <li role="presentation">
+                                        <a href="#<?= $deck->post_name ?>" aria-controls="tab" role="tab" data-toggle="tab"><?= get_post_meta($deck->ID, $prefix . 'deck_frontend_name', true); ?></a>
+                                    </li>
+                                    <?php
+                                        }
+                                        $deckCounter++;
+                                    }
+                                    $deckCounter = 0;
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Nav tabs -->
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <?php 
+                            foreach($decks as $deck){
+                                $deckPlanimage = get_post_meta($deck->ID, $prefix . 'deck_plan_image', true);
+                                if ($deckCounter == 0){
+                            ?>
+                            <div role="tabpanel" class="tab-pane active" id="<?= $deck->post_name ?>">
+                                <img src="<?= $deckPlanimage ?>" class="img-responsive deckplan-img" alt="<?= $barcoNombre . ' - ' . $deck->post_title ?>">
+                            </div>
+                            <?php
+                                }else{
+                            ?>
+                            <div role="tabpanel" class="tab-content tab-pane fade" id="<?= $deck->post_name ?>">
+                                <img src="<?= $deckPlanimage ?>" class="img-responsive deckplan-img" alt="<?= $barcoNombre . ' - ' . $deck->post_title ?>">
+                            </div>
+                            <?php
+                                }
+                                $deckCounter++;
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="fullpage-slide">
         <div class="container">
@@ -325,92 +446,25 @@ die();*/
             <?php } ?>
         </div>
     </div>
+    <?php
+    $seguridad = get_post_meta($barcoID, $prefix . 'ship_section_sec_info', true);
+    if(($seguridad)){
+    ?>
     <div class="fullpage-slide">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h2 class="deck-plan-title element-title"><?php echo the_title(); ?> <?php _e('Deck Plan');?></h2>
+                    <h2 class="element-title"><?php echo the_title(); ?> <?php _e('Security Information');?></h2>
                     <span class="separator"></span>
                 </div>
             </div>
-            <?php
-            // Seleccionar los decks y areas sociales de este barco
-            //Obtener los decks del barco
-            $args = array(
-                'post_type' => 'ggdecks',
-                'meta_query' => array(
-                    array(
-                        'key'     => 'gg_deck_ship_id',
-                        'value'   => $barcoID,
-                        'compare' => 'LIKE',
-                    ),
-                ),
-                'posts_per_page' => -1
-            );
-            // Query
-            $decks = get_posts($args);
-            /*        echo '<pre>';
-        print_r($decks);
-        echo '</pre>';*/
-            $deckCounter = 0;
-            ?>
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="tabpanel" role="tabpanel">
-                        <div class="row">
-
-                            <div class="col-sm-6 col-sm-offset-4 text-center">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <?php 
-                                    foreach($decks as $deck){
-                                        if ($deckCounter == 0){
-                                    ?>
-                                    <li role="presentation" class="active">
-                                        <a href="#<?= $deck->post_name ?>" aria-controls="home" role="tab" data-toggle="tab"><?= $deck->post_title ?></a>
-                                    </li>
-                                    <?php
-                                        }else{
-                                    ?>
-                                    <li role="presentation">
-                                        <a href="#<?= $deck->post_name ?>" aria-controls="tab" role="tab" data-toggle="tab"><?= $deck->post_title ?></a>
-                                    </li>
-                                    <?php
-                                        }
-                                        $deckCounter++;
-                                    }
-                                    $deckCounter = 0;
-                                    ?>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Nav tabs -->
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <?php 
-                            foreach($decks as $deck){
-                                $deckPlanimage = get_post_meta($deck->ID, $prefix . 'deck_plan_image', true);
-                                if ($deckCounter == 0){
-                            ?>
-                            <div role="tabpanel" class="tab-pane active" id="<?= $deck->post_name ?>">
-                                <img src="<?= $deckPlanimage ?>" class="img-responsive deckplan-img" alt="<?= $barcoNombre . ' - ' . $deck->post_title ?>">
-                            </div>
-                            <?php
-                                }else{
-                            ?>
-                            <div role="tabpanel" class="tab-content tab-pane fade" id="<?= $deck->post_name ?>">
-                                <img src="<?= $deckPlanimage ?>" class="img-responsive deckplan-img" alt="<?= $barcoNombre . ' - ' . $deck->post_title ?>">
-                            </div>
-                            <?php
-                                }
-                                $deckCounter++;
-                            }
-                            ?>
-                        </div>
-                    </div>
+                <div class="col-lg-10 col-lg-offset-1">
+                    <p><?= $seguridad ?></p>
                 </div>
             </div>
         </div>
     </div>
+    <?php } ?>
 </section>
 <?php get_footer(); ?>

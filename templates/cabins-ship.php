@@ -13,7 +13,12 @@ $cabinaRenders = get_post_meta( $cabina->ID, $prefix . 'cabin_render', false);
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8 col-md-push-4">
+                    <div class="cabin-thumbnail-placeholder">
+                        <img class="cabin-thumbnail" src="<?= get_the_post_thumbnail_url($cabina->ID); ?>" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-pull-8">
                     <div class="cabin-description-placeholder">
                         <!--p><?= get_the_excerpt($cabina->ID); ?></p-->
                         <ul class="cabin-feature-list">
@@ -32,20 +37,15 @@ $cabinaRenders = get_post_meta( $cabina->ID, $prefix . 'cabin_render', false);
                             //echo $cabin__dispoID;
                             //echo $barco;
                         ?>
-                        <a href="https://quote.gogalapagos.com/en/site/cruceroAcomodacion?date=<?= $fecha ?>&ship=<?= $barco ?>&cabin=<?= $cabin__dispoID ?>" class="btn btn-cabin-request" target="_blank"><?php _e('Request a Quote','gogalapagos'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="cabin-thumbnail-placeholder">
-                        <img class="cabin-thumbnail" src="<?= get_the_post_thumbnail_url($cabina->ID); ?>" class="img-responsive">
+                        <a class="itinerary-plan-your-trip-btn" href="<?= home_url('request-a-quote')?>?ct=<?= $cabin__dispoID ?>" class="btn btn-cabin-request" target="_blank"><?php _e('Request a Quote','gogalapagos'); ?></a>
                     </div>
                 </div>
             </div>
-            <div id="floor-plan-<?= $cabina->post_name; ?>" class="cabin-floor-location-placeholder hidden">
+        </div>
+        <div id="floor-plan-<?= $cabina->post_name; ?>" class="cabin-floor-location-placeholder hidden">
                 <span class="fa fa-times close-cabin-placeholder"></span>
                 <?php 
                     if (count($cabinaRenders) > 1){
-                        echo '<div class="container">';
                         echo '<div class="row">';
                         echo '<div class="col-sm-6" style="height: 100vh; display: flex; align-content: center;">';
                         $rutaImagen = wp_get_attachment_image_src( $cabinaRenders[0], 'full', false );
@@ -54,7 +54,6 @@ $cabinaRenders = get_post_meta( $cabina->ID, $prefix . 'cabin_render', false);
                         echo '<div class="col-sm-6" style="height: 100vh; display: flex; align-content: center;">';
                         $rutaImagen = wp_get_attachment_image_src( $cabinaRenders[1], 'full', false );
                         echo '<img src="'.$rutaImagen[0].'" class="img-responsive">';
-                        echo '</div>';
                         echo '</div>';
                         echo '</div>';
                     }else{
@@ -67,5 +66,4 @@ $cabinaRenders = get_post_meta( $cabina->ID, $prefix . 'cabin_render', false);
                 <span class="fa fa-times close-cabin-placeholder"></span>
                 <img src="<?= $cabinaLocacion ?>" class="img-responsive">
             </div>
-        </div>
     </div>

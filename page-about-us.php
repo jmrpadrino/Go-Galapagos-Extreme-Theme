@@ -8,7 +8,7 @@ the_post();
     }*/
 $prefix = 'gg_';
 ?>
-<section id="top" class="sections section thumbnail-page">
+<!--section id="top" class="sections section thumbnail-page">
     <div class="container-fluid nopadding text-center" style="height: 60vh; background-image: url(<?php echo the_post_thumbnail_url(); ?>); background-position: center; background-size: cover; background-repeat: no-repeat; padding-top: 30vh;">
         <?php 
         $meta = get_post_meta(get_the_id(), $prefix . 'page_alter_title', true);
@@ -26,7 +26,7 @@ $prefix = 'gg_';
         ?>
         <span class="home-get-in-love-separator"></span>
     </div>
-    <div class="container-fluid" style="height: 40vh;">
+    <div class="container-fluid" style="height: 70vh;">
         <div class="row">
             <div class="col-xs-12 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 60px;">
                 <?php 
@@ -38,8 +38,39 @@ $prefix = 'gg_';
             </div>
         </div>
     </div>
+</section-->
+<section class="sections section thumbnail-page">
+    <div class="container-fluid nopadding text-center" style="height: 60vh; background-image: url(<?php echo the_post_thumbnail_url(); ?>); background-position: center; background-size: cover; background-repeat: no-repeat; padding-top: 30vh;">
+        <?php 
+            $meta = get_post_meta(get_the_id(), $prefix . 'page_alter_title', true);
+            if(!empty($meta)){
+                echo '<h1 style="margin: auto; color: white; text-shadow: 1px 1px 3px black;">'. $meta . '</h1>';
+            }else{
+                echo the_title('<h1 style="margin: auto; color: white; text-shadow: 1px 1px 3px black;">','</h1>'); 
+            }
+        ?>
+        <span class="home-get-in-love-separator"></span>
+        <?php 
+            $meta = get_post_meta(get_the_id(), $prefix . 'page_hero_text', true);
+            if(!empty($meta)){
+                echo '<p class="page-hero-text">'. $meta . '</p>';
+            }
+        ?>
+    </div>
+    <div class="container-fluid" style="height: 40vh;">
+        <div class="row">
+            <div class="col-xs-12 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 36px;">
+                <?php 
+                    $meta = get_post_meta(get_the_id(), $prefix . 'page_first_section_content', true);
+                    if(!empty($meta)){
+                        echo '<p class="page-fold-text">'. $meta . '</p>';
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
 </section>
-<section class="section sections">
+<!--section class="section sections">
     <canvas id="elcanvas1" class="our-history-background-dots"></canvas>
     <div class="history-timeline">
         <div id="history-timeline" class="container">
@@ -153,7 +184,7 @@ $prefix = 'gg_';
         */
 
     </script>
-</section>
+</section-->
 <section class="section sections">
     <div class="container">
         <div class="row">
@@ -165,29 +196,37 @@ $prefix = 'gg_';
                 <p>Galapagos Conservancy works to balance both conservation and community in one of the world’s most remarkable ecosystems. Through support from its members, GC works to preserve, protect, and restore the Galapagos Islands and their extraordinary marine and terrestrial biodiversity through three main conservation programs: Giant Tortoise Restoration, Ecosystem and Species Restoration, and Education for Sustainability. Visit www.galapagos.org to learn more. Our work in Galapagos goes hand-in-hand with that of the Galapagos National Park Service, an institution key to the wellbeing of the islands.</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 36px;">
             <div class="col-sm-6">
-                <img src="http://placehold.it/640x200?text=Galapagos%20Conservancy" class="img-responsive">
+                <img src="<?= get_template_directory_uri() ?>/images/galapagos-conservancy-gogalapagos.png" class="img-responsive logos-conservacy" style="display: block; margin: 0 auto;">
             </div>
             <div class="col-sm-6">
-                <img src="http://placehold.it/640x200?text=Parque%20Nacional" class="img-responsive">
+                <img src="<?= get_template_directory_uri() ?>/images/parque-nacional-galapagos-gogalapagos.png" class="img-responsive logos-conservacy" style="display: block; margin: 0 auto;">
             </div>  
         </div>
     </div>
 </section>
 <section class="section sections social-investment">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2>Social Investment</h2>
-                <span class="separator"></span>
-                <p>Not only does Go Galapagos - Kleintours invest in the betterment of local communities within the islands but we also have some very successful projects on mainland Ecuador. We have a long history of working with the Karanki Magdalena indigenous community to the north of Quito. Through multi-level capacitation, in hospitality, tourism, cooking, health and accounting, visitors are now able to immerse themselves in participatory, cross-cultural, family visits with the community to mutual benefit.</p>
+    <div class="nextSlide hidden-xs">
+        <span class="fa fa-chevron-right"></span>        
+    </div>
+    <div class="prevSlide hidden-xs">
+        <span class="fa fa-chevron-left"></span>
+    </div>
+    <div class="fullpage-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Social Investment</h2>
+                    <span class="separator"></span>
+                    <p>Not only does Go Galapagos - Kleintours invest in the betterment of local communities within the islands but we also have some very successful projects on mainland Ecuador. We have a long history of working with the Karanki Magdalena indigenous community to the north of Quito. Through multi-level capacitation, in hospitality, tourism, cooking, health and accounting, visitors are now able to immerse themselves in participatory, cross-cultural, family visits with the community to mutual benefit.</p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 nopadding">
+    <div class="fullpage-slide">
+        <div class="social-karanki">
+            <div class="social-karanki1" style="display: flex;">
                 <img src="http://placehold.it/2000x1333?text=karanki" class="img-responsive social-investment-img">
             </div>
         </div>
@@ -197,7 +236,7 @@ $prefix = 'gg_';
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2>Proudly members of</h2>
+                <h2 class="proudly-title">Proudly members of</h2>
             </div>
         </div>
         <div class="row">
@@ -219,46 +258,8 @@ $prefix = 'gg_';
                             echo 'There are no memberships registred in wordpress administrator.';
                         }
                     ?>
-                    <!--
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    <img src="http://placehold.it/640x480?text=Logo" class="img-responsive">
-                    -->
                 </div>
             </div>            
-            <!--
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/350x250?text=Logo" class="img-responsive">
-            </div>
-            -->
         </div>
     </div>
 </section>

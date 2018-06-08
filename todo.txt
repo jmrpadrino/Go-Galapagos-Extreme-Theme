@@ -1,0 +1,4 @@
++ Breadcrumbs
++ Mostrar los contenidos de texto en las vistas generales (archive)
+- Arreglar Tours y dependencias.
+

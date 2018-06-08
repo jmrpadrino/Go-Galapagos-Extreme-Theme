@@ -14,13 +14,13 @@ $barco = get_post($ship);
 $nombreDelBarco = get_the_title( $barco->ID );
 
 $dias_de_la_semana = array(
-    _x('Monday','gogalapagos'),
-    _x('Tuesday','gogalapagos'),
-    _x('Wednesday','gogalapagos'),
-    _x('Thursday','gogalapagos'),
-    _x('Friday','gogalapagos'),
-    _x('Saturday','gogalapagos'),
-    _x('Sunday','gogalapagos'),
+    '0' => _x('Monday','gogalapagos'),
+    '1' => _x('Tuesday','gogalapagos'),
+    '2' => _x('Wednesday','gogalapagos'),
+    '3' => _x('Thursday','gogalapagos'),
+    '4' => _x('Friday','gogalapagos'),
+    '5' => _x('Saturday','gogalapagos'),
+    '6' => _x('Sunday','gogalapagos')
 );
 
 
@@ -36,10 +36,10 @@ $dias_de_la_semana = array(
         ?>
     </div>
     <div class="hero-mask"></div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 col-lg-10 col-lg-offset-1">
-                <span class="body-font text-center itinerary-ship-owner" style="margin-top: 80px;"><?php echo $nombreDelBarco; ?></span>
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <span class="body-font text-center itinerary-ship-owner"><?php echo $nombreDelBarco; ?></span>
                 <h1 class="itinerary-title text-center"><?php _e('Itineraries','gogalapagos'); ?></h1>
                 <span class="separator"></span>
                 <div class="text-justify itinerary-ship-description">
@@ -83,6 +83,7 @@ $mapaIndex = 0;
 foreach( $itinerarios as $itinetario ){
     // Recuperar los metadatos
     $subtitulo = get_post_meta($itinetario->ID, $prefix . 'itinerary_single_name', true );
+    $animalList = '';
 ?>
 <div class="sections section ship-itinerary">
     <div class="container-fluid">
@@ -128,22 +129,25 @@ foreach( $itinerarios as $itinetario ){
                     <div class="col-sm-12 carousel-container">
                         <div class="row">
                             <div class="col-xs-1 control-container">
-                                <a class="left carousel-control" href="#itinerary-animal-carousel-<?= $mapaIndex ?>" role="button" data-slide="prev">
+                                <a class="left carousel-control" href="#itinerary-animal-carousel-<?= $itinetario->ID ?>" role="button" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                             </div>
                             <div class="col-xs-10">
-                                <div id="itinerary-animal-carousel-<?= $mapaIndex ?>" class="carousel slide" data-ride="carousel">
+                                <div id="itinerary-animal-carousel-<?= $itinetario->ID ?>" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                     <?php for($slide = 0; $slide < $slides; $slide++){ ?>
                                         <?php if ($slide == 0){ ?>
                                         <div class="item active">
                                             <div class="row">
                                                 <?php for ($animal = 0; $animal < 4; $animal++){ ?>
-                                                <div class="col-sm-3">
-                                                    <a href="<?= get_permalink($animales[$animal]->ID) ?>" target="_blank">
+                                                <div class="col-sm-3 animal-placeholder">
+                                                    <a href="<?= get_permalink($animales[$animal]->ID) ?>" target="_blank" title="<?= $animales[$animal]->post_title ?>">
                                                         <img src="<?= get_the_post_thumbnail_url( $animales[$animal]->ID, 'thumbnail' )?>" alt="<?= get_the_title( $animales[$animal]->ID ) ?>" class="img-responsive"/>
+                                                        <div class="animal-name-placeholder">
+                                                            <?= esc_html($animales[$animal]->post_title) ?>
+                                                        </div>
                                                     </a>
                                                 </div>
                                                 <?php $conteoAnimal++; } ?>
@@ -151,23 +155,24 @@ foreach( $itinerarios as $itinetario ){
                                         </div>
                                         <?php }else{ ?>
                                         <div class="item">
-                                            <div class="item">
-                                                <div class="row">
-                                                    <?php 
-                                                        $faltan = count($animales) - $conteoAnimal;
-                                                        if ( $faltan < 4 ){
-                                                            $limite = $faltan;
-                                                        }else{
-                                                            $limite = 4;
-                                                        }
-                                                        for ($animal = 0; $animal < $limite; $animal++){ ?>
-                                                    <div class="col-sm-3">
-                                                        <a href="<?= get_permalink($animales[$animal]->ID) ?>" target="_blank">
-                                                            <img src="<?= get_the_post_thumbnail_url( $animales[$animal]->ID, 'thumbnail' )?>" alt="<?= get_the_title( $animales[$animal]->ID ) ?>" class="img-responsive"/>
-                                                        </a>
-                                                    </div>
-                                                    <?php $conteoAnimal++; } ?>
+                                            <div class="row">
+                                                <?php 
+                                                    $faltan = count($animales) - $conteoAnimal;
+                                                    if ( $faltan < 4 ){
+                                                        $limite = $faltan;
+                                                    }else{
+                                                        $limite = 4;
+                                                    }
+                                                    for ($animal = 0; $animal < $limite; $animal++){ ?>
+                                                <div class="col-sm-3 animal-placeholder">
+                                                    <a href="<?= get_permalink($animales[$conteoAnimal]->ID) ?>" target="_blank" title="<?= $animales[$animal]->post_title ?>">
+                                                        <img src="<?= get_the_post_thumbnail_url( $animales[$conteoAnimal]->ID, 'thumbnail' )?>" alt="<?= get_the_title( $animales[$conteoAnimal]->ID ) ?>" class="img-responsive"/>
+                                                        <div class="animal-name-placeholder">
+                                                            <?= esc_html($animales[$conteoAnimal]->post_title) ?>
+                                                        </div>
+                                                    </a>
                                                 </div>
+                                                <?php $conteoAnimal++; } ?>
                                             </div>
                                         </div>
                                         <?php } // fin si slide es cero ?>
@@ -176,7 +181,7 @@ foreach( $itinerarios as $itinetario ){
                                 </div>
                             </div>
                             <div class="col-xs-1 control-container">
-                                <a class="right carousel-control" href="#itinerary-animal-carousel-<?= $mapaIndex ?>" role="button" data-slide="next">
+                                <a class="right carousel-control" href="#itinerary-animal-carousel-<?= $itinetario->ID ?>" role="button" data-slide="next">
                                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
@@ -206,14 +211,21 @@ foreach( $itinerarios as $itinetario ){
             ?>
             <!-- info itinerario -->
             <div class="col-lg-3 col-md-4 col-sm-5 itineraries-day-by-day">
-                <div class="itinerary-duration itinerary-a">                    
+                <div class="itinerary-duration itinerary-a" style="color:<?= $dayactive_5 = get_post_meta($itinetario->ID, $prefix . 'itinerary_frontend_color', true); ?>">                    
                     <p><?= $daysLong ?> days / <?= $nightsLong ?> Nights</p>
                     <p><?= $dias_de_la_semana[ $startDay ] ?> - <?= $dias_de_la_semana[ $total ] ?></p>
                 </div>
                 <ul class="itineraries-day-by-day-list">
                 <?php for($i=0; $i<$daysLong; $i++){ ?>
+                <?php
+                    if($startDay + $i == 7){
+                        $dia = 0;
+                    }else{
+                        $dia = $startDay + $i;
+                    }
+                ?>
                     <li>
-                        <h4 class="day-name body-font"><?= $dias_de_la_semana[ $startDay + $i ] ?>:</h4>
+                        <h4 class="day-name body-font"><?= $dias_de_la_semana[ $dia ] ?>:</h4>
                         <ul class="list-inline">
                             <li><span>am.</span></li>
                             <?php
@@ -241,7 +253,7 @@ foreach( $itinerarios as $itinetario ){
                     </li>
                 <?php } //fin for de los dias ?>
                 </ul>
-                <a href="#" class="itinerary-plan-your-trip-btn"><?php _e('Plan your trip now','gogalapagos'); ?></a>
+                <a href="#" class="itinerary-plan-your-trip-btn"><?php _e('Request a Quote','gogalapagos'); ?></a>
                 <a href="<?= get_permalink($itinetario->ID) ?>" class="view-itinerary-btn" target="_blank"><?php _e('View Complete Itinerary','gogalapagos'); ?></a>
             </div>
         </div>

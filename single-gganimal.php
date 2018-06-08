@@ -3,15 +3,16 @@
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 col-lg-offset-1">
+            <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1">
                 <?php
                 $term = get_the_terms( get_the_ID(), 'animalgroup' );
                 ?>
-                <span class="serif-font"><?php echo $term[0]->name; ?></span>
+                <span class="serif-font fold-backlink"><a href="<?= get_term_link( $term[0]->term_id, 'animalgroup' ) ?>"><?php echo $term[0]->name; ?></a></span>
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
                 <span class="separator"></span>
+                <p class="single-excerpt"><?= get_the_excerpt() ?></p>
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
-                <p><span class="btn btn-warning">Plan your Trip</span> or <a href="#">Request a Quote</a></p>
+                <p><a href="<?= home_url('request-a-quote') . '/?for=' . $post->post_title  ?>" class="plan-your-trip-single-btn"><?php _e('Request a Quote','gogalapagos'); ?></a></p>
                 <a href="#">Conservation of the Galapagos Islands</a>
             </div>
         </div>
@@ -87,8 +88,13 @@
 </div>
 </div-->
 </div>
-<div class="sections section">
+<div class="sections section" <?= (get_post_meta ( get_the_ID(), $prefix . 'background_image_content', true)) ? 'style="background-image: url('.get_post_meta ( get_the_ID(), $prefix . 'background_image_content', true).'); background-repeat: no-repeat; background-position: bottom right; background-size: contain;"' : ''; ?>>
     <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <?php include ( TEMPLATEPATH . '/templates/breadcrumbs.php'); ?>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
                 <h2><?php echo _e('More about ') . the_title(); ?></h2>
@@ -152,7 +158,7 @@
     $coords = get_post_meta(get_the_ID(), $prefix . 'gmap_coords', true);
     $marker = 0;
 ?>
-                <div id="g-map" class="g-map" style="height: 40vh;"></div>
+                <div id="g-map" class="g-map" style="height: 40vh; margin-bottom: 36px;"></div>
                 <script>
                     function initMap() {
                         var map = new google.maps.Map(document.getElementById('g-map'), {
@@ -185,3 +191,17 @@ foreach($coords as $coord){
     </div>
 </div>
 <?php get_footer(); ?>
+<script>
+    $(document).ready( function(){
+        // pasa la imagen destacada como fondo del FOLD y luego elimina la imagen destacada del DOM 
+        // solo en pantallas menores a 1024 (tablets)
+        if( $(window).width() < 1025 ){
+            if ( $('.single-carousel') ){
+                var ruta_imagen_primer_slide = $('.carousel-inner').children('.item').find('img').attr('src');
+                $('.single-hero').css('background-image', 'url(' + ruta_imagen_primer_slide + ')');
+                $('.single-carousel').remove();
+                $('.rear-slider-controllers').remove();
+            }
+        }
+    });
+</script>

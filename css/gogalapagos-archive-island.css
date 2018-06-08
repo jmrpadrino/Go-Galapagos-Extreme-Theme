@@ -8,8 +8,7 @@
 .archive-island-background-img{
     position: absolute;
     width: 100%;
-    top: -50%;
-    transform: translateY(-25%);
+    top: -25%;
 }
 
 .archive-title{
@@ -28,22 +27,26 @@
 .archive-description{
     margin-bottom: 48px;
 }
+.archive-description p{
+    margin-bottom: 36px;
+}
 .island-link:hover{
     color: #ff9d02;
     font-weight: bold;
 }
-@media screen and (max-width: 768px){
+@media screen and (min-width: 768px) and (max-width: 1024px){
     .island-top-fold{
         padding-bottom: 60px;
     }
     .archive-island-background-img{
         width: auto;
         top: -50%;
+        -webkit-transform: translateY(-30%);
         transform: translateY(-30%);
         left: -50%;
     }
     .archive-title{
-        margin-top: 130px;
+        margin-top: 200px;
     }
     .hero-and-title .separator{
         width: 30%;

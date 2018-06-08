@@ -14,12 +14,12 @@
         </div>
         <div class="container-social-area">
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-5 hidden-xs hidden-sm">
                     <div class="first-template-social-area-image left">
                         <img src="<?= $imagenLeft[0] ?>" class="img-responsive">
                     </div>
                 </div>
-                <div class="col-sm-7 hidden-xs">
+                <div class="col-sm-7">
                     <div class="first-template-social-area-image right">
                         <img src="<?= $imagenRight[0] ?>" class="img-responsive">
                     </div>

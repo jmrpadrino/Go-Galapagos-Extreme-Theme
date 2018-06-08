@@ -1,31 +1,30 @@
-<?php get_header(); ?>
-<section class="sections section">    
-<div id="land-tours-fold" class="blog-fold land-tours" style="background-image: url(<?= get_template_directory_uri() ?>/images/blogBkg.jpg);">
-    <div class="hero-mask"></div>
-    <div class="container">
+<?php get_header();?>
+<section class="sections section hero-and-title">
+    <div class="container-fluid nopadding island-top-fold">
+        <?php get_template_part('templates/archive-hero-background') ?>
+        <div class="hero-mask"></div>
         <div class="row">
             <div class="col-xs-12 text-center">
-                <h1 class="blog-archive-title"><?= _e('Land Tours', 'gogalapagos'); ?></h1>
-                <p class="page-hero-text"><?= _e('Enjoy new experiences','gogalapagos'); ?></p>
+                <h1 class="archive-title"><?php echo post_type_archive_title('Go Galapagos ', true); ?></h1>
                 <span class="separator"></span>
+                <p><a href="<?= home_url('request-a-quote') ?>/" class="plan-your-trip-single-btn"><?php _e('Request a Quote','gogalapagos'); ?></a></p>
+            </div>
+        </div>        
+    </div>
+    <div class="container island-archive-container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 archive-description">
+                <p><?= get_option('gg_archive_excerpt_' . $post_type ) ?></p>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="scroll-down-indicator">
-                <div class="scroll-indicator"></div>
-            </div>  
-        </div>
-    </div>
-</div>
-</section>
-<section class="sections section">
-    <div class="container">
-        <div class="row">
-            <div id="show-tours" class="col-xs-12"></div>
-        </div>
-    </div>
+    <?php get_template_part('templates/archive-loop-tours'); ?>  
 </section>
 <?php get_footer(); ?>
+
+
+
+
+
+
 

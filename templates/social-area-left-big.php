@@ -19,7 +19,7 @@
                         <img src="<?= $imagenLeft[0] ?>" class="img-responsive set-full-image">
                     </div>
                 </div>
-                <div class="col-sm-5 hidden-xs">
+                <div class="col-sm-5 hidden-xs hidden-sm">
                     <div class="first-template-social-area-image left">
                         <img src="<?= $imagenRight[0] ?>" class="img-responsive">
                     </div>

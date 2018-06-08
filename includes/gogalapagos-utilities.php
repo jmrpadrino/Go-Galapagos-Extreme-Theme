@@ -18,6 +18,13 @@ function gogalapagos_support()  {
 
     // Add theme support for Translation
     load_theme_textdomain( 'gogalapagos', get_template_directory() . '/languages/' );
+    
+    // CREAR TAMAÑOS DE IMAGENES
+    // front blog
+    add_image_size('front-page-blog', 500, 500);
+    // front blog
+    add_image_size('front-page-offers-ships', 1024, 1024);
+    
 }
 add_action( 'after_setup_theme', 'gogalapagos_support' );
 function random_color_part() {
@@ -27,4 +34,12 @@ function random_color_part() {
 function random_color() {
     return random_color_part() . random_color_part() . random_color_part();
 }
+
+function _remove_script_version( $src ){ 
+$parts = explode( '?', $src ); 	
+return $parts[0]; 
+} 
+add_filter( 'script_loader_src', '_remove_script_version', 15, 1 ); 
+add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
+
 ?>

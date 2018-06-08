@@ -2,28 +2,44 @@
 /* alter navigation */
 .ship-alter-navbar{
     display: block;
+    -webkit-transition: all ease-in .2s;
     transition: all ease-in .2s;
     background: #42403c;
-    *height: 85px;
     position: absolute;
     width: 100%;
     z-index: 999;
+    -webkit-transform: translateY(-150px);
     transform: translateY(-150px);
+    -webkit-transition: -webkit-transform ease-in .2s;
+    transition: -webkit-transform ease-in .2s;
     transition: transform ease-in .2s;
+    transition: transform ease-in .2s, -webkit-transform ease-in .2s;
 }
 .ship-alter-navbar.active{
+    -webkit-transform: translateY(0px);
     transform: translateY(0px);
+    -webkit-transition: -webkit-transform ease-in .8s;
+    transition: -webkit-transform ease-in .8s;
     transition: transform ease-in .8s;
+    transition: transform ease-in .8s, -webkit-transform ease-in .8s;
 }
 .ship-navbar-items{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-line-pack: justify;
     align-content: space-between;
     margin: 0;
 }
 .ship-navbar-items li{
     height: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-line-pack: center;
     align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     border: 1px solid black;
     padding: 0px;
@@ -70,14 +86,27 @@
 .ship-alter-navbar .plan-your-trip-btn{
     color: #ed9016;
 }
+.slogan+.separator{
+    margin: 12px auto;
+    border-color: white;
+}
 .experience-video-placeholder{
     height: 100vh;
     width: 100%;
-    background: red;
+    background: black;
     overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     overflow: hidden;
 }
@@ -102,8 +131,13 @@
     height: 60px;
     background: rgba(51, 51, 51, 0.7);
     top: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-line-pack: center;
     align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     z-index: 9;
 }
@@ -120,6 +154,7 @@
 .socialarea .separator{
     margin: 24px auto;
     border-color: black;
+    -webkit-box-shadow: none;
     box-shadow: none;
 }
 .social-area-description{
@@ -139,8 +174,11 @@
     position: absolute;
     top: 0;
     left: 50%;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
     max-width: fit-content;
     height: 100%;
+    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
 }
 /*------------------------*/
@@ -169,6 +207,7 @@
 .cabin-profile-container .separator{
     margin: 24px auto;
     border-color: black;
+    -webkit-box-shadow: none;
     box-shadow: none;
 }
 .cabin-description-placeholder{
@@ -187,6 +226,16 @@
 .cabin-thumbnail{
     position: absolute;
     width: 100%;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .cabin-thumbnail-placeholder, .cabin-description-placeholder{
+        height: 100%;
+    }
+    .cabin-thumbnail{
+        position: relative;
+        width: 100%;
+        margin-bottom: 36px;
+    }
 }
 .btn-cabin-modal,.btn-cabin-modal:hover{
     padding: 14px 17px;
@@ -209,36 +258,44 @@
     max-width: 90%;
 }
 .cabin-floor-location-placeholder{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-line-pack: center;
     align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.95);
+    -webkit-transform: translateX(0);
     transform: translateX(0);
     position: absolute;
     top: 0;
     left: 0;
+    -webkit-transition: all ease-in .2s;
     transition: all ease-in .2s;
 }
 .cabin-floor-location-placeholder.hidden{
+    -webkit-transform: translateX(-2000px);
     transform: translateX(-2000px);
 }
 .cabin-floor-location-placeholder img{
     margin: auto;
-    max-width: 50vw;
-    height: auto;
+    max-width: 90%;
 }
 .close-cabin-placeholder{
     position: absolute;
-    top: 20%;
-    right: 180px;
+    top: 15%;
+    right: 90px;
     display: block;
     padding: 10px 12px;
     color: #565656;
     border: 2px solid #e6e6e6;
     border-radius: 50%;
     cursor: pointer;
+    z-index: 99999;
 }
 #virtualtour{
     display: none;
@@ -247,7 +304,9 @@
     margin: 18px auto;
     margin-bottom: 72px;
     border-bottom-color: #242424;
+    -webkit-box-shadow: none;
     box-shadow: none;
+    overflow: hidden;
 }
 .deck-plan-title{
     margin-top: 72px;
@@ -343,21 +402,6 @@ dd {
     .fold-text{
         font-size: 14px;
     }
-    .footer-background{
-        height: auto;
-        background: none;
-        padding-top: 50px;
-        padding-bottom: 30px;
-    }
-    .orgs-logos h2{
-        margin-top: 36px;
-        margin-bottom: 36px;
-        font-size: 28px;
-    }
-    .orgs-logos img{
-        margin-bottom: 26px;
-        max-width: 120px;
-    }
     .first-template-social-area-image{
         margin-bottom: 0px;
     }
@@ -372,7 +416,7 @@ dd {
         margin-bottom: 0px;
     }
     .cabin-description-placeholder ul{
-        max-height: 220px;
+        max-height: 170px;
         overflow: auto;
     }
     .cabins .prevSlide, .cabins .nextSlide{
@@ -408,5 +452,108 @@ dd {
     .social-area-description{
         font-size: 16px;
         line-height: 1.5;
+    }
+    .ship-phone-navbar{
+        height: 60px;
+        overflow: hidden;
+        -webkit-transition: all .2s ease-in;
+        transition: all .2s ease-in;
+    }
+    .ship-phone-navbar.open{
+        height: inherit;
+        overflow: auto;
+        -webkit-transition: all .2s ease-out;
+        transition: all .2s ease-out;
+    }
+    .ship-navbar-items{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-line-pack: justify;
+        align-content: space-between;
+        margin: 0;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        float: left;
+        padding: 0;
+        width: 100%;
+    }
+    .ship-navbar-items li:first-child{
+        width: 72px;
+    }
+    .ship-navbar-items li:last-child{
+        width: calc(100vw - 72px);
+        max-width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        color: White;
+        cursor: pointer;
+    }
+    .ship-navbar-items-container{
+        list-style: none;
+        padding: 0;
+        background: white;
+        margin-top: 60px;
+    }
+    .ship-navbar-items-container ul{
+        margin: 0;
+        padding: 0;
+    }
+    .ship-navbar-items-container li{
+        min-height: 60px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border-bottom: 1px solid #d1d1d1;
+    }
+    .info-container{
+        padding-bottom: 36px;
+        border-bottom: 1px solid rgba(38, 38, 38, .2);
+    }
+    .cabin-description-placeholder{
+        padding: 30px 15px;
+        margin-bottom: 18px;
+    }
+    .cabin-description-placeholder br{
+        display: none;
+    }
+    .cabin-feature-list{
+        max-height: 100%!important;
+    }
+    .cabin-description-placeholder{
+        height: 100%;
+    }
+    .btn-cabin-modal, .btn-cabin-modal:hover{
+        display: block;
+        margin-right: 0;
+        margin: 18px 0;
+    }
+    .btn-cabin-request{
+        position: initial;
+        display: block;
+    }
+    .cabin-thumbnail-placeholder{
+        height: auto;
+        margin-bottom: 18px;
+    }
+    .cabin-thumbnail{
+        position: initial;
+    }
+    .element-title{
+        margin-top: 36px;
     }
 }
