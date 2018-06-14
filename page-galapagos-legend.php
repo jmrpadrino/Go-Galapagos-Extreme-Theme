@@ -34,6 +34,9 @@ $barco__bookNowURL = get_post_meta($barcoID, $prefix . 'ship_bookurl', true); //
 $barco__virtualURL = get_post_meta($barcoID, $prefix . 'ship_section_360_link', true); // URL -> URL para la herramienta virtual
 $barco__technicalINFO = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true); // HTML -> Información tecnica del barco
 $barco__securityINFO = get_post_meta($barcoID, $prefix . 'ship_section_security_info', true); // HTML -> Información de seguridad del barco
+$technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
+$segundaLista = get_post_meta($barcoID, $prefix . 'ship_section_tech_info_second', true);
+$seguridad = get_post_meta($barcoID, $prefix . 'ship_section_sec_info', true);
 
 /* INFORMACION COMPONENTES FISICOS DEL BARCO 
 * ESTOS COMPONENTES SON UNIDADES DE INFORMACION QUE ESTAN VINCULADAS CON UN METABOX AL BARCO
@@ -96,10 +99,30 @@ $args = array(
 );
 $decks = get_posts($args);
 
-/*echo '<pre>';
-print_r($areassociales);
-echo '</pre>';
-die();*/
+
+/****** more *****/
+set_query_var( 'barcoID', $barcoID );
+
+// Seleccionar los decks y areas sociales de este barco
+//Obtener los decks del barco
+$args = array(
+    'post_type' => 'ggdecks',
+    'meta_query' => array(
+        array(
+            'key'     => 'gg_deck_ship_id',
+            'value'   => $barcoID,
+            'compare' => 'LIKE',
+        ),
+    ),
+    'posts_per_page' => -1
+);
+// Query
+$decks = get_posts($args);
+/*        echo '<pre>';
+print_r($decks);
+echo '</pre>';*/
+$deckCounter = 0;
+?>
 
 ?>
 <section id="top-page" data-anchor="top" class="sections section single-ship ship-hero">
@@ -211,7 +234,6 @@ die();*/
 </section>
 <section id="itineraries-section" data-anchor="itineraries" class="section sections">
     <?php    
-    set_query_var( 'barcoID', $barcoID );
     get_template_part('templates/template-itineraries-inside-ships');
     ?>
 </section>
@@ -230,27 +252,7 @@ die();*/
                     <span class="separator"></span>
                 </div>
             </div>
-            <?php
-            // Seleccionar los decks y areas sociales de este barco
-            //Obtener los decks del barco
-            $args = array(
-                'post_type' => 'ggdecks',
-                'meta_query' => array(
-                    array(
-                        'key'     => 'gg_deck_ship_id',
-                        'value'   => $barcoID,
-                        'compare' => 'LIKE',
-                    ),
-                ),
-                'posts_per_page' => -1
-            );
-            // Query
-            $decks = get_posts($args);
-            /*        echo '<pre>';
-        print_r($decks);
-        echo '</pre>';*/
-            $deckCounter = 0;
-            ?>
+            
             <div class="row">
                 <div class="col-sm-12 hidden-xs">
                     <div class="tabpanel" role="tabpanel">
@@ -312,7 +314,7 @@ die();*/
     <div class="fullpage-slide">
         <div class="container">
             <?php
-            $segundaLista = get_post_meta($barcoID, $prefix . 'ship_section_tech_info_second', true);
+            
             if(!($segundaLista)){
             ?>
             <div class="row">
@@ -325,13 +327,12 @@ die();*/
                 <div class="col-xs-12 col-md-6 col-md-offset-3">
                     <dl class="two-columns1">
                         <?php
-                $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
-                $item = '';
-                foreach($technicals as $technical){
-                    $item = explode(':', $technical);
-                    echo '<dt>'.$item[0].':</dt>';
-                    echo '<dd>'.$item[1].'</dd>';
-                }
+                            $item = '';
+                            foreach($technicals as $technical){
+                                $item = explode(':', $technical);
+                                echo '<dt>'.$item[0].':</dt>';
+                                echo '<dd>'.$item[1].'</dd>';
+                            }
                         ?>
                     </dl>
                 </div>
@@ -349,13 +350,12 @@ die();*/
                         <div class="col-sm-12">
                             <dl class="two-columns1">
                                 <?php
-                        $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info', true);
-                        $item = '';
-                        foreach($technicals as $technical){
-                            $item = explode(':', $technical);
-                            echo '<dt>'.$item[0].':</dt>';
-                            echo '<dd>'.$item[1].'</dd>';
-                        }
+                                    $item = '';
+                                    foreach($technicals as $technical){
+                                        $item = explode(':', $technical);
+                                        echo '<dt>'.$item[0].':</dt>';
+                                        echo '<dd>'.$item[1].'</dd>';
+                                    }
                                 ?>
                             </dl>
                         </div>
@@ -372,13 +372,12 @@ die();*/
                         <div class="col-sm-12">
                             <dl class="two-columns1">
                                 <?php
-                        $technicals = get_post_meta($barcoID, $prefix . 'ship_section_tech_info_second', true);
-                        $item = '';
-                        foreach($technicals as $technical){
-                            $item = explode(':', $technical);
-                            echo '<dt>'.$item[0].':</dt>';
-                            echo '<dd>'.$item[1].'</dd>';
-                        }
+                                    $item = '';
+                                    foreach($technicals as $technical){
+                                        $item = explode(':', $technical);
+                                        echo '<dt>'.$item[0].':</dt>';
+                                        echo '<dd>'.$item[1].'</dd>';
+                                    }
                                 ?>
                             </dl>
                         </div>
@@ -389,7 +388,6 @@ die();*/
         </div>
     </div>
     <?php
-    $seguridad = get_post_meta($barcoID, $prefix . 'ship_section_sec_info', true);
     if(($seguridad)){
     ?>
     <div class="fullpage-slide">

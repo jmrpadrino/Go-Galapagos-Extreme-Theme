@@ -1,26 +1,52 @@
-<?php get_header(); $prefix = 'gg_'; ?>
-<style>
-    .async-shown{
-        *opacity: 0 !important;
-    }
-</style>
+<?php 
+get_header(); 
+//globales reusables
+$prefix = 'gg_'; 
+$directorioTema = get_template_directory_uri();
+// propietario
+$numeroSlides = get_option( 'gg_home_carousel_slides' ); //Obtener la opcion de la cantidad de slider del carousel del home
+$tituloDelFold = get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1', true);
+$subtituloDelFold = get_post_meta( get_the_ID(), $prefix . 'homepage_fold_subtitle', true);
+//seccion special offers
+$special_items = get_post_meta($post->ID, $prefix . 'front_page_special_offers', false);
+array_shift($special_items); 
+$specialArgs = array(
+    'post_type' => 'ggspecialoffer',
+    'posts_per_page' => -1,
+    'post__in' => $special_items
+);
+$special = get_posts($specialArgs);
+
+// Recuperar los ultimos 4 posts del blog
+$args = array(
+    'post_type' => 'post',
+    'posts_per_page' => 4
+);
+$blogPosts = get_posts($args);
+//var_dump($blogPosts);
+$args = array(
+    'post_type' => 'ggships',
+    'posts_per_page' => 2,
+);
+$barcos = get_posts($args);
+?>
 <?php if ( !wp_is_mobile() ) {  ?>
 <section id="top-page" data-anchor="top" class="sections section hero-video">
     <div class="video-placeholer">
         <video id="hero-video" data-keepplaying class="hero-video" poster="<?php echo get_template_directory_uri(); ?>/images/home-hero-video-poster-2.jpg" muted preload="none">
-            <source src="<?php echo get_template_directory_uri(); ?>/videos/2016-Video-Go-Galapagos.mp4" type='video/mp4' />
-            <source src="<?php echo get_template_directory_uri(); ?>/videos/2016-Video-Go-Galapagos.webm" type='video/webm' />
-            <source src="<?php echo get_template_directory_uri(); ?>/videos/Underwater.ogv" type="video/ogv" />
+            <source src="<?php echo $directorioTema ?>/videos/2016-Video-Go-Galapagos.mp4" type='video/mp4' />
+            <source src="<?php echo $directorioTema ?>/videos/2016-Video-Go-Galapagos.webm" type='video/webm' />
+            <source src="<?php echo $directorioTema ?>/videos/Underwater.ogv" type="video/ogv" />
         </video>
     </div>
     <div class="hero-content">
-        <h1 class="home-hero-title animated fadeInDown wait3"><?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1', true) ?></h1>
-        <p class="home-hero-slogan"><?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_subtitle', true) ?></p>
+        <h1 class="home-hero-title animated fadeInDown wait3"><?= $tituloDelFold ?></h1>
+        <p class="home-hero-slogan"><?= $subtituloDelFold ?></p>
         <div class="text-center scroll-down-placeholder">
             <div class="scroll-down-indicator">
                 <div class="scroll-indicator"></div>
             </div>
-            <small>Scroll Down</small>
+            <small><?= _e('Scroll Down', 'gogalapagos') ?></small>
         </div>
         <div class="quote-filter">
             <span id="play-video" class="fa fa-play fold-video-control is-link text-white"></span>
@@ -30,7 +56,7 @@
     </div>
 </section>
 <?php }else{ ?>
-<section class="sections section text-center fold-mobile">
+<section id="top-page" data-anchor="top" class="sections section text-center fold-mobile">
     <div class="hero-mobile-mask"></div>
     <div class="hero-mobile-content">
         <h1 class="home-hero-title animated fadeInDown wait3"><?php _e('Enjoy','gogalapagos'); ?></h1>
@@ -39,7 +65,7 @@
     </div>
 </section>
 <?php } //END if is mobile ?>
-<section id="get-in-love" data-anchor="galapagos-experience" class="sections section async-shown get-in-love" data-asyncshowntime="2000">
+<section id="get-love" data-anchor="get-in-love" class="sections section async-shown get-in-love" data-asyncshowntime="2000">
     <div class="nextSlide">
         <span class="fa fa-chevron-right"></span>        
     </div>
@@ -47,7 +73,6 @@
         <span class="fa fa-chevron-left"></span>
     </div>
     <?php
-    $numeroSlides = get_option( 'gg_home_carousel_slides' );
     for($i=1; $i <= $numeroSlides; $i++){
     ?>
     <div class="fullpage-slide text-center home-get-in-love-slide" <?= (wp_is_mobile()) ? 'style="background-image: url(' . get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true) . ');"' : '' ?>>
@@ -63,24 +88,13 @@
     </div>
     <?php } ?>
 </section>
-<?php 
-    $special_items = get_post_meta($post->ID, $prefix . 'front_page_special_offers', false);
-
-    array_shift($special_items); 
-    $specialArgs = array(
-        'post_type' => 'ggspecialoffer',
-        'posts_per_page' => -1,
-        'post__in' => $special_items
-    );
-    $special = get_posts($specialArgs);
-?>
 <section id="offers-and-news" data-anchor="offers-news" class="sections section async-shown offers-and-news" data-asyncshowntime="2000">
     <div class="section-ribbon">
         <span><?php _e('Offers &amp; News','gogalapagos'); ?></span>
     </div>
     <div class="container-fluid nopadding">
         <div class="row">
-            <div class="col-md-6 carousel">
+            <div class="col-md-12 col-lg-6 carousel">
                 <div id="index-carousel-products" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <?php 
@@ -112,18 +126,9 @@
                     <?php } ?>
                 </div>
             </div>
-            <?php 
-            // Recuperar los ultimos 4 posts del blog
-            $args = array(
-                'post_type' => 'post',
-                'posts_per_page' => 4
-            );
-            $blogPosts = get_posts($args);
-            //var_dump($blogPosts);
-            ?>
-            <div class="col-md-6 nopadding home-blog-section">
+            <div class="col-md-12 col-lg-6 nopadding home-blog-section">
                 <div class="row">
-                    <div class="col-sm-6 nopadding home-blog-article">
+                    <div class="col-sm-6 home-blog-article">
                         <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[0]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
                         <span class="alter-title serif-font"><?= $blogPosts[0]->post_title ?></span>
                         <div class="more-content upper-post">
@@ -134,7 +139,7 @@
                             <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[0]->ID)?>">Read More</a>
                         </div>
                     </div>
-                    <div class="col-sm-6 nopadding home-blog-article">
+                    <div class="col-sm-6 home-blog-article">
                         <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[1]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[1]->post_title ?>">
                         <span class="alter-title serif-font"><?= $blogPosts[1]->post_title ?></span>
                         <div class="more-content upper-post">
@@ -145,7 +150,7 @@
                             <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[1]->ID)?>">Read More</a>
                         </div>
                     </div>
-                    <div class="col-sm-6 nopadding home-blog-article">
+                    <div class="col-sm-6 home-blog-article">
                         <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[2]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
                         <span class="alter-title serif-font"><?= $blogPosts[2]->post_title ?></span>
                         <div class="more-content lower-post">
@@ -156,7 +161,7 @@
                             <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[2]->ID)?>">Read More</a>
                         </div>
                     </div>
-                    <div class="col-sm-6 nopadding home-blog-article">
+                    <div class="col-sm-6 home-blog-article">
                         <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[3]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
                         <span class="alter-title serif-font"><?= $blogPosts[3]->post_title ?></span>
                         <div class="more-content lower-post">
@@ -172,19 +177,12 @@
         </div>
     </div>    
 </section>
-<section data-anchor="galapagos-cruises" class="sections section async-shown ships" data-asyncshowntime="2000">
+<section id="our-vessels" data-anchor="galapagos-cruises" class="sections section async-shown ships" data-asyncshowntime="2000">
     <div class="section-ribbon">
         <span><?php _e('Our Vessels','gogalapagos'); ?></span>
     </div>
     <div class="container-fluid">
         <div class="row">
-            <?php 
-            $args = array(
-                'post_type' => 'ggships',
-                'posts_per_page' => 2,
-            );
-            $barcos = get_posts($args);
-            ?>
             <?php foreach($barcos as $barco){ ?>
             <div class="col-md-6 nopadding ship-placeholder <?= (wp_is_mobile()) ? '' : 'not-mobile' ?>" <?= (wp_is_mobile()) ? '' : 'style="background-image: url('.get_post_meta($barco->ID, $prefix . 'ship_home_image', true).');"' ?>>
                 <?php if ( wp_is_mobile() ){ ?>
@@ -196,8 +194,9 @@
                     <?php if( !wp_is_mobile() ) { ?>
                     <span class="offers-and-news-hover-separator"></span>
                     <p><?= esc_html__( get_the_excerpt($barco->ID) ) ?></p>
-                    <a class="home-ship-btn" href="<?= home_url($barco->post_name); ?>/">Learn More</a>
                     <?php } ?>
+                    <br />
+                    <a class="home-ship-btn" href="<?= home_url($barco->post_name); ?>/">Learn More</a>
                 </div>
             </div>
             <?php } ?>
@@ -207,7 +206,7 @@
 <?php get_footer(); ?>
 <script>
     let cajas = $('.async-shown');
-    console.log(cajas);
+    //console.log(cajas);
     $(document).ready( function(){
 
         //console.clear();
@@ -216,6 +215,7 @@
         var inlove_slides = $('.home-get-in-love-slide');
         var products_slides = $('#index-carousel-products').children('.carousel-inner').children('.item');
         var blog_posts = $('.home-blog-article');
+        var barcos = $('.ship-placeholder');
         var video_frame = $('#hero-video');
         var video_tag = document.getElementById('hero-video');
         if(video_tag){
@@ -257,7 +257,7 @@
                 $(this).removeClass('fa-stop');
             }
         });
-        
+
         /*---------------
         / FUNCION SI FINALIZA VIDEO
         ---------------*/
@@ -275,9 +275,10 @@
         / SI LA PANTALLA ES MOVIL PORTRAIT
         -----------------*/
         if(window.innerHeight > window.innerWidth){
+        //if(window.width > 767 || window.width < 1025 ){
 
-            /*---------------
-            / CAMBIAR IMAGENES A FONDOS PARA SECCION DE GET-IN-LOVE
+            
+            // CAMBIAR IMAGENES A FONDOS PARA SECCION DE GET-IN-LOVE
             $.each(inlove_slides, function(){
 
                 var imagen_url = $(this).children('div').children('.get-in-love-bkg-img');
@@ -285,7 +286,7 @@
                 acomodarFondo(imagen_url, $(this));
 
             });
-            ---------------*/
+            
 
             /*---------------
             / CAMBIAR IMAGENES A FONDOS PARA SECCION DE GET-IN-LOVE
@@ -304,6 +305,43 @@
             $.each(blog_posts, function(){
 
                 var imagen_url = $(this).children('.blog-home-thumbnail');
+
+                acomodarFondo(imagen_url, $(this));
+
+            });
+        }
+        
+        /*-----------------
+        / SI LA PANTALLA ES TABLET LANDSCAPE
+        -----------------*/
+        if(window.innerWidth >= 1024 && window.innerHeight <= 768 ){
+            
+            $.each(inlove_slides, function(){
+
+                var imagen_url = $(this).children('div').children('.get-in-love-bkg-img');
+
+                acomodarFondo(imagen_url, $(this));
+
+            });
+                        
+            $.each(products_slides, function(){
+
+                var imagen_url = $(this).children('.mobile-image');
+
+                acomodarFondo(imagen_url, $(this));
+
+            });
+
+            $.each(blog_posts, function(){
+
+                var imagen_url = $(this).children('.blog-home-thumbnail');
+
+                acomodarFondo(imagen_url, $(this));
+
+            });
+            $.each(barcos, function(){
+
+                var imagen_url = $(this).children('.mobile-image');
 
                 acomodarFondo(imagen_url, $(this));
 

@@ -61,8 +61,16 @@ $physical_options = array(
                 ?>
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
                 <span class="serif-font fold-backlink"> at the <a href="<?= get_permalink( $parent_island ) ?>"><?php echo get_the_title( $parent_island ) ?> Island</a></span>
-                <span class="separator"></span>
+                <span class="separator white left"></span>
                 <p class="single-excerpt"><?= get_the_excerpt() ?></p>
+                <div class="visitors-icons-placeholder">
+                    <?php $sugerencias = get_post_meta( get_the_ID(), $prefix . 'visitors_site_recomendation', false); ?>
+                    <ul class="list-inline">
+                        <?php foreach($sugerencias as $sugerencia){ ?>
+                        <li><img width="50" src="<?= get_template_directory_uri() ?>/images/icono-<?= $sugerencia ?>.png" alt="<?= $sugerencia ?>" title="<?= $sugerencia ?>"></li>
+                        <?php } ?>
+                    </ul>
+                </div>
                 <!--p id="more-to-show" class="more-to-show"><span class="conservation-info-icon">i</span><span class="single-more-info-action"><?php _e('More Information','gogalapagos'); ?></span></p-->
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
                 <p><a href="<?= home_url('request-a-quote') . '/?for=' . $post->post_title  ?>" class="plan-your-trip-single-btn"><?php _e('Request a Quote','gogalapagos'); ?></a></p>
@@ -243,6 +251,7 @@ $physical_options = array(
             if ( $('.single-carousel') ){
                 var ruta_imagen_primer_slide = $('.carousel-inner').children('.item').find('img').attr('src');
                 $('.single-hero').css('background-image', 'url(' + ruta_imagen_primer_slide + ')');
+                $('.single-hero').css('background-position', 'center');
                 $('.single-carousel').remove();
                 $('.rear-slider-controllers').remove();
             }

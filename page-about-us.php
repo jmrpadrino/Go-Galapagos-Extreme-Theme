@@ -57,7 +57,7 @@ $prefix = 'gg_';
             }
         ?>
     </div>
-    <div class="container-fluid" style="height: 40vh;">
+    <div class="container" style="height: 40vh;">
         <div class="row">
             <div class="col-xs-12 col-lg-8 col-lg-offset-2 inner-page-content" style="margin-top: 36px;">
                 <?php 
@@ -216,7 +216,7 @@ $prefix = 'gg_';
     <div class="fullpage-slide">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-10 col-xs-offset-1">
                     <h2>Social Investment</h2>
                     <span class="separator"></span>
                     <p>Not only does Go Galapagos - Kleintours invest in the betterment of local communities within the islands but we also have some very successful projects on mainland Ecuador. We have a long history of working with the Karanki Magdalena indigenous community to the north of Quito. Through multi-level capacitation, in hospitality, tourism, cooking, health and accounting, visitors are now able to immerse themselves in participatory, cross-cultural, family visits with the community to mutual benefit.</p>
@@ -263,11 +263,6 @@ $prefix = 'gg_';
         </div>
     </div>
 </section>
-<?php /* POR DESARROLLAR EN MARKETING 
-<section class="section sections">
-    <h1>Let's create moments</h1>
-</section>
-*/ ?>
 <?php get_footer(); ?>
 
 

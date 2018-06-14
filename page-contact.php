@@ -8,6 +8,9 @@ $options = array(
     '2' => _x('Business Development','gogalapagos'),
 );
 ?>
+<style>
+    /*---------- CONTACT US ------------*/.contact-page-folder{background-position: center top; background-size: cover; color: white; position: relative;}.mask{position: absolute; top: 0; width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; background: rgba(29, 29, 29, .6); height: 100%;}.contact-page-title{margin-top: 120px;}.contact-form [type="text"],.contact-form [type="phone"],.contact-form [type="email"]{border-radius: 0px; border: none; border-bottom: 1px solid white; background: transparent; color: white;}.contact-folder-btn{display: block; margin: 0 auto; background: #038bae; color: white; border: none; padding: 14px 17px; min-width: 200px; margin-bottom: 36px; text-transform: uppercase;}.separator{border-bottom: 4px solid #292929; margin: 0 auto; margin-top: 20px; margin-bottom: 36px; -webkit-box-shadow: none; box-shadow: none;}.tollfree{margin-bottom: 72px;}.directions{background: #f5f3f3; margin-top: 72px;}.salesexpert-area-title{margin-bottom: 36px;}.contact-form-responsive{padding: 48px 0;}@media screen and(max-width: 480px){.contact-page-title{margin-top: 80px;}}
+</style>
 <section class="sections section contact-page-folder" style="background-image: url(<?= get_template_directory_uri() ?>/images/contacto-bkg.jpg)">
     <div class="mask"></div>
     <div class="container">
@@ -50,7 +53,7 @@ $options = array(
             </div>
         </div>
     </div>
-    <div class="scroll-down-indicator">
+    <div class="scroll-down-indicator hidden-xs hidden-sm hidden-md">
         <div class="scroll-indicator"></div>
     </div>
 </section>
@@ -143,239 +146,7 @@ $options = array(
     <div id="contact-page-google-map" class="contact-page-google-map" style="height: 100vh;"></div>
     <script type="text/javascript">
         function initMap() {
-            var styles = [
-                {
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#1d2c4d"
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#8ec3b9"
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "color": "#1a3646"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative.country",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "color": "#4b6878"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative.land_parcel",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#64779e"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative.province",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "color": "#4b6878"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "landscape.man_made",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "color": "#334e87"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "landscape.natural",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#023e58"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#283d6a"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#6f9ba5"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "color": "#1d2c4d"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.park",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "color": "#023e58"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.park",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#3C7680"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#304a7d"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#98a5be"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "color": "#1d2c4d"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#2c6675"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.stroke",
-                    "stylers": [
-                        {
-                            "color": "#255763"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#b0d5ce"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "color": "#023e58"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#98a5be"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "color": "#1d2c4d"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit.line",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "color": "#283d6a"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit.station",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#3a4762"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#0e1626"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#4e6d70"
-                        }
-                    ]
-                }
-            ];
+            var styles=[{"elementType": "geometry", "stylers": [{"color": "#1d2c4d"}]},{"elementType": "labels.text.fill", "stylers": [{"color": "#8ec3b9"}]},{"elementType": "labels.text.stroke", "stylers": [{"color": "#1a3646"}]},{"featureType": "administrative.country", "elementType": "geometry.stroke", "stylers": [{"color": "#4b6878"}]},{"featureType": "administrative.land_parcel", "elementType": "labels.text.fill", "stylers": [{"color": "#64779e"}]},{"featureType": "administrative.province", "elementType": "geometry.stroke", "stylers": [{"color": "#4b6878"}]},{"featureType": "landscape.man_made", "elementType": "geometry.stroke", "stylers": [{"color": "#334e87"}]},{"featureType": "landscape.natural", "elementType": "geometry", "stylers": [{"color": "#023e58"}]},{"featureType": "poi", "elementType": "geometry", "stylers": [{"color": "#283d6a"}]},{"featureType": "poi", "elementType": "labels.text.fill", "stylers": [{"color": "#6f9ba5"}]},{"featureType": "poi", "elementType": "labels.text.stroke", "stylers": [{"color": "#1d2c4d"}]},{"featureType": "poi.park", "elementType": "geometry.fill", "stylers": [{"color": "#023e58"}]},{"featureType": "poi.park", "elementType": "labels.text.fill", "stylers": [{"color": "#3C7680"}]},{"featureType": "road", "elementType": "geometry", "stylers": [{"color": "#304a7d"}]},{"featureType": "road", "elementType": "labels.text.fill", "stylers": [{"color": "#98a5be"}]},{"featureType": "road", "elementType": "labels.text.stroke", "stylers": [{"color": "#1d2c4d"}]},{"featureType": "road.highway", "elementType": "geometry", "stylers": [{"color": "#2c6675"}]},{"featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{"color": "#255763"}]},{"featureType": "road.highway", "elementType": "labels.text.fill", "stylers": [{"color": "#b0d5ce"}]},{"featureType": "road.highway", "elementType": "labels.text.stroke", "stylers": [{"color": "#023e58"}]},{"featureType": "transit", "elementType": "labels.text.fill", "stylers": [{"color": "#98a5be"}]},{"featureType": "transit", "elementType": "labels.text.stroke", "stylers": [{"color": "#1d2c4d"}]},{"featureType": "transit.line", "elementType": "geometry.fill", "stylers": [{"color": "#283d6a"}]},{"featureType": "transit.station", "elementType": "geometry", "stylers": [{"color": "#3a4762"}]},{"featureType": "water", "elementType": "geometry", "stylers": [{"color": "#0e1626"}]},{"featureType": "water", "elementType": "labels.text.fill", "stylers": [{"color": "#4e6d70"}]}];
             var myLatLng = {lat: -0.748015, lng: -90.313712}; //-0.748015, -90.313712
             var map = new google.maps.Map(document.getElementById('contact-page-google-map'), {
                 zoom: 17,

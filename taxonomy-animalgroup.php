@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <h1 class="archive-title"><?= 'Galapagos '. $termino->name ?></h1>
-                <span class="separator"></span>
+                <span class="separator white"></span>
                 <p><a href="<?= home_url('request-a-quote') ?>" class="plan-your-trip-single-btn"><?php _e('Request a Quote','gogalapagos'); ?></a></p>
             </div>
         </div>        

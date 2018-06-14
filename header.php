@@ -1,4 +1,7 @@
 <?php
+
+$directorio = get_template_directory_uri();
+
 if ( substr_count( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) ) {
     ob_start( "ob_gzhandler" );
 }
@@ -9,32 +12,6 @@ else {
 <!DOCTYPE html>
 <html <?php echo get_language_attributes(); ?>>
     <head>
-        <meta charset="<?php bloginfo( 'charset' ); ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo get_template_directory_uri(); ?>/images/favicon/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/images/favicon/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/images/favicon/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo get_template_directory_uri(); ?>/images/favicon/apple-touch-icon-144x144.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="<?php echo get_template_directory_uri(); ?>/images/favicon/apple-touch-icon-60x60.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo get_template_directory_uri(); ?>/images/favicon/apple-touch-icon-120x120.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?php echo get_template_directory_uri(); ?>/images/favicon/apple-touch-icon-76x76.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo get_template_directory_uri(); ?>/images/favicon/apple-touch-icon-152x152.png" />
-        <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/images/favicon/favicon-196x196.png" sizes="196x196" />
-        <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/images/favicon/favicon-96x96.png" sizes="96x96" />
-        <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/images/favicon/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/images/favicon/favicon-16x16.png" sizes="16x16" />
-        <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/images/favicon/favicon-128.png" sizes="128x128" />
-        <meta name="application-name" content="Go Galapagos"/>
-        <meta name="msapplication-TileColor" content="#003a57" />
-        <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/images/favicon/mstile-144x144.png" />
-        <meta name="msapplication-square70x70logo" content="<?php echo get_template_directory_uri(); ?>/images/favicon/mstile-70x70.png" />
-        <meta name="msapplication-square150x150logo" content="<?php echo get_template_directory_uri(); ?>/images/favicon/mstile-150x150.png" />
-        <meta name="msapplication-wide310x150logo" content="<?php echo get_template_directory_uri(); ?>/images/favicon/mstile-310x150.png" />
-        <meta name="msapplication-square310x310logo" content="<?php echo get_template_directory_uri(); ?>/images/favicon/mstile-310x310.png" />
-        <!--[if IE]>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
         <style>
             body{
                 position: relative;
@@ -61,7 +38,41 @@ else {
                 font-weight: 900;
             }
         </style>
+        <?php
+            if(is_home() or is_front_page()){
+                echo '<style>';
+                $css = file_get_contents ($directorio . '/minified/gogalapagos-home.min.css');
+                echo $css;
+                echo '</style>';
+            }
+        ?>
         <?php wp_head(); ?>
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo $directorio ?>/images/favicon/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $directorio ?>/images/favicon/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $directorio ?>/images/favicon/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $directorio ?>/images/favicon/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="<?php echo $directorio ?>/images/favicon/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo $directorio ?>/images/favicon/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?php echo $directorio ?>/images/favicon/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo $directorio ?>/images/favicon/apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="<?php echo $directorio ?>/images/favicon/favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="<?php echo $directorio ?>/images/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="<?php echo $directorio ?>/images/favicon/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="<?php echo $directorio ?>/images/favicon/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="<?php echo $directorio ?>/images/favicon/favicon-128.png" sizes="128x128" />
+        <meta name="application-name" content="Go Galapagos"/>
+        <meta name="msapplication-TileColor" content="#003a57" />
+        <meta name="msapplication-TileImage" content="<?php echo $directorio ?>/images/favicon/mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="<?php echo $directorio ?>/images/favicon/mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="<?php echo $directorio ?>/images/favicon/mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="<?php echo $directorio ?>/images/favicon/mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="<?php echo $directorio ?>/images/favicon/mstile-310x310.png" />
+        <!--[if IE]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
     </head>
     <body <?php body_class(); ?>>
         <div id="loader" class="loader">
@@ -77,7 +88,7 @@ else {
                 <div class="row">
                     <div class="col-sm-2 col-sm-offset-5">
                         <a href="<?php echo home_url(); ?>" class="gogalapagos-logo text-center">
-                            <img id="header-logo" src="<?php echo get_template_directory_uri(); ?>/images/go-galapagos-logo.png" alt="Go Galapagos Logo">
+                            <img id="header-logo" src="<?php echo $directorio ?>/images/go-galapagos-logo.png" alt="Go Galapagos Logo">
                         </a>
                     </div>
                     <?php

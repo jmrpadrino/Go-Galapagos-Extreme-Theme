@@ -6,7 +6,8 @@ function gg_add_styles_and_scripts() {
     $ver = '';
     // Jquery Support
     wp_deregister_script('jquery');  
-    wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', FALSE, '', TRUE);  
+    //wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', FALSE, '', TRUE);  
+    wp_register_script('jquery', 'https://code.jquery.com/jquery-3.3.1.min.js', FALSE, '', TRUE);  
     wp_enqueue_script('jquery'); 
 
     // AJAX Support
@@ -19,8 +20,8 @@ function gg_add_styles_and_scripts() {
     wp_enqueue_style( 'gogalapagos-googlefonts', 'https://fonts.googleapis.com/css?family=Didact+Gothic|Yeseva+One', array(), '' );
     // elements CSS
     wp_enqueue_style( 'gogalapagos-bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), null );
-    wp_enqueue_style( 'gogalapagos-ficon', get_template_directory_uri() . '/css/font-awesome.min.css', array(), null );
-    wp_enqueue_style( 'gogalapagos-fullpage', get_template_directory_uri() . '/css/jquery.fullpage.min.css', array(), null );
+    //wp_enqueue_style( 'gogalapagos-ficon', get_template_directory_uri() . '/css/font-awesome.min.css', array(), null );
+    //wp_enqueue_style( 'gogalapagos-fullpage', get_template_directory_uri() . '/minified/jquery.fullpage.min.css', array(), null );
     wp_enqueue_style( 'gogalapagos-main',  get_template_directory_uri() .'/minified/gogalapagos-elements.min.css', array(), $ver, 'screen' );
     // elements Scripts
     wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array ( 'jquery' ), '', true);
@@ -41,7 +42,7 @@ function gg_add_styles_and_scripts() {
     //wp_register_script( 'goga_filter', get_template_directory_uri() .'/js/cruise-filter.js', array ( 'jquery' ), $ver, true);
     //wp_enqueue_script( 'goga_filter', get_template_directory_uri() .'/js/cruise-filter.js', array ( 'jquery' ), $ver, true);
     if ( is_home() or is_front_page() or is_page('fold-2') ){
-        wp_enqueue_style( 'gogalapagos-home',  get_template_directory_uri() .'/minified/gogalapagos-home.min.css', array(), $ver, 'screen' );
+        //wp_enqueue_style( 'gogalapagos-home',  get_template_directory_uri() .'/minified/gogalapagos-home.min.css', array(), $ver, 'screen' );
     }
     if (isset($_GET['bulk'])){
         global $wpdb;
@@ -105,12 +106,17 @@ function gg_add_styles_and_scripts() {
     }
     if ($post->post_type == 'ggisland' or is_singular( 'ggtour' ) or is_singular( 'ggpackage' ) or is_singular( 'ggsatour' )){
         wp_enqueue_style( 'gogalapagos-islands',  get_template_directory_uri() .'/css/gogalapagos-islands.css', array(), $ver, 'screen' );
-        wp_enqueue_script( 'gmaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBGds9FjlnAoR3dpbkG7iH-c7CYoYWHk1o&callback=initMap', null, null , true); 
+        if($post->post_type == 'ggisland'){
+            wp_enqueue_script( 'gmaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBGds9FjlnAoR3dpbkG7iH-c7CYoYWHk1o&callback=initMap', null, null , true); 
+        }
     }
     if ( is_singular('gganimal' ) ){
         wp_enqueue_style( 'gogalapagos-animals',  get_template_directory_uri() .'/css/gogalapagos-animals.css', array(), $ver, 'screen' );
         //wp_enqueue_script( 'nicescroll', get_template_directory_uri() .'/js/jquery.nicescroll.min.js', array ( 'jquery' ), $ver, true); 
-        wp_enqueue_script( 'gmaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBGds9FjlnAoR3dpbkG7iH-c7CYoYWHk1o&callback=initMap', null, null , true); 
+        
+        if(!wp_is_mobile()){
+            wp_enqueue_script( 'gmaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBGds9FjlnAoR3dpbkG7iH-c7CYoYWHk1o&callback=initMap', null, null , true); 
+        }
     }
     if ( is_singular('ggspecialoffer' ) or is_archive('ggspecialoffer' ) ){
         wp_enqueue_style( 'gogalapagos-offers',  get_template_directory_uri() .'/css/gogalapagos-offers.css', array(), $ver, 'screen' );

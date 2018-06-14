@@ -25,7 +25,7 @@
                                 <?php endif; ?>
                             </div>
                             <div class="col-md-6">
-                                <a href="<?= home_url('request-a-quote') ?>/" class="plan-your-trip-single-btn"><?= _e('Request a Quote', 'gogalapagos') ?></a>
+                                <a href="<?= home_url('request-a-quote') ?>/" class="plan-your-trip-single-btn wiki-bar-btn"><?= _e('Request a Quote', 'gogalapagos') ?></a>
                             </div>
                         </div>
                         <ul class="list-inline social-icons-list">

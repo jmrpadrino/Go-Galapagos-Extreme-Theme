@@ -4,11 +4,11 @@
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
-            <div class="col-sm-6 col-lg-6 col-lg-offset-1">
+            <div class="col-sm-5 col-sm-offset-1 col-lg-6 col-lg-offset-1">
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
-                <span class="separator"></span>
+                <span class="separator white left"></span>
                 <p><?= esc_html( get_the_excerpt( get_the_ID() ) ) ?></p>
-                <p><span class="btn btn-warning"><?= _e('Get the deal','gogalapagos')?></span> or <a href="<?= home_url('request-a-quote') . '/?for=Special%20Offers'  ?>">Request a Quote</a></p>
+                <p><!--span class="btn btn-warning"><?= _e('Get the deal','gogalapagos')?></span> or --><a class="plan-your-trip-single-btn" href="<?= home_url('request-a-quote') . '/?for=Special%20Offers'  ?>">Request a Quote</a></p>
             </div>
             <div class="col-sm-5 col-lg-4">
                 <div class="offer-main-content">
@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="rear-slider-controllers">
+    <div class="rear-slider-controllers hidden-md hidden-sm hidden-xs">
         <ul class="list-inline">
             <li>
                 <a class="left" href="#single-hero-carousel_<?= get_the_ID() ?>" role="button" data-slide="prev">

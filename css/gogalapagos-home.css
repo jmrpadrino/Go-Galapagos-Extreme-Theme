@@ -3,7 +3,7 @@
     position: relative;
 }
 .fold-mobile{
-    background-image: url(../images/gogalapagos-mobile-hero-background.jpg);
+    background-image: url(wp-content/themes/gogalapagos-extreme-theme/images/gogalapagos-mobile-hero-background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -317,7 +317,7 @@ label.field.focused .psuedo_select ul {
 }
 /* GET IN LOVE SECTION */
 .get-in-love{
-    background-image: url(../images/get-in-love-default-background.jpg); 
+    background-image: url(wp-content/themes/gogalapagos-extreme-theme/images/get-in-love-default-background.jpg); 
     background-position: bottom center;
     background-size: cover;
     color: white;
@@ -677,7 +677,6 @@ label.field.focused .psuedo_select ul {
 }
 @media screen and (max-width: 1024px) and (orientation: landscape){
     .home-blog-article .alter-title{
-        margin-left: 30px;
         line-height: 1.1;
     }
     .home-blog-article .more-content{
@@ -855,11 +854,10 @@ filter: brightness(1) sepia(0);
         margin: 12px 0;
     }
     .home-blog-article .alter-title{
-        padding-top: 60%;
+        position: absolute;
+        bottom: 36px;
         font-size: 18px;
-        margin-left: 20px;
         max-width: 280px;
-        padding-right: 50px;
     }
     .home-blog-article .more-content{
         padding: 20px;

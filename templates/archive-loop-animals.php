@@ -4,6 +4,7 @@
     <?php 
         $grupoAnimales = get_terms('animalgroup', array('hide_empty' => false));
         //var_dump($grupoAnimales); 
+        $item = 1;
         foreach ($grupoAnimales as $grupo){ 
     ?>
         <div class="col-sm-6 nopadding archive-item-placeholder text-center">
@@ -15,7 +16,12 @@
             <p><?php echo term_description( $grupo->term_id, 'animalgroup' ) ?></p> 
         
         </div>
-    <?php } ?>
+    <?php
+        if($item % 2 == 0){
+            echo '<div class="clearfix"></div>';
+        }
+    ?>
+    <?php $item++; } ?>
             </div>
         </div>
     </div>

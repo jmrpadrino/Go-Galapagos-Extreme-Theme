@@ -1,5 +1,5 @@
 <?php $prefix = 'gg_' ?>
-<section class="section sections">
+<section class="section sections" data-anchor="our-customers-say">
     <div class="customer-section">
         <div class="container-fluid">
             <div class="row">

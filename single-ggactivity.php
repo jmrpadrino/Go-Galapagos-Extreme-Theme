@@ -176,6 +176,7 @@
             if ( $('.single-carousel') ){
                 var ruta_imagen_primer_slide = $('.carousel-inner').children('.item').find('img').attr('src');
                 $('.single-hero').css('background-image', 'url(' + ruta_imagen_primer_slide + ')');
+                $('.single-hero').css('background-position', 'center');
                 $('.single-carousel').remove();
                 $('.rear-slider-controllers').remove();
             }

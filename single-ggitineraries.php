@@ -61,7 +61,7 @@ $dificultadCatalogo = array(
                 ?>
                 <span class="body-font text-center itinerary-ship-owner"><?php echo get_the_title( $term ); ?></span>
                 <?php the_title('<h1 class="itinerary-title text-center">', '</h1>'); ?>
-                <span class="separator"></span>
+                <span class="separator white"></span>
                 <p><?php echo get_the_excerpt(); ?></p>
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
             </div>
@@ -110,7 +110,7 @@ for($i=1; $i<=5; $i++){
 <div class="sections section <?= $i % 2 == 0 ? 'darker' : '' ?>">
     <div class="container-fluid">
         <div class="row nopadding">
-            <div class="col-md-6">
+            <div class="col-md-12 col-lg-6">
                 <div class="day-placeholder">
                     <h2><?= _e('Day','gogalapagos'); ?> <?= $i ?>. <?= $dias_de_la_semana[$i-1]?></h2>
                     <span class="serif-font" style="display: block;">AM</span>
@@ -187,7 +187,7 @@ for($i=1; $i<=5; $i++){
                     ?>
                 </div>
             </div>
-            <div class="col-md-6 nopadding">
+            <div class="col-md-12 col-lg-6 nopadding">
                 <?php
         $featuredImage = get_post_meta( get_the_ID(), $prefix . 'itinerary_featured_image_day_'.$i, true);
         $rutaImagen = wp_get_attachment_image_src( $featuredImage, 'full', false );
@@ -304,6 +304,7 @@ for($i=1; $i<=5; $i++){
         // solo en pantallas menores a 1024 (tablets)
         if( $(window).width() < 1025 ){
             $('.single-thumbnail-container').parents('.section').css('background-image','url('+ $('.single-thumbnail-container').children('img').attr('src') +')');
+            $('.single-thumbnail-container').css('background-position', 'center');
             $('.single-thumbnail-container').remove();
         }
     });

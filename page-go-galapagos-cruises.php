@@ -72,14 +72,14 @@ $barcos = get_posts($args);
                     <div class="row">
                         <div class="col-xs-12 text-center">
                             <h2><?= _e('Services aboard our fleet','gogalapagos') ?></h2>
-                            <span class="separator"></span>
+                            <span class="separator dark"></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <h3 class="body-font text-center"><?= _e('Onboard service and facilities', 'gogalapagos') ?></h3>
                             <?php 
-    $onboards = get_post_meta(get_the_ID(), $prefix . 'ship_facilities_onboard', false);
+                                $onboards = get_post_meta(get_the_ID(), $prefix . 'ship_facilities_onboard', false);
                             ?>
                             <ul class="service-facilities-list">
                                 <?php 
@@ -93,7 +93,7 @@ $barcos = get_posts($args);
                         <div class="col-sm-6">
                             <h3 class="body-font text-center"><?= _e('Cabin service and facilities', 'gogalapagos') ?></h3>
                             <?php 
-    $oncabins = get_post_meta(get_the_ID(), $prefix . 'ship_facilities_cabin', false);
+                                $oncabins = get_post_meta(get_the_ID(), $prefix . 'ship_facilities_cabin', false);
                             ?>
                             <ul class="service-facilities-list">
                                 <?php 
@@ -129,7 +129,7 @@ $barcos = get_posts($args);
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h2 class="galapagos-cruises-inner-sections-title"><?= get_post_meta(get_the_ID(), $prefix . 'galapagos_cruises_eco_title', true) ?></h2>
-                                    <span class="separator"></span>
+                                    <span class="separator dark"></span>
                                 </div>
                             </div>
                             <div class="row">
@@ -154,7 +154,7 @@ $barcos = get_posts($args);
                         <div class="row">
                             <div class="col-sm-12">
                                 <h2 class="galapagos-cruises-inner-sections-title"><?= get_post_meta(get_the_ID(), $prefix . 'galapagos_cruises_crew_title', true) ?></h2>
-                                <span class="separator"></span>
+                                <span class="separator dark"></span>
                             </div>
                         </div>
                         <div class="row">
@@ -187,7 +187,7 @@ $barcos = get_posts($args);
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text-center">
                     <h2><?= _e('Have fun on the Galapagos Islands','gogalapagos'); ?></h2>
-                    <span class="separator"></span>
+                    <span class="separator dark"></span>
                     <p><?= _e('These two yachts are the intimate experience guest are looking for, with their respective capacity of 19 and 12, their cabins offer a sense of an intimate and private yacht experience. In small spaces, the service is more personalized and meeting fellow travelers are easy to share the experience of the trip. All social areas are designed with style and comfort, as well as the cabins that include excellent amenities. The external open deck areas have perfect spaces designed to socialize, relax and enjoy the best of the Pacific sun.'.'gogalapagos'); ?></p>
                     <a class="cruise-link activities" href="<?= get_post_type_archive_link( 'ggactivity' ); ?>"><?= _e('Know all activities','gogalapagos') ?></a>
                 </div>
@@ -199,7 +199,7 @@ $barcos = get_posts($args);
             <div class="row">
                 <div class="col-xs-12">
                     <h2><?= _e('A Typical Cruise Day', 'gogalapagos') ?></h2>
-                    <span class="separator"></span>
+                    <span class="separator dark"></span>
                 </div>
             </div>
             <div class="row">
@@ -207,13 +207,12 @@ $barcos = get_posts($args);
                     <p>A soothing morning wakeup call signals a freshly prepared al fresco breakfast on deck. Armed with snorkel gear, sunblock and camera we then board our pangas and head towards shore for our morning adventure. Every excursion is different, but might include a visit where we squeeze past boobies nesting on the narrow trail, sit and watch endemic waved albatross absorbed in their intricate courtship ritual, or stare into the eyes of a curious sea lion underwater as it peers into our face mask.</p>
                     <p>Returning aboard for a sumptuous, buffet-style, lunch we are able to enjoy time to relax in the pool, jacuzzi or on deck looking for wildlife and watching the scenery change as we cruise to our afternoon destination.</p>
                     <p>With every new visitor site being different from the last, we can once again expect another uniquely Galapagos experience for the afternoon hike. This could quite possibly be followed by another fabulous snorkel with turtles, large schools of yellow-tailed surgeonfish or even penguins! Some might choose to follow the dramatic shoreline in a kayak or effortlessly glide over the sea bed from the comfort of our motorized glass-bottom boat.
-                    <p>Return to the vessel to enjoy a delicious BBQ on deck as the sun sets on the horizon or, a sophisticated a la carte dinner. After dinner is a time to enjoy one of our many onboard activities, relax or be outside stargazing.
-                    </p>
+                    <p>Return to the vessel to enjoy a delicious BBQ on deck as the sun sets on the horizon or, a sophisticated a la carte dinner. After dinner is a time to enjoy one of our many onboard activities, relax or be outside stargazing.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
-                    <img src="http://placehold.it/2000x600?text=Soles" class="img-responsive" style="margin: 36px auto;">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <img src="<?= get_template_directory_uri() ?>/images/dia-a-bordo.jpg" class="img-responsive">
                 </div>
             </div>
         </div>

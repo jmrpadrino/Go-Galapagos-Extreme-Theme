@@ -1,4 +1,8 @@
-<?php the_post(); $prefix = 'gg_'; ?>
+<?php 
+    the_post(); 
+    $prefix = 'gg_'; 
+    $rutatemplate = get_template_directory_uri();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,10 +10,16 @@
         <title><?= get_the_title() ?> | <?= bloginfo('name') ?></title>
         <?php wp_head() ?>
         <!-- Optional theme -->
-        <link rel="stylesheet" href="<?= get_template_directory_uri() ?>/css/bootstrap-datetimepicker.min.css">
+        <!--link rel="stylesheet" href="<?= $rutatemplate ?>/css/bootstrap-datetimepicker.min.css"-->
         <style>
             body{
+                overflow: auto;
                 overflow-x: hidden!important;
+                background-position: center bottom;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                background-image: url(<?= $rutatemplate ?>/images/get-in-love-default-background.jpg);
             }
             .main-flex-container{
                 display: flex;
@@ -37,81 +47,35 @@
                 justify-content: center;
             }
             .request-form-placeholder2{
-                background: rgba(25, 25, 25, 0.7);
+                background: rgba(25, 25, 25, 0.4);
                 color: white;
-                padding: 36px 60px;
-                position: absolute;
-                top: 0;
-                right: 0;
+                padding: 36px;
                 display: flex;
-                height: 100vh;
-                width: 40%;
+                max-width: 35%;
+                min-height: 100vh;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
                 flex-direction: column;
-                align-content: flex-start;
-                align-items: flex-start;
-                justify-content: flex-start;
-                overflow: hidden;
-                overflow-y: visible;
+                align-content: center;
+                align-items: center;
+                justify-content: center;
+                overflow: auto;
                 opacity: 1;
                 transition: opacity ease-in .2s;
-            }
-            .request-form-placeholder2.showing-video{
-                opacity: 0;
-                transition: opacity ease-out .2s;
             }
             .request-form-logo-img{
                 width: auto;
                 margin: 18px auto;
             }
-            .video-placeholer{
-                position: relative;
-                width: 100%;
-                height: 100vh;
-                overflow: hidden;
-                display: flex;
-                align-content: center;
-                align-items: center;
-                justify-content: center;
-            }
-            .video-placeholer video{
-                width: 100%;
-            }
-            .play-control-placeholder{
-                position: absolute;
-                z-index: 22;
-                margin: auto;
-                cursor: pointer;
-                opacity: .2;
-                transition: opacity linear .2s;
-            }
-            .play-control-placeholder:hover{
-                opacity: 1;
-                transition: opacity linear .2s;
-            }
             .go-back-placeholder, .stop-video-icon{
-                position: absolute;
+                position: fixed;
                 z-index: 22;
                 cursor: pointer;
             }
             .go-back-placeholder{
                 top: 36px;
                 left: 36px;
-            }
-            .stop-video-icon{
-                bottom: 48px;
-                left: 36px;
-                opacity: 0;
-                transition: opacity ease-out .2s;
-            }
-            .stop-video-icon.showing-video{
-                opacity: 1;
-                transition: opacity ease-in .2s;
-            }
-            .play-control-placeholder:hover{
-                cursor: pointer;
-            }            }
-            .video-placeholer1 video{
-                margin: auto;
             }
             .form-message-box{
                 padding: 15px;
@@ -123,8 +87,6 @@
             @media screen and (min-width: 1400px){
                 .request-form-placeholder2{
                     padding: 0 48px;
-                    width: 25%;
-                    overflow: hidden;
                     align-content: center;
                     align-items: center;
                     justify-content: center;
@@ -133,84 +95,78 @@
         </style>
     </head>
     <body>
+        <div class="go-back-placeholder" onclick="window.history.back()">
+            <a href="<?= home_url() ?>"><img src="<?= $rutatemplate ?>/images/request-a-quote-go-back-icon.png" alt="Go Galapagos - Play Video NOW!"></a>
+        </div>
         <div class="row">
             <div class="col-xs-12 nopadding main-flex-container1">
-                <div class="request-video-placeholer hidden-sm hidden-xs">
-                    <div class="go-back-placeholder" onclick="window.history.back()">
-                        <a href="<?= home_url() ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/request-a-quote-go-back-icon.png" alt="Go Galapagos - Play Video NOW!"></a>
-                    </div>
-                    <div class="stop-video-icon" onclick="stopVid()">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/gogalapagos-request-a-quote-stop-video-icon.png" alt="Go Galapagos - Play Video NOW!">
-                    </div>
-                    <div id="video-control" class="play-control-placeholder" onclick="playVid()">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/request-a-quote-play-icon.png" alt="Go Galapagos - Play Video NOW!">
-                    </div>
-                    <div class="video-placeholer">
-                        <video id="hero-video" class="hero-video" poster="<?php echo get_template_directory_uri(); ?>/images/home-hero-video-poster-2.jpg" loop>
-                            <source src="<?php echo get_template_directory_uri(); ?>/videos/2016-Video-Go-Galapagos.webm" type='video/webm' />
-                            <source src="<?php echo get_template_directory_uri(); ?>/videos/2016-Video-Go-Galapagos.mp4" type='video/mp4' />
-                            <source src="<?php echo get_template_directory_uri(); ?>/videos/family-walking.ogv" type="video/ogv" />
-                        </video>
-                    </div>
-                </div>
                 <div class="request-form-placeholder1 request-form-placeholder2">
                     <a href="<?php echo home_url(); ?>" class="request-form-logo-img">
-                        <img src="<?= get_template_directory_uri() ?>/images/go-galapagos-logo.png" alt="Go Galapagos - Logo">
+                        <img src="<?= $rutatemplate ?>/images/go-galapagos-logo.png" alt="Go Galapagos - Logo">
                     </a>
                     <h1 class="text-right"><?= _e('Please fill the form') ?></h1>
                     <!--p class="text-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni rerum laudantium, inventore, veritatis repellat, expedita in qui enim a, ex cum voluptates. Nemo non ad iure consequuntur dignissimos ut animi?</p-->
                     <form id="request-a-quote-form" role="form" class="col-xs-12">
                         <input type="hidden" name="interested" value="<?= $_GET['for'] ?>">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Full Name *</label>
-                            <input name="name" type="text" class="form-control" id="exampleInputEmail1" required>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?= _e('Full Name','gogalapagos') ?> *</label>
+                                    <input name="name" type="text" class="form-control" id="exampleInputEmail1" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?= _e('E-mail','gogalapagos') ?> *</label>
+                                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" required>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">E-mail *</label>
-                            <input name="email" type="email" class="form-control" id="exampleInputEmail1" required>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?= _e('Phone','gogalapagos') ?></label>
+                                    <input name="phone" type="phone" class="form-control" id="exampleInputEmail1">
+                                </div>        
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><?= _e('Departure','gogalapagos') ?></label>
+                                    <input name="departure" type="date" class="form-control" id="exampleInputEmail1">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Phone </label>
-                            <input name="phone" type="phone" class="form-control" id="exampleInputEmail1">
-                        </div>
-                        
-                            <label for="exampleInputEmail1">Departure</label>
-                            <input name="departure" type="date" class="form-control" id="exampleInputEmail1">
-                        
-                        <!--label for="exampleInputEmail1">Departure</label>
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input name="departure" type='text' class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div-->
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Adults *</label>
+                                    <label for="exampleInputEmail1"><?= _e('Adults','gogalapagos') ?> *</label>
                                     <input name="adults" type="number" class="form-control" min="0" max="9" value="2" id="exampleInputEmail1" required>
                                 </div>  
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Children *</label>
+                                    <label for="exampleInputEmail1"><?= _e('Children','gogalapagos') ?> *</label>
                                     <input name="children" type="number" class="form-control" min="0" max="9" value="0" id="exampleInputEmail1" required>
-                                    <p class="help-block" style="font-size: 12px;">Children under 12 year old.</p>
+                                    <p class="help-block" style="font-size: 12px;"><?= _e('Children under 12 year old.','gogalapagos') ?></p>
                                 </div>  
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Duration</label>
-                            <select name="duration" class="form-control">
-                                <option value="3D / 4N">4 Days / 3 Nights</option>
-                                <option value="4D / 5N">5 Days / 4 Nights</option>
-                                <option value="7D / 8N">8 Days / 7 Nights</option>
-                                <option value="More than 8 nights">More than 8 nights</option>
-                            </select>
-                            <!--p class="help-block" style="font-size: 12px;">Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p-->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Duration</label>
+                                    <select name="duration" class="form-control">
+                                        <option value="3D / 4N">4 Days / 3 Nights</option>
+                                        <option value="4D / 5N">5 Days / 4 Nights</option>
+                                        <option value="7D / 8N">8 Days / 7 Nights</option>
+                                        <option value="More than 8 nights">More than 8 nights</option>
+                                    </select>
+                                    <!--p class="help-block" style="font-size: 12px;">Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p-->
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Something you want to share?</label>
+                            <label for="exampleInputEmail1"><?= _e('Something you want to share?','gogalapagos') ?></label>
                             <textarea rows="6" name="textmessage" class="form-control"></textarea>
                         </div>
                         <div class="checkbox">
@@ -222,10 +178,10 @@
                             </label>
                         </div>
                         <div class="form-group">
-                            <label>Required *</label>
+                            <label><?= _e('Required','gogalapagos') ?> *</label>
                         </div>
                         <p id="form-message" class="form-message-box bg-info"></p>
-                        <button type="submit" class="btn btn-default">SEND</button>
+                        <button type="submit" class="btn btn-default"><?= _e('SEND MY REQUEST','gogalapagos') ?></button>
                     </form>
                 </div>
             </div>
@@ -233,30 +189,22 @@
         <?php wp_footer() ?>
         <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <!-- Latest compiled and minified JavaScript -->
-        <script src="<?= get_template_directory_uri() ?>/js/moment.min.js"></script>
-        <script src="<?= get_template_directory_uri() ?>/js/transition.js"></script>
+        <!--script src="<?= get_template_directory_uri() ?>/js/moment.min.js"></script-->
+        <!--script src="<?= get_template_directory_uri() ?>/js/transition.js"></script-->
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="<?= get_template_directory_uri() ?>/js/bootstrap-datetimepicker.min.js"></script>
+        <!--script src="<?= get_template_directory_uri() ?>/js/bootstrap-datetimepicker.min.js"></script-->
         <script type="text/javascript">
             //Player para el video
-            var vid = $("#hero-video"); 
             var mensajebox = $('#form-message');
             $(document).ready( function(){
-                vid.bind('ended', alFinalizarVideo());
-                $('#datetimepicker1').datetimepicker({
-                    'format'                :   'YYYY MMMM',
-                    'dayViewHeaderFormat'   :   'YYYY',
-                    'collapse'              :   false
-                });
-                
+                                
                 mensajebox.hide();
 
                 /*----------------
                 // ENVIO DE MAIL 
                 ----------------*/
                 $('#request-a-quote-form').submit( function(e) {
-                    console.log('enviando');
                     
                     var interested = $('input[name="interested"]');
                     var name = $('input[name="name"]');
@@ -289,19 +237,15 @@
                         },
                         dataType: 'text',
                         beforeSend  : function(data){
-                            console.log('enviando', data);
                             mensajebox.html('Sending message');
                             mensajebox.show();
                         },
                         error       : function(data){
-                            console.log('error', data);
                             mensajebox.removeClass('bg-info');
                             mensajebox.addClass('bg-danger');
                             mensajebox.html('Error sending message');
                         },
                         success     : function(data){
-                            console.log('good', data);
-                            
                             name.val('');
                             email.val('');
                             phone.val('');
@@ -328,27 +272,7 @@
                     e.preventDefault();
                 });
                 
-                
             });
-            function playVid() { 
-                vid.get(0).play(); 
-                $('#video-control').hide();
-                $('.stop-video-icon').addClass('showing-video');
-                $('.request-form-placeholder2').addClass('showing-video');
-            }
-            function stopVid() { 
-                vid.get(0).pause(); 
-                $('#video-control').show();
-                $('.stop-video-icon').removeClass('showing-video');
-                $('.request-form-placeholder2').removeClass('showing-video');
-            }
-            function alFinalizarVideo(e){
-                console.log('hola');
-    //            $('.stop-video-icon').addClass('showing-video');
-    //            $('.request-form-placeholder2').addClass('showing-video');
-    //            vid.load();
-    //            vid.pause();
-            }
         </script>
     </body>
 </html>

@@ -34,11 +34,12 @@
             <div class="col-xs-12 text-center">
                 <h2><?= _e('Categories', 'gogalapagos'); ?></h2>
                 <span class="separator"></span>
-                <ul class="list-inline tag-list">
+                <ul class="list-inline tag-list blog-tag-list">
                 <?php 
                     //echo get_the_categories( '', '<span class="tag-separator">|</span>', '</div>' ); 
+                    
                     foreach( get_categories() as $category){
-                        echo '<li><a href="#">' . $category->cat_name . '</a></li>';
+                        echo '<li><a href="'. get_term_link( $category, 'category' ) .'">' . $category->cat_name . '</a></li>';
                     }
                 ?> 
                 </ul>

@@ -35,11 +35,16 @@ function random_color() {
     return random_color_part() . random_color_part() . random_color_part();
 }
 
-function _remove_script_version( $src ){ 
-$parts = explode( '?', $src ); 	
-return $parts[0]; 
+function _remove_script_version($src, $handle, $html){ 
+    
+    if($handle != 'gogalapagos-googlefonts'){        
+        $parts = explode( '?', $src ); 	
+        return $parts[0]; 
+    }else{
+        $parts = explode( '?', $src ); 	
+        return $parts[0].'?'.$parts[1];
+    }
 } 
-add_filter( 'script_loader_src', '_remove_script_version', 15, 1 ); 
-add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
+add_filter( 'style_loader_src', '_remove_script_version', 15, 3 );
 
 ?>

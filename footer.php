@@ -201,7 +201,6 @@
     <?php } ?>
 </section>
 </div><!-- END fullpage -->
-<?php get_template_part('templates/modal-cruise-filter'); ?>
 <script type="application/ld+json">
 <?php if ( is_home() ){ ?>
     {
@@ -229,239 +228,7 @@ if ( is_page_template() ){
 ?>
 <script>
     var map,marker,line,pathsLastIndex;
-    var styles = [
-        {
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#1d2c4d"
-                }
-            ]
-        },
-        {
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#8ec3b9"
-                }
-            ]
-        },
-        {
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "color": "#1a3646"
-                }
-            ]
-        },
-        {
-            "featureType": "administrative.country",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#4b6878"
-                }
-            ]
-        },
-        {
-            "featureType": "administrative.land_parcel",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#64779e"
-                }
-            ]
-        },
-        {
-            "featureType": "administrative.province",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#4b6878"
-                }
-            ]
-        },
-        {
-            "featureType": "landscape.man_made",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#334e87"
-                }
-            ]
-        },
-        {
-            "featureType": "landscape.natural",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#023e58"
-                }
-            ]
-        },
-        {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#283d6a"
-                }
-            ]
-        },
-        {
-            "featureType": "poi",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#6f9ba5"
-                }
-            ]
-        },
-        {
-            "featureType": "poi",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "color": "#1d2c4d"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.park",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#023e58"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.park",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#3C7680"
-                }
-            ]
-        },
-        {
-            "featureType": "road",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#304a7d"
-                }
-            ]
-        },
-        {
-            "featureType": "road",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#98a5be"
-                }
-            ]
-        },
-        {
-            "featureType": "road",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "color": "#1d2c4d"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#2c6675"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#255763"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#b0d5ce"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "color": "#023e58"
-                }
-            ]
-        },
-        {
-            "featureType": "transit",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#98a5be"
-                }
-            ]
-        },
-        {
-            "featureType": "transit",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "color": "#1d2c4d"
-                }
-            ]
-        },
-        {
-            "featureType": "transit.line",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#283d6a"
-                }
-            ]
-        },
-        {
-            "featureType": "transit.station",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#3a4762"
-                }
-            ]
-        },
-        {
-            "featureType": "water",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#0e1626"
-                }
-            ]
-        },
-        {
-            "featureType": "water",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#4e6d70"
-                }
-            ]
-        }
-    ];
+    var styles=[{elementType:"geometry",stylers:[{color:"#1d2c4d"}]},{elementType:"labels.text.fill",stylers:[{color:"#8ec3b9"}]},{elementType:"labels.text.stroke",stylers:[{color:"#1a3646"}]},{featureType:"administrative.country",elementType:"geometry.stroke",stylers:[{color:"#4b6878"}]},{featureType:"administrative.land_parcel",elementType:"labels.text.fill",stylers:[{color:"#64779e"}]},{featureType:"administrative.province",elementType:"geometry.stroke",stylers:[{color:"#4b6878"}]},{featureType:"landscape.man_made",elementType:"geometry.stroke",stylers:[{color:"#334e87"}]},{featureType:"landscape.natural",elementType:"geometry",stylers:[{color:"#023e58"}]},{featureType:"poi",elementType:"geometry",stylers:[{color:"#283d6a"}]},{featureType:"poi",elementType:"labels.text.fill",stylers:[{color:"#6f9ba5"}]},{featureType:"poi",elementType:"labels.text.stroke",stylers:[{color:"#1d2c4d"}]},{featureType:"poi.park",elementType:"geometry.fill",stylers:[{color:"#023e58"}]},{featureType:"poi.park",elementType:"labels.text.fill",stylers:[{color:"#3C7680"}]},{featureType:"road",elementType:"geometry",stylers:[{color:"#304a7d"}]},{featureType:"road",elementType:"labels.text.fill",stylers:[{color:"#98a5be"}]},{featureType:"road",elementType:"labels.text.stroke",stylers:[{color:"#1d2c4d"}]},{featureType:"road.highway",elementType:"geometry",stylers:[{color:"#2c6675"}]},{featureType:"road.highway",elementType:"geometry.stroke",stylers:[{color:"#255763"}]},{featureType:"road.highway",elementType:"labels.text.fill",stylers:[{color:"#b0d5ce"}]},{featureType:"road.highway",elementType:"labels.text.stroke",stylers:[{color:"#023e58"}]},{featureType:"transit",elementType:"labels.text.fill",stylers:[{color:"#98a5be"}]},{featureType:"transit",elementType:"labels.text.stroke",stylers:[{color:"#1d2c4d"}]},{featureType:"transit.line",elementType:"geometry.fill",stylers:[{color:"#283d6a"}]},{featureType:"transit.station",elementType:"geometry",stylers:[{color:"#3a4762"}]},{featureType:"water",elementType:"geometry",stylers:[{color:"#0e1626"}]},{featureType:"water",elementType:"labels.text.fill",stylers:[{color:"#4e6d70"}]}];
     var icon = '<?= get_template_directory_uri() ?>/images/marcador-map.png';
     function initMultipleMaps(){
 <?php for ( $i=0; $i <= $GLOBALS['cantidaddemapasenitinerarios']; $i++ ){ ?>
@@ -524,13 +291,7 @@ if ( is_page_template() ){
         var tc = ts * t;
         return b + c * (tc * ts + -5 * ts * ts + 10 * tc + -10 * ts + 5 * t);
         }
-        var options = {
-          useEasing: true, 
-          easingFn: easingFn, 
-          useGrouping: true, 
-          separator: ',', 
-          decimal: '.', 
-        };
+        var options = { useEasing: true, easingFn: easingFn, useGrouping: true, separator: ',', decimal: '.'};
         var customers = $('#customers').text();
         var departures = $('#depart').text();
         var yearsOld = $('#years-old').text();
@@ -538,23 +299,18 @@ if ( is_page_template() ){
         var departuresCount = new CountUp('depart', 0, departures, 0, 2.5, options);
         var yearsOldCount = new CountUp('years-old', 0, yearsOld, 0, 2.5, options);
         <?php } ?>
-        
         fullPageArea.fullpage({
             navigation: true,
-            
             autoScrolling: true,
             animateAnchor: true,
             navigationPosition: 'right',
             slideSelector: '.fullpage-slide',
-            <?php if (is_page('galapagos-legend')){?>
+            <?php if (is_page('galapagos-legend') or is_page('coral-yachts')){?>
             anchors: ['top','experience','activities','socialareas','cabins','itineraries','moreinfo', 'footer-page'],
             <?php } ?>
             <?php if (is_page('about-us')){?>
             //anchors: ['top','our-history','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
             anchors: ['top','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
-            <?php } ?>
-            <?php if (is_archive('ggtour')){?>
-            anchors: ['top','our-history','galapagos-conservancy','social-investment','our-partners','lets-create-moments'],
             <?php } ?>
             scrollBar: false,
             css3: false,
@@ -595,34 +351,7 @@ if ( is_page_template() ){
                 <?php } ?>
                 <?php if(is_page('galapagos-legend') or is_page('coral-yachts')){?>
                 var linkToactive = $('a[href="'+anchorLink+'"]');
-                $('#phone-navbar-active-link').children('span').text(anchorLink);
-                //console.log(linkToactive);
-                //console.log(anchorLink);
-                //console.log(index);
-                //console.log($('a[href="'+anchorLink+'"]').children('span').text());
-                /*if(anchorLink == 'itineraries'){
-                    $('.itineraries-day-by-day-list').niceScroll({
-                        autohidemode: false,
-                        cursorwidth: 8,
-                        cursorborder:'none',
-                        background:"rgba(28, 28, 28, 0.3)",
-                        cursorcolor:"rgba(28, 28, 28, 0.6)"
-                    });
-                    $('#ship-itineraries-slider').on('slid.bs.carousel', function(){
-                        $('.itineraries-day-by-day-list').niceScroll().remove();
-                        $('.itineraries-day-by-day-list').niceScroll({
-                            autohidemode: false,
-                            cursorwidth: 8,
-                            cursorborder:'none',
-                            background:"rgba(28, 28, 28, 0.3)",
-                            cursorcolor:"rgba(28, 28, 28, 0.6)"
-                        });
-                    })
-                }else{
-                    $('#ship-itineraries-slider').on('slid.bs.carousel', function(){
-                        $('.itineraries-day-by-day-list').getNiceScroll().remove();
-                    });
-                }*/
+                $('#phone-navbar-active-link').children('span').text(anchorLink)
                 if(index == 6 || index == 7){                    
                     $('.itineraries-firts-tab').trigger('click');
                 }
@@ -685,23 +414,10 @@ if ( is_page_template() ){
             onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
             }
         });
-        
-        <?php /*if ( is_singular( 'gganimal' ) ){ ?>
-        $('#the_content').niceScroll({
-            autohidemode: false,
-            cursorwidth: 8,
-            cursorborder:'none',
-            background:"rgba(255, 255, 255, 0.3)",
-            cursorcolor:"rgba(255, 255, 255, 0.6)"
-        });
-<?php }*/ ?>
-        
         //MENSAJE GRACIAS POR VOTAR
         $('.post-ratings').change(function(){
             console.log('cambio');
         })
-        
-        
     });
     function paintHash(hash){
         $('a').parent('li').removeClass('active');

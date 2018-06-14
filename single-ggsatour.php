@@ -3,7 +3,7 @@
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-1">
+            <div class="col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-1">
                 <div class="row">
                     <div class="col-sm-12">
                         <?php the_title('<h1 class="island-title">', '</h1>'); ?>
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-7 col-md-8 col-md-offset-1">
+            <div class="col-sm-7 col-md-7 col-md-offset-1">
                 <h2 class="single-more-about-content"><?php _e('More about ', 'gogalapagos') . the_title(); ?></h2>
                 <span class="separator"></span>
                 <div id="main_content">
@@ -186,6 +186,7 @@ $islands = query_posts($args);
             if ( $('.single-carousel') ){
                 var ruta_imagen_primer_slide = $('.carousel-inner').children('.item').find('img').attr('src');
                 $('.single-hero').css('background-image', 'url(' + ruta_imagen_primer_slide + ')');
+                $('.single-hero').css('background-position', 'center');
                 $('.single-carousel').remove();
                 $('.rear-slider-controllers').remove();
             }

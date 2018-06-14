@@ -114,6 +114,13 @@
     height: auto;
     width: 100%;
 }
+/*----- AVTIVITIES ------*/
+.activities .separator{
+    margin: 24px auto;
+    border-color: black;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 /*----- SOCIAL AREAS -----*/
 .container-social-area{
     max-width: 80%;
@@ -390,6 +397,11 @@ dd {
     .btn-cabin-modal,.btn-cabin-modal:hover{
         margin: 36px 0;
         margin-right: 26px;
+    }
+}
+@media screen and (max-width: 1024px){
+    .btn-cabin-modal:first-child,.btn-cabin-modal:first-child:hover{
+        margin-bottom: 18px;
     }
 }
 @media screen and (max-height: 768px){

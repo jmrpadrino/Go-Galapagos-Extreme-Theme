@@ -133,9 +133,15 @@ die();*/
         </div>
     </div>
 </section>
-<section data-anchor="experience" data-index="2" class="sections section">
+<section id="experience-section" data-anchor="experience" data-index="2" class="sections section">
     <div class="experience-video-placeholder" style="overflow: hidden;">
-        <img src="http://placehold.it/2000x1200?text=VideoExperience" class="mientras">
+        <div class="video-placeholer">
+            <video id="hero-video" data-keepplaying class="hero-video" poster="<?php echo get_template_directory_uri(); ?>/images/home-hero-video-poster-2.jpg">
+                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-corals-borr-02.mp4" type='video/mp4' />
+                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-corals-borr-02.webm" type='video/webm' />
+                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-corals-borr-02.ogv" type="video/ogv" />
+            </video>
+        </div>
     </div>
 </section>
 <section data-anchor="activities" data-index="3" class="sections section activities">

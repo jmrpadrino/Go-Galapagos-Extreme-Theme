@@ -3,13 +3,13 @@
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1">
+            <div class="col-sm-10 col-sm-offset-1 col-lg-10 col-lg-offset-1">
                 <?php
                 $term = get_the_terms( get_the_ID(), 'animalgroup' );
                 ?>
                 <span class="serif-font fold-backlink"><a href="<?= get_term_link( $term[0]->term_id, 'animalgroup' ) ?>"><?php echo $term[0]->name; ?></a></span>
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
-                <span class="separator"></span>
+                <span class="separator white left"></span>
                 <p class="single-excerpt"><?= get_the_excerpt() ?></p>
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
                 <p><a href="<?= home_url('request-a-quote') . '/?for=' . $post->post_title  ?>" class="plan-your-trip-single-btn"><?php _e('Request a Quote','gogalapagos'); ?></a></p>
@@ -199,6 +199,7 @@ foreach($coords as $coord){
             if ( $('.single-carousel') ){
                 var ruta_imagen_primer_slide = $('.carousel-inner').children('.item').find('img').attr('src');
                 $('.single-hero').css('background-image', 'url(' + ruta_imagen_primer_slide + ')');
+                $('.single-hero').css('background-position', 'center');
                 $('.single-carousel').remove();
                 $('.rear-slider-controllers').remove();
             }

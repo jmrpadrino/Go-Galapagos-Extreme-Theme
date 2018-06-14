@@ -3,7 +3,7 @@
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1">
+            <div class="col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
                 <div class="row">
                     <div class="col-sm-8 col-md-7">
                         <?php the_title('<h1 class="island-title">', '</h1>'); ?>
@@ -159,11 +159,20 @@
             ?>
         </div>
         <div class="row">
-            <div class="col-sm-7 col-md-8 col-md-offset-1">
-                <h2 class="single-more-about-content"><?php _e('More about ', 'gogalapagos') . the_title(); ?></h2>
-                <span class="separator"></span>
-                <div id="main_content">
-                    <?php the_content(); ?>
+            <div class="col-sm-7 col-md-7 col-md-offset-1">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="single-more-about-content"><?php _e('More about ', 'gogalapagos') . the_title(); ?></h2>
+                        <span class="separator"></span>
+                        <div id="main_content">
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="g-map" class="contact-page-google-map" style="height: 40vh; margin: 36px 0;"></div>  
+                    </div>
                 </div>
             </div>
             <div class="col-sm-5 col-md-3">
@@ -185,38 +194,31 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-1">
-                <div id="g-map" class="contact-page-google-map" style="height: 40vh; margin: 36px 0;"></div>  
-            </div>
-        </div>
-        <script>
-            <?php 
-            $coords = get_post_meta(get_the_ID(), $prefix . 'island_location', true);
-            $gcords = explode(',',$coords);
-            if (!$coords) {
-            ?>
-            console.warn('Coordenadas vacias en el wordpress. Revise la isla ' + '<?= get_the_title() ?>' );
-            <?php }else{ ?>
-            function initMap() {
-                var map = new google.maps.Map(document.getElementById('g-map'), {
-                    zoom: 8,
-                    styles: styles,
-                    center: {<?php echo 'lat: '.$gcords[0].', lng: '.$gcords[1]; ?>},
-                    mapTypeId: 'roadmap',
-                    disableDefaultUI: true
-                });
-                var marker<?php echo $marker; ?> = new google.maps.Marker({
-                    position: {<?php echo 'lat: '.$gcords[0].', lng: '.$gcords[1]; ?>},
-                    icon: icon,
-                    map: map,
-                    title: '<?php echo the_title(); ?>'
-                });
-            }
-            <?php } ?>
-        </script>
-    </div>
+    <script>
+        <?php 
+        $coords = get_post_meta(get_the_ID(), $prefix . 'island_location', true);
+        $gcords = explode(',',$coords);
+        if (!$coords) {
+        ?>
+        console.warn('Coordenadas vacias en el wordpress. Revise la isla ' + '<?= get_the_title() ?>' );
+        <?php }else{ ?>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('g-map'), {
+                zoom: 8,
+                styles: styles,
+                center: {<?php echo 'lat: '.$gcords[0].', lng: '.$gcords[1]; ?>},
+                mapTypeId: 'roadmap',
+                disableDefaultUI: true
+            });
+            var marker<?php echo $marker; ?> = new google.maps.Marker({
+                position: {<?php echo 'lat: '.$gcords[0].', lng: '.$gcords[1]; ?>},
+                icon: icon,
+                map: map,
+                title: '<?php echo the_title(); ?>'
+            });
+        }
+        <?php } ?>
+    </script>
 </div>
 <!--div class="sections section single-island-activities-section">
 <h2 class="single-island-activities-title"><?php _e('Activities on the ') . the_title(); ?></h2>
@@ -311,7 +313,7 @@ $islands = query_posts($args);
                             ?>
                             <div class="more-island-caption">
                                 <h3 class="more-island-title"><?php echo $island->post_title; ?></h3>
-                                <span class="separator"></span>
+                                <span class="separator left white"></span>
                                 <?php 
                                 $phrase = get_post_meta($island->ID, $prefix . 'island_phrase', true); 
                                 if ( !empty($phrase) ){
@@ -363,6 +365,7 @@ $islands = query_posts($args);
             if ( $('.single-carousel') ){
                 var ruta_imagen_primer_slide = $('.carousel-inner').children('.item').find('img').attr('src');
                 $('.single-hero').css('background-image', 'url(' + ruta_imagen_primer_slide + ')');
+                $('.single-hero').css('background-position', 'center');
                 $('.single-carousel').remove();
                 $('.rear-slider-controllers').remove();
             }
