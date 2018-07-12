@@ -72,15 +72,17 @@ if(!isset($_GET['posttipo'])){
 $posttype = 'ggships';
 $args = array(
     'post_type' => $posttype,
-    'orderby' => 'post_id',
-    'order' => 'ASC'
+    //'orderby' => 'post_id',
+    //'order' => 'DESC'
 );
 $elementos = get_posts($args);
 
 // CARGAR ARRAY DE LOS BARCOS
-
 foreach ($elementos as $key => $elemento){
-    $metas[] = get_post_meta($elemento->ID);
+    $metas[] = get_post_meta( $elemento->ID );
+    
+    //var_dump( $metas[$key][$prefix . 'ship_group_code'][0] . $metas[$key+1][$prefix . 'ship_group_code'][0] );
+    
     $descripcionCorta = returnLanguagestring($lenguajeConsulta ,splitLanguages($elemento->post_excerpt_ml));
     //obtener todas las imagenes de este post
     foreach($imagesSizes as $imagesSize){
@@ -215,9 +217,116 @@ foreach ($elementos as $key => $elemento){
         );
     }
 
+    // AGREGAR ITINERARIOS AL JSON
+    $elbarco = $elemento->ID;
+    $codigoBarco = $metas[$key][$prefix.'dispo_ID'][0];
+    if ($codigoBarco == 'BAR001' or $codigoBarco == 'BAR002'){
+        $codigoBarco = 'BAR001';
+        $posttypeParaitinerarios = 'ggships';
+        $args1 = array(
+            'post_type' => $posttypeParaitinerarios,
+            'posts_per_page' => 1,
+            'meta_query' => array(
+                'relation' => 'AND',
+                array(
+                    'key'     => $prefix . 'dispo_ID',
+                    'value'   => $codigoBarco,
+                    'compare' => 'LIKE',
+                ),
+            )
+        );
+        $elbarco = get_posts($args1);
+        $elbarco = $elbarco[0]->ID;
+    }
+        
+    $posttype = 'ggitineraries';
+
+    $args = array(
+        'post_type' => $posttype,
+        'posts_per_page' => -1,
+        'orderby' => 'post_id',
+        'order' => 'ASC',
+        'meta_query' => array(
+                'relation' => 'AND',
+                array(
+                    'key'     => $prefix . 'itinerary_ship_id',
+                    'value'   => $elbarco,
+                    'compare' => 'LIKE',
+                ),
+        )
+    );
+    
+    if ($_GET['anio']){
+        $anio = $_GET['anio'];
+
+        $args = array(
+            'post_type' => $posttype,
+            'posts_per_page' => -1,
+            'orderby' => 'post_id',
+            'order' => 'ASC',
+            'meta_query' => array(
+                array(
+                    'key'     => $prefix . 'itinerary_year',
+                    'value'   => $anio,
+                    'compare' => 'LIKE',
+                ),
+            ),
+        );
+    }
+
+    $elementos = get_posts($args);
+    $itinerarios = [];
+    foreach($elementos as $itinerario){
+
+        $duracion = get_post_meta($itinerario->ID, $prefix . 'itinerary_duration', true);
+
+        $contenido = [];
+
+        for ($i = 1; $i <= $duracion; $i++){
+            $activo = get_post_meta($itinerario->ID, $prefix . 'itinerary_active_day_'.$i, true);
+            if( $activo == 1){
+
+                // Imagen destacada
+                $featuredImage = get_post_meta($itinerario->ID, $prefix . 'itinerary_featured_image_day_'.$i, true);
+                $rutaImagen = wp_get_attachment_image_src( $featuredImage, 'full', true );
+
+                // llenar variable contenido
+                $contenido[$i] = array(
+                    'descripcion' => get_post_meta($itinerario->ID, $prefix . 'itinerary_description_day_'.$i, true),
+                    'imagen_destacada' => $rutaImagen,
+                    'am' => get_post_meta($itinerario->ID, $prefix . 'itinerary_am_activities_list_day_'.$i, true),
+                    'pm' => get_post_meta($itinerario->ID, $prefix . 'itinerary_pm_activities_list_day_'.$i, true)
+                );
+            };        
+        }
+
+        $itinerarios[$itinerario->ID] = array(
+            'id' => $itinerario->ID,
+            'nombre' => $itinerario->post_title,
+            'subtitulo' => get_post_meta($itinerario->ID, $prefix . 'itinerary_single_name', true),
+            'descripcion' => $itinerario->post_excerpt,
+            'imagen_destacada' => get_the_post_thumbnail_url($itinerario->ID),
+            'barco' => get_post_meta($itinerario->ID, $prefix . 'itinerary_ship_id', true),
+            'barco_dispoid' => get_post_meta(get_post_meta($itinerario->ID, $prefix . 'itinerary_ship_id', true), $prefix . 'dispo_ID', true),
+            'url' => get_permalink( $itinerario->ID ),
+            'imagen_ruta' => get_post_meta($itinerario->ID, $prefix . 'itinerary_route_image', true),
+            'color_brochure' => get_post_meta($itinerario->ID, $prefix . 'itinerary_frontend_color', true),
+            'animales_recorrido' => get_post_meta($itinerario->ID, $prefix . 'itinerary_animal_list', false),
+            'anio_operacion' => get_post_meta($itinerario->ID, $prefix . 'itinerary_year', false),
+            'dia_inicio' => get_post_meta($itinerario->ID, $prefix . 'itinerary_start_day', true),
+            'duracion' => array(
+                'dias' => $duracion,
+                'noches' => (string)($duracion - 1)
+            ),
+            'day_by_day' => $contenido,
+        );
+    }
+    // FIN ITINERARIOS
+
 
     $response[$metas[$key][$prefix.'dispo_ID'][0]] = array(
         'id' => $elemento->ID,
+        'elbarco' => $elbarco.'-'.$codigoBarco,
         'codigoAgrupado' => $metas[$key][$prefix. 'ship_group_code'][0],
         'titulo' => $elemento->post_title,
         'nombre' => $elemento->post_name,
@@ -230,92 +339,15 @@ foreach ($elementos as $key => $elemento){
         'logo' => $metas[$key][$prefix. 'ship_logo'][0],
         'capacidad' => $metas[$key][$prefix. 'ship_capacity'][0],
         'decks' => $deckInfo[$key],
+        'itinerarios' => $itinerarios
         //"wpBarcometas" => $metas
     );
-}
-
-
-
-// AGREGAR ITINERARIOS AL JSON
-$posttype = 'ggitineraries';
-
-$args = array(
-    'post_type' => $posttype,
-    'posts_per_page' => -1,
-    'orderby' => 'post_id',
-    'order' => 'ASC'
-);
-if ($_GET['anio']){
-    $anio = $_GET['anio'];
-    
-    $args = array(
-        'post_type' => $posttype,
-        'posts_per_page' => -1,
-        'orderby' => 'post_id',
-        'order' => 'ASC',
-        'meta_query' => array(
-            array(
-                'key'     => $prefix . 'itinerary_year',
-                'value'   => $anio,
-                'compare' => 'LIKE',
-            ),
-        ),
-    );
     
 }
-
-$elementos = get_posts($args);
-foreach($elementos as $itinerario){
-    
-    $duracion = get_post_meta($itinerario->ID, $prefix . 'itinerary_duration', true);
-    
-    $contenido = [];
-    
-    for ($i = 1; $i <= $duracion; $i++){
-        $activo = get_post_meta($itinerario->ID, $prefix . 'itinerary_active_day_'.$i, true);
-        if( $activo == 1){
-
-            // Imagen destacada
-            $featuredImage = get_post_meta($itinerario->ID, $prefix . 'itinerary_featured_image_day_'.$i, true);
-            $rutaImagen = wp_get_attachment_image_src( $featuredImage, 'full', true );
-
-            // llenar variable contenido
-            $contenido[$i] = array(
-                'descripcion' => get_post_meta($itinerario->ID, $prefix . 'itinerary_description_day_'.$i, true),
-                'imagen_destacada' => $rutaImagen,
-                'am' => get_post_meta($itinerario->ID, $prefix . 'itinerary_am_activities_list_day_'.$i, true),
-                'pm' => get_post_meta($itinerario->ID, $prefix . 'itinerary_pm_activities_list_day_'.$i, true)
-            );
-        };        
-    }
-    
-    $itinerarios[$itinerario->ID] = array(
-        'id' => $itinerario->ID,
-        'nombre' => $itinerario->post_title,
-        'subtitulo' => get_post_meta($itinerario->ID, $prefix . 'itinerary_single_name', true),
-        'descripcion' => $itinerario->post_excerpt,
-        'imagen_destacada' => get_the_post_thumbnail_url($itinerario->ID),
-        'barco' => get_post_meta($itinerario->ID, $prefix . 'itinerary_ship_id', true),
-        'barco_dispoid' => get_post_meta(get_post_meta($itinerario->ID, $prefix . 'itinerary_ship_id', true), $prefix . 'dispo_ID', true),
-        'url' => get_permalink( $itinerario->ID ),
-        'imagen_ruta' => get_post_meta($itinerario->ID, $prefix . 'itinerary_route_image', true),
-        'color_brochure' => get_post_meta($itinerario->ID, $prefix . 'itinerary_frontend_color', true),
-        'animales_recorrido' => get_post_meta($itinerario->ID, $prefix . 'itinerary_animal_list', false),
-        'anio_operacion' => get_post_meta($itinerario->ID, $prefix . 'itinerary_year', false),
-        'dia_inicio' => get_post_meta($itinerario->ID, $prefix . 'itinerary_start_day', true),
-        'duracion' => array(
-            'dias' => $duracion,
-            'noches' => (string)($duracion - 1)
-        ),
-        'day_by_day' => $contenido,
-    );
-}
-$response['itinerarios'] = $itinerarios;
-// FIN ITINERARIOS
-
 
 
 // AGREGAR ISLAS AL JSON
+
 $posttype = 'ggisland';
 $args = array(
     'post_type' => $posttype,

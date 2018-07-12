@@ -76,7 +76,7 @@ $barcos = get_posts($args);
     for($i=1; $i <= $numeroSlides; $i++){
     ?>
     <div class="fullpage-slide text-center home-get-in-love-slide" <?= (wp_is_mobile()) ? 'style="background-image: url(' . get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true) . ');"' : '' ?>>
-        <?php if (!wp_is_mobile() and get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true)){ ?>
+        <?php if (get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true)){ ?>
         <img class="get-in-love-bkg-img img-responsive" src="<?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true) ?>" alt="<?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1'.$i, true) ?>">
         <?php } ?>
         <div class="get-in-love-mask"></div>
@@ -108,14 +108,16 @@ $barcos = get_posts($args);
                             <div class="gg-post-type">
                                 <span class="product-type"></span>
                                 <span class="alter-title serif-font font-shading"><?= $offer->post_title ?></span>
+                                <?php if ( !wp_is_mobile() ) {  ?>
                                 <div class="more-content">
                                     <a href="<?= get_permalink($offer->ID) ?>" title="<?= $offer->post_title ?>"><h2><?= $offer->post_title ?></h2></a>
                                     <span class="offers-and-news-hover-separator"></span>
-                                    <?php if ( !wp_is_mobile() ) {  ?>
                                     <p><?= esc_html( get_the_excerpt($offer->ID) ) ?></p>
-                                    <?php } ?>
                                     <a class="plan-your-trip-single-btn" href="<?= home_url( 'request-a-quote' ) .'?offerid='.$offer->ID ?>"><?php _e('Get the deal','gogalapagos'); ?></a> <?php _e('or','gogalapagos'); ?> <a class="home-offers-btn" href="<?= get_post_type_archive_link( 'ggspecialoffer' ) ?>"><?php _e('See more offers','gogalapagos'); ?></a>
                                 </div>
+                                <?php }else{ ?>
+                                <a class="plan-your-trip-single-btn get-deal" href="<?= home_url( 'request-a-quote' ) .'?offerid='.$offer->ID ?>"><?php _e('Get the deal','gogalapagos'); ?></a> <?php _e('or','gogalapagos'); ?> <a class="home-offers-btn get-deal" href="<?= get_post_type_archive_link( 'ggspecialoffer' ) ?>"><?php _e('See more offers','gogalapagos'); ?></a>
+                                <?php } ?>
                             </div>
                         </div>
                         <?php $specialCounter++; } ?>
@@ -128,49 +130,77 @@ $barcos = get_posts($args);
             </div>
             <div class="col-md-12 col-lg-6 nopadding home-blog-section">
                 <div class="row">
-                    <div class="col-sm-6 home-blog-article">
+                    <div class="col-sm-6 home-blog-article nopadding">
                         <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[0]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
-                        <span class="alter-title serif-font"><?= $blogPosts[0]->post_title ?></span>
+                        <?php if(wp_is_mobile()){ ?>
+                        <a href="<?= get_permalink( $blogPosts[0]->ID)?>" title="<?= $blogPosts[0]->post_title ?>"><h2 class="post-title-home-mobile"><?= $blogPosts[0]->post_title ?></h2></a>
+                        <?php }else{ ?>
+                            <span class="alter-title serif-font"><?= $blogPosts[0]->post_title ?></span>
+                        <?php } ?>
+                        
+                        <?php if(!wp_is_mobile()){ ?>
                         <div class="more-content upper-post">
                             <span class="say-blog">BLOG</span>
                             <a href="<?= get_permalink( $blogPosts[0]->ID)?>" title="<?= $blogPosts[0]->post_title ?>"><h2><?= $blogPosts[0]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
                             <p><?= esc_html(get_the_excerpt($blogPosts[0]->ID))?></p>
-                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[0]->ID)?>">Read More</a>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[0]->ID)?>"><?= _e('Read More', 'gogalapagos') ?></a>
                         </div>
+                        <?php } ?>
                     </div>
-                    <div class="col-sm-6 home-blog-article">
+                    <div class="col-sm-6 home-blog-article nopadding">
                         <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[1]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[1]->post_title ?>">
-                        <span class="alter-title serif-font"><?= $blogPosts[1]->post_title ?></span>
+                        <?php if(wp_is_mobile()){ ?>
+                        <a href="<?= get_permalink( $blogPosts[1]->ID)?>" title="<?= $blogPosts[1]->post_title ?>"><h2 class="post-title-home-mobile"><?= $blogPosts[1]->post_title ?></h2></a>
+                        <?php }else{ ?>
+                            <span class="alter-title serif-font"><?= $blogPosts[1]->post_title ?></span>
+                        <?php } ?>
+                        
+                        <?php if(!wp_is_mobile()){ ?>
                         <div class="more-content upper-post">
                             <span class="say-blog">BLOG</span>
                             <a href="<?= get_permalink( $blogPosts[1]->ID)?>" title="<?= $blogPosts[1]->post_title ?>"><h2><?= $blogPosts[1]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
                             <p><?= esc_html(get_the_excerpt($blogPosts[1]->ID))?></p>
-                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[1]->ID)?>">Read More</a>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[1]->ID)?>"><?= _e('Read More', 'gogalapagos') ?></a>
                         </div>
+                        <?php } ?>
                     </div>
-                    <div class="col-sm-6 home-blog-article">
-                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[2]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
-                        <span class="alter-title serif-font"><?= $blogPosts[2]->post_title ?></span>
+                    <div class="col-sm-6 home-blog-article nopadding">
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[2]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[2]->post_title ?>">
+                        <?php if(wp_is_mobile()){ ?>
+                        <a href="<?= get_permalink( $blogPosts[2]->ID)?>" title="<?= $blogPosts[2]->post_title ?>"><h2 class="post-title-home-mobile"><?= $blogPosts[2]->post_title ?></h2></a>
+                        <?php }else{ ?>
+                            <span class="alter-title serif-font"><?= $blogPosts[2]->post_title ?></span>
+                        <?php } ?>
+                        
+                        <?php if(!wp_is_mobile()){ ?>
                         <div class="more-content lower-post">
                             <span class="say-blog">BLOG</span>
                             <a href="<?= get_permalink( $blogPosts[2]->ID)?>" title="<?= $blogPosts[2]->post_title ?>"><h2><?= $blogPosts[2]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
                             <p><?= esc_html(get_the_excerpt($blogPosts[2]->ID))?></p>
-                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[2]->ID)?>">Read More</a>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[2]->ID)?>"><?= _e('Read More', 'gogalapagos') ?></a>
                         </div>
+                        <?php } ?>
                     </div>
-                    <div class="col-sm-6 home-blog-article">
-                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[3]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
-                        <span class="alter-title serif-font"><?= $blogPosts[3]->post_title ?></span>
+                    <div class="col-sm-6 home-blog-article nopadding">
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[3]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[3]->post_title ?>">
+                        <?php if(wp_is_mobile()){ ?>
+                        <a href="<?= get_permalink( $blogPosts[3]->ID)?>" title="<?= $blogPosts[3]->post_title ?>"><h2 class="post-title-home-mobile"><?= $blogPosts[3]->post_title ?></h2></a>
+                        <?php }else{ ?>
+                            <span class="alter-title serif-font"><?= $blogPosts[3]->post_title ?></span>
+                        <?php } ?>
+                        
+                        <?php if(!wp_is_mobile()){ ?>
                         <div class="more-content lower-post">
                             <span class="say-blog">BLOG</span>
                             <a href="<?= get_permalink( $blogPosts[3]->ID)?>" title="<?= $blogPosts[3]->post_title ?>"><h2><?= $blogPosts[3]->post_title ?></h2></a>
                             <span class="offers-and-news-hover-separator"></span>
                             <p><?= esc_html(get_the_excerpt($blogPosts[3]->ID))?></p>
-                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[3]->ID)?>">Read More</a>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[3]->ID)?>"><?= _e('Read More', 'gogalapagos') ?></a>
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -186,7 +216,7 @@ $barcos = get_posts($args);
             <?php foreach($barcos as $barco){ ?>
             <div class="col-md-6 nopadding ship-placeholder <?= (wp_is_mobile()) ? '' : 'not-mobile' ?>" <?= (wp_is_mobile()) ? '' : 'style="background-image: url('.get_post_meta($barco->ID, $prefix . 'ship_home_image', true).');"' ?>>
                 <?php if ( wp_is_mobile() ){ ?>
-                <img class="mobile-image" src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">
+                <img class="mobile-image" data-src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">
                 <?php } ?>
                 <div class="more-content lower-post">
                     <a href="<?= home_url($barco->post_name); ?>/" title="<?= $barco->post_title ?>"><h2><?= $barco->post_title ?></h2></a>
@@ -196,7 +226,7 @@ $barcos = get_posts($args);
                     <p><?= esc_html__( get_the_excerpt($barco->ID) ) ?></p>
                     <?php } ?>
                     <br />
-                    <a class="home-ship-btn" href="<?= home_url($barco->post_name); ?>/">Learn More</a>
+                    <a class="home-ship-btn" href="<?= home_url($barco->post_name); ?>/"><?= _e('More about') ?> <?= $barco->post_title ?></a>
                 </div>
             </div>
             <?php } ?>
@@ -314,7 +344,7 @@ $barcos = get_posts($args);
         /*-----------------
         / SI LA PANTALLA ES TABLET LANDSCAPE
         -----------------*/
-        if(window.innerWidth >= 1024 && window.innerHeight <= 768 ){
+        if(window.innerWidth == 1024 && window.innerHeight == 768 ){
             
             $.each(inlove_slides, function(){
 

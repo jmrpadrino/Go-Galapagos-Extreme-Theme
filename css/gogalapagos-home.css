@@ -1,6 +1,10 @@
 /* FRONT PAGE STYLES */
 .hero-video{
     position: relative;
+    background: rgba(11,117,141,1);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(11,117,141,1)), color-stop(100%, rgba(15,43,35,1)));
+    background: linear-gradient(135deg, rgba(11,117,141,1) 0%, rgba(15,43,35,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0b758d', endColorstr='#0f2b23', GradientType=1 );
 }
 .fold-mobile{
     background-image: url(wp-content/themes/gogalapagos-extreme-theme/images/gogalapagos-mobile-hero-background.jpg);
@@ -65,14 +69,14 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-    -ms-flex-line-pack: end;
-    align-content: flex-end;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 /* QUOTE TOOLS */
 .quote-filter{
@@ -442,9 +446,11 @@ label.field.focused .psuedo_select ul {
     color: #f1891b;
     text-transform: uppercase;
     font-family: 'Didact Gothic', sans-serif;
-    z-index: 99;
-    -webkit-box-shadow: 0px 13px 23px rgba(0, 0, 0, .3);
-    box-shadow: 0px 13px 23px rgba(0, 0, 0, .3);
+    z-index: 99;    
+}
+.post-title-home-mobile{
+    color: white;
+    margin: 50px;
 }
 @media screen and (max-width: 1024px) and (orientation: portrait){
     .section-ribbon{
@@ -526,6 +532,12 @@ label.field.focused .psuedo_select ul {
         font-size: 28px;
         max-width: 320px;
         margin-left: 40px;
+    }
+}
+@media screen and (max-width: 767px){
+    .offers-and-news .carousel .alter-title{
+        padding-top: 20vh;
+        margin-left: 28px;
     }
 }
 .gg-post-type{

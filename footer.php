@@ -43,7 +43,7 @@
                             <li>EUROPA: 34-900-300-123 / UK: 00 44-8455-281-389</li>
                             <li>Ph: (593) 2 - 2267000 / (593) 2 - 2267080</li>
                             <li><strong>Go Galapagos by Kleintours</strong></li>
-                            <li>Av. Eloy Alfaro N&deg; 34-111 &amp; Catalina Aldaz.</li>
+                            <li>Av. Catalina Aldaz N&deg; 34-111 &amp; Eloy Alfaro.</li>
                             <li>170515 Quito - Ecuador.</li>
                         </ul>
                     </div>
@@ -116,7 +116,7 @@
                             $logoBlanco = get_post_meta($membership->ID, $prefix . 'membership_white_logo', false);
 //                            var_dump($logoBlanco);
                             if($logoBlanco){
-                                echo '<li><img width="150" src="'.$logoBlanco[0].'" alt="Go Galapagos is member of '.$membership->post_title.'" class="img-responsive"></li>';
+                                echo '<li><img src="'.$logoBlanco[0].'" alt="Go Galapagos is member of '.$membership->post_title.'" class="img-responsive"></li>';
                             }
                         }
                     ?>
@@ -139,10 +139,25 @@
                                 wp_nav_menu( $main_menu_args ); 
                             ?>
                         </ul>
-                        <h4 class="body-font"><?php _e('Suscribe to our news','gogalapagos')?></h4>
+                        <h4 class="body-font"><?php _e('Follow Us','gogalapagos')?></h4>
                         <div class="suscribe-form">
                         <?php dynamic_sidebar( 'suscribe' ) ?>
+                        <ul class="list-inline social-icons-list">
+                            <?php
+                                $facebook = get_option( 'gg_rrss_facebook' );
+                                $twitter = get_option( 'gg_rrss_twitter' );
+                                $youtube = get_option( 'gg_rrss_youtube' );
+                                $instagram = get_option( 'gg_rrss_instagram' );
+                                $googleplus = get_option( 'gg_rrss_google_plus' );
+                            ?>
+                            <?= ($facebook) ? '<li><a href="' . $facebook . '" target="_blank"><span class="fa fa-facebook"></span></a></li>' : ''; ?>
+                            <?= ($twitter) ? '<li><a href="' . $twitter . '" target="_blank"><span class="fa fa-twitter"></span></a></li>' : ''; ?>
+                            <?= ($youtube) ? '<li><a href="' . $youtube . '" target="_blank"><span class="fa fa-youtube-play"></span></a></li>' : ''; ?>
+                            <?= ($instagram) ? '<li><a href="' . $instagram . '" target="_blank"><span class="fa fa-instagram"></span></a></li>' : ''; ?>
+                            <?= ($googleplus) ? '<li><a href="' . $googleplus . '" target="_blank"><span class="fa fa-google-plus"></span></a></li>' : ''; ?>
+                        </ul>
                         </div>
+                        
                     </div>
                     <div class="col-md-3">
                         <h4 class="body-font"><?php _e('Site Map','gogalapagos')?></h4>
@@ -183,7 +198,7 @@
                         </ul>
                         <h4 class="body-font">Go Galapagos by Kleintours</h4>
                         <ul>
-                            <li>Av. Eloy Alfaro N&deg; 34-111 &amp; Catalina Aldaz.</li>
+                            <li>Av. Catalina Aldaz N&deg; 34-111 &amp; Eloy Alfaro.</li>
                             <li>170515 Quito - Ecuador.</li>
                         </ul>
                     </div>
@@ -339,7 +354,6 @@ if ( is_page_template() ){
                     $('.getyourtrip-navbar-btn').removeClass('hidden');
                     $('#header-logo').attr('src', goga_url.themeurl + '/images/go-logo.png');
                     $('#header-logo').css('max-width', '60px');
-                    
                 }
                 <?php if (is_front_page()){ ?>
                 if(index == 5){
@@ -399,13 +413,14 @@ if ( is_page_template() ){
                     },200);
                     $('#headerelements').removeClass('moveUp');
                 }
+
                 if (nextIndex > 1){
                     if($('#ship-alter-navbar').length > 0){
                         $('#ship-alter-navbar').addClass('active');
                     }
                 }else{
                     $('#header-logo').attr('src', goga_url.themeurl + '/images/go-galapagos-logo.png');
-                    $('#header-logo').css('max-width', 'auto');
+                    $('#header-logo').css('max-width', '100%');
                     if($('#ship-alter-navbar').length > 0){
                         $('#ship-alter-navbar').removeClass('active');
                     }

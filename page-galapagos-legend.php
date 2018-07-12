@@ -1,4 +1,9 @@
-<?php get_header(); the_post(); $prefix = 'gg_';?>
+<?php 
+    get_header(); 
+    the_post(); 
+    $prefix = 'gg_';
+    $rutaTema = get_template_directory_uri();
+?>
 <?php 
 /* METADATOS DEL BARCO 
 * @barcoID  ID del barco (Wordpress)
@@ -159,10 +164,10 @@ $deckCounter = 0;
 <section id="experience-section" data-anchor="experience" data-index="2" class="sections section">
     <div class="experience-video-placeholder" style="overflow: hidden;">
         <div class="video-placeholer">
-            <video id="hero-video" data-keepplaying class="hero-video" poster="<?php echo get_template_directory_uri(); ?>/images/home-hero-video-poster-2.jpg">
-                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-Legend-borr-03.mp4" type='video/mp4' />
-                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-Legend-borr-03.webm" type='video/webm' />
-                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-Legend-borr-03.ogv" type="video/ogv" />
+            <video id="hero-video" data-keepplaying class="hero-video" poster="<?= $rutaTema ?>/images/home-hero-video-poster-2.jpg">
+                <source src="<?= $rutaTema ?>/videos/dia-a-bordo-Legend-borr-03.mp4" type='video/mp4' />
+                <source src="<?= $rutaTema ?>/videos/dia-a-bordo-Legend-borr-03.webm" type='video/webm' />
+                <source src="<?= $rutaTema ?>/videos/dia-a-bordo-Legend-borr-03.ogv" type="video/ogv" />
             </video>
         </div>
     </div>
@@ -233,9 +238,7 @@ $deckCounter = 0;
     ?>
 </section>
 <section id="itineraries-section" data-anchor="itineraries" class="section sections">
-    <?php    
-    get_template_part('templates/template-itineraries-inside-ships');
-    ?>
+    <?php get_template_part('templates/template-itineraries-inside-ships'); ?>
 </section>
 <section id="moreinfo-section" data-anchor="moreinfo" class="sections section moreinfo">
     <div class="nextSlide hidden-xs">

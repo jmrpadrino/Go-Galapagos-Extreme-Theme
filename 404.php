@@ -15,4 +15,4 @@
             </div>
         </div>    
     </div>
-</div><?php get_footer('404'); ?>
+</div><?php get_footer(); ?>

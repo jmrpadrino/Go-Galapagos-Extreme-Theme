@@ -33,14 +33,14 @@
                             }else{
                                 echo '<div class="item">';
                             }
-                            echo '<img src="'.wp_get_attachment_url( $g_images[0][$i] ).'">';
+                            echo '<img src="'.wp_get_attachment_url( $g_images[0][$i] ).'" alt="'.get_the_title().'">';
                             echo '</div>';
                             $i++;
                         }
                     }else{
                         if (has_post_thumbnail()){
                             echo '<div class="item active">';
-                            echo get_the_post_thumbnail(get_the_ID(), 'full');
+                            echo get_the_post_thumbnail(get_the_ID(), 'full', array( 'alt' => get_the_title() ));
                             echo '</div>';
                             
                         }else{
@@ -154,12 +154,35 @@
         <?php if(!wp_is_mobile()){ ?>
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
-<?php
-    $coords = get_post_meta(get_the_ID(), $prefix . 'gmap_coords', true);
-    $marker = 0;
-?>
-                <div id="g-map" class="g-map" style="height: 40vh; margin-bottom: 36px;"></div>
+
+                <?php if(is_user_logged_in()){ ?>
+                    <div class="col-sm-6">
+                        <?php 
+                            $imagen_mapa_isla = get_post_meta( get_the_ID(), $prefix . 'animal_location_map', true); 
+                            echo !empty($imagen_mapa_isla) 
+                            ?   '<img class="img-responsive island-animal-map-image" src="'. wp_get_attachment_url( $imagen_mapa_isla ) .'" alt="'.get_the_title().'">'                             
+                            :   '<img class="img-responsive island-animal-map-image" src="http://placehold.it/640x480?text='. get_the_title() .'" alt="'.get_the_title().'">';
+                        ?>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="g-map" class="contact-page-google-map" style="height: 40vh;"></div>  
+                    </div>
+                    <?php }else{ ?>
+                        <div class="col-xs-12">
+                            <?php 
+                                $imagen_mapa_isla = get_post_meta( get_the_ID(), $prefix . 'animal_location_map', true); 
+                                echo !empty($imagen_mapa_isla) 
+                                ?   '<img class="img-responsive island-animal-map-image" src="'. wp_get_attachment_url( $imagen_mapa_isla ) .'" alt="'.get_the_title().'">'                             
+                                :   '<img class="img-responsive island-animal-map-image" src="http://placehold.it/640x480?text='. get_the_title() .'" alt="'.get_the_title().'">';
+                            ?>
+                        </div>
+                    <?php } ?>
+                <?php if(is_user_logged_in()){ ?>
                 <script>
+                    <?php
+                        $coords = get_post_meta(get_the_ID(), $prefix . 'gmap_coords', true);
+                        $marker = 0;
+                    ?>
                     function initMap() {
                         var map = new google.maps.Map(document.getElementById('g-map'), {
                             zoom: 8,
@@ -167,24 +190,24 @@
                             center: {lat: -0.450030, lng: -90.268706},
                             mapTypeId: 'roadmap'
                         });
-<?php 
-foreach($coords as $coord){ 
-    $coord = trim($coord);
-    $gcords = explode(',',$coord);
-?>
+                        <?php 
+                        foreach($coords as $coord){ 
+                            $coord = trim($coord);
+                            $gcords = explode(',',$coord);
+                        ?>
                         var marker<?php echo $marker; ?> = new google.maps.Marker({
                             position: {<?php echo 'lat: '.$gcords[0].', lng: '.$gcords[1]; ?>},
                             icon: icon,
                             map: map,
                             title: '<?php echo the_title(); ?>'
                         });
-<?php
-    $marker++;
-}
-?>
-                        
+                        <?php
+                            $marker++;
+                        }
+                        ?>
                     }
                 </script>
+                <?php } ?>
             </div>
         </div>
         <?php } ?>

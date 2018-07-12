@@ -1,4 +1,9 @@
-<?php get_header(); the_post(); $prefix = 'gg_';?>
+<?php 
+    get_header(); 
+    the_post(); 
+    $prefix = 'gg_';
+    $rutatema = get_template_directory_uri();
+?>
 <?php 
 /* METADATOS DEL BARCO 
 * @barcoID  ID del barco (Wordpress)
@@ -136,10 +141,10 @@ die();*/
 <section id="experience-section" data-anchor="experience" data-index="2" class="sections section">
     <div class="experience-video-placeholder" style="overflow: hidden;">
         <div class="video-placeholer">
-            <video id="hero-video" data-keepplaying class="hero-video" poster="<?php echo get_template_directory_uri(); ?>/images/home-hero-video-poster-2.jpg">
-                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-corals-borr-02.mp4" type='video/mp4' />
-                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-corals-borr-02.webm" type='video/webm' />
-                <source src="<?php echo get_template_directory_uri(); ?>/videos/dia-a-bordo-corals-borr-02.ogv" type="video/ogv" />
+            <video id="hero-video" data-keepplaying class="hero-video" poster="<?= $rutatema ?>/images/home-hero-video-poster-2.jpg">
+                <source src="<?= $rutatema ?>/videos/dia-a-bordo-corals-borr-02.mp4" type='video/mp4' />
+                <source src="<?= $rutatema ?>/videos/dia-a-bordo-corals-borr-02.webm" type='video/webm' />
+                <source src="<?= $rutatema ?>/videos/dia-a-bordo-corals-borr-02.ogv" type="video/ogv" />
             </video>
         </div>
     </div>

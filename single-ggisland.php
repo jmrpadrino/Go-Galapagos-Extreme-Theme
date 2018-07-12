@@ -3,7 +3,7 @@
     <div class="hero-mask"></div>
     <div class="container-fluid single-hero-content">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+            <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
                 <div class="row">
                     <div class="col-sm-8 col-md-7">
                         <?php the_title('<h1 class="island-title">', '</h1>'); ?>
@@ -72,14 +72,14 @@
                         }else{
                             echo '<div class="item">';
                         }
-                        echo '<img src="'.wp_get_attachment_url( $g_images[0][$i] ).'">';
+                        echo '<img src="'.wp_get_attachment_url( $g_images[0][$i] ).'" alt="'.get_the_title().'">';
                         echo '</div>';
                         $i++;
                     }
                 }else{
                     if (has_post_thumbnail()){
                         echo '<div class="item active">';
-                        echo get_the_post_thumbnail(get_the_ID(), 'full');
+                        echo get_the_post_thumbnail(get_the_ID(), 'full', array( 'alt' => get_the_title() ));
                         echo '</div>';
 
                     }else{
@@ -159,7 +159,7 @@
             ?>
         </div>
         <div class="row">
-            <div class="col-sm-7 col-md-7 col-md-offset-1">
+            <div class="col-sm-12 col-md-7 col-md-offset-1">
                 <div class="row">
                     <div class="col-xs-12">
                         <h2 class="single-more-about-content"><?php _e('More about ', 'gogalapagos') . the_title(); ?></h2>
@@ -170,12 +170,31 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12">
+                    <?php if(is_user_logged_in()){ ?>
+                    <div class="col-sm-6">
+                        <?php 
+                            $imagen_mapa_isla = get_post_meta( get_the_ID(), $prefix . 'island_location_map', true); 
+                            echo !empty($imagen_mapa_isla) 
+                            ?   '<img class="img-responsive island-animal-map-image" src="'. wp_get_attachment_url( $imagen_mapa_isla ) .'" alt="'.get_the_title().'">'                             
+                            :   '<img class="img-responsive island-animal-map-image" src="http://placehold.it/640x480?text='. get_the_title() .'" alt="'.get_the_title().'">';
+                        ?>
+                    </div>
+                    <div class="col-sm-6">
                         <div id="g-map" class="contact-page-google-map" style="height: 40vh; margin: 36px 0;"></div>  
                     </div>
+                    <?php }else{ ?>
+                        <div class="col-xs-12">
+                            <?php 
+                                $imagen_mapa_isla = get_post_meta( get_the_ID(), $prefix . 'island_location_map', true); 
+                                echo !empty($imagen_mapa_isla) 
+                                ?   '<img class="img-responsive island-animal-map-image" src="'. wp_get_attachment_url( $imagen_mapa_isla ) .'" alt="'.get_the_title().'">'                             
+                                :   '<img class="img-responsive island-animal-map-image" src="http://placehold.it/640x480?text='. get_the_title() .'" alt="'.get_the_title().'">';
+                            ?>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
-            <div class="col-sm-5 col-md-3">
+            <div class="col-sm-12 col-md-3">
                 <h3 class="single-sidebar-title"><?php _e('Go visit this Island', 'gogalapagos'); ?></h3>
                 <span class="separator"></span>
                 <p class="font-serif"><?= _e('Itineraries available','gogalapagos'); ?>:</p>
@@ -184,7 +203,7 @@
                         foreach( array_unique($itinerarios_disponibles) as $elemento ){  
                             $item_itinerario = get_post($elemento);
                     ?>
-                    <li class="single-sidebar-product-item"> 
+                    <li class="col-sm-4 col-md-12 single-sidebar-product-item"> 
                         <h4 class="single-sidebar-product-title"><?= get_post_meta( $item_itinerario->ID, $prefix . 'itinerary_single_name', true) ?> <br/><small><?= $item_itinerario->post_title ?></small></h4>
                         <br />
                         <a href="<?= home_url('request-a-quote') . '/?for=' . $post->post_title ?>" class="itinerary-plan-your-trip-btn"><?= _e('Request a Quote','gogalapagos'); ?></a>
@@ -194,6 +213,7 @@
             </div>
         </div>
     </div>
+    <?php if(is_user_logged_in()){ ?>
     <script>
         <?php 
         $coords = get_post_meta(get_the_ID(), $prefix . 'island_location', true);
@@ -219,6 +239,7 @@
         }
         <?php } ?>
     </script>
+    <?php } ?>
 </div>
 <!--div class="sections section single-island-activities-section">
 <h2 class="single-island-activities-title"><?php _e('Activities on the ') . the_title(); ?></h2>
@@ -323,7 +344,7 @@ $islands = query_posts($args);
                                 <a class="view-more-about-this-island-link" href="<?php echo get_post_permalink($island->ID); ?>"><?php _e('View more about this island', 'gogalapagos'); ?></a>       
                             </div>
                             <?php
-                                echo get_the_post_thumbnail($island->ID);
+                                echo get_the_post_thumbnail($island->ID, 'large');
                                 echo '</div>';
                                 $cont++;
                             }

@@ -10,8 +10,32 @@ $(window).bind("load", function() {
     $('#loader').remove();
 });
 
-
 $(document).ready( function (){
+    
+    /*
+    console.log(window.location.href);
+    
+    var current_url = window.location.href;
+    
+    //activar los anchors
+    var anchors = document.getElementsByTagName('a');
+    
+    console.log(anchors);
+    for(var i = 0; i <= anchors.length; i++){
+        
+        if (anchors[i].href == current_url){
+            
+            anchors[i].parentElement.classList.add('active');
+            break;
+            
+        }
+        
+    }
+    */
+    
+    
+    
+    
     var timer;
     // ALTO DEL VIEWPORT
     //console.log($(window).height());

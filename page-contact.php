@@ -97,7 +97,7 @@ $options = array(
                 <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
                     <h3 class="body-font text-center"><?php _e('Main Office','gogalapagos'); ?></h3>
                     <h4 class="body-font"><?= _e('Address'); ?>:</h4>
-                    <p>Eloy Alfaro Ave. N34-111 &amp; Catalina Aldaz St. <br/> Quito - Ecuador</p>
+                    <p>Catalina Aldaz St. N34-111 &amp; Eloy Alfaro.<br/> Quito - Ecuador</p>
                     <h4 class="body-font"><?= _e('Phone (Area Code)','gogalapagos'); ?>:</h4>
                     <p>(593-2) 2267 000</p>
                     <h4 class="body-font"><?= _e('Fax', 'gogalapagos'); ?>:</h4>

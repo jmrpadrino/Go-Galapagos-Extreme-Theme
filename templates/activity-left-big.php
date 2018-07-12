@@ -6,8 +6,8 @@
                     <span class="separator"></span>
                     <p class="social-area-description"><?= $activityInfo->post_excerpt ?></p>
                     <?php
-                        $imagenLeft = wp_get_attachment_image_src( $activityGalery[1], '', false );
-                        $imagenRight = wp_get_attachment_image_src( $activityGalery[0], 'full', false );
+                        $imagenLeft = wp_get_attachment_image_src( $activityGalery[1], 'medium_large', false );
+                        $imagenRight = wp_get_attachment_image_src( $activityGalery[0], 'medium_large', false );
                     ?>
                 </div>
             </div>

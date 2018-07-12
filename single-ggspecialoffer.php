@@ -32,14 +32,14 @@
                             }else{
                                 echo '<div class="item">';
                             }
-                            echo '<img src="'.wp_get_attachment_url( $g_images[0][$i] ).'">';
+                            echo '<img src="'.wp_get_attachment_url( $g_images[0][$i] ).'" alt="'.get_the_title().'">';
                             echo '</div>';
                             $i++;
                         }
                     }else{
                         if (has_post_thumbnail()){
                             echo '<div class="item active">';
-                            echo get_the_post_thumbnail(get_the_ID(), 'full');
+                            echo get_the_post_thumbnail(get_the_ID(), 'full', array( 'alt' => get_the_title() ));
                             echo '</div>';
                             
                         }else{

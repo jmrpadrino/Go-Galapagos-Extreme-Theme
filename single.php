@@ -37,51 +37,71 @@ the_post();
         </div>
     </div>
 </section>
+<?php
+    $orig_post = $post;
+    global $post;
+    $categories = get_the_category($post->ID, 'post_tag');
+                
+    
+    if ($categories) {
+        
+        $categories_ids = array();
+        
+        foreach($categories as $individual_category) 
+            $category_ids[] = $individual_category->term_id;
+        
+        $args = array(
+                    'category__in' => $category_ids,
+                    'posts_per_page' => 3,
+                    'post__not_in' => array( $orig_post->ID ),
+                    'caller_get_posts'=> 1
+                );
+        $more_posts = new WP_Query($args);
+        
+        if ($more_posts->have_posts()){
+?>
 <section class="other-posts">
    <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <h3><?= _e('Our latest posts') ?></h3>
+                <h3><?= _e('Related posts') ?></h3>
                 <span class="separator"></span>
             </div>
         </div>
         <div class="row nopadding">
-            <?php
-            $args = array(
-                'post_type' => 'post',
-                'posts_per_page' => 3,
-                'post__not_in' => array( get_the_ID() )
-            );
-            $more_posts = new WP_Query($args);
-            if ($more_posts->have_posts()){ 
-                while ($more_posts->have_posts()){
-                    $more_posts->the_post();
-                    $imagen = get_the_post_thumbnail_url($more_posts->post->ID, 'full');
-                    if(!$imagen){
-                        $imagen = get_template_directory_uri() . '/images/no-thumbnail-post.jpg';
-                    }
-                    
-            ?> 
-            <div class="post-placeholder col-sm-4 nopadding" style="background-image: url(<?= $imagen ?>); ">
-                <div class="archive-item-mask"></div>
-                <a href="<?= the_permalink() ?>"><?= the_title('<h2 class="archive-item-title body-font">','</h2>') ?></a>
-                <!--span class="post-date"><?php the_date('d/m/Y','',''); ?></span-->
-                <div class="hidden-content">
-                    <p><?= esc_html( get_the_excerpt(get_the_ID()) );?></p>
-                </div>
-            </div>
             <?php 
+                    while ($more_posts->have_posts()){
+                        $more_posts->the_post();
+                        $imagen = get_the_post_thumbnail_url($more_posts->post->ID, 'full');
+                        if(!$imagen){
+                            $imagen = get_template_directory_uri() . '/images/no-thumbnail-post.jpg';
+                        }
+
+                ?> 
+                <div class="post-placeholder col-sm-4 nopadding" style="background-image: url(<?= $imagen ?>); ">
+                    <div class="archive-item-mask"></div>
+                    <a href="<?= the_permalink() ?>"><?= the_title('<h2 class="archive-item-title body-font">','</h2>') ?></a>
+                    <!--span class="post-date"><?php the_date('d/m/Y','',''); ?></span-->
+                    <div class="hidden-content">
+                        <p><?= esc_html( get_the_excerpt(get_the_ID()) );?></p>
+                    </div>
+                </div>
+                <?php 
+                    }
+                }else{
+                ?>
+                <div class="col-xs-12 text-center">
+                    <p><?= _e('There\'s no posts yet','gogalapagos'); ?></p>
+                </div>
+                <?php        
                 }
-            }else{
-            ?>
-            <div class="col-xs-12 text-center">
-                <p><?= _e('There\'s no posts yet','gogalapagos'); ?></p>
-            </div>
-            <?php        
-            }
             ?>
         </div>
     </div>
-    
 </section>
+<?php 
+    } 
+    $post = $orig_post;
+    wp_reset_query();
+?>
 <?php get_footer('blog'); ?>

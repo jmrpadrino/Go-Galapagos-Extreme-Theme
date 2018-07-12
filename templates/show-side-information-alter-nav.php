@@ -12,6 +12,10 @@
             $the_post_type_is = 'gganimal';
             $the_section_title = _x('Animals & Wildlife', 'gogalapagos');
             break;
+        case 'pages':
+            $the_post_type_is = 'page';
+            $the_section_title = _x('More Galapagos', 'gogalapagos');
+            break;
     }
 ?>
 <?php if ($the_post_type_is == 'gganimal'){ ?>
@@ -98,4 +102,59 @@
         </div>
     </div>
 </div>
-<?php } //fin grilla islas?>
+<?php } //fin grilla islas
+    if ($the_post_type_is == 'page'){
+            $args = array(
+                'post_type' => 'page',
+                'posts_per_page' => -1,
+                'meta_query' => array(
+                    array(
+                        'key' => '_wp_page_template',
+                        'value' => 'templates/more-galapagos-page.php',
+                        'compare' => 'LIKE',
+                    )
+                ) 
+            );
+            $pages = get_posts( $args ); 
+        /*
+        $pages = get_posts(array(   
+            'post_type' => 'page',
+            /*'meta_query' => array(
+               array(
+                   'key' => '_wp_page_template',
+                   'value' => 'more-galapagos-page.php',
+               )
+           )*/
+            /*'meta_key' => '_wp_page_template',
+            'meta_value' => 'more-galapagos-page.php',
+            'hierarchical' => 0,*/
+        //));
+        if ( $pages ){
+            $p_count = 0;
+?>
+<div class="container alter-nav-content" style="overflow: hidden;">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="alter-section-title animated fadeInLeft"><?php echo $the_section_title; ?></h2>    
+        </div>
+    </div>
+    <div class="row">
+        <?php foreach($pages as $page){ ?>
+        <div class="col-md-4">
+            <a href="<?= get_post_permalink($page->ID)?>">
+                <?= $page->post_title ?>
+            </a>
+        </div>
+        <?php
+            $p_count++;
+            if($p_count % 3 == 0){
+                echo '<div class="clearfix"></div>';
+            }
+        ?>
+        <?php } // end of the loop. ?>
+    </div>
+</div>
+<?php
+        }
+    } //fin grilla paginas adicionales
+?>

@@ -4,25 +4,27 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package WordPress
- * @subpackage Go_Galapagos_Extreme
- * @since 1.0
+ * @package         WordPress
+ * @subpackage      Go_Galapagos_Extreme
+ * @author          Jose Rodriguez <jmrpadrino@gmail.com>
+ * @author          Go Galapagos <web@kleintours.com.ec>
+ * @since           1.0
  */
 setlocale(LC_MONETARY, 'en_US');
 
 // Soporte de Wordpress y demas utilidades
-require_once('includes/gogalapagos-utilities.php'); 
+require_once 'includes/gogalapagos-utilities.php'; 
 // Ajustes de plugins, tamaños de imagenes
-require_once('includes/gogalapagos-extras.php'); 
+require_once 'includes/gogalapagos-extras.php'; 
 // Soporte para Menues
-require_once('includes/gogalapagos-menues.php');
-require_once('includes/gogalapagos-menu-walker.php');
+require_once 'includes/gogalapagos-menues.php';
+require_once 'includes/gogalapagos-menu-walker.php';
 // Carga de scripts y adicionales
-require_once('includes/gogalapagos-scripts.php');
+require_once 'includes/gogalapagos-scripts.php';
 // Traducciones
-require_once('includes/gogalapagos-string-translations.php'); 
+require_once 'includes/gogalapagos-string-translations.php'; 
 // Soporte para llamados de AJAX
-require_once('includes/gogalapagos-ajax-calls.php');
+require_once 'includes/gogalapagos-ajax-calls.php';
 // Mecanismos para el API REST
 add_action( 'rest_api_init', 'crear_api_posts_meta_field' );
 function crear_api_posts_meta_field(){

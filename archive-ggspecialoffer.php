@@ -5,7 +5,7 @@
     <div class="container-fluid single-hero-content">
         <div class="row">
             <div class="col-sm-5 col-sm-offset-1 col-lg-6 col-lg-offset-1">
-                <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
+                <?php the_title('<h2 class="animal-title">', '</h2>'); ?>
                 <span class="separator white left"></span>
                 <p><?= esc_html( get_the_excerpt( get_the_ID() ) ) ?></p>
                 <p><!--span class="btn btn-warning"><?= _e('Get the deal','gogalapagos')?></span> or --><a class="plan-your-trip-single-btn" href="<?= home_url('request-a-quote') . '/?for=Special%20Offers'  ?>">Request a Quote</a></p>

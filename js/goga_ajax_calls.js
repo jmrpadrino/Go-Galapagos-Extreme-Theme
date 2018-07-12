@@ -14,6 +14,10 @@ $(document).ready( function(){
                 info = 'animals';
                 go_show_archive(info);
             }
+            if ( $('#' + e.currentTarget.id).hasClass('pages') ){
+                info = 'pages';
+                go_show_archive(info);
+            }
         }, 1000 );
     }).mouseleave( function(){
         clearTimeout(timer);

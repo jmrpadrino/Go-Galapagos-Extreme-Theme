@@ -37,7 +37,9 @@ function random_color() {
 
 function _remove_script_version($src, $handle, $html){ 
     
-    if($handle != 'gogalapagos-googlefonts'){        
+    if(     $handle != 'gogalapagos-googlefonts'
+        &&  $handle != 'gmaps'
+    ){        
         $parts = explode( '?', $src ); 	
         return $parts[0]; 
     }else{
@@ -45,6 +47,7 @@ function _remove_script_version($src, $handle, $html){
         return $parts[0].'?'.$parts[1];
     }
 } 
-add_filter( 'style_loader_src', '_remove_script_version', 15, 3 );
+add_filter( 'style_loader_src', '_remove_script_version', 15, 100 );
+add_filter( 'script_loader_src', '_remove_script_version', 15, 100 );
 
 ?>

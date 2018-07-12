@@ -1,6 +1,7 @@
 <?php
 $post_barco = get_post($barcoID);
 $prefix = 'gg_';
+$rutaTemplate = get_template_directory_uri();
 
 $dias_de_la_semana = array(
     '0' => _x('Monday','gogalapagos'),

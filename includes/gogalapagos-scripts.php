@@ -4,27 +4,28 @@ function gg_add_styles_and_scripts() {
     
     global $post; 
     $ver = '';
+    
+    // AJAX Support
+    wp_register_script( 'goga_ajax', get_template_directory_uri() .'/minified/goga_ajax_calls.min.js', array ( 'jquery' ), $ver, true);
+    wp_enqueue_script( 'goga_ajax', get_template_directory_uri() .'/minified/goga_ajax_calls.min.js', array ( 'jquery' ), $ver, true);
+    wp_localize_script( 'goga_ajax', 'goga_url', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri(), 'nonce' => wp_create_nonce('ajaxnonce')));
+    
     // Jquery Support
     wp_deregister_script('jquery');  
     //wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', FALSE, '', TRUE);  
     wp_register_script('jquery', 'https://code.jquery.com/jquery-3.3.1.min.js', FALSE, '', TRUE);  
     wp_enqueue_script('jquery'); 
 
-    // AJAX Support
-    wp_register_script( 'goga_ajax', get_template_directory_uri() .'/minified/goga_ajax_calls.min.js', array ( 'jquery' ), $ver, true);
-    wp_enqueue_script( 'goga_ajax', get_template_directory_uri() .'/minified/goga_ajax_calls.min.js', array ( 'jquery' ), $ver, true);
-    wp_localize_script( 'goga_ajax', 'goga_url', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri(), 'nonce' => wp_create_nonce('ajaxnonce')));
-    
-    
-    // elements Fonts
-    wp_enqueue_style( 'gogalapagos-googlefonts', 'https://fonts.googleapis.com/css?family=Didact+Gothic|Yeseva+One', array(), '' );
     // elements CSS
-    wp_enqueue_style( 'gogalapagos-bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), null );
+    //wp_enqueue_style( 'gogalapagos-bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), null );
+    // elements Fonts
+    wp_enqueue_style( 'gogalapagos-googlefonts', 'https://fonts.googleapis.com/css?family=Didact+Gothic|Yeseva+One', array(), '', 'screen' );
     //wp_enqueue_style( 'gogalapagos-ficon', get_template_directory_uri() . '/css/font-awesome.min.css', array(), null );
     //wp_enqueue_style( 'gogalapagos-fullpage', get_template_directory_uri() . '/minified/jquery.fullpage.min.css', array(), null );
     wp_enqueue_style( 'gogalapagos-main',  get_template_directory_uri() .'/minified/gogalapagos-elements.min.css', array(), $ver, 'screen' );
+    
     // elements Scripts
-    wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array ( 'jquery' ), '', true);
+    wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array ( 'jquery' ), $ver, true);
     wp_enqueue_script( 'nicescroll', get_template_directory_uri() .'/js/jquery.nicescroll.min.js', array ( 'jquery' ), $ver, true);
     //wp_enqueue_script( 'goga-fullpage-easeing', get_template_directory_uri() .'/js/jquery.easings.min.js', array ( 'jquery' ), $ver, true);
     wp_enqueue_script( 'goga-fullpage-scrolloverflow', get_template_directory_uri() .'/js/scrolloverflow.min.js', array ( 'jquery' ), $ver, true);
@@ -106,7 +107,7 @@ function gg_add_styles_and_scripts() {
     }
     if ($post->post_type == 'ggisland' or is_singular( 'ggtour' ) or is_singular( 'ggpackage' ) or is_singular( 'ggsatour' )){
         wp_enqueue_style( 'gogalapagos-islands',  get_template_directory_uri() .'/css/gogalapagos-islands.css', array(), $ver, 'screen' );
-        if($post->post_type == 'ggisland'){
+        if($post->post_type == 'ggisland' and is_user_logged_in()){
             wp_enqueue_script( 'gmaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBGds9FjlnAoR3dpbkG7iH-c7CYoYWHk1o&callback=initMap', null, null , true); 
         }
     }

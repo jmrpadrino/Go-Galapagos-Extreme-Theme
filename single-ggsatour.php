@@ -32,7 +32,7 @@
                 <?php
                     if (has_post_thumbnail()){
                         echo '<div class="item active">';
-                        echo the_post_thumbnail('full', array('class' => 'post-thumbnail'));
+                        echo get_the_post_thumbnail(get_the_ID(), 'full', array( 'alt' => get_the_title() ));
                         echo '</div>';
 
                     }
