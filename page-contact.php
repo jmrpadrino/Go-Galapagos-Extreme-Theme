@@ -23,7 +23,7 @@ $options = array(
         </div>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <form id="contact-form" role="form" class="contact-form">
+                <form id="contact-form" role="form" class="contact-form" method="post">
                     <div class="form-group">
                         <label><?php _e('First Name','gogalapagos'); ?>*</label>
                         <input class="form-control" type="text" name="fname" required>
@@ -48,6 +48,7 @@ $options = array(
                         <label><?php _e('Description','gogalapagos'); ?></label>
                         <input class="form-control" type="text" name="vdescription">
                     </div>
+                    <p id="form-message" class="form-message-box bg-info"></p>
                     <input class="contact-folder-btn" type="submit" name="send-contact-mail" value="<?php _e('Send','gogalapagos'); ?>">
                 </form>
             </div>
@@ -174,13 +175,13 @@ $options = array(
         </div>
         <div class="row">
             <?php 
-                $args = array(
-                    'post_type' => 'ggsalesexpert',
-                    'posts_per_page' => -1
-                );
-                $salesExperts = get_posts($args);
-                
-                foreach ($salesExperts as $expert){
+            $args = array(
+                'post_type' => 'ggsalesexpert',
+                'posts_per_page' => -1
+            );
+            $salesExperts = get_posts($args);
+
+            foreach ($salesExperts as $expert){
             ?>
             <div id="<?= $expert->ID?>" class="col-sm-6">
                 <div class="row">
@@ -208,27 +209,94 @@ $options = array(
         cambiarFormularioDeLugar(window_width);
     })
     function cambiarFormularioDeLugar(window_width){
-        
+
         if (window_width <= 768){
-            
+
             var htmlCode = '';
-            
+
             htmlCode        =   '<div class="container">';
             htmlCode        +=  '<div class="row">';
             htmlCode        +=  '<div class="col-sm-10 col-sm-offset-1">';
-            
+
             htmlCode        +=  '<div id="form-responsive" class="contact-form-responsive"></div>';
-            
+
             htmlCode        +=  '</div>';
             htmlCode        +=  '</div>';
             htmlCode        +=  '</div>';
-            
-            
+
+
             //$('.contacts-begins').prepend(htmlCode);
             $(htmlCode).insertBefore('.contacts-begins');
             $('#contact-form').appendTo('#form-responsive');
-            
+
         }
-        
+
     }
+    //Player para el video
+    var mensajebox = $('#form-message');
+    $(document).ready( function(){
+
+        mensajebox.hide();
+
+        /*----------------
+                // ENVIO DE MAIL 
+                ----------------*/
+        $('#contact-form').submit( function(e) {
+
+            var fname = $('input[name="fname"]');
+            var lname = $('input[name="lname"]');
+            var email = $('input[name="vemail"]');
+            var phone = $('input[name="vphone"]');
+            var request = $('input[name="vrequest"]');
+            var textmessage = $('input[name="vdescription"]');
+            var terms = $('input[name="terms"]');
+
+            $.ajax({
+                type        : 'POST', 
+                url         : goga_url.ajaxurl, 
+                data        : 
+                {
+                    'action': 'send_contact_mail_via_ajax',
+                    'fname' : fname.val(),
+                    'lname' : lname.val(),
+                    'email' : email.val(),
+                    'phone' : phone.val(),
+                    'request' : request.val(),
+                    'textmessage' : textmessage.val(),
+                    'terms' : terms.val()
+                },
+                dataType: 'text',
+                beforeSend  : function(data){
+                    mensajebox.html('Sending message');
+                    mensajebox.show();
+                },
+                error       : function(data){
+                    mensajebox.removeClass('bg-info');
+                    mensajebox.addClass('bg-danger');
+                    mensajebox.html('Error sending message');
+                },
+                success     : function(data){
+                    fname.val('');
+                    lname.val('');
+                    email.val('');
+                    phone.val('');
+                    request.val('');
+                    textmessage.val('');
+                    terms.prop('checked', false);
+
+                    mensajebox.removeClass('bg-info');
+                    mensajebox.removeClass('bg-danger');
+                    mensajebox.addClass('bg-success');
+                    mensajebox.html('Message sent');
+
+                    setInterval( function(){
+                        mensajebox.hide();
+                    }, 2000);
+
+                }
+            });
+            e.preventDefault();
+        });
+
+    });
 </script>

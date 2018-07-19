@@ -406,6 +406,118 @@ function gg_add_theme_settings_style_and_scripts($hook){
 /*----------------------------------------------*/
 
 /* Send ajax mail */
+function send_contact_mail_via_ajax(){
+
+    $fname = filter_input(INPUT_POST, 'fname');
+    $lname = filter_input(INPUT_POST, 'lname');
+    $email = filter_input(INPUT_POST, 'email');
+    $phone = filter_input(INPUT_POST, 'phone');
+    $request = filter_input(INPUT_POST, 'request');
+    $textmessage = filter_input(INPUT_POST, 'textmessage');
+    $terms = filter_input(INPUT_POST, 'terms');
+        
+    ob_start();
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+    <head>
+        <meta http-equiv=Content-Type content="text/html; charset=unicode">
+        <meta name=ProgId content=Word.Document>
+        <meta name=Generator content="Microsoft Word 15">
+        <meta name=Originator content="Microsoft Word 15">
+        <!--[if !mso]>
+        <style>
+        v\:* {behavior:url(#default#VML);}
+        o\:* {behavior:url(#default#VML);}
+        w\:* {behavior:url(#default#VML);}
+        .shape {behavior:url(#default#VML);}
+        </style>
+        <![endif]-->
+        <title>Contact Request</title>
+        <!--[if gte mso 9]><xml>
+         <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+         </o:OfficeDocumentSettings>
+        </xml><![endif]-->
+        <style>
+            .mail-title{
+                margin: 36px auto;
+                text-align: center;
+            }
+        </style>
+        <meta name=viewport
+content="width=device-width, user-scalable=no,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name=format-detection content="telephone=no">
+        <!--[if gte mso 9]><xml>
+         <o:shapedefaults v:ext="edit" spidmax="1027"/>
+        </xml><![endif]--><!--[if gte mso 9]><xml>
+         <o:shapelayout v:ext="edit">
+          <o:idmap v:ext="edit" data="1"/>
+         </o:shapelayout></xml><![endif]-->
+    </head>
+    <body>        
+        <table border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#cccccc" style="width: 100%;">
+            <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#ffffff" style="margin-top:35px;margin-bottom:35px;font-family:Verdana, Helvetica;">
+                <tr style="background-color: #232323;">
+                    <td align="center">
+                        <h1 class="mail-title">Contact Request</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color:#222222!important; padding: 30px;">
+                        <h2 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 35px;">Contact Information</h2>
+                        <p><strong>Full Name:</strong> <?php echo $fname .' '. $lname ?></p>
+                        <p><strong>Phone:</strong> <a href="phone:<?php echo $phone ?>"><?php echo $phone ?></a></p>
+                        <p><strong>Email:</strong> <a href="mailto:<?php echo $email ?>"><?php echo $email ?></a></p>
+                        <p><strong>Request:</strong> <a href="mailto:<?php echo $request ?>"><?php echo $request ?></a></p>
+
+                        <h2 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 70px;">Message</h2>
+                        <p><?= $textmessage; ?></p>
+                    </td>
+                </tr>
+                <tr style="background-color: #003956; color: #ffffff; margin-top: 35px;">
+                    <td align="center">
+                        <p style="margin-top:35px;margin-bottom:35px; max-width: 450px;">This email was sent from Go Galapagos Website, on <?php echo date("d/m/Y") ?> <?php echo date("h:i") ?></p>
+                    </td>
+                </tr>
+            </table>
+        </table>
+    </body>
+</html>
+<?php
+        
+    $body = ob_get_clean();
+
+    $subject = 'User Contact';
+
+    require_once ABSPATH . WPINC . '/class-phpmailer.php';
+
+    $mail = new PHPMailer( true );
+
+    $mail->AddAddress('web@kleintours.com.ec', 'Webmaster');
+//    $mail->AddAddress('websales@kleintours.com.ec', 'Web Sales');
+//    $mail->AddAddress('websales1@kleintours.com.ec', 'Web Sales 1');
+//    $mail->AddAddress('websales6@kleintours.com.ec', 'Web Sales 4');
+//    $mail->AddAddress('emilkb@yahoo.com', 'Emil Klein');
+    $mail->FromName = 'Contact Go Galapagos';
+    $mail->Subject = $subject;
+    $mail->Body = $body;
+    $mail->IsHTML();
+    $mail->CharSet = 'utf-8';
+    $mail->Send();
+    
+    echo 'TRUE';
+    
+    die();
+    
+}
+add_action('wp_ajax_send_contact_mail_via_ajax', 'send_contact_mail_via_ajax');
+add_action('wp_ajax_nopriv_send_contact_mail_via_ajax', 'send_contact_mail_via_ajax');
+/* Send ajax mail */
 function send_mail_via_ajax(){
 
     $name = filter_input(INPUT_POST, 'name');
@@ -431,45 +543,47 @@ function send_mail_via_ajax(){
             }
         </style>
     </head>
-</html>
-<table border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#cccccc" style="width: 100%;">
-    <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#ffffff" style="margin-top:35px;margin-bottom:35px;font-family:Verdana, Helvetica;">
-        <tr style="background-color: #232323;">
-            <td align="center">
-                <h1 class="mail-title">Web Quote Inquiry</h1>
-            </td>
-        </tr>
-        <tr>
-            <td style="color:#222222!important; padding: 30px;">
-                <h2 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 35px;">Contact Information</h2>
-                <p><strong>Full Name:</strong> <?php echo $name ?></p>
-                <p><strong>Phone:</strong> <a href="phone:<?php echo $phone ?>"><?php echo $phone ?></a></p>
-                <p><strong>Email:</strong> <a href="mailto:<?php echo $email ?>"><?php echo $email ?></a></p>
+    <body>
+        <table border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#cccccc" style="width: 100%;">
+            <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#ffffff" style="margin-top:35px;margin-bottom:35px;font-family:Verdana, Helvetica;">
+                <tr style="background-color: #232323;">
+                    <td align="center">
+                        <h1 class="mail-title">Web Quote Request</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color:#222222!important; padding: 30px;">
+                        <h2 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 35px;">Contact Information</h2>
+                        <p><strong>Full Name:</strong> <?php echo $name ?></p>
+                        <p><strong>Phone:</strong> <a href="phone:<?php echo $phone ?>"><?php echo $phone ?></a></p>
+                        <p><strong>Email:</strong> <a href="mailto:<?php echo $email ?>"><?php echo $email ?></a></p>
 
-                <h2 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 70px;">Inquiry</h2>
-                <ul>
-                    <li><strong>Departure date:</strong> <?php echo $departure ?></li>
-                    <li><strong>Adults:</strong> <?php echo $adults ?></li>
-                    <li><strong>Children:</strong> <?php echo $children ?></li>
-                    <li><strong>Duration:</strong> <?php echo $duration ?></li>
-                </ul>
-                <?php if(!empty($interested)){ ?>
-                <h4 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 70px;">The client is interested in:</h4>
-                <p><?= $interested ?></p>
-                <?php } ?>
-                <?php if(!empty($interested)){ ?>
-                <h4 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 70px;">The client also wrote:</h4>
-                <p><?= $textmessage ?></p>
-                <?php } ?>
-            </td>
-        </tr>
-        <tr style="background-color: #003956; color: #ffffff; margin-top: 35px;">
-            <td align="center">
-                <p style="margin-top:35px;margin-bottom:35px; max-width: 450px;">This email was sent from Go Galapagos Website, on <?php echo date("d/m/Y") ?> <?php echo date("h:i") ?></p>
-            </td>
-        </tr>
-    </table>
-</table>
+                        <h2 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 70px;">Inquiry</h2>
+                        <ul>
+                            <li><strong>Departure date:</strong> <?php echo $departure ?></li>
+                            <li><strong>Adults:</strong> <?php echo $adults ?></li>
+                            <li><strong>Children:</strong> <?php echo $children ?></li>
+                            <li><strong>Duration:</strong> <?php echo $duration ?></li>
+                        </ul>
+                        <?php if(!empty($interested)){ ?>
+                        <h4 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 70px;">The client is interested in:</h4>
+                        <p><?= $interested ?></p>
+                        <?php } ?>
+                        <?php if(!empty($interested)){ ?>
+                        <h4 style="color:#003956; text-transform:uppercase; font-weight:800; margin-top: 70px;">The client also wrote:</h4>
+                        <p><?= $textmessage ?></p>
+                        <?php } ?>
+                    </td>
+                </tr>
+                <tr style="background-color: #003956; color: #ffffff; margin-top: 35px;">
+                    <td align="center">
+                        <p style="margin-top:35px;margin-bottom:35px; max-width: 450px;">This email was sent from Go Galapagos Website, on <?php echo date("d/m/Y") ?> <?php echo date("h:i") ?></p>
+                    </td>
+                </tr>
+            </table>
+        </table>
+    </body>
+</html>
 <?php
         
     $body = ob_get_clean();
