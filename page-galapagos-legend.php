@@ -170,6 +170,7 @@ $deckCounter = 0;
                 <source src="<?= $rutaTema ?>/videos/dia-a-bordo-Legend-borr-03.ogv" type="video/ogv" />
             </video>
         </div>
+        </div>
     </div>
 </section>
 <section id="activities-section" data-anchor="activities" data-index="3" class="sections section activities">
@@ -295,6 +296,14 @@ $deckCounter = 0;
                                 if ($deckCounter == 0){
                             ?>
                             <div role="tabpanel" class="tab-pane active" id="<?= $deck->post_name ?>">
+                                <?php 
+                                    if(!wp_is_mobile()){ 
+                                        $deckPlanpdf = get_post_meta($deck->ID, $prefix . 'deck_plan_pdf', true);
+                                        if ($deckPlanpdf){
+                                            echo $deckPlanpdf;          
+                                        }
+                                    }
+                                ?>
                                 <img src="<?= $deckPlanimage ?>" class="img-responsive deckplan-img" alt="<?= $barcoNombre . ' - ' . $deck->post_title ?>">
                             </div>
                             <?php

@@ -110,7 +110,7 @@ add_action( 'admin_init', 'gg_ajustes_wordpress');
 // CREA LOS CAMPOS EN LA DB
 function gg_ajustes_wordpress(){
     global $wp_post_types;
-    
+
     /*add_settings_field(
         'gg_home_carousel_slides', //id
         'Home Experience Carousel Slides', // titulo
@@ -158,220 +158,220 @@ function gg_theme_dashboard(){
 
 ?>
 <form method="post" action="options.php">
-<h1>Go Galapagos WordPress Theme Settings</h1>
-<?php submit_button(); ?>
-<div>
-    <?php settings_fields( 'go-galapagos-theme-setings' ); ?>
-    <?php do_settings_sections( 'go-galapagos-theme-setings' ); ?>
+    <h1>Go Galapagos WordPress Theme Settings</h1>
+    <?php submit_button(); ?>
+    <div>
+        <?php settings_fields( 'go-galapagos-theme-setings' ); ?>
+        <?php do_settings_sections( 'go-galapagos-theme-setings' ); ?>
 
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
-        <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Front Page</a></li>
-        <li role="presentation" class="active"><a href="#archives" aria-controls="archives" role="tab" data-toggle="tab">Archives</a></li>
-        <li role="presentation"><a href="#inner-pages" aria-controls="inner-pages" role="tab" data-toggle="tab">Inner Pages</a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-        <li role="presentation"><a href="#revisions" aria-controls="settings" role="tab" data-toggle="tab">Revisions</a></li>
-    </ul>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+            <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Front Page</a></li>
+            <li role="presentation" class="active"><a href="#archives" aria-controls="archives" role="tab" data-toggle="tab">Archives</a></li>
+            <li role="presentation"><a href="#inner-pages" aria-controls="inner-pages" role="tab" data-toggle="tab">Inner Pages</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+            <li role="presentation"><a href="#revisions" aria-controls="settings" role="tab" data-toggle="tab">Revisions</a></li>
+        </ul>
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane" id="general">
-            <h2>General Settings</h2>
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="home">
-            <div class="row">
-                <div class="col-md-4 form-inline">
-                    <h2>Front Page Setings</h2>
-                    <div class="form-group">
-                        <label for="gg_home_carousel_slides">Home Experience Slides</label>
-                        <input class="form-control" type="number" name="gg_home_carousel_slides" min="1" max="10" value="<?php echo get_option( 'gg_home_carousel_slides' ); ?>"/>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="general">
+                <h2>General Settings</h2>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="home">
+                <div class="row">
+                    <div class="col-md-4 form-inline">
+                        <h2>Front Page Setings</h2>
+                        <div class="form-group">
+                            <label for="gg_home_carousel_slides">Home Experience Slides</label>
+                            <input class="form-control" type="number" name="gg_home_carousel_slides" min="1" max="10" value="<?php echo get_option( 'gg_home_carousel_slides' ); ?>"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div role="tabpanel" class="tab-pane active" id="archives">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="nav nav-tabs" role="tablist">
-                    <?php 
-                        global $wp_post_types;
-                        $i = 0;
-                        foreach ($wp_post_types as $post_type){  
-                            if( 
-                                $post_type->name != 'post'                  and 
-                                $post_type->name != 'page'                  and 
-                                $post_type->name != 'attachment'            and
-                                $post_type->name != 'revision'              and
-                                $post_type->name != 'nav_menu_item'         and
-                                $post_type->name != 'custom_css'            and
-                                $post_type->name != 'customize_changeset'   and
-                                $post_type->name != 'user_request'          and
-                                $post_type->name != 'ggships'               and
-                                $post_type->name != 'ggdecks'               and
-                                $post_type->name != 'ggcabins'              and
-                                $post_type->name != 'ggsocialarea'          and
-                                $post_type->name != 'gglocation'            and
-                                $post_type->name != 'ggitineraries'         and
-                                $post_type->name != 'ggtestimonial'         and
-                                $post_type->name != 'ggsalesexpert'         and
-                                $post_type->name != 'oembed_cache'          and
-                                $post_type->name != 'wp_log'
-                            ){
-                                //echo $post_type->name . '<br />';
+            <div role="tabpanel" class="tab-pane active" id="archives">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <?php 
+                              global $wp_post_types;
+                              $i = 0;
+                              foreach ($wp_post_types as $post_type){  
+                                  if( 
+                                      $post_type->name != 'post'                  and 
+                                      $post_type->name != 'page'                  and 
+                                      $post_type->name != 'attachment'            and
+                                      $post_type->name != 'revision'              and
+                                      $post_type->name != 'nav_menu_item'         and
+                                      $post_type->name != 'custom_css'            and
+                                      $post_type->name != 'customize_changeset'   and
+                                      $post_type->name != 'user_request'          and
+                                      $post_type->name != 'ggships'               and
+                                      $post_type->name != 'ggdecks'               and
+                                      $post_type->name != 'ggcabins'              and
+                                      $post_type->name != 'ggsocialarea'          and
+                                      $post_type->name != 'gglocation'            and
+                                      $post_type->name != 'ggitineraries'         and
+                                      $post_type->name != 'ggtestimonial'         and
+                                      $post_type->name != 'ggsalesexpert'         and
+                                      $post_type->name != 'oembed_cache'          and
+                                      $post_type->name != 'wp_log'
+                                  ){
+                                      //echo $post_type->name . '<br />';
                             ?>
-                                <li role="presentation" <?= $i == 0 ? 'class="active"' : '' ?>><a href="#<?= $post_type->name ?>" aria-controls="<?= $post_type->name ?>" role="tab" data-toggle="tab"><?= $post_type->label ?></a></li>
+                            <li role="presentation" <?= $i == 0 ? 'class="active"' : '' ?>><a href="#<?= $post_type->name ?>" aria-controls="<?= $post_type->name ?>" role="tab" data-toggle="tab"><?= $post_type->label ?></a></li>
                             <?php
-                            }
-                            $i++;
-                        }
-                    ?>
-                    </ul>
-                    <div class="tab-content">
-                    <?php
-                              
-                        foreach ($wp_post_types as $post_type){  
-                            if( 
-                                $post_type->name != 'post'                  and 
-                                $post_type->name != 'page'                  and 
-                                $post_type->name != 'attachment'            and
-                                $post_type->name != 'revision'              and
-                                $post_type->name != 'nav_menu_item'         and
-                                $post_type->name != 'custom_css'            and
-                                $post_type->name != 'customize_changeset'   and
-                                $post_type->name != 'user_request'          and
-                                $post_type->name != 'ggships'               and
-                                $post_type->name != 'ggdecks'               and
-                                $post_type->name != 'ggcabins'              and
-                                $post_type->name != 'ggsocialarea'          and
-                                $post_type->name != 'gglocation'            and
-                                $post_type->name != 'ggitineraries'         and
-                                $post_type->name != 'ggtestimonial'         and
-                                $post_type->name != 'ggsalesexpert'         and
-                                $post_type->name != 'oembed_cache'          and
-                                $post_type->name != 'wp_log'
-                            ){
-                                //echo $post_type->name . '<br />';
-                                echo '<div role="tabpanel" class="tab-pane" id="' . $post_type->name . '">';
-                                echo '<div class="row">';
-                                echo '<div class="col-xs-12">';
-                                echo '<h3>' . $post_type->label . ' archive page Settings</h3>';
-                                echo '<textarea rows="8" class="form-control" name="gg_archive_excerpt_' . $post_type->name . '">'. get_option( 'gg_archive_excerpt_' . $post_type->name ) .'</textarea>';
-                    ?>
-                                <p style="margin-top: 36px;">
-                                    <input type="number" value="<?php echo get_option( 'gg_archive_fold_background_' . $post_type->name ); ?>" class="regular-text process_custom_images" id="process_custom_images" name="gg_archive_fold_background_<?= $post_type->name ?>" max="" min="1" step="1">
-                                    <button class="set_custom_images button">Set Image ID</button>
-                                </p>
-                    <?php
-                                echo '</div>';
-                                echo '</div>';
-                                echo '</div>';
-                            }
-                        }
+                                  }
+                                  $i++;
+                              }
+                            ?>
+                        </ul>
+                        <div class="tab-content">
+                            <?php
 
-                    ?>
+                              foreach ($wp_post_types as $post_type){  
+                                  if( 
+                                      $post_type->name != 'post'                  and 
+                                      $post_type->name != 'page'                  and 
+                                      $post_type->name != 'attachment'            and
+                                      $post_type->name != 'revision'              and
+                                      $post_type->name != 'nav_menu_item'         and
+                                      $post_type->name != 'custom_css'            and
+                                      $post_type->name != 'customize_changeset'   and
+                                      $post_type->name != 'user_request'          and
+                                      $post_type->name != 'ggships'               and
+                                      $post_type->name != 'ggdecks'               and
+                                      $post_type->name != 'ggcabins'              and
+                                      $post_type->name != 'ggsocialarea'          and
+                                      $post_type->name != 'gglocation'            and
+                                      $post_type->name != 'ggitineraries'         and
+                                      $post_type->name != 'ggtestimonial'         and
+                                      $post_type->name != 'ggsalesexpert'         and
+                                      $post_type->name != 'oembed_cache'          and
+                                      $post_type->name != 'wp_log'
+                                  ){
+                                      //echo $post_type->name . '<br />';
+                                      echo '<div role="tabpanel" class="tab-pane" id="' . $post_type->name . '">';
+                                      echo '<div class="row">';
+                                      echo '<div class="col-xs-12">';
+                                      echo '<h3>' . $post_type->label . ' archive page Settings</h3>';
+                                      echo '<textarea rows="8" class="form-control" name="gg_archive_excerpt_' . $post_type->name . '">'. get_option( 'gg_archive_excerpt_' . $post_type->name ) .'</textarea>';
+                            ?>
+                            <p style="margin-top: 36px;">
+                                <input type="number" value="<?php echo get_option( 'gg_archive_fold_background_' . $post_type->name ); ?>" class="regular-text process_custom_images" id="process_custom_images" name="gg_archive_fold_background_<?= $post_type->name ?>" max="" min="1" step="1">
+                                <button class="set_custom_images button">Set Image ID</button>
+                            </p>
+                            <?php
+                                echo '</div>';
+                                      echo '</div>';
+                                      echo '</div>';
+                                  }
+                              }
+
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="inner-pages">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h2>Inner Pages Setings</h2>
-                    <div class="form-group">
-                        <label for="gg_home_carousel_slides_test">Why Galapagos Sections</label>
-                        <input class="form-control" type="number" name="gg_why_galapagos_sections" min="1" max="10" value="<?php echo get_option( 'gg_why_galapagos_sections' ); ?>"/>
+            <div role="tabpanel" class="tab-pane fade" id="inner-pages">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2>Inner Pages Setings</h2>
+                        <div class="form-group">
+                            <label for="gg_home_carousel_slides_test">Why Galapagos Sections</label>
+                            <input class="form-control" type="number" name="gg_why_galapagos_sections" min="1" max="10" value="<?php echo get_option( 'gg_why_galapagos_sections' ); ?>"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="messages">
-            <div class="row">
-                <div class="col-xs-6">
-                    <h2>WordPress pages message</h2>
-                    <div class="form-group">
-                        <label for="gg_home_carousel_slides_test">Error 404</label>
-                        <textarea rows="6" class="form-control rwmb-textarea" type="url" name="gg_404_message"><?php echo get_option( 'gg_404_message' ); ?></textarea>
+            <div role="tabpanel" class="tab-pane fade" id="messages">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h2>WordPress pages message</h2>
+                        <div class="form-group">
+                            <label for="gg_home_carousel_slides_test">Error 404</label>
+                            <textarea rows="6" class="form-control rwmb-textarea" type="url" name="gg_404_message"><?php echo get_option( 'gg_404_message' ); ?></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="settings">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h2>Social Networks Setings</h2>
-                    <div class="form-group">
-                        <label for="gg_home_carousel_slides_test">Facebook URL</label>
-                        <input class="form-control" type="url" name="gg_rrss_facebook" value="<?php echo get_option( 'gg_rrss_facebook' ); ?>"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="gg_home_carousel_slides_test">Twitter URL</label>
-                        <input class="form-control" type="url" name="gg_rrss_twitter" value="<?php echo get_option( 'gg_rrss_twitter' ); ?>"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="gg_home_carousel_slides_test">Youtube URL</label>
-                        <input class="form-control" type="url" name="gg_rrss_youtube" value="<?php echo get_option( 'gg_rrss_youtube' ); ?>"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="gg_home_carousel_slides_test">Instagram URL</label>
-                        <input class="form-control" type="url" name="gg_rrss_instagram" value="<?php echo get_option( 'gg_rrss_instagram' ); ?>"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="gg_home_carousel_slides_test">Google Plus URL</label>
-                        <input class="form-control" type="url" name="gg_rrss_google_plus" value="<?php echo get_option( 'gg_rrss_google_plus' ); ?>"/>
+            <div role="tabpanel" class="tab-pane fade" id="settings">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2>Social Networks Setings</h2>
+                        <div class="form-group">
+                            <label for="gg_home_carousel_slides_test">Facebook URL</label>
+                            <input class="form-control" type="url" name="gg_rrss_facebook" value="<?php echo get_option( 'gg_rrss_facebook' ); ?>"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gg_home_carousel_slides_test">Twitter URL</label>
+                            <input class="form-control" type="url" name="gg_rrss_twitter" value="<?php echo get_option( 'gg_rrss_twitter' ); ?>"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gg_home_carousel_slides_test">Youtube URL</label>
+                            <input class="form-control" type="url" name="gg_rrss_youtube" value="<?php echo get_option( 'gg_rrss_youtube' ); ?>"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gg_home_carousel_slides_test">Instagram URL</label>
+                            <input class="form-control" type="url" name="gg_rrss_instagram" value="<?php echo get_option( 'gg_rrss_instagram' ); ?>"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="gg_home_carousel_slides_test">Google Plus URL</label>
+                            <input class="form-control" type="url" name="gg_rrss_google_plus" value="<?php echo get_option( 'gg_rrss_google_plus' ); ?>"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="revisions">
-            <?php
-                global $wpdb;
-                $sql = "SELECT * FROM $wpdb->posts WHERE post_type = 'revision' ORDER BY post_date DESC";
-                $revisiones = $wpdb->get_results($sql);
-                $sql_users = "SELECT * FROM $wpdb->users";
-                $usuarios = $wpdb->get_results($sql_users);
-            ?>
-            <div class="row">
-                <div class="col-xs-12" style="color: white;">
-                    <h2>Revisions</h2>
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <td><strong>Post ID</strong></td>
-                                <td><strong>Post Author</strong></td>
-                                <td><strong>Post Title</strong></td>
-                                <td><strong>Last Revision</strong></td>
-                                <td><strong>Actions</strong></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ( $revisiones as $revision ) { ?>
-                            <tr>
-                                <td><?= $revision->post_parent ?></td>
-                                <td><?php 
-                                        $revision->post_author;
-                                        foreach ($usuarios as $usuario){
-                                            echo $usuario->ID == $revision->post_author ? $usuario->display_name : '';
-                                        }
-                                    ?></td>
-                                <td><?= esc_html($revision->post_title) ?></td>
-                                <td><?= $revision->post_date ?></td>
-                                <td>
-                                    <ul class="list-inline">
-                                        <li><a href="<?= get_edit_post_link($revision->ID) ?>"><i class="glyphicon glyphicon-eye-open" title="View Revisions"></i></a></li>
-                                        <li><a href="<?= get_edit_post_link($revision->post_parent) ?>"><i class="glyphicon glyphicon-pencil" title="Edit post parent"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>   
+            <div role="tabpanel" class="tab-pane fade" id="revisions">
+                <?php
+                              global $wpdb;
+                              $sql = "SELECT * FROM $wpdb->posts WHERE post_type = 'revision' ORDER BY post_date DESC";
+                              $revisiones = $wpdb->get_results($sql);
+                              $sql_users = "SELECT * FROM $wpdb->users";
+                              $usuarios = $wpdb->get_results($sql_users);
+                ?>
+                <div class="row">
+                    <div class="col-xs-12" style="color: white;">
+                        <h2>Revisions</h2>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td><strong>Post ID</strong></td>
+                                    <td><strong>Post Author</strong></td>
+                                    <td><strong>Post Title</strong></td>
+                                    <td><strong>Last Revision</strong></td>
+                                    <td><strong>Actions</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ( $revisiones as $revision ) { ?>
+                                <tr>
+                                    <td><?= $revision->post_parent ?></td>
+                                    <td><?php 
+                    $revision->post_author;
+                                                                            foreach ($usuarios as $usuario){
+                                                                                echo $usuario->ID == $revision->post_author ? $usuario->display_name : '';
+                                                                            }
+                                        ?></td>
+                                    <td><?= esc_html($revision->post_title) ?></td>
+                                    <td><?= $revision->post_date ?></td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li><a href="<?= get_edit_post_link($revision->ID) ?>"><i class="glyphicon glyphicon-eye-open" title="View Revisions"></i></a></li>
+                                            <li><a href="<?= get_edit_post_link($revision->post_parent) ?>"><i class="glyphicon glyphicon-pencil" title="Edit post parent"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>   
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </form>
 <script>
     jQuery(document).ready(function() {
@@ -394,7 +394,7 @@ function gg_theme_dashboard(){
 </script>
 
 <?php
-}
+                             }
 /*
 add_action('admin_enqueue_scripts','gg_add_theme_settings_style_and_scripts');
 function gg_add_theme_settings_style_and_scripts($hook){
@@ -404,7 +404,19 @@ function gg_add_theme_settings_style_and_scripts($hook){
 }
 */
 /*----------------------------------------------*/
-
+//function disable_new_posts() {
+//    // Hide sidebar link
+//    global $submenu;
+//    unset($submenu['edit.php?post_type=ggcabins'][10]);
+//
+//    // Hide link on listing page
+//    if (isset($_GET['post_type']) && $_GET['post_type'] == 'ggcabins') {
+//        echo '<style type="text/css">
+//    #favorite-actions, .add-new-h2, .tablenav, .page-title-action { display:none; }
+//    </style>';
+//    }
+//}
+//add_action('admin_menu', 'disable_new_posts');
 /* Send ajax mail */
 function send_contact_mail_via_ajax(){
 
@@ -415,34 +427,34 @@ function send_contact_mail_via_ajax(){
     $request = filter_input(INPUT_POST, 'request');
     $textmessage = filter_input(INPUT_POST, 'textmessage');
     $terms = filter_input(INPUT_POST, 'terms');
-        
+
     ob_start();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:v="urn:schemas-microsoft-com:vml"
-xmlns:o="urn:schemas-microsoft-com:office:office"
-xmlns:w="urn:schemas-microsoft-com:office:word"
-xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
-xmlns="http://www.w3.org/TR/REC-html40">
+      xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+      xmlns="http://www.w3.org/TR/REC-html40">
     <head>
         <meta http-equiv=Content-Type content="text/html; charset=unicode">
         <meta name=ProgId content=Word.Document>
         <meta name=Generator content="Microsoft Word 15">
         <meta name=Originator content="Microsoft Word 15">
         <!--[if !mso]>
-        <style>
-        v\:* {behavior:url(#default#VML);}
-        o\:* {behavior:url(#default#VML);}
-        w\:* {behavior:url(#default#VML);}
-        .shape {behavior:url(#default#VML);}
-        </style>
-        <![endif]-->
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
         <title>Contact Request</title>
         <!--[if gte mso 9]><xml>
-         <o:OfficeDocumentSettings>
-          <o:AllowPNG/>
-         </o:OfficeDocumentSettings>
-        </xml><![endif]-->
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+</o:OfficeDocumentSettings>
+</xml><![endif]-->
         <style>
             .mail-title{
                 margin: 36px auto;
@@ -450,14 +462,14 @@ xmlns="http://www.w3.org/TR/REC-html40">
             }
         </style>
         <meta name=viewport
-content="width=device-width, user-scalable=no,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+              content="width=device-width, user-scalable=no,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         <meta name=format-detection content="telephone=no">
         <!--[if gte mso 9]><xml>
-         <o:shapedefaults v:ext="edit" spidmax="1027"/>
-        </xml><![endif]--><!--[if gte mso 9]><xml>
-         <o:shapelayout v:ext="edit">
-          <o:idmap v:ext="edit" data="1"/>
-         </o:shapelayout></xml><![endif]-->
+<o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext="edit">
+<o:idmap v:ext="edit" data="1"/>
+</o:shapelayout></xml><![endif]-->
     </head>
     <body>        
         <table border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#cccccc" style="width: 100%;">
@@ -489,8 +501,8 @@ content="width=device-width, user-scalable=no,initial-scale=1.0, minimum-scale=1
     </body>
 </html>
 <?php
-        
-    $body = ob_get_clean();
+
+        $body = ob_get_clean();
 
     $subject = 'User Contact';
 
@@ -499,21 +511,21 @@ content="width=device-width, user-scalable=no,initial-scale=1.0, minimum-scale=1
     $mail = new PHPMailer( true );
 
     $mail->AddAddress('web@kleintours.com.ec', 'Webmaster');
-//    $mail->AddAddress('websales@kleintours.com.ec', 'Web Sales');
-//    $mail->AddAddress('websales1@kleintours.com.ec', 'Web Sales 1');
-//    $mail->AddAddress('websales6@kleintours.com.ec', 'Web Sales 4');
-//    $mail->AddAddress('emilkb@yahoo.com', 'Emil Klein');
+    //    $mail->AddAddress('websales@kleintours.com.ec', 'Web Sales');
+    //    $mail->AddAddress('websales1@kleintours.com.ec', 'Web Sales 1');
+    //    $mail->AddAddress('websales6@kleintours.com.ec', 'Web Sales 4');
+    //    $mail->AddAddress('emilkb@yahoo.com', 'Emil Klein');
     $mail->FromName = 'Contact Go Galapagos';
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->IsHTML();
     $mail->CharSet = 'utf-8';
     $mail->Send();
-    
+
     echo 'TRUE';
-    
+
     die();
-    
+
 }
 add_action('wp_ajax_send_contact_mail_via_ajax', 'send_contact_mail_via_ajax');
 add_action('wp_ajax_nopriv_send_contact_mail_via_ajax', 'send_contact_mail_via_ajax');
@@ -530,7 +542,7 @@ function send_mail_via_ajax(){
     $interested = filter_input(INPUT_POST, 'interested');
     $textmessage = filter_input(INPUT_POST, 'textmessage');
     $terms = filter_input(INPUT_POST, 'terms');
-        
+
     ob_start();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -585,8 +597,8 @@ function send_mail_via_ajax(){
     </body>
 </html>
 <?php
-        
-    $body = ob_get_clean();
+
+        $body = ob_get_clean();
 
     $subject = 'Quote inquiry';
 
@@ -595,21 +607,21 @@ function send_mail_via_ajax(){
     $mail = new PHPMailer( true );
 
     $mail->AddAddress('web@kleintours.com.ec', 'Webmaster');
-//    $mail->AddAddress('websales@kleintours.com.ec', 'Web Sales');
-//    $mail->AddAddress('websales1@kleintours.com.ec', 'Web Sales 1');
-//    $mail->AddAddress('websales6@kleintours.com.ec', 'Web Sales 4');
-//    $mail->AddAddress('emilkb@yahoo.com', 'Emil Klein');
+    //    $mail->AddAddress('websales@kleintours.com.ec', 'Web Sales');
+    //    $mail->AddAddress('websales1@kleintours.com.ec', 'Web Sales 1');
+    //    $mail->AddAddress('websales6@kleintours.com.ec', 'Web Sales 4');
+    //    $mail->AddAddress('emilkb@yahoo.com', 'Emil Klein');
     $mail->FromName = 'Web Go Galapagos';
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->IsHTML();
     $mail->CharSet = 'utf-8';
     $mail->Send();
-    
+
     echo 'TRUE';
-    
+
     die();
-    
+
 }
 add_action('wp_ajax_send_mail_via_ajax', 'send_mail_via_ajax');
 add_action('wp_ajax_nopriv_send_mail_via_ajax', 'send_mail_via_ajax');
