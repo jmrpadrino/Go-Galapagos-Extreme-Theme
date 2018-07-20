@@ -2931,3 +2931,6 @@ section.activities{
         font-size: 16px!important;
     }
 }
+.container.island-archive-container+div{
+    padding-bottom: 120px;
+}

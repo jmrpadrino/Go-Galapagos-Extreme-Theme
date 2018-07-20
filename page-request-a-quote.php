@@ -6,8 +6,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title><?= get_the_title() ?> | <?= bloginfo('name') ?></title>
+        <meta charset="UTF-8"><?php 
+            if(isset($_GET) and !empty($_GET['for'])){
+                $viene_de = $_GET['for'];
+                echo '<meta name="robots" content="noindex">';
+            }
+        ?><title><?= get_the_title() ?> | <?= bloginfo('name') ?></title>
         <?php wp_head() ?>
         <!-- Optional theme -->
         <!--link rel="stylesheet" href="<?= $rutatemplate ?>/css/bootstrap-datetimepicker.min.css"-->
@@ -96,7 +100,7 @@
     </head>
     <body>
         <div class="go-back-placeholder" onclick="window.history.back()">
-            <a href="<?= home_url() ?>"><img src="<?= $rutatemplate ?>/images/request-a-quote-go-back-icon.png" alt="Go Galapagos - Play Video NOW!"></a>
+            <a href="#"><img src="<?= $rutatemplate ?>/images/request-a-quote-go-back-icon.png" alt="Go Galapagos - Play Video NOW!"></a>
         </div>
         <div class="row">
             <div class="col-xs-12 nopadding main-flex-container1">
@@ -167,7 +171,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1"><?= _e('Something you want to share?','gogalapagos') ?></label>
-                            <textarea rows="6" name="textmessage" class="form-control"></textarea>
+                            <textarea rows="6" name="textmessage" class="form-control"><?= $viene_de ? esc_html_e('I want to know more about', 'gogalapagos') . ' ' .$viene_de : '' ?></textarea>
                         </div>
                         <div class="checkbox">
                             <label>
