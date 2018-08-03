@@ -60,9 +60,11 @@ $physical_options = array(
                 $parent_island = get_post_meta( get_the_ID(), $prefix . 'visitors_site_island', true);
                 ?>
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
-                <span class="serif-font fold-backlink"> at the <a href="<?= get_permalink( $parent_island ) ?>"><?php echo get_the_title( $parent_island ) ?> Island</a></span>
+                <span class="serif-font fold-backlink"><a href="<?= get_permalink( $parent_island ) ?>"><?php echo get_the_title( $parent_island ) ?> Island</a></span>
                 <span class="separator white left"></span>
+                <?php if (has_excerpt(get_the_ID())) {?>
                 <p class="single-excerpt"><?= get_the_excerpt() ?></p>
+                <?php } ?>
                 <div class="visitors-icons-placeholder">
                     <?php $sugerencias = get_post_meta( get_the_ID(), $prefix . 'visitors_site_recomendation', false); ?>
                     <ul class="list-inline">

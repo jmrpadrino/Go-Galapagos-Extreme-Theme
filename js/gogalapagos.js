@@ -137,13 +137,13 @@ $('.navTrigger, .navTrigger-ship').click(function(){
     $(this).toggleClass('active');
     $('#alter-nav').toggleClass('active');
     if( $('.navTrigger, .navTrigger-ship').hasClass('active') ){
-        $(this).css('z-index',9999);
+        $(this).css('z-index',999999999);
         $('.menu-word').html('Esc');
         $('.menu-word').prop('title','Press Esc to exit menu');
         fullPageArea.fullpage.setAllowScrolling(false);
         fullPageArea.fullpage.setKeyboardScrolling(false);
     }else{
-        $(this).css('z-index',999);
+        $(this).css('z-index',999999999);
         $('.menu-word').prop('title','Go Galapagos alternate menu');
         $('.menu-word').html('Menu');
         fullPageArea.fullpage.setAllowScrolling(true);

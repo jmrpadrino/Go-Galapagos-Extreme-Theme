@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-sm-4 text-center">
                     <span class="fa fa-4x fa-calendar"></span>
-                    <h4 id="years-old" class="statistic-value text-center">36</h4>
+                    <h4 id="years-old" class="statistic-value text-center">35</h4>
                     <span class="counter-name">Years of Experience</span>
                 </div>
             </div>

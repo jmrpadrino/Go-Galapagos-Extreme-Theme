@@ -325,7 +325,7 @@ a,a:hover{
     font-size: 28px;
     margin-top: 72px;
 }
-.hero-mask{
+.hero-mask1{
     position: absolute;
     top: 0;
     left: 0;
@@ -834,14 +834,13 @@ a,a:hover{
 }
 .navTrigger {
     cursor: pointer;
+    display: block;
     width: 30px;
     height: 25px;
     position: absolute;
     left: 40px;
     top: 20px;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
+    z-index: 99999999;
     -webkit-transition: top ease-in .2s;
     -webkit-transition: top .2s ease-in .2s;
     -webkit-transition: top .2s ease-in 1s;
@@ -1407,7 +1406,7 @@ a,a:hover{
     border-right: 2px solid #272727;
     height: 100vh;
     position: relative;
-    background: rgba(25, 25, 25, .9);
+    background: rgba(25, 25, 25, 1);
 }
 .desktop-side-alter-menu{
     margin-top: 140px;
@@ -2669,15 +2668,6 @@ body.blog{
 /*------
 /* BASIC PAGES CSS
 ------*/
-.home-get-in-love-separator{
-    border-bottom: 2px solid white;
-    display: block;
-    width: 180px;
-    margin: 18px auto;
-    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
 .page-hero-text{
     color: white;
     font-weight: bold;
@@ -2718,7 +2708,7 @@ body.blog{
     display: block;
     color: white;
 }
-.ggcruises-thumbnail-placeholder .hero-mask{
+.ggcruises-thumbnail-placeholder .hero-mask1{
     z-index: -10;
     background: rgba(0,0,0,1);
     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,0)));

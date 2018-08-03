@@ -89,6 +89,11 @@
 <div id="main-content-single" class="sections section" <?= (get_post_meta ( get_the_ID(), $prefix . 'background_image_content', true)) ? 'style="background-image: url('.get_post_meta ( get_the_ID(), $prefix . 'background_image_content', true).'); background-repeat: no-repeat; background-position: bottom right; background-size: contain;"' : ''; ?>>
     <div class="container">
         <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <?php include ( TEMPLATEPATH . '/templates/breadcrumbs.php'); ?>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <h2><?php echo _e('More about ') . the_title(); ?></h2>
                 <div id="the_content" class="the-content">

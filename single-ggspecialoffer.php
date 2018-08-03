@@ -6,7 +6,9 @@
             <div class="col-sm-6 col-lg-6 col-lg-offset-1">
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
                 <span class="separator"></span>
-                <p><?= get_the_excerpt( get_the_ID() ) ?></p>
+                <?php if (has_excerpt(get_the_ID())) {?>
+                <p class="single-excerpt"><?= get_the_excerpt() ?></p>
+                <?php } ?>
                 <p><a href="<?= home_url('request-a-quote') . '/?for=' . $post->post_title  ?>" class="plan-your-trip-single-btn"><?php _e('Request a Quote','gogalapagos'); ?></a></p>
             </div>
             <div class="col-sm-5 col-lg-4">

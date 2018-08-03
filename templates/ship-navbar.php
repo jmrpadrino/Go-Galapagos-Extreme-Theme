@@ -1,6 +1,11 @@
 <?php
 $prefix = 'gg_';
-$virtual360Link = get_post_meta($post->ID, $prefix . 'ship_section_360_link', true);
+global $post;
+
+$barco = get_page_by_path($post->post_name, OBJECT, 'ggships');
+
+$virtual360Link = get_post_meta($barco->ID, $prefix . 'ship_section_360_link', true);
+
 ?>
 <div id="ship-alter-navbar" class="contanier-fluid ship-alter-navbar">
     <div class="hidden-xs">

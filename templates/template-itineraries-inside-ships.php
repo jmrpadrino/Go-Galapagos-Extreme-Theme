@@ -108,6 +108,7 @@ $imagen_extendidos = array(
                                             <div class="col-md-4 col-sm-5 itineraries-day-by-day">
                                                 <?php
                                                     //Day by day corto...
+                                                    $dayactive_1 = $dayactive_2 = $dayactive_3 = $dayactive_4 = $dayactive_5 = 0;
                                                     $dayactive_1 = get_post_meta($itinerariosSimples[$iti]->ID, $prefix . 'itinerary_active_day_1', true);
                                                     $dayactive_2 = get_post_meta($itinerariosSimples[$iti]->ID, $prefix . 'itinerary_active_day_2', true);
                                                     $dayactive_3 = get_post_meta($itinerariosSimples[$iti]->ID, $prefix . 'itinerary_active_day_3', true);
@@ -116,13 +117,8 @@ $imagen_extendidos = array(
                                                     $daysLong = $dayactive_1 + $dayactive_2 + $dayactive_3 + $dayactive_4 + $dayactive_5;
                                                     $nightsLong = $daysLong - 1;
                                                     $startDay = get_post_meta($itinerariosSimples[$iti]->ID, $prefix . 'itinerary_start_day', true);
-                                                    $total = $startDay + $daysLong;
-                                                    if ($total > 7){
-                                                        $total = 0;
-                                                    }else{
-                                                        $total--;
-                                                    }
-                                                    //if ($total){}
+
+                                                    $total = $startDay + $daysLong - 1;
                                                 ?>
                                                 <!-- info itinerario -->
                                                 <div class="itinerary-duration itinerary-a" style="color:<?= $dayactive_5 = get_post_meta($itinerariosSimples[$iti]->ID, $prefix . 'itinerary_frontend_color', true); ?>">                    
@@ -215,7 +211,7 @@ $imagen_extendidos = array(
                                             echo '</div>';
                                         ?>
                                             <div class="col-sm-4">
-                                                <div class="itinerary-duration itinerary-a" style="color:<?= $dayactive_5 = get_post_meta($itinerariosSimples[$iti]->ID, $prefix . 'itinerary_frontend_color', true); ?>">                    
+                                                <div class="itinerary-duration">                    
                                                     <p><?= $diasPrimero + $diasSegundo - 1 ?> days / <?= $diasPrimero + $diasSegundo - 2 ?> Nights</p>
                                                     <p><?= $dias_de_la_semana[ $startDay ] ?> <?= _e('to', 'gogalapagos') ?> <?= $dias_de_la_semana[ $startDay ] ?></p>
                                                 </div>

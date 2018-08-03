@@ -75,52 +75,26 @@ $barcos = get_posts($args);
     <?php
     for($i=1; $i <= $numeroSlides; $i++){
     ?>
-    <div class="fullpage-slide home-get-in-love-slide" <?= (wp_is_mobile()) ? 'style="background-image: url(' . get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true) . ');"' : '' ?>>
+    <div class="fullpage-slide text-center home-get-in-love-slide" <?= (wp_is_mobile()) ? 'style="background-image: url(' . get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true) . ');"' : '' ?>>
         <?php if (get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true)){ ?>
         <img class="get-in-love-bkg-img img-responsive" src="<?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_slide_background_image'.$i, true) ?>" alt="<?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1'.$i, true) ?>">
         <?php } ?>
+        <div class="get-in-love-mask"></div>
         <div class="slider-container">
             <h2 class="home-get-in-love-title"><?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_h1'.$i, true) ?></h2>
-            <span class="home-get-in-love-separator" style="margin: 36px 0;"></span>
+            <span class="home-get-in-love-separator"></span>
             <p class="home-get-in-love-paragraph"><?= get_post_meta( get_the_ID(), $prefix . 'homepage_fold_subtitle'.$i, true) ?></p>
         </div>
     </div>
     <?php } ?>
 </section>
-
-<section id="our-vessels" data-anchor="galapagos-cruises" class="sections section async-shown ships" data-asyncshowntime="2000">
-    <div class="section-ribbon">
-        <span><?php _e('Our Vessels','gogalapagos'); ?></span>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <?php foreach($barcos as $barco){ ?>
-            <div class="col-md-6 nopadding ship-placeholder <?= (wp_is_mobile()) ? '' : 'not-mobile' ?>" <?= (wp_is_mobile()) ? '' : 'style="background-image: url('.get_post_meta($barco->ID, $prefix . 'ship_home_image', true).');"' ?>>
-                <?php if ( wp_is_mobile() ){ ?>
-                <img class="mobile-image" data-src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">
-                <?php } ?>
-                <div class="more-content lower-post">
-                    <a href="<?= home_url($barco->post_name); ?>/" title="<?= $barco->post_title ?>"><h2><?= $barco->post_title ?></h2></a>
-                    <span class="ship-slogan"><?= esc_html(get_post_meta($barco->ID, $prefix . 'ship_slogan', true)) ?></span>
-                    <?php if( !wp_is_mobile() ) { ?>
-                    <span class="offers-and-news-hover-separator"></span>
-                    <p><?= esc_html__( get_the_excerpt($barco->ID) ) ?></p>
-                    <?php } ?>
-                    <br />
-                    <a class="home-ship-btn" href="<?= home_url($barco->post_name); ?>/"><?= _e('More about') ?> <?= $barco->post_title ?></a>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-    </div>
-</section>
 <section id="offers-and-news" data-anchor="offers-news" class="sections section async-shown offers-and-news" data-asyncshowntime="2000">
     <div class="section-ribbon">
-        <span><?php _e('Special Offers','gogalapagos'); ?></span>
+        <span><?php _e('Offers &amp; News','gogalapagos'); ?></span>
     </div>
     <div class="container-fluid nopadding">
         <div class="row">
-            <div class="col-md-12 carousel">
+            <div class="col-md-12 col-lg-6 carousel">
                 <div id="index-carousel-products" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <?php 
@@ -154,8 +128,110 @@ $barcos = get_posts($args);
                     <?php } ?>
                 </div>
             </div>
+            <div class="col-md-12 col-lg-6 nopadding home-blog-section">
+                <div class="row">
+                    <div class="col-sm-6 home-blog-article nopadding">
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[0]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[0]->post_title ?>">
+                        <?php if(wp_is_mobile()){ ?>
+                        <a href="<?= get_permalink( $blogPosts[0]->ID)?>" title="<?= $blogPosts[0]->post_title ?>"><h2 class="post-title-home-mobile"><?= $blogPosts[0]->post_title ?></h2></a>
+                        <?php }else{ ?>
+                            <span class="alter-title serif-font"><?= $blogPosts[0]->post_title ?></span>
+                        <?php } ?>
+                        
+                        <?php if(!wp_is_mobile()){ ?>
+                        <div class="more-content upper-post">
+                            <span class="say-blog">BLOG</span>
+                            <a href="<?= get_permalink( $blogPosts[0]->ID)?>" title="<?= $blogPosts[0]->post_title ?>"><h2><?= $blogPosts[0]->post_title ?></h2></a>
+                            <span class="offers-and-news-hover-separator"></span>
+                            <p><?= esc_html(get_the_excerpt($blogPosts[0]->ID))?></p>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[0]->ID)?>"><?= _e('Read More', 'gogalapagos') ?></a>
+                        </div>
+                        <?php } ?>
+                    </div>
+                    <div class="col-sm-6 home-blog-article nopadding">
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[1]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[1]->post_title ?>">
+                        <?php if(wp_is_mobile()){ ?>
+                        <a href="<?= get_permalink( $blogPosts[1]->ID)?>" title="<?= $blogPosts[1]->post_title ?>"><h2 class="post-title-home-mobile"><?= $blogPosts[1]->post_title ?></h2></a>
+                        <?php }else{ ?>
+                            <span class="alter-title serif-font"><?= $blogPosts[1]->post_title ?></span>
+                        <?php } ?>
+                        
+                        <?php if(!wp_is_mobile()){ ?>
+                        <div class="more-content upper-post">
+                            <span class="say-blog">BLOG</span>
+                            <a href="<?= get_permalink( $blogPosts[1]->ID)?>" title="<?= $blogPosts[1]->post_title ?>"><h2><?= $blogPosts[1]->post_title ?></h2></a>
+                            <span class="offers-and-news-hover-separator"></span>
+                            <p><?= esc_html(get_the_excerpt($blogPosts[1]->ID))?></p>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[1]->ID)?>"><?= _e('Read More', 'gogalapagos') ?></a>
+                        </div>
+                        <?php } ?>
+                    </div>
+                    <div class="col-sm-6 home-blog-article nopadding">
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[2]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[2]->post_title ?>">
+                        <?php if(wp_is_mobile()){ ?>
+                        <a href="<?= get_permalink( $blogPosts[2]->ID)?>" title="<?= $blogPosts[2]->post_title ?>"><h2 class="post-title-home-mobile"><?= $blogPosts[2]->post_title ?></h2></a>
+                        <?php }else{ ?>
+                            <span class="alter-title serif-font"><?= $blogPosts[2]->post_title ?></span>
+                        <?php } ?>
+                        
+                        <?php if(!wp_is_mobile()){ ?>
+                        <div class="more-content lower-post">
+                            <span class="say-blog">BLOG</span>
+                            <a href="<?= get_permalink( $blogPosts[2]->ID)?>" title="<?= $blogPosts[2]->post_title ?>"><h2><?= $blogPosts[2]->post_title ?></h2></a>
+                            <span class="offers-and-news-hover-separator"></span>
+                            <p><?= esc_html(get_the_excerpt($blogPosts[2]->ID))?></p>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[2]->ID)?>"><?= _e('Read More', 'gogalapagos') ?></a>
+                        </div>
+                        <?php } ?>
+                    </div>
+                    <div class="col-sm-6 home-blog-article nopadding">
+                        <img class="blog-home-thumbnail img-responsive1" src="<?= get_the_post_thumbnail_url( $blogPosts[3]->ID, 'medium_large' ) ?>" alt="<?= $blogPosts[3]->post_title ?>">
+                        <?php if(wp_is_mobile()){ ?>
+                        <a href="<?= get_permalink( $blogPosts[3]->ID)?>" title="<?= $blogPosts[3]->post_title ?>"><h2 class="post-title-home-mobile"><?= $blogPosts[3]->post_title ?></h2></a>
+                        <?php }else{ ?>
+                            <span class="alter-title serif-font"><?= $blogPosts[3]->post_title ?></span>
+                        <?php } ?>
+                        
+                        <?php if(!wp_is_mobile()){ ?>
+                        <div class="more-content lower-post">
+                            <span class="say-blog">BLOG</span>
+                            <a href="<?= get_permalink( $blogPosts[3]->ID)?>" title="<?= $blogPosts[3]->post_title ?>"><h2><?= $blogPosts[3]->post_title ?></h2></a>
+                            <span class="offers-and-news-hover-separator"></span>
+                            <p><?= esc_html(get_the_excerpt($blogPosts[3]->ID))?></p>
+                            <a class="home-offers-btn" href="<?= get_permalink( $blogPosts[3]->ID)?>"><?= _e('Read More', 'gogalapagos') ?></a>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>    
+</section>
+<section id="our-vessels" data-anchor="galapagos-cruises" class="sections section async-shown ships" data-asyncshowntime="2000">
+    <div class="section-ribbon">
+        <span><?php _e('Our Vessels','gogalapagos'); ?></span>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <?php foreach($barcos as $barco){ ?>
+            <div class="col-md-6 nopadding ship-placeholder <?= (wp_is_mobile()) ? '' : 'not-mobile' ?>" <?= (wp_is_mobile()) ? '' : 'style="background-image: url('.get_post_meta($barco->ID, $prefix . 'ship_home_image', true).');"' ?>>
+                <?php if ( wp_is_mobile() ){ ?>
+                <img class="mobile-image" data-src="<?= get_post_meta($barco->ID, $prefix . 'ship_home_image', true) ?>" alt="<?= $barco->post_title ?>">
+                <?php } ?>
+                <div class="more-content lower-post">
+                    <a href="<?= home_url($barco->post_name); ?>/" title="<?= $barco->post_title ?>"><h2><?= $barco->post_title ?></h2></a>
+                    <span class="ship-slogan"><?= esc_html(get_post_meta($barco->ID, $prefix . 'ship_slogan', true)) ?></span>
+                    <?php if( !wp_is_mobile() ) { ?>
+                    <span class="offers-and-news-hover-separator"></span>
+                    <p><?= esc_html__( get_the_excerpt($barco->ID) ) ?></p>
+                    <?php } ?>
+                    <br />
+                    <a class="home-ship-btn" href="<?= home_url($barco->post_name); ?>/"><?= _e('More about') ?> <?= $barco->post_title ?></a>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
 </section>
 <?php get_footer(); ?>
 <script>

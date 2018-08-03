@@ -38,14 +38,7 @@
                     </div>
                     <div class="col-md-3">
                         <h4 class="body-font"><?php _e('Contact Us','gogalapagos')?></h4>
-                        <ul>
-                            <li>USA: 1888 50 KLEIN / CANADA: 1-866-9785990</li>
-                            <li>EUROPA: 34-900-300-123 / UK: 00 44-8455-281-389</li>
-                            <li>Ph: (593) 2 - 2267000 / (593) 2 - 2267080</li>
-                            <li><strong>Go Galapagos by Kleintours</strong></li>
-                            <li>Av. Catalina Aldaz N&deg; 34-111 &amp; Eloy Alfaro.</li>
-                            <li>170515 Quito - Ecuador.</li>
-                        </ul>
+                        <?php dynamic_sidebar( 'gogalapagos-contact' ); ?>
                     </div>
                 </div>
                 <div class="row">
@@ -95,7 +88,7 @@
     <div class="container-fluid copyright">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <p><?php _e('Go Galapagos Ltda. All rights reserved.','gogalapagos'); ?> 1980 - <?= date('Y') ?></p>
+                <p><?php _e('Go Galapagos Ltda. All rights reserved.','gogalapagos'); ?> 1983 - <?= date('Y') ?></p>
             </div>
         </div>
     </div>
@@ -191,16 +184,7 @@
                     </div>
                     <div class="col-md-3">
                         <h4 class="body-font"><?php _e('Contact Us','gogalapagos')?></h4>
-                        <ul>
-                            <li>USA: 1888 50 KLEIN / CANADA: 1-866-9785990</li>
-                            <li>EUROPA: 34-900-300-123 / UK: 00 44-8455-281-389</li>
-                            <li>Ph: (593) 2 - 2267000 / (593) 2 - 2267080</li>
-                        </ul>
-                        <h4 class="body-font">Go Galapagos by Kleintours</h4>
-                        <ul>
-                            <li>Av. Catalina Aldaz N&deg; 34-111 &amp; Eloy Alfaro.</li>
-                            <li>170515 Quito - Ecuador.</li>
-                        </ul>
+                        <?php dynamic_sidebar( 'gogalapagos-contact' ); ?>
                     </div>
                 </div>
             </div>
@@ -209,7 +193,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <p class="copy"><?php _e('Go Galapagos Ltda. All rights reserved.','gogalapagos'); ?> 1980 - <?= date('Y') ?></p>
+                <p class="copy"><?php _e('Go Galapagos Ltda. All rights reserved.','gogalapagos'); ?> 1983 - <?= date('Y') ?></p>
             </div>
         </div>
     </div>
@@ -392,6 +376,8 @@ if ( is_page_template() ){
                 <?php } ?>
             },
             onLeave: function (index, nextIndex, direction){
+                var idx = Math.abs(index - nextIndex)*.9;
+                $.fn.fullpage.setScrollingSpeed(idx*700);
                 //$('.itineraries-day-by-day-list').getNiceScroll().remove();
                 //$('.day-placeholder').getNiceScroll().remove();
                 <?php if (is_front_page()){ ?>

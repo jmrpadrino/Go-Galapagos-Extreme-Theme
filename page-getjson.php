@@ -37,6 +37,13 @@ if (!$user_query){
 // referencias de los idiomas
 global $q_config;
 global $wpdb;
+
+$itis = array(
+    '0' => 'ab',
+    '1' => 'bc',
+    '2' => 'cd',
+    '3' => 'da'
+);
 $lenguajeDefault = $q_config[default_language];
 $lenguajeConsulta = $q_config[language];
 
@@ -276,7 +283,9 @@ foreach ($elementos as $key => $elemento){
 
     $elementos = get_posts($args);
     $itinerarios = [];
+    $it = 0;
     foreach($elementos as $itinerario){
+        
 
         $duracion = get_post_meta($itinerario->ID, $prefix . 'itinerary_duration', true);
 
@@ -310,6 +319,7 @@ foreach ($elementos as $key => $elemento){
             'barco_dispoid' => get_post_meta(get_post_meta($itinerario->ID, $prefix . 'itinerary_ship_id', true), $prefix . 'dispo_ID', true),
             'url' => get_permalink( $itinerario->ID ),
             'imagen_ruta' => get_post_meta($itinerario->ID, $prefix . 'itinerary_route_image', true),
+            'imagen_ruta_extendido' => get_post_meta($elbarco, $prefix . 'ship_extended_img_' . $itis[$it], true),
             'color_brochure' => get_post_meta($itinerario->ID, $prefix . 'itinerary_frontend_color', true),
             'animales_recorrido' => get_post_meta($itinerario->ID, $prefix . 'itinerary_animal_list', false),
             'anio_operacion' => get_post_meta($itinerario->ID, $prefix . 'itinerary_year', false),
@@ -320,6 +330,7 @@ foreach ($elementos as $key => $elemento){
             ),
             'day_by_day' => $contenido,
         );
+        $it++;
     }
     // FIN ITINERARIOS
 

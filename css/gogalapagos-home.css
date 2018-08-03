@@ -339,11 +339,20 @@ label.field.focused .psuedo_select ul {
     background-color: rgba(0, 0, 0, 0.4);;
     
 }
-.slider-container{
+.slider-container-OLD{
     -webkit-transform: translateZ(1px);
     transform: translateZ(1px);
 }
-.home-get-in-love-separator{
+.slider-container{
+    float: left;
+    max-width: 35%;
+    text-align: left;
+    position: absolute;
+    top: 100px;
+    left: 36px;
+    font-size: 12px;
+}
+.home-get-in-love-separator-OLD{
     border-bottom: 2px solid white;
     display: block;
     width: 180px;
@@ -351,16 +360,31 @@ label.field.focused .psuedo_select ul {
     -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
-.home-get-in-love-title{
+.home-get-in-love-separator{
+    border-bottom: 2px solid white;
+    display: block;
+    margin: 18px 0;
+    width: 180px;
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.home-get-in-love-title-OLD{
     font-size: 48px;
     max-width: 480px;
     margin: auto;
 }
-.home-get-in-love-paragraph{
+.home-get-in-love-title{
+    font-size: 36px;
+    text-align: left;
+}
+.home-get-in-love-paragraph-OLD{
     max-width: 65vw;
     margin: 0 auto;
     margin-bottom: 36px;
     font-size: 24px;
+}
+.home-get-in-love-paragraph{
+    font-size: 18px;
 }
 .home-get-in-love-separator,.home-get-in-love-title,.home-get-in-love-paragraph{
     z-index: 999;
@@ -895,7 +919,7 @@ filter: brightness(1) sepia(0);
         max-width: 80vw;
     }
     .home-get-in-love-separator{
-        margin: 18px auto;
+        margin: 18px 0;
     }
     .home-get-in-love-paragraph{
         max-width: 80vw;

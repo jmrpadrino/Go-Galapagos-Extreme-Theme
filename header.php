@@ -14,6 +14,7 @@ else {
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="x-ua-compatible" content="IE=edge" /> 
         <style media="screen">
             body{
                 position: relative;
@@ -21,11 +22,13 @@ else {
             }
             .loader{
                 height: 100vh;
-                width: 100%;
+                width: 100vw;
                 display: flex;
                 align-items: center;
+                align-content: center;
+                text-align: center;
                 justify-content: center;
-                background: #191919;
+                background: white;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -90,7 +93,7 @@ else {
     <?php flush(); ?>
     <body <?php body_class(); ?>>
         <div id="loader" class="loader">
-            <span class="loader-text"><?= _e('Loading', 'gogalapagos') ?></span>
+            <span class="loader-text"><img src="<?= get_template_directory_uri() ?>/images/gogalapagos-loading.gif" width="300" alt="Go Galapagos Loading..."></span>
         </div>
         <?php 
         /**

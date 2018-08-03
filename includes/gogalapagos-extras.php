@@ -21,11 +21,13 @@ function gg_set_all_cpts( $query ) {
         }
 
     }
-    if (is_archive('ggfaqs') or is_tax('go_faqs') ){
-        $query->set('order', 'DESC');
-        $query->set('orderby', 'rand');
-        $query->set('posts_per_page', 16);
+    if (!is_admin()){
+        if (is_archive('ggfaqs') or is_tax('go_faqs') ){
+            $query->set('order', 'DESC');
+            $query->set('orderby', 'rand');
+            $query->set('posts_per_page', 16);
 
+        }
     }
     return $query;
 };
@@ -99,6 +101,15 @@ function gogalapagos_widgets_init(){
         'description'   => __( 'Uso exclusivo de Constant Contact', 'gogalapagos' ),
         'before_widget' => '<div class="cc_widget">',
         'after_widget'  => '</div>',
+        'before_title'  => '',
+        'after_title'   => '',
+    ) );
+    register_sidebar( array(
+        'name'          => __( 'Footer Contact Section', 'gogalapagos' ),
+        'id'            => 'gogalapagos-contact',
+        'description'   => __( 'Uso exclusivo del footer Contact', 'gogalapagos' ),
+        'before_widget' => '',
+        'after_widget'  => '',
         'before_title'  => '',
         'after_title'   => '',
     ) );

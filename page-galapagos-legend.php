@@ -128,8 +128,6 @@ print_r($decks);
 echo '</pre>';*/
 $deckCounter = 0;
 ?>
-
-?>
 <section id="top-page" data-anchor="top" class="sections section single-ship ship-hero">
     <div class="middle-fold" style="background-image: url(<?= $barco__foldbkg ?>);">
         <div class="ship-fold-mask" style="position: absolute; height: 100%; width:100%; background: #00000070; top: 0: left: 0;"></div>
@@ -169,7 +167,6 @@ $deckCounter = 0;
                 <source src="<?= $rutaTema ?>/videos/dia-a-bordo-Legend-borr-03.webm" type='video/webm' />
                 <source src="<?= $rutaTema ?>/videos/dia-a-bordo-Legend-borr-03.ogv" type="video/ogv" />
             </video>
-        </div>
         </div>
     </div>
 </section>

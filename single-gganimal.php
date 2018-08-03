@@ -10,7 +10,9 @@
                 <span class="serif-font fold-backlink"><a href="<?= get_term_link( $term[0]->term_id, 'animalgroup' ) ?>"><?php echo $term[0]->name; ?></a></span>
                 <?php the_title('<h1 class="animal-title">', '</h1>'); ?>
                 <span class="separator white left"></span>
+                <?php if (has_excerpt(get_the_ID())) {?>
                 <p class="single-excerpt"><?= get_the_excerpt() ?></p>
+                <?php } ?>
                 <p>Spend 3 or more days on the Galapagos Islands and sail on our <a href="<?php home_url('galapagos-cruises'); ?>">elegant cruises</a>.</p>
                 <p><a href="<?= home_url('request-a-quote') . '/?for=' . $post->post_title  ?>" class="plan-your-trip-single-btn"><?php _e('Request a Quote','gogalapagos'); ?></a></p>
                 <a href="#">Conservation of the Galapagos Islands</a>

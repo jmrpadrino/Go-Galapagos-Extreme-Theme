@@ -8,7 +8,9 @@
                     <div class="col-sm-12">
                         <?php the_title('<h1 class="island-title">', '</h1>'); ?>
                         <span class="single-separator"></span>
+                        <?php if (has_excerpt(get_the_ID())) {?>
                         <p class="single-excerpt"><?= get_the_excerpt() ?></p>
+                        <?php } ?>
                         <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
                     </div>
                 </div>

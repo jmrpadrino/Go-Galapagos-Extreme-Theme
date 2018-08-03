@@ -8,7 +8,9 @@
                     <div class="col-sm-8 col-md-7">
                         <?php the_title('<h1 class="island-title">', '</h1>'); ?>
                         <span class="single-separator"></span>
+                        <?php if (has_excerpt(get_the_ID())) {?>
                         <p class="single-excerpt"><?= get_the_excerpt() ?></p>
+                        <?php } ?>
                     </div>
                     <div class="col-sm-4 col-md-4 col-md-offset-1">
                         <?php 
