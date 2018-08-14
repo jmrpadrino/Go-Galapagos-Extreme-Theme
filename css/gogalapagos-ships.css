@@ -7,7 +7,7 @@
     background: #42403c;
     position: absolute;
     width: 100%;
-    z-index: 999;
+    z-index: 999999999999;
     -webkit-transform: translateY(-150px);
     transform: translateY(-150px);
     -webkit-transition: -webkit-transform ease-in .2s;
