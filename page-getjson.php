@@ -574,6 +574,27 @@ foreach($elementos as $satour){
 $response['satours'] = $satours;
 // FIN TOURS LAND
 
+// AGREGAR PEDIDOS AL JSON
+$posttype = 'gquote';
+$args = array(
+    'post_type' => $posttype,
+    'posts_per_page' => -1,
+    'orderby' => 'post_date',
+    'order' => 'ASC'
+);
+$elementos = get_posts($args);
+$pack_count = 0;
+foreach($elementos as $gquote){
+    $qmetas = get_post_meta($gquote->ID);
+    $satours[$pack_count] = array(
+        'id' => $gquote->ID,
+        'q-ref' => $gquote->post_title,
+        'detalle' => $qmetas
+    );
+    $pack_count++;
+}
+$response['pedidos-web'] = $satours;
+
 // TRANSFORMACION A FORMATO JSON Y ENVIO
 
 header('Content-Type: application/json');
