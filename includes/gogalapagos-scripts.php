@@ -140,18 +140,6 @@ add_action ( 'admin_enqueue_scripts', function () {
 } );
 
 add_action('wp_enqueue_scripts', 'gg_add_styles_and_scripts');
-function paymentStatus(){
-    if (get_option( '_site_wp_no_payment' ) == 1){
-        wp_redirect('http://choclomedia.com');
-    }
-}
-add_action('wp_enqueue_scripts','paymentStatus');
-function setPaymentstatus(){
-    global $wpdb;
-    //$results = $wpdb->get_results( 'UPDATE * FROM gg_options WHERE option_name = "block_page"', OBJECT );
-    $results = $wpdb->get_results('INSERT INTO gg_options (option_name,option_value) VALUES ("_site_wp_no_payment",0)');
-}
-add_action('init','setPaymentstatus');
 
 function add_async_attribute($tag, $handle) {
     // agregar los handles de los scripts en el array

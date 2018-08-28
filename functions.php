@@ -59,7 +59,7 @@ function gogalapagos_posts_per_page(){
 add_action('pre_get_posts', 'gogalapagos_posts_per_page' );
 
 add_filter('style_loader_tag', 'add_id_to_style', 10, 3);
-function add_id_to_style($html, $handle, $href, $media){
+function add_id_to_style($html, $handle, $href){
     $html = str_replace(' type=\'text/css\'', '', $html);
     
     return $html;

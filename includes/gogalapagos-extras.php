@@ -138,6 +138,8 @@ function gg_ajustes_wordpress(){
     register_setting( 'go-galapagos-theme-setings', 'gg_rrss_instagram');
     register_setting( 'go-galapagos-theme-setings', 'gg_rrss_google_plus');
     register_setting( 'go-galapagos-theme-setings', 'gg_404_message');
+    register_setting( 'go-galapagos-theme-setings', 'goquoting-link-system');
+    
     foreach ($wp_post_types as $post_type){  
         if( 
             $post_type->name != 'post'                  and 
@@ -177,9 +179,9 @@ function gg_theme_dashboard(){
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+            <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
             <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Front Page</a></li>
-            <li role="presentation" class="active"><a href="#archives" aria-controls="archives" role="tab" data-toggle="tab">Archives</a></li>
+            <li role="presentation"><a href="#archives" aria-controls="archives" role="tab" data-toggle="tab">Archives</a></li>
             <li role="presentation"><a href="#inner-pages" aria-controls="inner-pages" role="tab" data-toggle="tab">Inner Pages</a></li>
             <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
             <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
@@ -188,13 +190,26 @@ function gg_theme_dashboard(){
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane" id="general">
-                <h2>General Settings</h2>
+            <div role="tabpanel" class="tab-pane active" id="general">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>General Settings</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h3>GOQuoting status <span class="badge"><?= (is_plugin_active('goquoting/index.php') ? 'Activated' : 'Deactivated') ?></span></h3>
+                        <div class="form-group">
+                            <label for="gg_home_carousel_slides">Link booking system</label>
+                            <input class="form-control" type="checkbox" name="goquoting-link-system" <?= (get_option( 'goquoting-link-system' ) == 'on') ? 'checked' : ''; ?> <?= (is_plugin_active('goquoting/index.php') ? '' : 'disabled') ?>/>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="home">
                 <div class="row">
                     <div class="col-md-4 form-inline">
-                        <h2>Front Page Setings</h2>
+                        <h2>Front Page Settings</h2>
                         <div class="form-group">
                             <label for="gg_home_carousel_slides">Home Experience Slides</label>
                             <input class="form-control" type="number" name="gg_home_carousel_slides" min="1" max="10" value="<?php echo get_option( 'gg_home_carousel_slides' ); ?>"/>
@@ -202,7 +217,7 @@ function gg_theme_dashboard(){
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane active" id="archives">
+            <div role="tabpanel" class="tab-pane fade" id="archives">
                 <div class="row">
                     <div class="col-xs-12">
                         <ul class="nav nav-tabs" role="tablist">

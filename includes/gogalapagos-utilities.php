@@ -35,7 +35,7 @@ function random_color() {
     return random_color_part() . random_color_part() . random_color_part();
 }
 
-function _remove_script_version($src, $handle, $html){ 
+function _remove_script_version($src, $handle){ 
     
     if(     $handle != 'gogalapagos-googlefonts'
         &&  $handle != 'gmaps'
